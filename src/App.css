@@ -1,0 +1,25 @@
+
+
+
+
+.Mycards{
+    display:grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+@media only screen and (max-width:775px){
+    .Mycards{
+        
+        grid-template-columns: 50% 50%;
+    }
+    
+        
+}
+@media only screen and (max-width:575px){
+    .Mycards{
+        
+        grid-template-columns: 100%;
+    }
+    
+        
+}
