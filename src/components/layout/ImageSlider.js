@@ -1,12 +1,25 @@
 import React from 'react'
 import download from '../card/download.jpg'
+import {Carousel} from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 const ImageSlider = () => {
   return (
-    <div>
-      <img src={download} alt="" style={{width:'100%'}}/>
-    </div>
+    <Carousel>
+                <div>
+                    <img src={download} />
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div>
+                    <img src={download} />
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div>
+                    <img src={download} />
+                    <p className="legend">Legend 3</p>
+                </div>
+            </Carousel>
   )
 }
 
