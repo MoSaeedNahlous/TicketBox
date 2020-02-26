@@ -1,24 +1,25 @@
 import React from 'react'
-import download from '../card/download.jpg'
+import download12 from '../card/k.jpg'
 import {Carousel} from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
 const ImageSlider = () => {
   return (
-    <Carousel>
+    <Carousel showThumbs={false} infiniteLoop={true} width={'100%'} autoPlay={true}>
                 <div>
-                    <img src={download} />
-                    <p className="legend">Legend 1</p>
+                    <img src={download12} />
+                    
                 </div>
                 <div>
-                    <img src={download} />
-                    <p className="legend">Legend 2</p>
+                    <img src={download12} />
+                    
                 </div>
                 <div>
-                    <img src={download} />
-                    <p className="legend">Legend 3</p>
+                    <img src={download12} />
+                    
                 </div>
+                
             </Carousel>
   )
 }

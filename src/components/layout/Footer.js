@@ -34,17 +34,17 @@ const Footer = () => {
         
 
         <ul className="list-unstyled">
-          <li>
-            <a href="#!" >Link 1</a>
+          <li >
+            <a href="#!" ><i className="fab fa-facebook-square fa-2x" style={{color:'#4267B2'}}/></a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="#!"><i className="fab fa-twitter-square fa-2x" style={{color:'#1DA1F2'}} /></a>
           </li>
           <li>
-            <a href="#!" >Link 3</a>
+            <a href="#!" ><i className="fab fa-instagram-square fa-2x" style={{color:'#C5346D'}} /></a>
           </li>
           <li>
-            <a href="#!" >Link 4</a>
+            <a href="#!" ><i className="fab fa-github-square fa-2x" style={{color:'black'}} /></a>
           </li>
         </ul>
 
@@ -52,16 +52,16 @@ const Footer = () => {
       <div className="col-md-4">
       <ul className="list-unstyled">
           <li>
-            <a href="#!" >Link 1</a>
+            <a href="#!" ><i className="fab fa-google-plus-square fa-2x" style={{color:'#DD4D40'}}/></a>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+            <a href="#!"><i className="fab fa-linkedin fa-2x" style={{color:'#0077B5'}}/></a>
           </li>
           <li>
-            <a href="#!" >Link 3</a>
+            <a href="#!"><i className="fab fa-snapchat-square fa-2x" style={{color:'#FFFC00'}} /></a>
           </li>
           <li>
-            <a href="#!" >Link 4</a>
+            <a href="#!" ><i className="fas fa-headset fa-2x" style={{color:'white'}}/></a>
           </li>
         </ul>
       </div>
