@@ -7,7 +7,7 @@ const NavBar = () =>{
            <nav className="navbar  bg-dark navbar-dark" style={{width:'100%',flexGrow:'1'}}>
   <div>
   <Link to='/' className="navbar-brand" ><i className="fas fa-ticket-alt"/> TicketBox</Link>
-  <small className="navbar-brand"style={{fontSize:'12px'}} >for E-Booking services</small>
+  <small className="navbar-brand"style={{fontSize:'12px'}} >for E-Booking Services</small>
   </div>
   
   <div style={{float:'right',display:'flex', alignItems:'stretch',justifyContent:'space-around'}}>

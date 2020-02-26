@@ -3,7 +3,9 @@ import Login from '../layout/Login'
 const LoginPage = () => {
     return (
         <div>
+        <br />
             <Login />
+            <br />
         </div>
     )
 }

@@ -4,7 +4,7 @@ import '../../App.css'
 
 const Cards = () => {
     return (
-        <div className="container">
+        <div className="container" >
         <br />
             <h1 style={{textAlign:'center'}}>Featured Matches</h1>
             <br />

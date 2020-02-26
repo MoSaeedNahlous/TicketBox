@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -7,14 +8,47 @@ const Footer = () => {
  
 <div className="container-fluid">
       <div className="row mt3 full-width">
-        <div className="col-md-4">
-          <h5 className="font-weight-bold text-uppercase mt3  " style={{color:'white',marginLeft:'5%',marginTop:'3.2%'}}>Footer Content</h5>
+        <div className="col-md-4" style={{color:'white'}}>
+          <h5 className="font-weight-bold text-uppercase mt3  " style={{color:'white',marginLeft:'5%',marginTop:'3.2%'}}>Company Details</h5>
+          <ul className="list-unstyled">
+            <li><Link to='/about-us' style={{color:'white'}}><i className="fas fa-hand-point-right"/> About us</Link></li>
+            <li><Link to='/contact-us' style={{color:'white'}}><i className="fas fa-hand-point-right"/ > Contact us</Link></li>
+            <li><Link to='/partner-affiliation' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Partnership/Affiliation</Link></li>
+            <li><Link to='/terms-and-conditions' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Terms and Conditions</Link></li>
+            <li><Link to='/cookie-policy' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Cookie Policy</Link></li>
+          </ul>
         </div>
         <div className="col-md-4">
-        <h5 className="font-weight-bold text-uppercase mt-3 mb-4" style={{color:'white'}}>Links</h5>
+        <h5 className="font-weight-bold text-uppercase mt-3 mb-4" style={{color:'white'}}>Download our App</h5>
+        <ul className="list-unstyled">
+          <li>
+        <button className="btn btn-outline-secondary" disabled><i className="fab fa-google-play fa-2x"/> Coming soon </button>
+          </li>
+          <br />
+          <li>
+        <button className="btn btn-outline-secondary " style={{paddingLeft:'19px'}} disabled><i className="fab fa-apple fa-2x" style={{marginLeftLeft:'10px'}}/>  Coming soon</button>
+        </li>
+        </ul>
+         <ul className="list-unstyled">
+          
+        </ul>
         </div>
         <div className="col-md-4">
-        <h5 className="font-weight-bold text-uppercase mt-3 mb-4" style={{color:'white'}}>Links</h5>
+        <h5 className="font-weight-bold text-uppercase mt-3 mb-4" style={{color:'white'}}>Follow us</h5>
+        <div className="row">
+         
+            <a href="#!" style={{margin:'3%'}} ><i className="fab fa-facebook-square fa-2x" style={{color:'#4267B2'}}/></a>
+          
+         
+            <a href="#!" style={{margin:'3%'}} ><i className="fab fa-twitter-square fa-2x" style={{color:'#1DA1F2'}} /></a>
+          
+         
+            <a href="#!"  style={{margin:'3%'}}><i className="fab fa-instagram-square fa-2x" style={{color:'#CF4468'}}/></a>
+          
+         
+            <a href="#!" style={{margin:'3%'}} ><i className="fab fa-telegram fa-2x" style={{color:'#35ADE1'}}/></a>
+          
+        </div>
         </div>
 
       </div>
@@ -22,52 +56,7 @@ const Footer = () => {
 
        
 
-      <div className="row">
-
-      <div className="col-md-4 ">
       
-        <p style={{color:'white',marginLeft:'5%'}}>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          consectetur
-          adipisicing elit.</p>
-        </div>
-        <div className="col-md-4">
-        
-
-        <ul className="list-unstyled">
-          <li >
-            <a href="#!" ><i className="fab fa-facebook-square fa-2x" style={{color:'#4267B2'}}/></a>
-          </li>
-          <li>
-            <a href="#!"><i className="fab fa-twitter-square fa-2x" style={{color:'#1DA1F2'}} /></a>
-          </li>
-          <li>
-            <a href="#!" ><i className="fab fa-instagram-square fa-2x" style={{color:'#C5346D'}} /></a>
-          </li>
-          <li>
-            <a href="#!" ><i className="fab fa-github-square fa-2x" style={{color:'black'}} /></a>
-          </li>
-        </ul>
-
-      </div>
-      <div className="col-md-4">
-      <ul className="list-unstyled">
-          <li>
-            <a href="#!" ><i className="fab fa-google-plus-square fa-2x" style={{color:'#DD4D40'}}/></a>
-          </li>
-          <li>
-            <a href="#!"><i className="fab fa-linkedin fa-2x" style={{color:'#0077B5'}}/></a>
-          </li>
-          <li>
-            <a href="#!"><i className="fab fa-snapchat-square fa-2x" style={{color:'#FFFC00'}} /></a>
-          </li>
-          <li>
-            <a href="#!" ><i className="fas fa-headset fa-2x" style={{color:'white'}}/></a>
-          </li>
-        </ul>
-      </div>
-
-
-      </div>
   <hr />
       <div className="row">
 
