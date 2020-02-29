@@ -1,10 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Footer = () => {
+const Footer = (props) => {
+  const FooterStyle={backgroundColor:'#494E53' ,color :'white' ,width:'100%',backgroundImage:`url(${props.bg})`}
     return (
         
-<footer className="  page-footer font-small fluid full-width bg-dark-gray" style={{backgroundColor:'#494E53' ,color :'white' ,width:'100%'}}>
+        
+<footer className="  page-footer font-small fluid full-width bg-dark-gray" style={FooterStyle}>
  
 <div className="container-fluid">
       <div className="row mt3 full-width">
@@ -37,16 +39,16 @@ const Footer = () => {
         <h5 className="font-weight-bold text-uppercase mt-3 mb-4" style={{color:'white'}}>Follow us</h5>
         <div className="row">
          
-            <a href="#!" style={{margin:'3%'}} ><i className="fab fa-facebook-square fa-2x" style={{color:'#4267B2'}}/></a>
+            <Link  style={{margin:'3%'}} ><i className="fab fa-facebook-square fa-2x" style={{color:'#4267B2'}}/></Link>
           
          
-            <a href="#!" style={{margin:'3%'}} ><i className="fab fa-twitter-square fa-2x" style={{color:'#1DA1F2'}} /></a>
+            <Link  style={{margin:'3%'}} ><i className="fab fa-twitter-square fa-2x" style={{color:'#1DA1F2'}} /></Link>
           
          
-            <a href="#!"  style={{margin:'3%'}}><i className="fab fa-instagram-square fa-2x" style={{color:'#CF4468'}}/></a>
+            <Link   style={{margin:'3%'}}><i className="fab fa-instagram-square fa-2x" style={{color:'#CF4468'}}/></Link>
           
          
-            <a href="#!" style={{margin:'3%'}} ><i className="fab fa-telegram fa-2x" style={{color:'#35ADE1'}}/></a>
+            <Link  style={{margin:'3%'}} ><i className="fab fa-telegram fa-2x" style={{color:'#35ADE1'}}/></Link>
           
         </div>
         </div>

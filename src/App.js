@@ -12,12 +12,12 @@ import TermsAndConditions from './components/pages/TermsAndConditions'
 import './App.css';
 import CookiePolicy from './components/pages/CookiePolicy';
 import PartnershipAffiliation from './components/pages/PartnershipAffiliation';
+import SearchPage from './components/pages/SearchPage';
 
 const App =() => {
   return (
     <Router>
       <div className="App full-width ">
-        <Navbar />
           <div>
           <Switch>
             <Route exact path='/' component={Home} />
@@ -30,10 +30,12 @@ const App =() => {
             <Route exact path='/terms-and-conditions' component={TermsAndConditions} />
             <Route exact path='/cookie-policy' component={CookiePolicy} />
             <Route exact path='/contact-us' component={ContactUs} />
-            
+            <Route exact path='/search' component={SearchPage} />
+             
           </Switch>
           </div>
-        <Footer />
+          
+        
       </div>
     </Router>
   );

@@ -37,12 +37,6 @@ const Cards = () => {
                     <Card />
                     <Card />
                     <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <h1></h1>
                     <div  style={{display:'flex',justifyContent:'center'}}>
                         <br />
                         <button style={{color:'black',margin:'auto'}}><i className="fas fa-arrow-left f-2x"  /></button>
@@ -60,3 +54,4 @@ const Cards = () => {
 }
 
 export default Cards
+
