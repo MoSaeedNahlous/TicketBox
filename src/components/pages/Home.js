@@ -4,12 +4,17 @@ import Cards from '../card/Cards'
 import Navbar from '../layout/NavBar'
 import NavImg from '../../download.png'
 import Footer from '../layout/Footer'
+import Specs from '../layout/Specs'
+import ScrollButton from '../layout/ScrollButton'
 
 const Home = () => {
+    
     return (
         <div>
+            
             <Navbar bg={NavImg} />
-            <ImageSlider />
+            <ImageSlider scrollStepInPx="1" delayInMs="16.66"/>
+            <Specs /><ScrollButton />
             <Cards />
             <Footer bg={NavImg}/>
         </div>

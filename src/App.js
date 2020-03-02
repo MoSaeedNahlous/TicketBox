@@ -15,9 +15,11 @@ import PartnershipAffiliation from './components/pages/PartnershipAffiliation';
 import SearchPage from './components/pages/SearchPage';
 
 const App =() => {
+
+  
   return (
     <Router>
-      <div className="App full-width ">
+      <div className="App full-width " >
           <div>
           <Switch>
             <Route exact path='/' component={Home} />

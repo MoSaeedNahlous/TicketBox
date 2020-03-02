@@ -1,8 +1,12 @@
 import React,{} from 'react'
 import {Link} from 'react-router-dom'
 
+
+
+
 const NavBar = (props) =>{
-  
+      
+    
 
     const NavStyle={
       width:'100%',flexGrow:'1',backgroundImage:`url(${props.bg})`
@@ -13,7 +17,14 @@ const NavBar = (props) =>{
   <Link to='/' className="navbar-brand" style={{color:'black'}} ><i className="fas fa-ticket-alt"/> TicketBox</Link>
   <small className="navbar-brand"style={{fontSize:'12px',color:'black'}} >for E-Booking Services</small>
   </div>
-  
+ 
+
+<label class="switch">
+  <input type="checkbox"/>
+  <span class="slider round"></span>
+</label>
+
+
   <div style={{float:'right',display:'flex', alignItems:'stretch',justifyContent:'space-around'}}>
   <Link to='/login'className="navbar-brand" style={{color:'black'}} ><i className="far fa-user"/> Login</Link>
   <Link to='/signup' className="navbar-toggler" style={{color:'black',float:'left',backgroundColor:'green',color:'white',paddingTop:'9px'}}>

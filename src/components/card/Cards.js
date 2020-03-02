@@ -3,8 +3,11 @@ import Card from '../card/Card.js'
 import '../../App.css'
 
 const Cards = () => {
+    const mode="white";
+      if(document.getElementsByClassName("Switch").checked)
+            mode="black";
     return (
-        <div className="container" >
+        <div className="container" style={{backgroundColor:mode}} >
         <br />
             <h1 style={{textAlign:'center'}}>Featured Matches</h1>
             <br />
