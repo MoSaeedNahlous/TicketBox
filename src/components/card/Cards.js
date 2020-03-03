@@ -41,11 +41,16 @@ const Cards = () => {
                     <Card />
                     <Card />
                     <div  style={{display:'flex',justifyContent:'center'}}>
-                        <br />
+                        
+                        
+                    </div>
+                    </div>
+                    
+                    
+                    <div className="row col-md-6 offset-md-5" style={{float:'right'}}>
                         <button style={{color:'black',margin:'auto'}}><i className="fas fa-arrow-left f-2x"  /></button>
                         <button style={{color:'black',margin:'auto'}}><i className="fas fa-arrow-right"  /></button>
-                    </div>
-                    </div>
+                        </div>
                 
             </div>
             <br />

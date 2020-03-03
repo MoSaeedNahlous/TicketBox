@@ -13,6 +13,7 @@ import './App.css';
 import CookiePolicy from './components/pages/CookiePolicy';
 import PartnershipAffiliation from './components/pages/PartnershipAffiliation';
 import SearchPage from './components/pages/SearchPage';
+import Admin from './components/pages/Admin';
 
 const App =() => {
 
@@ -26,7 +27,7 @@ const App =() => {
             <Route exact path='/About' component={About} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/signup' component={SignupPage} />
-
+            <Route exact path='/admin' component={Admin} />
             <Route exact path='/about-us' component={AboutUs} />
             <Route exact path='/partner-affiliation' component={PartnershipAffiliation} />
             <Route exact path='/terms-and-conditions' component={TermsAndConditions} />

@@ -1,8 +1,11 @@
 import React from 'react'
+import NavBar from '../layout/NavBar'
+import Footer from '../layout/Footer'
 
 const TermsAndConditions = () => {
     return (
         <div>
+            <NavBar />
         <div className="container">
         <br />
             <h1>Terms and Conditions</h1>
@@ -31,6 +34,7 @@ const TermsAndConditions = () => {
                  </ul>
                  <br />
         </div>
+        <Footer />
         </div>
     )
 }

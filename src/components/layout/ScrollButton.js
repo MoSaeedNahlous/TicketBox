@@ -9,7 +9,7 @@ const ScrollButton = () => {
 
         return (<button title='Back to top' className='scroll' 
                  onClick={ () => {scrollToTop(); }}>
-                 <i class="fas fa-arrow-up fa-2x"/>
+                 <i className="fas fa-arrow-up fa-2x"/>
                   <span />
                 </button>)
      

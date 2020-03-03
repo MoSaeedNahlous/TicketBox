@@ -19,9 +19,9 @@ const NavBar = (props) =>{
   </div>
  
 
-<label class="switch">
+<label className="switch">
   <input type="checkbox"/>
-  <span class="slider round"></span>
+  <span className="slider round"></span>
 </label>
 
 
@@ -41,6 +41,9 @@ const NavBar = (props) =>{
         <Link to='/' className="nav-link" > <i className="fas fa-home"/> Home</Link>
       </li>
       <li className="nav-item">
+        <Link to='/admin' className="nav-link" > <i className="fas fa-home"/> Admin</Link>
+      </li>
+      <li className="nav-item">
         <Link to='/About' className="nav-link" ><i className="fas fa-info-circle" />   About</Link>
       </li>
       <li className="nav-item">
@@ -50,7 +53,7 @@ const NavBar = (props) =>{
         <Link to='/signup' className="nav-link" ><i className="fas fa-sign-in-alt"/> signup</Link>
       </li>
       <li className="nav-item">
-        <Link to='/signup' className="nav-link" > <i className="fas fa-sign-out-alt"/> Logout</Link>
+        <Link to='/login' className="nav-link" > <i className="fas fa-sign-out-alt"/> Logout</Link>
       </li>
     </ul>
   </div>
