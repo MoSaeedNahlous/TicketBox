@@ -13,7 +13,7 @@ const ImageSlider = () => {
       autoPlay={true}
       useKeyboardArrows={true}
       stopOnHover={true}
-      dynamicHeight={true}
+      dynamicHeight={true} //the most important one//
       emulateTouch={true}
     >
       <div>
