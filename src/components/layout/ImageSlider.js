@@ -10,8 +10,6 @@ const ImageSlider = () => {
     <Carousel
       showThumbs={false}
       infiniteLoop={true}
-      width={"100%"}
-      height={"100%"}
       autoPlay={true}
       useKeyboardArrows={true}
       stopOnHover={true}
