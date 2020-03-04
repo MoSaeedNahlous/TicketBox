@@ -8,10 +8,10 @@ import Specs from '../layout/Specs'
 import ScrollButton from '../layout/ScrollButton'
 
 const Home = () => {
-    
+
     return (
         <div>
-            
+
             <Navbar bg={NavImg} />
             <ImageSlider scrollStepInPx="1" delayInMs="16.66"/>
             <Specs /><ScrollButton />
