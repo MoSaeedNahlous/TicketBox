@@ -18,9 +18,9 @@ const App =() => {
       <div className="App full-width " >
           <div>
           <Switch>
-            {
+            
               //public
-            }
+          
             <Route exact path='/' component={Home} />
             <Route exact path='/about' component={About} />
             <Route exact path='/login' component={LoginPage} />
@@ -31,9 +31,9 @@ const App =() => {
             <Route exact path='/cookiePolicy' component={CookiePolicy} />
             <Route exact path='/contactUs' component={ContactUs} />
             <Route exact path='/search' component={SearchPage} />
-            {
+            
               //private
-            }
+            
             <Route exact path='/admin' component={Admin} />
           </Switch>
           </div>

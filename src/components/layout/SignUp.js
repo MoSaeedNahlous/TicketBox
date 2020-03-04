@@ -1,36 +1,23 @@
-import React, { Component } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
 
-class Signup extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value }); //e.target.name means whatever name we have take whatever value
-  }
-  onSubmit(e) {
+ const Signup = () =>{
+
+  const [name , setName] = useState("");
+  const [email , setEmail] = useState("")
+  const [password , setPassword] = useState("")
+  const [confirmPassword , setConfirmPassword] = useState("")
+
+   const HandleSubmit = (e) => {
     e.preventDefault();
-    const newUser = {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password,
-      confirmPassword: this.state.confirmPassword
-    };
-    console.log("This should be printed in console!");
+    console.log({name,email,password,confirmPassword});
   }
-  render() {
+
+
     return (
       <div className="container">
         <br />
-        <form onSubmit={onsubmit}>
+        <form onSubmit={HandleSubmit}>
           <div className="form-group">
             <h1 className="flex-center">Create your new account</h1>
             <label>Name</label>
@@ -40,10 +27,8 @@ class Signup extends Component {
               id="exampleInput"
               placeholder="FullName"
               style={{ width: "50%" }}
+              onChange={(e)=>{setName(e.target.value)}}
               required
-              name="name"
-              value={this.state.name}
-              onChange={this.onChange}
             />
           </div>
           <div className="form-group">
@@ -54,10 +39,8 @@ class Signup extends Component {
               id="exampleInputEmail1"
               placeholder="Email"
               style={{ width: "50%" }}
+              onChange={(e)=>{setEmail(e.target.value)}}
               required
-              name="email"
-              value={this.state.email}
-              onChange={this.onChange}
             />
           </div>
           <div className="form-group">
@@ -68,10 +51,8 @@ class Signup extends Component {
               id="passwordId"
               placeholder="Password"
               style={{ width: "50%" }}
+              onChange={(e)=>{setPassword(e.target.value)}} 
               required
-              name="password"
-              value={this.state.password}
-              onChange={this.onChange}
             />
           </div>
           <div className="form-group">
@@ -82,10 +63,8 @@ class Signup extends Component {
               id="confirmPasswordId"
               placeholder="Password"
               style={{ width: "50%" }}
+              onChange={(e)=>{setConfirmPassword(e.target.value)}}
               required
-              name="confirmPassword"
-              value={this.state.confirmPassword}
-              onChange={this.onChange}
             />
           </div>
           <div className="form-group form-check">
@@ -96,9 +75,9 @@ class Signup extends Component {
               required
             />
             <label className="form-check-label">
-              by clicking her you are accepting our
+              by clicking here you are accepting our
             </label>
-            <Link to="/terms-and-conditions"> Terms and Conditions.</Link>
+            <Link to="/termsAndConditions"> Terms and Conditions.</Link>
           </div>
           <button type="submit" className="btn btn-primary">
             Signup
@@ -109,7 +88,6 @@ class Signup extends Component {
         <br />
       </div>
     );
-  }
-}
+    }
 
 export default Signup;

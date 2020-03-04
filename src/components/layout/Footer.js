@@ -13,11 +13,11 @@ const Footer = (props) => {
         <div className="col-md-4" style={{color:'white'}}>
           <h5 className="font-weight-bold text-uppercase mt3  " style={{color:'white',marginLeft:'5%',marginTop:'3.2%'}}>Company Details</h5>
           <ul className="list-unstyled">
-            <li><Link to='/about-us' style={{color:'white'}}><i className="fas fa-hand-point-right"/> About us</Link></li>
-            <li><Link to='/contact-us' style={{color:'white'}}><i className="fas fa-hand-point-right"/ > Contact us</Link></li>
-            <li><Link to='/partner-affiliation' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Partnership/Affiliation</Link></li>
-            <li><Link to='/terms-and-conditions' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Terms and Conditions</Link></li>
-            <li><Link to='/cookie-policy' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Cookie Policy</Link></li>
+            <li><Link to='/aboutUs' style={{color:'white'}}><i className="fas fa-hand-point-right"/> About us</Link></li>
+            <li><Link to='/contactUs' style={{color:'white'}}><i className="fas fa-hand-point-right"/ > Contact us</Link></li>
+            <li><Link to='/partnerAffiliation' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Partnership/Affiliation</Link></li>
+            <li><Link to='/termsAndConditions' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Terms and Conditions</Link></li>
+            <li><Link to='/cookiePolicy' style={{color:'white'}}><i className="fas fa-hand-point-right"/> Cookie Policy</Link></li>
           </ul>
         </div>
         <div className="col-md-4">
@@ -39,16 +39,16 @@ const Footer = (props) => {
         <h5 className="font-weight-bold text-uppercase mt-3 mb-4" style={{color:'white'}}>Follow us</h5>
         <div className="row">
          
-            <Link  style={{margin:'3%'}} ><i className="fab fa-facebook-square fa-2x" style={{color:'#4267B2'}}/></Link>
+            <Link to="/" style={{margin:'3%'}} ><i className="fab fa-facebook-square fa-2x" style={{color:'#4267B2'}}/></Link>
           
          
-            <Link  style={{margin:'3%'}} ><i className="fab fa-twitter-square fa-2x" style={{color:'#1DA1F2'}} /></Link>
+            <Link to="/"  style={{margin:'3%'}} ><i className="fab fa-twitter-square fa-2x" style={{color:'#1DA1F2'}} /></Link>
           
          
-            <Link   style={{margin:'3%'}}><i className="fab fa-instagram-square fa-2x" style={{color:'#CF4468'}}/></Link>
+            <Link to="/"  style={{margin:'3%'}}><i className="fab fa-instagram-square fa-2x" style={{color:'#CF4468'}}/></Link>
           
          
-            <Link  style={{margin:'3%'}} ><i className="fab fa-telegram fa-2x" style={{color:'#35ADE1'}}/></Link>
+            <Link to="/"  style={{margin:'3%'}} ><i className="fab fa-telegram fa-2x" style={{color:'#35ADE1'}}/></Link>
           
         </div>
         </div>
