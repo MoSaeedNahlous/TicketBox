@@ -17,13 +17,13 @@ const ImageSlider = () => {
       emulateTouch={true}
     >
       <div>
-        <img src={download12} />
+        <img src={download12} alt="" />
       </div>
       <div>
-        <img src={download13} />
+        <img src={download13} alt="" />
       </div>
       <div>
-        <img src={download14} />
+        <img src={download14} alt="" />
       </div>
     </Carousel>
   );

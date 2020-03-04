@@ -17,12 +17,14 @@ class Signup extends Component {
     this.setState({ [e.target.name]: e.target.value }); //e.target.name means whatever name we have take whatever value
   }
   onSubmit(e) {
+    e.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword
     };
+    console.log("This should be printed in console!");
   }
   render() {
     return (
@@ -63,7 +65,7 @@ class Signup extends Component {
             <input
               type="password"
               className="form-control"
-              id="exampleInputPassword1"
+              id="passwordId"
               placeholder="Password"
               style={{ width: "50%" }}
               required
@@ -77,7 +79,7 @@ class Signup extends Component {
             <input
               type="password"
               className="form-control"
-              id="exampleInputPassword1"
+              id="confirmPasswordId"
               placeholder="Password"
               style={{ width: "50%" }}
               required
