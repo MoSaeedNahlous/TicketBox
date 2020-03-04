@@ -21,7 +21,7 @@ const Login = () => {
     <label className="form-check-label" >Save my password</label>
   </div>
   <button type="submit" className="btn btn-primary">Login</button>
-  <small>   Don't have an account? You can SignUp by clicking</small><Link to='/signup'> here</Link>
+  <small>   Don't have an account? You can SignUp by clicking</small><Link to='/register'> here</Link>
 </form><br /></div>
 
     )}

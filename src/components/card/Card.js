@@ -1,4 +1,4 @@
-import React,{Link} from 'react'
+import React from 'react'
 import download from './download.jpg'
 
 

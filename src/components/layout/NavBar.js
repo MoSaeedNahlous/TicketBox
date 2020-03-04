@@ -1,4 +1,4 @@
-import React,{} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 
 
@@ -27,7 +27,7 @@ const NavBar = (props) =>{
 
   <div style={{float:'right',display:'flex', alignItems:'stretch',justifyContent:'space-around'}}>
   <Link to='/login'className="navbar-brand" style={{color:'black'}} ><i className="far fa-user"/> Login</Link>
-  <Link to='/signup' className="navbar-toggler" style={{color:'black',float:'left',backgroundColor:'green',color:'white',paddingTop:'9px'}}>
+  <Link to='/register' className="navbar-toggler" style={{float:'left',backgroundColor:'green',color:'white',paddingTop:'9px'}}>
   <i className="fas fa-plus"/> Join for free</Link>
   
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style={{}}>
@@ -50,7 +50,7 @@ const NavBar = (props) =>{
         <Link to='/login' className="nav-link" > <i className="far fa-user"/> Login</Link>
       </li>
       <li className="nav-item">
-        <Link to='/signup' className="nav-link" ><i className="fas fa-sign-in-alt"/> signup</Link>
+        <Link to='/register' className="nav-link" ><i className="fas fa-sign-in-alt"/> signup</Link>
       </li>
       <li className="nav-item">
         <Link to='/login' className="nav-link" > <i className="fas fa-sign-out-alt"/> Logout</Link>
