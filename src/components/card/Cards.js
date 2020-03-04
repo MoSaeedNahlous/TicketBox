@@ -9,7 +9,7 @@ const Cards = () => {
     return (
         <div className="container" style={{backgroundColor:mode}} >
         <br />
-            <h1 style={{textAlign:'center'}}>Featured Matches</h1>
+            <h1 style={{textAlign:'center'}}>Featured Games</h1>
             <br />
             <div className="row">
                 <div className=" col-md-4">

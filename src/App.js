@@ -2,8 +2,6 @@ import React from 'react';
 import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom'
 import LoginPage from './components/pages/LoginPage'
 import SignupPage from './components/pages/SignupPage'
-import Navbar from './components/layout/NavBar.js'
-import Footer from './components/layout/Footer'
 import Home from './components/pages/Home'
 import About from './components/pages/About'
 import ContactUs from './components/pages/ContactUs'
@@ -26,13 +24,13 @@ const App =() => {
             <Route exact path='/' component={Home} />
             <Route exact path='/About' component={About} />
             <Route exact path='/login' component={LoginPage} />
-            <Route exact path='/signup' component={SignupPage} />
+            <Route exact path='/register' component={SignupPage} />
             <Route exact path='/admin' component={Admin} />
-            <Route exact path='/about-us' component={AboutUs} />
-            <Route exact path='/partner-affiliation' component={PartnershipAffiliation} />
-            <Route exact path='/terms-and-conditions' component={TermsAndConditions} />
-            <Route exact path='/cookie-policy' component={CookiePolicy} />
-            <Route exact path='/contact-us' component={ContactUs} />
+            <Route exact path='/aboutUs' component={AboutUs} />
+            <Route exact path='/partnerAffiliation' component={PartnershipAffiliation} />
+            <Route exact path='/termsAndConditions' component={TermsAndConditions} />
+            <Route exact path='/cookiePolicy' component={CookiePolicy} />
+            <Route exact path='/contactUs' component={ContactUs} />
             <Route exact path='/search' component={SearchPage} />
              
           </Switch>

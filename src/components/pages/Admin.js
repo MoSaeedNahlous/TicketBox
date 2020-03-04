@@ -4,8 +4,8 @@ import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom'
 import AddEmpPage from './admin pages/AddEmpPage'
 import DeleteEmpPage from './admin pages/DeleteEmpPage'
 import DeleteUserPage from './admin pages/DeleteUserPage'
-import AddMatchPage from './admin pages/AddMatchPage'
-import DeleteMatchPage from './admin pages/DeleteMatchPage'
+import AddGamePage from './admin pages/AddGamePage'
+import DeleteGamePage from './admin pages/DeleteGamePage'
 import AddTicketPage from './admin pages/AddTicketPage'
 import DeleteTicketPage from './admin pages/DeleteTicketPage'
 import AddStadiumPage from './admin pages/AddStadiumPage'
@@ -17,15 +17,15 @@ const Admin = () => {
         <AdminNav />
         <Switch>
         
-            <Route exact path='/admin/add-emp' component={AddEmpPage} />
-            <Route exact path='/admin/delete-emp' component={DeleteEmpPage} />
-            <Route exact path='/admin/delete-user' component={DeleteUserPage} />
-            <Route exact path='/admin/add-match' component={AddMatchPage} />
-            <Route exact path='/admin/delete-match' component={DeleteMatchPage} />
-            <Route exact path='/admin/add-ticket' component={AddTicketPage} />
-            <Route exact path='/admin/delete-ticket' component={DeleteTicketPage} />
-            <Route exact path='/admin/add-stadium' component={AddStadiumPage} />
-            <Route exact path='/admin/delete-stadium' component={DeleteStadiumPage} />
+            <Route exact path='/admin/addEmp' component={AddEmpPage} />
+            <Route exact path='/admin/deleteEmp' component={DeleteEmpPage} />
+            <Route exact path='/admin/deleteUser' component={DeleteUserPage} />
+            <Route exact path='/admin/addGame' component={AddGamePage} />
+            <Route exact path='/admin/deleteGame' component={DeleteGamePage} />
+            <Route exact path='/admin/addTicket' component={AddTicketPage} />
+            <Route exact path='/admin/deleteTicket' component={DeleteTicketPage} />
+            <Route exact path='/admin/addStadium' component={AddStadiumPage} />
+            <Route exact path='/admin/deleteStadium' component={DeleteStadiumPage} />
         
         </Switch>
         

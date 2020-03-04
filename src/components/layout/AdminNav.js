@@ -19,8 +19,8 @@ const AdminNav = () => {
           Employees Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/add-emp' >Add Employee</Link>
-          <Link className="dropdown-item" to='/admin/delete-emp'>Delete Employee</Link>
+          <Link className="dropdown-item" to='/admin/addEmp' >Add Employee</Link>
+          <Link className="dropdown-item" to='/admin/deleteEmp'>Delete Employee</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
@@ -28,16 +28,16 @@ const AdminNav = () => {
           Users Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/delete-user'>Delete User</Link>
+          <Link className="dropdown-item" to='/admin/deleteUser'>Delete User</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Matches Actions
+          Games Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/add-match'>Add Match</Link>
-          <Link className="dropdown-item" to='/admin/delete-match'>Delete Match</Link>
+          <Link className="dropdown-item" to='/admin/addGame'>Add Game</Link>
+          <Link className="dropdown-item" to='/admin/deleteGame'>Delete Game</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
@@ -45,8 +45,8 @@ const AdminNav = () => {
           Tickets Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/add-ticket'>Add Ticket</Link>
-          <Link className="dropdown-item" to='/admin/delete-ticket'>Delete Ticket</Link>
+          <Link className="dropdown-item" to='/admin/addTicket'>Add Ticket</Link>
+          <Link className="dropdown-item" to='/admin/deleteTicket'>Delete Ticket</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
@@ -54,8 +54,8 @@ const AdminNav = () => {
           Stadiums Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/add-stadium'>Add Stadium</Link>
-          <Link className="dropdown-item" to='/admin/delete-stadium'>Delete Stadium</Link>
+          <Link className="dropdown-item" to='/admin/addStadium'>Add Stadium</Link>
+          <Link className="dropdown-item" to='/admin/deleteStadium'>Delete Stadium</Link>
         </div>
       </li>
     </ul>
