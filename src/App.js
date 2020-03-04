@@ -12,17 +12,14 @@ import CookiePolicy from './components/pages/CookiePolicy';
 import PartnershipAffiliation from './components/pages/PartnershipAffiliation';
 import SearchPage from './components/pages/SearchPage';
 import Admin from './components/pages/Admin';
-
 const App =() => {
-
-  
   return (
     <Router>
       <div className="App full-width " >
           <div>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/About' component={About} />
+            <Route exact path='/about' component={About} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={SignupPage} />
             <Route exact path='/admin' component={Admin} />
@@ -32,14 +29,10 @@ const App =() => {
             <Route exact path='/cookiePolicy' component={CookiePolicy} />
             <Route exact path='/contactUs' component={ContactUs} />
             <Route exact path='/search' component={SearchPage} />
-             
           </Switch>
           </div>
-          
-        
       </div>
     </Router>
   );
 }
-
 export default App;
