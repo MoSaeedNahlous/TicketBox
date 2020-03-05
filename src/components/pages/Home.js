@@ -33,7 +33,13 @@ const currentCards = cards.slice(indexOfFirstCard,indexOfLastCard)
 
 
 //change page
-const paginateFun = (pageNumber) => setcurrentPage(pageNumber)
+const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
+
+  window.scrollTo(0, 0);
+
+
+
+}
 
 
     return (
