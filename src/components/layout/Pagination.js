@@ -17,6 +17,7 @@ const Pagination = ({cardsPerPage,totalCards,paginate}) => {
                     </li>
                 ))}
             </ul>
+            
         </nav>
     )
 }
