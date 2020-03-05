@@ -1,12 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 import syr from '../../res/syr.jpg'
 
 
 import '../../App.css'
 
-const Card = () => {
+const Card = (props) => {
 
+  
 
 
     return (
@@ -15,8 +16,8 @@ const Card = () => {
         <img className="card-img-top" src={syr} alt="Card image cap"/>
   
       <div className="card-body" style={{backgroundColor:'white'}}>
-        <h5 className="card-title">team1 vs team2</h5>
-        <p className="card-text"> tour at stad from startDate to endDate </p>
+        <h5 className="card-title">{props.card.team1} vs {props.card.team2}</h5>
+        <p className="card-text"> {props.card.tour} at {props.card.stad} from {props.card.startDate} to {props.card.endDate} </p>
         <Link to='/cardPage' className="btn btn-primary"> More info </Link>
       </div>
       </div>
