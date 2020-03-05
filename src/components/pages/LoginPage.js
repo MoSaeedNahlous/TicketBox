@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from '../layout/Login'
-import NavImg from '../../images.png'
+import NavImg from '../../res/images.png'
 import Navbar from '../layout/NavBar'
 import Footer from '../layout/Footer'
 const LoginPage = () => {

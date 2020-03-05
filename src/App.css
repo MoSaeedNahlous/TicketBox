@@ -36,7 +36,7 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("download.jpg");
+    background-image: url('res/download.jpg');
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -54,7 +54,7 @@ html, body {
   }
   
   input:checked + .slider {
-    background-image: url("51eMbqHl7PL._AC_SY606_.jpg");
+    background-image: url('res/51eMbqHl7PL._AC_SY606_.jpg');
   }
   
   input:focus + .slider {

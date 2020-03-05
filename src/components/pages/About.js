@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from '../layout/NavBar'
 import Footer from '../layout/Footer'
-import imag from '../../images (2).png'
+import imag from '../../res/images (2).png'
 
 const About = () => {
     return (

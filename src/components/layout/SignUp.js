@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 
    const HandleSubmit = (e) => {
     e.preventDefault();
-    console.log({name,email,password,confirmPassword});
+    const user={"name":name,"email":email,"password":password,"confirmPassword":confirmPassword}
+    console.log(user);
   }
 
 

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ImageSlider from "../layout/ImageSlider";
-import Cards from "../card/Cards";
+import Cards from "../../components/card/Cards";
 import Navbar from "../layout/NavBar";
-import NavImg from "../../download.png";
+import NavImg from "../../res/download.png";
 import Footer from "../layout/Footer";
 import Specs from "../layout/Specs";
 import ScrollButton from "../layout/ScrollButton";

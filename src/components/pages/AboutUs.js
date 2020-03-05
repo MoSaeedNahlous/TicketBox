@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../layout/NavBar'
-import imag from '../../images (1).png'
+import imag from '../../res/images (1).png'
 import Footer from '../layout/Footer'
 import WorkerCard from '../layout/WorkerCard'
 
