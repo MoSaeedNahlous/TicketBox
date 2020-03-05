@@ -6,9 +6,9 @@ const NavBar = props => {
     width: "100%",
     flexGrow: "1",
     backgroundImage: `url(${props.bg})`,
-    backgroundColor:'#494E53'
+    backgroundColor: "#494E53"
   };
- 
+
   return (
     <nav className="navbar navbar-dark" style={NavStyle}>
       <div>
