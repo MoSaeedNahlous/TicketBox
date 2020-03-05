@@ -11,7 +11,7 @@ const WorkerCard = () => {
             <div className="flip-card-inner">
               <div className="flip-card-front">
                 <img
-                  src="img_avatar.png"
+                  src="../../../res/youssef.png"
                   alt="Avatar"
                   style={{ width: "300px", height: "300px" }}
                 />
