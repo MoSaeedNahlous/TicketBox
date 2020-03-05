@@ -12,6 +12,7 @@ import CookiePolicy from './components/pages/CookiePolicy';
 import PartnershipAffiliation from './components/pages/PartnershipAffiliation';
 import SearchPage from './components/pages/SearchPage';
 import Admin from './components/pages/Admin';
+import CardPage from './components/pages/CardPage';
 const App =() => {
   return (
     <Router>
@@ -22,6 +23,7 @@ const App =() => {
               //public
           
             <Route exact path='/' component={Home} />
+            <Route exact path='/cardPage' component={CardPage} />
             <Route exact path='/about' component={About} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={SignupPage} />

@@ -5,17 +5,19 @@ const NavBar = props => {
   const NavStyle = {
     width: "100%",
     flexGrow: "1",
-    backgroundImage: `url(${props.bg})`
+    backgroundImage: `url(${props.bg})`,
+    backgroundColor:'#494E53'
   };
+ 
   return (
     <nav className="navbar navbar-dark" style={NavStyle}>
       <div>
-        <Link to="/" className="navbar-brand" style={{ color: "black" }}>
+        <Link to="/" className="navbar-brand" style={{ color: "white" }}>
           <i className="fas fa-ticket-alt" /> TicketBox
         </Link>
         <small
           className="navbar-brand"
-          style={{ fontSize: "12px", color: "black" }}
+          style={{ fontSize: "12px", color: "white" }}
         >
           for E-Booking Services
         </small>
@@ -34,7 +36,7 @@ const NavBar = props => {
           justifyContent: "space-around"
         }}
       >
-        <Link to="/login" className="navbar-brand" style={{ color: "black" }}>
+        <Link to="/login" className="navbar-brand" style={{ color: "White" }}>
           <i className="far fa-user" /> Login
         </Link>
         <Link

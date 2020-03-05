@@ -25,6 +25,9 @@ const Login = () => {
     <label className="form-check-label" >Save my password</label>
   </div>
   <button type="submit" onSubmit={HandleSubmit} className="btn btn-primary">Login</button>
+  <br/>
+  <small>   Forget your password?Click</small><Link to='/'> here</Link>
+  <br/>
   <small>   Don't have an account? You can SignUp by clicking</small><Link to='/register'> here</Link>
 </form><br /></div>
 

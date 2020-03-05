@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import download from './download.jpg'
 
 
@@ -16,7 +17,7 @@ const Card = () => {
       <div className="card-body" style={{backgroundColor:'white'}}>
         <h5 className="card-title">team1 vs team2</h5>
         <p className="card-text"> tour at stad from startDate to endDate </p>
-        <a href='#' className="btn btn-primary"> More info </a>
+        <Link to='/cardPage' className="btn btn-primary"> More info </Link>
       </div>
       </div>
         
