@@ -1,4 +1,7 @@
 import React from "react";
+import youssef from '../../res/youssef.png'
+import aj from '../../res/aj.jpg'
+import msn from '../../res/msn.jpg'
 
 const WorkerCard = () => {
   return (
@@ -7,13 +10,13 @@ const WorkerCard = () => {
       <h1 style={{ textAlign: "center" }}>Our Team</h1>
       <div className="row">
         <div className="col-md-4">
-          <div className="flip-card">
-            <div className="flip-card-inner">
+          <div className="flip-card" >
+            <div className="flip-card-inner" >
               <div className="flip-card-front">
                 <img
-                  src="../../../res/youssef.png"
+                  src={youssef}
                   alt="Avatar"
-                  style={{ width: "300px", height: "300px" }}
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <div className="flip-card-back">
@@ -25,13 +28,13 @@ const WorkerCard = () => {
           </div>
         </div>
         <div className="col-md-4">
-          <div className="flip-card">
+          <div className="flip-card" >
             <div className="flip-card-inner">
               <div className="flip-card-front">
                 <img
-                  src="img_avatar.png"
+                  src={msn}
                   alt="Avatar"
-                  style={{ width: "300px", height: "300px" }}
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <div className="flip-card-back">
@@ -46,13 +49,13 @@ const WorkerCard = () => {
           </div>
         </div>
         <div className="col-md-4">
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">
+          <div className="flip-card" >
+            <div className="flip-card-inner" >
+              <div className="flip-card-front" >
                 <img
-                  src="img_avatar.png"
+                  src={aj}
                   alt="Avatar"
-                  style={{ width: "300px", height: "300px" }}
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <div className="flip-card-back">

@@ -1,7 +1,7 @@
 import React from "react";
-import download12 from "../card/k.jpg";
-import download13 from "../card/k2.jpg";
-import download14 from "../card/k1.jpg";
+import download12 from "../../res/k.jpg";
+import download13 from "../../res/k2.jpg";
+import download14 from "../../res/k1.jpg";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -13,17 +13,17 @@ const ImageSlider = () => {
       autoPlay={true}
       useKeyboardArrows={true}
       stopOnHover={true}
-      dynamicHeight={true} //the most important one//
+      dynamicHeight={true}
       emulateTouch={true}
     >
       <div>
-        <img src={download12} alt="" />
+        <img src={download12} alt="img1" />
       </div>
       <div>
-        <img src={download13} alt="" />
+        <img src={download13} alt="img2" />
       </div>
       <div>
-        <img src={download14} alt="" />
+        <img src={download14} alt="img3" />
       </div>
     </Carousel>
   );
