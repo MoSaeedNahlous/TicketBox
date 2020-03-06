@@ -11,18 +11,18 @@ import Tables from "../layout/Tables";
 const Home = () =>  {
   
   const [cards, setCards] = useState([
-    {"id":1,"team1":"Barcelona","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":2,"team1":"BVB","team2":"RealMadrid","startDate":"3/3/2013","endDate":"2/2/2014","tour":"UCL","stad":"Alianz"},
-{"id":3,"team1":"Syria","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":4,"team1":"Bayern","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":5,"team1":"United","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":6,"team1":"City","team2":"Liver","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":7,"team1":"Spurs","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":8,"team1":"Barcelona","team2":"WestHam","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":9,"team1":"Syria","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":10,"team1":"BVB","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":11,"team1":"Barcelona","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"},
-{"id":12,"team1":"IRAQ","team2":"Westbro","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Alianz"}])
+    {"id":1,"team1":"Barcelona","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":2,"team1":"BVB","team2":"RealMadrid","startDate":"3/3/2013","endDate":"2/2/2014","tour":"UCL","stad":"Allianz"},
+{"id":3,"team1":"Syria","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":4,"team1":"Bayern","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":5,"team1":"United","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":6,"team1":"City","team2":"Liver","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":7,"team1":"Spurs","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":8,"team1":"Barcelona","team2":"WestHam","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":9,"team1":"Syria","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":10,"team1":"BVB","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":11,"team1":"Barcelona","team2":"RealMadrid","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"},
+{"id":12,"team1":"IRAQ","team2":"Westbro","startDate":"1/1/2013","endDate":"2/2/2013","tour":"UCL","stad":"Allianz"}])
 const [currentPage, setcurrentPage] = useState(1)
 const [cardsPerPage, setcardsPerPage] = useState(9)
 
