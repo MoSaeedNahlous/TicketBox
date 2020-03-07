@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
  const Signup = () =>{
 
@@ -12,6 +13,12 @@ import { Link } from "react-router-dom";
     e.preventDefault();
     const user={"name":name,"email":email,"password":password,"confirmPassword":confirmPassword}
     console.log(user);
+    axios.post('http://localhost:9090/api/users/register',user).then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
 
