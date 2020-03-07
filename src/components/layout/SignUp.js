@@ -1,24 +1,25 @@
 import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import AuthContext from '../../contexts/auth/AuthContext'
+import { useContext } from "react";
 
  const Signup = () =>{
+
+  const authContext = useContext(AuthContext);
 
   const [name , setName] = useState("");
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
   const [confirmPassword , setConfirmPassword] = useState("")
 
+  const {register} = authContext
+
    const HandleSubmit = (e) => {
     e.preventDefault();
     const user={"name":name,"email":email,"password":password,"confirmPassword":confirmPassword}
     console.log(user);
-    axios.post('http://localhost:9090/api/users/register',user).then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    register(name,email,password,confirmPassword);
   }
 
 

@@ -13,8 +13,15 @@ import PartnershipAffiliation from './components/pages/PartnershipAffiliation';
 import SearchPage from './components/pages/SearchPage';
 import Admin from './components/pages/Admin';
 import CardPage from './components/pages/CardPage';
+
+
+import AuthState from './contexts/auth/AuthState' 
+
+
+ 
 const App =() => {
   return (
+    <AuthState>
     <Router>
       <div className="App full-width " >
           <div>
@@ -41,6 +48,7 @@ const App =() => {
           </div>
       </div>
     </Router>
+    </AuthState>
   );
 }
 export default App;
