@@ -8,6 +8,7 @@ import Specs from "../layout/Specs";
 import ScrollButton from "../layout/ScrollButton";
 import Pagination from '../layout/Pagination';
 import Tables from "../layout/Tables";
+import News from "../News";
 const Home = () =>  {
   
   const [cards, setCards] = useState([
@@ -47,6 +48,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
         <Navbar bg={NavImg} />
         <ImageSlider scrollStepInPx="1" delayInMs="16.66" />
         <Specs />
+        <News />
         
         <ScrollButton />
         

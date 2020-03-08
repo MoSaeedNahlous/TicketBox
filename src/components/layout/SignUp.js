@@ -10,20 +10,24 @@ import axios from 'axios'
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
   const [confirmPassword , setConfirmPassword] = useState("")
+  const [error, setError] = useState(null)
+
   const history = useHistory();
   
 
-  
+
    const HandleSubmit = (e) => {
     e.preventDefault();
     const user={"name":name,"email":email,"password":password,"confirmPassword":confirmPassword}
     console.log(user);
     axios.post('http://localhost:9090/api/users/register',user).then((response) => {
       console.log(response);
+      alert("Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)")
       history.push('/login')
     })
-    .catch( (error) => {
-      console.log(error);
+    .catch( (err) => {
+      console.log(err);
+      alert(err);
     });
   }
 
