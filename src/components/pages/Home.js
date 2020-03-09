@@ -3,6 +3,7 @@ import ImageSlider from "../layout/ImageSlider";
 import Cards from "../../components/card/Cards";
 import Navbar from "../layout/NavBar";
 import NavImg from "../../res/footer.png";
+import matches from '../../res/matches.jpg'
 import Footer from "../layout/Footer";
 import Specs from "../layout/Specs";
 import ScrollButton from "../layout/ScrollButton";
@@ -53,7 +54,9 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
         <ScrollButton />
         
             
-          <h1 style={{textAlign:'center'}}>Featured Games</h1>
+        <div style={{textAlign:'center', backgroundImage: `url(${matches})`,
+    backgroundPosition: "50% 6%" , height:'80px',width:'100%',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}>.</div>
+            <br />
           <div className="row" style={{width:'100%'}}>
           
             
