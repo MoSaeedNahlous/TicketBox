@@ -20,10 +20,10 @@ const ImageSlider = () => {
         <img src={download12} alt="img1" />
       </div>
       <div>
-        <img src={download13} alt="img2" />
+        <img src={download12} alt="img2" />
       </div>
       <div>
-        <img src={download14} alt="img3" />
+        <img src={download12} alt="img3" />
       </div>
     </Carousel>
   );

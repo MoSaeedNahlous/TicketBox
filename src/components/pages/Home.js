@@ -48,7 +48,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
         <Navbar bg={NavImg} />
         <ImageSlider scrollStepInPx="1" delayInMs="16.66" />
         <Specs />
-        <News />
+        
         
         <ScrollButton />
         
@@ -66,7 +66,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
             </div>
           </div>
 
-
+          <News />
           
         
         
