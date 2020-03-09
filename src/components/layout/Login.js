@@ -20,13 +20,13 @@ const Login = () => {
         console.log(response);
         alert("Success!! welcome to TicketBox!");
         history.push("/Home");
-        setError('');
+        setError({});
       })
       .catch(err => {
         setError(err);
         console.log(err);
       });
-  if(JSON.stringify(error) === '{}'){alrt="" }
+  if(JSON.stringify(error) === '{}'){alrt=""}
   };
 
   
