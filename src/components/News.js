@@ -6,7 +6,7 @@ const News = () => {
             <br />
             <h1 style={{textAlign:'center'}}>News</h1>
             <br />
-            <div className="row">
+            <div className="row" style={{width:'100%'}}>
                 <div className="col-sm-4">
                 <h1 style={{textAlign:'center'}}>Goal.com News</h1>
                 <iframe width="100%" height="700" src="https://rss.app/embed/v1/zkh8FPcf1VBWB51e" frameBorder="0"/>
@@ -17,7 +17,7 @@ const News = () => {
                 </div>
                 <div className="col-sm-4">
                 <h1 style={{textAlign:'center'}}>ESPN News</h1>
-                <iframe width="600" height="700" src="https://rss.app/embed/v1/xGtmdnseGz7boxTv" frameBorder="0"/>
+                <iframe width="100%" height="700" src="https://rss.app/embed/v1/xGtmdnseGz7boxTv" frameBorder="0"/>
                 </div>
             </div>
             
