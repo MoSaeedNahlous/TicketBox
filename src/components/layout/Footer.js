@@ -1,13 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import footerImg from '../../res/footer1.jpg'
 
 const Footer = props => {
   const FooterStyle = {
     backgroundColor: "#494E53",
     color: "white",
     width: "100%",
-    backgroundImage: `url(${props.bg})`
+    backgroundImage: `url(${footerImg})`,
+    backgroundPosition: "50% 25%"
   };
+
+  Footer.defaultProps = {
+    bg:{footerImg}
+  }
+  
   return (
     <footer
       className="  page-footer font-small fluid full-width bg-dark-gray"

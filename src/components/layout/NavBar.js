@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavImg from "../../res/footer1.jpg";
 
 const NavBar = props => {
   const NavStyle = {
     width: "100%",
     flexGrow: "1",
-    backgroundImage: `url(${props.bg})`,
-    backgroundColor: "#494E53"
+    backgroundImage: `url(${NavImg})`,
+    backgroundColor: "#494E53",
+    backgroundPosition: '50% 75%',
+    backgroundSize:'cover'
+    
   };
 
   return (

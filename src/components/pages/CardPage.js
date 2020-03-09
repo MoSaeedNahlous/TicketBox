@@ -4,12 +4,14 @@ import Footer from '../layout/Footer'
 import bm from '../../res/bm.png'
 import city from '../../res/city.png'
 import stad from '../../res/stad.png'
+import img from '../../res/footer1.jpg'
 
 const CardPage = () => {
     return (
-        <div>
+        <div style={{backgroundImage: `url(${img})`,
+    backgroundPosition: "50% 50%"}}>
             <NavBar />
-        <div className="container">
+        <div className="container" >
             <br />
             <div className='row'>
                 <div className="col-md-4" style={{width:'33%',height:'10%'}}>

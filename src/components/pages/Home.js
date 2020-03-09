@@ -2,7 +2,7 @@ import React, { Component,useState } from "react";
 import ImageSlider from "../layout/ImageSlider";
 import Cards from "../../components/card/Cards";
 import Navbar from "../layout/NavBar";
-import NavImg from "../../res/download.png";
+import NavImg from "../../res/footer.png";
 import Footer from "../layout/Footer";
 import Specs from "../layout/Specs";
 import ScrollButton from "../layout/ScrollButton";
@@ -72,7 +72,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
         
         
         
-        <Footer bg={NavImg} />
+        <Footer />
       </div>
     );
   
