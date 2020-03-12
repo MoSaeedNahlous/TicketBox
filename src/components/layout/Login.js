@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import bg from '../../res/bg4.jpg'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,18 +34,20 @@ const Login = () => {
   };
 
   return (
+    <div style={{backgroundImage: `url(${bg})`,
+    backgroundPosition: "100% 75%",backgroundRepeat:'no-repeat'}} >
     <div className="container">
       <br />
       <form onSubmit={HandleSubmit}>
-        <div className="form-group">
-          <h1 className="flex-center">Login to your account</h1>
-          <label>Email address</label>
+        <div className="form-group" style={{color:'white'}}>
+          <h1 className="flex-center" style={{color:'white'}}>Login to your account</h1>
+          <label style={{color:'white'}}>Email address</label>
           <input
             type="email"
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            style={{ width: "50%" }}
+            style={{ width: "50%" ,backgroundColor:'rgba(0, 0, 0, 0)',color:'white'}}
             placeholder="Enter email"
             name="email"
             required
@@ -56,14 +59,14 @@ const Login = () => {
             <strong style={{color:'red'}}> {error.name}</strong>
           </div>
         </div>
-        <div className="form-group">
+        <div className="form-group" style={{color:'white'}}>
           <label>Password</label>
           <input
             type="password"
             className="form-control"
             id="exampleInputPassword1"
             placeholder="Password"
-            style={{ width: "50%" }}
+            style={{ width: "50%" ,backgroundColor:'rgba(0, 0, 0, 0)'}}
             name="password"
             required
             onChange={e => {
@@ -74,7 +77,7 @@ const Login = () => {
           <strong style={{color:'red'}}> {error.password}</strong>
           </div>
         </div>
-        <div className="form-group form-check">
+        <div className="form-group form-check" style={{color:'white'}}>
           <input
             type="checkbox"
             className="form-check-input"
@@ -89,15 +92,18 @@ const Login = () => {
         >
           Login
         </button>
-
+            <br />
         <br />
-        <small> Forget your password?Click</small>
+        <small style={{color:'white'}}> Forget your password?Click</small>
         <Link to="/"> here</Link>
         <br />
-        <small> Don't have an account? You can SignUp by clicking</small>
+        <small style={{color:'white'}}> Don't have an account? You can SignUp by clicking</small>
         <Link to="/register"> here</Link>
       </form>
       <br />
+    </div>
+    <br />
+    <br />
     </div>
   );
 };

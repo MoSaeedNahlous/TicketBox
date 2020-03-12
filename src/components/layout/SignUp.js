@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios'
+import bg from '../../res/bg4.jpg'
 
  const Signup = () =>{
 
@@ -34,10 +35,12 @@ import axios from 'axios'
 
 
     return (
-      <div className="container">
+      <div style={{backgroundImage: `url(${bg})`,
+    backgroundPosition: "100% 75%",backgroundRepeat:'no-repeat'}}>
+      <div className="container" style={{color:'white'}}>
         <br />
         <form onSubmit={HandleSubmit}>
-          <div className="form-group">
+          <div className="form-group" style={{color:'white'}}>
             <h1 className="flex-center">Create your new account</h1>
             <label>Name</label>
             <input
@@ -46,7 +49,7 @@ import axios from 'axios'
               id="exampleInput"
               name="name"
               placeholder="FullName"
-              style={{ width: "50%" }}
+              style={{ width: "50%",backgroundColor:'rgba(0, 0, 0, 0)',color:'white' }}
               onChange={(e)=>{setName(e.target.value)}}
               required
             />
@@ -62,7 +65,7 @@ import axios from 'axios'
               id="exampleInputEmail1"
               name="email"
               placeholder="Email"
-              style={{ width: "50%" }}
+              style={{ width: "50%",backgroundColor:'rgba(0, 0, 0, 0)',color:'white' }}
               onChange={(e)=>{setEmail(e.target.value)}}
               required
             />
@@ -78,7 +81,7 @@ import axios from 'axios'
               id="passwordId"
               placeholder="Password"
               name="password"
-              style={{ width: "50%" }}
+              style={{ width: "50%",backgroundColor:'rgba(0, 0, 0, 0)',color:'white' }}
               onChange={(e)=>{setPassword(e.target.value)}} 
               required
             />
@@ -94,7 +97,7 @@ import axios from 'axios'
               id="confirmPasswordId"
               placeholder="Password"
               name="confirmPassword"
-              style={{ width: "50%" }}
+              style={{ width: "50%",backgroundColor:'rgba(0, 0, 0, 0)',color:'white' }}
               onChange={(e)=>{setConfirmPassword(e.target.value)}}
               required
             />
@@ -121,6 +124,7 @@ import axios from 'axios'
           <Link to="/login"> here</Link>
         </form>
         <br />
+      </div>
       </div>
     );
     }

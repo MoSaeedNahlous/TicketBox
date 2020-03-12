@@ -7,10 +7,10 @@ const SignupPage = () => {
     return (
         <div> 
             <NavBar />
-            <div className="container">
-        <br />
+            <div >
+        
             <Signup />
-            <br />
+            
             </div>
             <Footer />
         </div>
