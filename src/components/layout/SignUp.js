@@ -10,7 +10,7 @@ import axios from 'axios'
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
   const [confirmPassword , setConfirmPassword] = useState("")
-  const [error, setError] = useState(null)
+  const [error, setError] = useState({})
 
   const history = useHistory();
   
@@ -20,14 +20,15 @@ import axios from 'axios'
     e.preventDefault();
     const user={"name":name,"email":email,"password":password,"confirmPassword":confirmPassword}
     console.log(user);
-    axios.post('http://localhost:9090/api/users/register',user).then((response) => {
+    axios.post('http://localhost:8080/api/users/save',user).then((response) => {
       console.log(response);
       alert("Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)")
       history.push('/login')
+      setError({});
     })
     .catch( (err) => {
-      console.log(err);
-      alert(err);
+      setError(err.response.data);
+        console.log(err);
     });
   }
 
@@ -43,11 +44,15 @@ import axios from 'axios'
               type="text"
               className="form-control"
               id="exampleInput"
+              name="name"
               placeholder="FullName"
               style={{ width: "50%" }}
               onChange={(e)=>{setName(e.target.value)}}
               required
             />
+            <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> </strong>
+          </div>
           </div>
           <div className="form-group">
             <label>Email address</label>
@@ -55,11 +60,15 @@ import axios from 'axios'
               type="email"
               className="form-control"
               id="exampleInputEmail1"
+              name="email"
               placeholder="Email"
               style={{ width: "50%" }}
               onChange={(e)=>{setEmail(e.target.value)}}
               required
             />
+            <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.name}</strong>
+          </div>
           </div>
           <div className="form-group">
             <label>Password</label>
@@ -68,10 +77,14 @@ import axios from 'axios'
               className="form-control"
               id="passwordId"
               placeholder="Password"
+              name="password"
               style={{ width: "50%" }}
               onChange={(e)=>{setPassword(e.target.value)}} 
               required
             />
+            <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.password}</strong>
+          </div>
           </div>
           <div className="form-group">
             <label>reEnter Password</label>
@@ -80,10 +93,14 @@ import axios from 'axios'
               className="form-control"
               id="confirmPasswordId"
               placeholder="Password"
+              name="confirmPassword"
               style={{ width: "50%" }}
               onChange={(e)=>{setConfirmPassword(e.target.value)}}
               required
             />
+            <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.confirmPassword}</strong>
+          </div>
           </div>
           <div className="form-group form-check">
             <input

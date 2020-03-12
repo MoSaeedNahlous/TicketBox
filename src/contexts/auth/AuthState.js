@@ -31,7 +31,7 @@ const AuthState = (props) =>{
         }
     
         try{
-            const res = await axios.post('http://localhost:9090/api/users/register',formData,config)
+            const res = await axios.post('http://localhost:8080/api/users/register',formData,config)
 
             dispatch({
                 type:REGISTER_SUCCESS,

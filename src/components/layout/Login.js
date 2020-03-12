@@ -8,15 +8,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
 
+ 
+
   const history = useHistory();
-  let alrt = "form-check-label";
   const HandleSubmit = e => {
     e.preventDefault();
 
     const user = { email: email, password: password };
     console.log(user);
     axios
-      .post("http://localhost:9090/api/users/login", user)
+      .post("http://localhost:8080/api/users/login", user)
       .then(response => {
         console.log(response);
         alert("Success!! welcome to TicketBox!");
@@ -24,12 +25,11 @@ const Login = () => {
         setError({});
       })
       .catch(err => {
-        setError(err);
+        setError(err.response.data);
         console.log(err);
       });
-    if (JSON.stringify(error) === "{}") {
-      alrt = "";
-    }
+      
+   
   };
 
   return (
@@ -52,8 +52,8 @@ const Login = () => {
               setEmail(e.target.value);
             }}
           />
-          <div className={alrt} role="alert">
-            {error.email}
+          <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.name}</strong>
           </div>
         </div>
         <div className="form-group">
@@ -70,8 +70,8 @@ const Login = () => {
               setPassword(e.target.value);
             }}
           />
-          <div className={alrt} role="alert">
-            {error.password}
+          <div role="alert" style={{ width: "50%" }}>
+          <strong style={{color:'red'}}> {error.password}</strong>
           </div>
         </div>
         <div className="form-group form-check">

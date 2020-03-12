@@ -2,8 +2,10 @@ import React from 'react'
 import NavBar from '../layout/NavBar'
 import Footer from '../layout/Footer'
 
+
 const CookiePolicy = () => {
     return (
+        
         <div>
             <NavBar />
         <div className="container">
@@ -22,6 +24,7 @@ const CookiePolicy = () => {
         </div>
         <Footer />
         </div>
+       
     )
 }
 
