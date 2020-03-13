@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import axios from 'axios'
 import App from './App';
 
+const setAuthToken = (token) =>{
+    if(token){
+        axios.defaults.headers.common['Authorization'] =`Bearer ${token}`}
+        else{
+          delete axios.defaults.headers.common['Authorization'];
+        }
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

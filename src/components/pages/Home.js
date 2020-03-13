@@ -51,18 +51,18 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
         <Specs />
         
         
-        <ScrollButton />
+        
         
             
         <div style={{textAlign:'center', backgroundImage: `url(${matches})`,
-    backgroundPosition: "50% 6%" , height:'80px',width:'100%',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}>.</div>
+    backgroundPosition: "50% 7%" , height:'85px',width:'100%',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}>.</div>
             <br />
           <div className="row" style={{width:'100%'}}>
           
             
             
-            <div className="col-md-4 container"><Tables/></div>
-            <div className="col-md-7 container"><Cards cards={currentCards} />
+            <div className="col-md-3 container"><Tables/></div>
+            <div className="col-md-9 container"><Cards cards={currentCards} />
             <div style={{paddingLeft:'10%'}}>
             <Pagination cardsPerPage={cardsPerPage} totalCards={cards.length} paginate={paginateFun}/>
             </div>
@@ -76,6 +76,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
         
         
         <Footer />
+        <ScrollButton />
       </div>
     );
   

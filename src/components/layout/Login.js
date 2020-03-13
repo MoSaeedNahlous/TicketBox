@@ -2,7 +2,9 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+
 import bg from '../../res/bg4.jpg'
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,19 +14,26 @@ const Login = () => {
  
 
   const history = useHistory();
-  const HandleSubmit = e => {
+  const HandleSubmit = async (e) => {
     e.preventDefault();
 
     const user = { email: email, password: password };
-    console.log(user);
-    axios
-      .post("http://localhost:8080/api/users/login", user)
+    await axios
+      .post("", user)
       .then(response => {
-        console.log(response);
+        
+        localStorage.setItem('jwtToken',response.data.token)
         alert("Success!! welcome to TicketBox!");
-        history.push("/Home");
+        history.push("/");
         setError({});
-      })
+        if(response.data.token){
+          axios.defaults.headers.common['Authorization'] =`Bearer ${response.data.token}`}
+          else{
+            delete axios.defaults.headers.common['Authorization'];
+          }
+          
+        }
+      )
       .catch(err => {
         setError(err.response.data);
         console.log(err);
@@ -65,9 +74,9 @@ const Login = () => {
             type="password"
             className="form-control"
             id="exampleInputPassword1"
-            placeholder="Password"
             style={{ width: "50%" ,backgroundColor:'rgba(0, 0, 0, 0)'}}
             name="password"
+            placeholder="Password"
             required
             onChange={e => {
               setPassword(e.target.value);

@@ -16,6 +16,7 @@ import CardPage from './components/pages/CardPage';
 
 
 import AuthState from './contexts/auth/AuthState' 
+import LoginAdmin from './components/pages/admin pages/LoginAdmin';
 
 
  
@@ -28,7 +29,7 @@ const App =() => {
           <Switch>
             
               //public
-          
+            <Route exact path='/AdminLogin' component={LoginAdmin} />
             <Route exact path='/' component={Home} />
             <Route exact path='/cardPage' component={CardPage} />
             <Route exact path='/about' component={About} />

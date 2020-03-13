@@ -8,7 +8,7 @@ const News = () => {
         <div>
             <br />
             <div style={{textAlign:'center', backgroundImage: `url(${newsimg})`,
-    backgroundPosition: "50% 38%" , height:'70px',width:'100%',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}>.</div>
+    backgroundPosition: "50% 38%" , height:'90px',width:'100%',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}>.</div>
             <br />
             <div className="row" style={{width:'100%'}}>
                 <div className="col-sm-4">
