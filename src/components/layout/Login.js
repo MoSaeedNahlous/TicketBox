@@ -19,7 +19,7 @@ const Login = () => {
 
     const user = { email: email, password: password };
     await axios
-      .post("", user)
+      .post("http://localhost:8080/api/users/login", user)
       .then(response => {
         
         localStorage.setItem('jwtToken',response.data.token)
