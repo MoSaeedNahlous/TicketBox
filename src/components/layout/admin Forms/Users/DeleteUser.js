@@ -1,16 +1,36 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Axios from 'axios';
+
+
+
+
 
 const DeleteUser = () => {
+const [userId, setUserId] = useState('')
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    Axios.delete(`http://localhost:8080/api/users/deleteById/${userId}`).then((res) =>{
+      console.log(res)
+       alert(res.data)
+      }).catch( (err) => {
+        alert(err.data)
+  })
+}
+
+
+
+
+
     return (
         
         <div style={{backgroundColor:'#F1F1F1'}}>
         <div className='container' >
           <br/>
-        <form >
+        <form onSubmit={handleSubmit}>
   <h1>Delete User</h1>
   <div className="form-group">
     <label>User Id</label>
-    <input type="text" className="form-control" placeholder="User Id"/>
+    <input type="text" className="form-control" placeholder="User Id" onChange={(e)=>{setUserId(e.target.value)}}/>
   </div>
   
   <div className="form-group">

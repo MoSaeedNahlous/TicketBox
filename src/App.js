@@ -17,6 +17,7 @@ import CardPage from './components/pages/CardPage';
 
 import AuthState from './contexts/auth/AuthState' 
 import LoginAdmin from './components/pages/admin pages/LoginAdmin';
+import NotFound from './components/pages/NotFound';
 
 
  
@@ -41,6 +42,7 @@ const App =() => {
             <Route exact path='/cookiePolicy' component={CookiePolicy} />
             <Route exact path='/contactUs' component={ContactUs} />
             <Route exact path='/search' component={SearchPage} />
+            <Route component={NotFound} />
             
               //private
             
