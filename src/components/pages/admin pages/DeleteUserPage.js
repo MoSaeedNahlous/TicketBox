@@ -47,7 +47,7 @@ const DeleteUserPage = () => {
         <br />
        <UsersTable users={users} />
        <button onClick={handleRefresh} style={{display:'block',
-    marginLeft: 'auto',marginRight: 'auto' }}><i class="fa fa-refresh fa-2x" aria-hidden="true"
+    marginLeft: 'auto',marginRight: 'auto' }}><i className="fa fa-refresh fa-2x" aria-hidden="true"
        ></i></button>
        
         </div>

@@ -42,11 +42,12 @@ const App =() => {
             <Route exact path='/cookiePolicy' component={CookiePolicy} />
             <Route exact path='/contactUs' component={ContactUs} />
             <Route exact path='/search' component={SearchPage} />
-            <Route component={NotFound} />
+            
             
               //private
             
             <Route exact path='/admin' component={Admin} />
+            <Route component={NotFound} />
           </Switch>
           </div>
       </div>

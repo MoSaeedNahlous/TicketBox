@@ -1,14 +1,22 @@
-import React from 'react'
-
-import { Link } from 'react-router-dom';
+import React,{ useEffect,useState } from 'react'
+import { Link } from 'react-router-dom'
+import Axios from 'axios'
 
 const AdminNav = () => {
 
+  useEffect(() => {
+    Axios.get("http://localhost:8080/api/users/count").then(
+      (res) =>{setUsersCount(res.data)}
+    ).catch(err =>{alert(err)});
+  }, [])
+
+
+  const [usersCount, setUsersCount] = useState('')
 
     return (
         
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <label className="navbar-brand" >Admin Actions</label>
+  <label className="navbar-brand" style={{fontSize:'25px'}} >Admin Actions</label>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -58,6 +66,11 @@ const AdminNav = () => {
           <Link className="dropdown-item" to='/admin/deleteStadium'>Delete Stadium</Link>
         </div>
       </li>
+      <li className="nav-item">
+        <label className='navbar-brand' style={{fontSize:'20px'}}>Users Count:{usersCount}</label>
+            
+      </li>
+      
     </ul>
   </div>
 </nav>
