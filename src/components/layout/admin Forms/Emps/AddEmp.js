@@ -47,11 +47,12 @@ const AddEmp = () => {
     </div>
     <div className="form-group">
       <label >Type</label>
-      <select className="form-control" placeholder='Pick Emp Type' onSelect={e =>{setType(e.target.value)}}>
-        <option>4</option>
-        <option>3</option>
-        <option>2</option>
+      <select className="form-control" onSelect={e =>{setType(e.target.value)}}>
+      <option disabled selected hidden>Pick Employee Type</option>
         <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
       </select>
     </div>
     <div className="form-group">
