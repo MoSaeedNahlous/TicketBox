@@ -16,7 +16,7 @@ const AdminNav = () => {
     return (
         
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <label className="navbar-brand" style={{fontSize:'25px'}} >Admin Actions</label>
+  <Link to='/admin'> <label className="navbar-brand" style={{fontSize:'25px'}} >Admin Actions</label></Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -66,10 +66,7 @@ const AdminNav = () => {
           <Link className="dropdown-item" to='/admin/deleteStadium'>Delete Stadium</Link>
         </div>
       </li>
-      <li className="nav-item">
-        <label className='navbar-brand' style={{fontSize:'20px'}}>Users Count:{usersCount}</label>
-            
-      </li>
+      
       
     </ul>
   </div>

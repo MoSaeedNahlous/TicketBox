@@ -20,11 +20,11 @@ const AddGame = () => {
   </div>
   <div className="form-group">
     <label>Start Date</label>
-    <input type="text" className="form-control" placeholder="Start Date (ex: 1/12/2020 )"/>
+    <input type="date" className="form-control" placeholder="Start Date (ex: 1/12/2020 )"/>
   </div>
   <div className="form-group">
     <label >End Date</label>
-    <input type="text" className="form-control"  placeholder="Start Date (ex: 1/12/2020 )"/>
+    <input type="date" className="form-control"  placeholder="Start Date (ex: 1/12/2020 )"/>
   </div>
   <div className="form-group">
     <div className="form-group ">

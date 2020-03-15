@@ -15,7 +15,7 @@ const AddEmp = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       const emp={name:name,email:email,phone:phone,type:type,password:password}
-      Axios.post("",emp).then(
+      Axios.post('http://localhost:8080/api/users/save',emp).then(
         res =>{alert(res.data)}
       ).catch(
         err=>{alert(err)}

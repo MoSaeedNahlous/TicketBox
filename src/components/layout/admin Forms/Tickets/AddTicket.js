@@ -1,6 +1,7 @@
 import React from 'react'
 
 const AddTicket = () => {
+
     return (
         <div className='container'>
         <form>
@@ -29,7 +30,7 @@ const AddTicket = () => {
     </div>
     <div className="form-group">
       <label>Retrun Date</label>
-      <input type="text" className="form-control" placeholder="Return Date (ex: 1/12/2020 )" />
+      <input type="date" className="form-control" placeholder="Return Date (ex: 1/12/2020 )" />
     </div>
   
   <button type="submit" className="btn btn-primary" style={{float:'right'}}>Add Ticket</button>

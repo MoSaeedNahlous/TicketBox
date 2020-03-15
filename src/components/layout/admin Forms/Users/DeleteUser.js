@@ -11,7 +11,12 @@ const [secret, setSecret] = useState(0)
 const [display, setDisplay] = useState('none')
 
   const handleSubmit = (e) =>{
-  
+  e.preventDefault();
+  Axios.delete(`http://localhost:8080/api/users/deleteById/${userId}`).then(
+    (res) =>{alert (res.data)}
+  ).catch(
+    (err)=>{alert(err)}
+  );
 }
 
 const handleSubmitAll =(e) =>{  e.preventDefault();
