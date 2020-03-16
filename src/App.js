@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom'
+import {BrowserRouter as Router ,Route,Switch,HashRouter} from 'react-router-dom'
 import LoginPage from './components/pages/LoginPage'
 import SignupPage from './components/pages/SignupPage'
 import Home from './components/pages/Home'
@@ -18,6 +18,15 @@ import CardPage from './components/pages/CardPage';
 import AuthState from './contexts/auth/AuthState' 
 import LoginAdmin from './components/pages/admin pages/LoginAdmin';
 import NotFound from './components/pages/NotFound';
+import AddEmpPage from './components/pages/admin pages/AddEmpPage';
+import DeleteEmpPage from './components/pages/admin pages/DeleteEmpPage';
+import DeleteUserPage from './components/pages/admin pages/DeleteUserPage';
+import AddGamePage from './components/pages/admin pages/AddGamePage';
+import DeleteGamePage from './components/pages/admin pages/DeleteGamePage';
+import AddTicketPage from './components/pages/admin pages/AddTicketPage';
+import DeleteTicketPage from './components/pages/admin pages/DeleteTicketPage';
+import AddStadiumPage from './components/pages/admin pages/AddStadiumPage';
+import DeleteStadiumPage from './components/pages/admin pages/DeleteStadiumPage';
 
 
  
@@ -29,8 +38,8 @@ const App =() => {
           <div>
           <Switch>
             
-              //public
-            <Route exact path='/AdminLogin' component={LoginAdmin} />
+              
+            <Route exact path='/adminLogin' component={LoginAdmin} />
             <Route exact path='/' component={Home} />
             <Route exact path='/cardPage' component={CardPage} />
             <Route exact path='/about' component={About} />
@@ -44,10 +53,19 @@ const App =() => {
             <Route exact path='/search' component={SearchPage} />
             
             
-              //private
+              
             
             <Route exact path='/admin' component={Admin} />
-            <Route component={NotFound} />
+            <Route exact path='/addEmp' component={AddEmpPage} />
+            <Route exact path='/deleteEmp' component={DeleteEmpPage} />
+            <Route exact path='/deleteUser' component={DeleteUserPage} />
+            <Route exact path='/addGame' component={AddGamePage} />
+            <Route exact path='/deleteGame' component={DeleteGamePage} />
+            <Route exact path='/addTicket' component={AddTicketPage} />
+            <Route exact path='/deleteTicket' component={DeleteTicketPage} />
+            <Route exact path='/addStadium' component={AddStadiumPage} />
+            <Route exact path='/deleteStadium' component={DeleteStadiumPage} />
+            
           </Switch>
           </div>
       </div>

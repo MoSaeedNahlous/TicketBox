@@ -10,6 +10,7 @@ import ScrollButton from "../layout/ScrollButton";
 import Pagination from '../layout/Pagination';
 import Tables from "../layout/Tables";
 import News from "../News";
+import bg from '../../res/home.jpg'
 const Home = () =>  {
   
   const [cards, setCards] = useState([
@@ -45,7 +46,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
 
 
     return (
-      <div>
+      <div style={{backgroundImage: `url(${bg})`,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}>
         <Navbar bg={NavImg} />
         <ImageSlider scrollStepInPx="1" delayInMs="16.66" />
         <Specs />

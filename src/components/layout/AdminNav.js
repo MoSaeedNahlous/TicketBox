@@ -27,8 +27,8 @@ const AdminNav = () => {
           Employees Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/addEmp' >Add Employee</Link>
-          <Link className="dropdown-item" to='/admin/deleteEmp'>Delete Employee</Link>
+          <Link className="dropdown-item" to='/addEmp' >Add Employee</Link>
+          <Link className="dropdown-item" to='/deleteEmp'>Delete Employee</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
@@ -36,7 +36,7 @@ const AdminNav = () => {
           Users Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/deleteUser'>Delete User</Link>
+          <Link className="dropdown-item" to='/deleteUser'>Delete User</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
@@ -44,8 +44,8 @@ const AdminNav = () => {
           Games Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/addGame'>Add Game</Link>
-          <Link className="dropdown-item" to='/admin/deleteGame'>Delete Game</Link>
+          <Link className="dropdown-item" to='/addGame'>Add Game</Link>
+          <Link className="dropdown-item" to='/deleteGame'>Delete Game</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
@@ -53,8 +53,8 @@ const AdminNav = () => {
           Tickets Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/addTicket'>Add Ticket</Link>
-          <Link className="dropdown-item" to='/admin/deleteTicket'>Delete Ticket</Link>
+          <Link className="dropdown-item" to='/addTicket'>Add Ticket</Link>
+          <Link className="dropdown-item" to='/deleteTicket'>Delete Ticket</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
@@ -62,8 +62,8 @@ const AdminNav = () => {
           Stadiums Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link className="dropdown-item" to='/admin/addStadium'>Add Stadium</Link>
-          <Link className="dropdown-item" to='/admin/deleteStadium'>Delete Stadium</Link>
+          <Link className="dropdown-item" to='/addStadium'>Add Stadium</Link>
+          <Link className="dropdown-item" to='/deleteStadium'>Delete Stadium</Link>
         </div>
       </li>
       

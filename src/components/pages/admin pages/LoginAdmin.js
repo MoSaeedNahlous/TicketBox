@@ -22,7 +22,7 @@ const LoginAdmin = () => {
               
               localStorage.setItem('jwtToken',response.data.token)
               alert("Success!! welcome to TicketBox!");
-              history.push("/Admin");
+              history.push("/admin");
               setError({});
               if(response.data.token){
                 axios.defaults.headers.common['Authorization'] =`Bearer ${response.data.token}`}

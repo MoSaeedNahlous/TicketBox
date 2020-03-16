@@ -1,16 +1,38 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Axios from 'axios'
 
 const DeleteEmp = () => {
+  const [empId, setEmpId] = useState('')
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    Axios.delete(`/employee/deleteById/${empId}`).then(
+      (res) =>{alert (res.data)}
+    ).catch(
+      (err)=>{alert(err)}
+    );
+  }
+  
+  const handleSubmitAll =(e) =>{  e.preventDefault();
+      Axios.delete('/employee/deleteAll').then((res) =>{
+        console.log(res)
+         alert(res.data)
+        }).catch( (err) => {
+          alert(err.data)
+    })}
+
+
+
+
     return (
         
            <div style={{backgroundColor:'#F1F1F1'}}>
         <div className='container' >
           <br/>
-        <form >
+        <form onSubmit={handleSubmit} >
   <h1>Delete Employee</h1>
   <div className="form-group">
     <label>Employee Id</label>
-    <input type="text" className="form-control" placeholder="Employee Id"/>
+    <input type="text" className="form-control" placeholder="Employee Id" onChange={e => setEmpId(e.target.value)}/>
   </div>
   
   <div className="form-group">
