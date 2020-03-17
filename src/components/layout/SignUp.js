@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios'
-import bg from '../../res/bg4.jpg'
+import bg from '../../res/loginbg.jpeg'
 
  const Signup = () =>{
 
@@ -36,8 +36,8 @@ import bg from '../../res/bg4.jpg'
 
     return (
       <div style={{backgroundImage: `url(${bg})`,
-    backgroundPosition: "100% 75%",backgroundRepeat:'no-repeat'}}>
-      <div className="container" style={{color:'white'}}>
+      backgroundPosition: "75% 60%",backgroundRepeat:'no-repeat' ,backgroundSize:'cover'}}>
+      <div className="container wite" >
         <br />
         <form onSubmit={HandleSubmit}>
           <div className="form-group" style={{color:'white'}}>
@@ -115,13 +115,15 @@ import bg from '../../res/bg4.jpg'
             <label className="form-check-label">
               by clicking here you are accepting our
             </label>
-            <Link to="/termsAndConditions"> Terms and Conditions.</Link>
+            <Link to="/termsAndConditions" className='blu'> Terms and Conditions.</Link>
           </div>
           <button type="submit" className="btn btn-primary">
             Signup
           </button>
-          <small> Do you have an account? You can login by clicking</small>
-          <Link to="/login"> here</Link>
+          <br />
+          <br />
+          <small > Do you have an account? You can login by clicking</small>
+          <Link to="/login" className='blu'> here</Link>
         </form>
         <br />
       </div>

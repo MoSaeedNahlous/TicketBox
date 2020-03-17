@@ -5,9 +5,9 @@ import imag from '../../res/images (2).png'
 
 const About = () => {
     return (
-        <div>
+        <div className="bg-blu">
             <NavBar bg={imag}/>
-        <div className="container">
+        <div className="container wite" >
             <h1>About</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ipsum animi odit! Distinctio dolore ducimus,
                  dolores temporibus magnam veniam praesentium,

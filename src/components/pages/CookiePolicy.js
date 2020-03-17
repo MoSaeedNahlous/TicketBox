@@ -6,7 +6,7 @@ import Footer from '../layout/Footer'
 const CookiePolicy = () => {
     return (
         
-        <div>
+        <div className=' bg-blu wite'>
             <NavBar />
         <div className="container">
         <br />

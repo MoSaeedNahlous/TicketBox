@@ -4,7 +4,7 @@ import Footer from '../layout/Footer'
 
 const TermsAndConditions = () => {
     return (
-        <div>
+        <div className='bg-blu wite'>
             <NavBar />
         <div className="container">
         <br />

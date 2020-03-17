@@ -5,9 +5,11 @@ import msn from '../../res/msn.jpg'
 
 const WorkerCard = () => {
   return (
+    <div className="bg-blu wite">
     <div className="container">
       <br />
-      <h1 style={{ textAlign: "center" }}>Our Team</h1>
+      <h1 style={{ textAlign: "center",fontSize:'4rem' }}>Our Team</h1>
+      <br />
       <div className="row">
         <div className="col-md-4">
           <div className="flip-card" >
@@ -71,6 +73,7 @@ const WorkerCard = () => {
         </div>
       </div>
       <br />
+    </div>
     </div>
   );
 };

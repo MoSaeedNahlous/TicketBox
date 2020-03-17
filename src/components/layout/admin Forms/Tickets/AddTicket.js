@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const AddTicket = () => {
 
@@ -33,7 +34,7 @@ const AddTicket = () => {
       <input type="date" className="form-control" placeholder="Return Date (ex: 1/12/2020 )" />
     </div>
   
-  <button type="submit" className="btn btn-primary" style={{float:'right'}}>Add Ticket</button>
+  <Link to='/ticket'><button type="submit" className="btn btn-primary" style={{float:'right'}}>Add Ticket</button></Link>
 </form>
         </div>
     )

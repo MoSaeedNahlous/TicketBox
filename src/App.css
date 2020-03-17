@@ -7,6 +7,33 @@ html, body {
     
     
    }
+   .bg-blu{
+     background-color: #0A2E52;
+   }
+
+   .bg-gren{
+     background-color: #51CB20;
+   }
+
+   .bg-wite{
+     background-color: #F5F3F5;
+   }
+
+   .bg-orng{
+     background-color: #FF9F1C;
+   }
+   .blu{
+     color: #0A2E52;
+   }
+   .gren{
+     color: #51CB20;
+   }
+   .wite{
+     color: #F5F3F5;
+   }
+   .orng{
+     color: #FF9F1C;
+   }
 
    .zoom {
 
@@ -154,8 +181,8 @@ html, body {
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
-  color: white;
+  background-color: #51CB20;
+  color:#F5F3F5;
   transform: rotateY(180deg);
 }
 @media only screen and (max-width:775px){

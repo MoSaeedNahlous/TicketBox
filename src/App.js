@@ -27,6 +27,8 @@ import AddTicketPage from './components/pages/admin pages/AddTicketPage';
 import DeleteTicketPage from './components/pages/admin pages/DeleteTicketPage';
 import AddStadiumPage from './components/pages/admin pages/AddStadiumPage';
 import DeleteStadiumPage from './components/pages/admin pages/DeleteStadiumPage';
+import Ticket from './components/layout/admin Forms/Tickets/Ticket';
+import ForgetPassword from './components/pages/ForgetPassword';
 
 
  
@@ -45,6 +47,7 @@ const App =() => {
             <Route exact path='/about' component={About} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={SignupPage} />
+            <Route exact path='/forgetPassword' component={ForgetPassword} />
             <Route exact path='/aboutUs' component={AboutUs} />
             <Route exact path='/partnerAffiliation' component={PartnershipAffiliation} />
             <Route exact path='/termsAndConditions' component={TermsAndConditions} />
@@ -65,7 +68,10 @@ const App =() => {
             <Route exact path='/deleteTicket' component={DeleteTicketPage} />
             <Route exact path='/addStadium' component={AddStadiumPage} />
             <Route exact path='/deleteStadium' component={DeleteStadiumPage} />
+            <Route exact path='/ticket' component={Ticket} />
             
+
+            <Route path="" component={NotFound} />
           </Switch>
           </div>
       </div>

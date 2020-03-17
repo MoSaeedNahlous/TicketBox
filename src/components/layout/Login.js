@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-import bg from '../../res/bg4.jpg'
+import bg from '../../res/loginbg.jpeg'
 
 
 const Login = () => {
@@ -44,13 +44,13 @@ const Login = () => {
 
   return (
     <div style={{backgroundImage: `url(${bg})`,
-    backgroundPosition: "100% 75%",backgroundRepeat:'no-repeat'}} >
-    <div className="container">
+    backgroundPosition: "75% 60%",backgroundRepeat:'no-repeat' ,backgroundSize:'cover'}} >
+    <div className="container wite">
       <br />
       <form onSubmit={HandleSubmit}>
-        <div className="form-group" style={{color:'white'}}>
-          <h1 className="flex-center" style={{color:'white'}}>Login to your account</h1>
-          <label style={{color:'white'}}>Email address</label>
+        <div className="form-group wite" >
+          <h1 className="flex-center wite">Login to your account</h1>
+          <label >Email address</label>
           <input
             type="email"
             className="form-control"
@@ -97,17 +97,18 @@ const Login = () => {
         <button
           type="submit"
           onSubmit={HandleSubmit}
-          className="btn btn-primary"
+          className="btn bg-blue btn-primary"
+        
         >
           Login
         </button>
             <br />
         <br />
-        <small style={{color:'white'}}> Forget your password?Click</small>
-        <Link to="/"> here</Link>
+        <small className='wite'> Forget your password? Click</small>
+        <Link to="/forgetPassword" className='blu' > here</Link>
         <br />
-        <small style={{color:'white'}}> Don't have an account? You can SignUp by clicking</small>
-        <Link to="/register"> here</Link>
+        <small className='wite'> Don't have an account? You can SignUp by clicking </small>
+        <Link to="/register" className='blu'> here</Link>
       </form>
       <br />
     </div>
