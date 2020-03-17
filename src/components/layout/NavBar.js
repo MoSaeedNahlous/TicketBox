@@ -16,11 +16,11 @@ const NavBar = props => {
   return (
     <nav className="navbar navbar-dark" style={NavStyle}>
       <div>
-        <Link to="/" className="navbar-brand" style={{ color: "white" }}>
+        <Link to="/" className="navbar-brand wite" style={{ color: "white" }}>
           <i className="fas fa-ticket-alt" /> TicketBox
         </Link>
         <small
-          className="navbar-brand"
+          className="navbar-brand wite"
           style={{ fontSize: "12px", color: "white" }}
         >
           for E-Booking Services
