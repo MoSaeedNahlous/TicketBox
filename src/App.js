@@ -29,6 +29,8 @@ import AddStadiumPage from './components/pages/admin pages/AddStadiumPage';
 import DeleteStadiumPage from './components/pages/admin pages/DeleteStadiumPage';
 import Ticket from './components/layout/admin Forms/Tickets/Ticket';
 import ForgetPassword from './components/pages/ForgetPassword';
+import Teams from './components/pages/Teams';
+import Stadiums from './components/pages/Stadiums';
 
 
  
@@ -54,6 +56,8 @@ const App =() => {
             <Route exact path='/cookiePolicy' component={CookiePolicy} />
             <Route exact path='/contactUs' component={ContactUs} />
             <Route exact path='/search' component={SearchPage} />
+            <Route exact path='/teams' component={Teams} />
+            <Route exact path='/stadiums' component={Stadiums} />
             
             
               
