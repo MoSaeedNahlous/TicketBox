@@ -1,10 +1,12 @@
 import React from 'react'
 import NavBar from '../layout/NavBar'
 import Footer from '../layout/Footer'
+import imag from '../../res/bghome.jpg'
+
 
 const ContactUs = () => {
     return (
-        <div className="bg-blu wite">
+        <div className='wite' style={{backgroundImage: `url(${imag})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>
             <NavBar />
         <div className="container">
             <br />
@@ -19,18 +21,18 @@ const ContactUs = () => {
                          
                     </p>
                 </div>
-                <div className="col-sm-4" style={{backgroundColor:'rgba(0, 0, 0, 0)' ,borderStyle:'solid',borderWidth:'3px',borderColor:'#F5F3F5'}}>
+                <div className="col-sm-4" style={{backgroundColor:'rgba(0, 0, 0, 0)' ,borderStyle:'solid',borderWidth:'3px',borderColor:'#990000'}}>
             <form >
              <br/>
             <div className="form-group row">
                 <div className="col-sm-12">
-                <input type="email" className=" wite"  placeholder="Your Email"  style={{backgroundColor:'rgba(0, 0, 0, 0)' ,borderStyle:'solid',borderWidth:'1px',borderColor:'#F5F3F5',width:'100%'}}/>
+                <input type="email" className=" wite"  placeholder="Your Email"  style={{backgroundColor:'rgba(0, 0, 0, 0)' ,borderStyle:'solid',borderWidth:'1px',borderColor:'#990000',width:'100%'}}/>
                 </div>
             </div>
             
 
             <div className="form-group">
-              <textarea className=" wite" rows="10" placeholder="Your Massage" style={{backgroundColor:'rgba(0, 0, 0, 0)' ,borderStyle:'solid',borderWidth:'1px',borderColor:'#F5F3F5',width:'100%'}}></textarea>
+              <textarea className=" wite" rows="10" placeholder="Your Massage" style={{backgroundColor:'rgba(0, 0, 0, 0)' ,borderStyle:'solid',borderWidth:'1px',borderColor:'#990000',width:'100%'}}></textarea>
             </div>
            
             <div className="form-group row">

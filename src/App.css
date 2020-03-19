@@ -34,6 +34,72 @@ html, body {
    .orng{
      color: #FF9F1C;
    }
+   .crimsonRed{
+     color:#990000;
+     
+   }
+   .black{
+     color:black;
+   }
+   .crimsonRedBg{
+    background-color:#990000;
+  }
+  .blackBg{
+    background-color:black;
+  }
+
+  .footerItem{
+    color: #F5F3F5;
+  }
+  .footerItem:hover{
+    color:grey;
+  }
+  
+  .links:hover{
+    text-decoration: none;
+  }
+  .margin1{
+    margin:1rem;
+  }
+.navItem{
+    color:#990000;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0.8rem;
+    }
+
+  .navItem:hover{
+    background-color:#990000;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem;
+  }
+
+  .navItemAlt{
+    color:white;
+    background-color: #990000;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+
+  }
+  .navItemAlt:hover{
+    background-color:black;
+    color:#990000;
+    text-decoration: none;
+  }
+  .menuItem{
+    color:white;
+    text-align:left;
+    text-decoration: none;
+    margin: 0.5rem;
+  }
+
+  .menuItem:hover{
+    color:#990000;
+    text-decoration: none;
+
+  }
 
    .zoom {
 
@@ -109,20 +175,24 @@ html, body {
 
 .Mycards{
     display:grid;
-    grid-template-columns: 25% 25% 25% 25% ;
+    grid-template-columns: 50% 50%  ;
 }
 
-
+.specDiv{color:white;
+      background-color:#990000;
+    }
+  
 .specDiv:hover{
     
-      color:#F5F3F5;
-      background-color:#0A2E52 ;
+      color:#990000;
+      background-color:black ;
+
     
 }
 
 .scroll {
   opacity: 0.7;
-  background-color:#007BFF;
+  background-color:#990000;
   width: 40px;
   height: 40px;
   position: fixed;
@@ -182,7 +252,7 @@ html, body {
 
 /* Style the back side */
 .flip-card-back {
-  background-color: #51CB20;
+  background-color: #990000;
   color:#F5F3F5;
   transform: rotateY(180deg);
 }

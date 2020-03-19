@@ -1,10 +1,11 @@
 import React from 'react'
 import NavBar from '../layout/NavBar'
 import Footer from '../layout/Footer'
+import imag from '../../res/bghome.jpg'
 
 const PartnershipAffiliation = () => {
     return (
-        <div className='bg-blu wite'>
+        <div className='wite'  style={{backgroundImage: `url(${imag})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>
             <NavBar />
         <div className="container">
         <br />

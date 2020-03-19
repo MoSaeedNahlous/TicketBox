@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-import bg from '../../res/loginbg.jpeg'
+import bg from '../../res/login.jpg'
 
 
 const Login = () => {
@@ -44,12 +44,12 @@ const Login = () => {
 
   return (
     <div style={{backgroundImage: `url(${bg})`,
-    backgroundPosition: "75% 60%",backgroundRepeat:'no-repeat' ,backgroundSize:'cover'}} >
+    backgroundPosition: "75% 60%",backgroundRepeat:'no-repeat' ,backgroundSize:'cover',paddingTop:'3rem',paddingBottom:'3rem'}} >
     <div className="container wite">
       <br />
       <form onSubmit={HandleSubmit}>
         <div className="form-group wite" >
-          <h1 className="flex-center wite">Login to your account</h1>
+          <h1 className="flex-center wite" style={{paddingBottom:'1.5rem'}}>Login to your account</h1>
           <label >Email address</label>
           <input
             type="email"

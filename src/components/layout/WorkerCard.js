@@ -2,13 +2,14 @@ import React from "react";
 import youssef from '../../res/youssef.png'
 import aj from '../../res/aj.jpg'
 import msn from '../../res/msn.jpg'
+import imag from '../../res/bghome.jpg'
 
 const WorkerCard = () => {
   return (
-    <div className="bg-blu wite">
+    <div style={{backgroundImage: `url(${imag})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>
     <div className="container">
       <br />
-      <h1 style={{ textAlign: "center",fontSize:'4rem' }}>Our Team</h1>
+      <h1 className='wite' style={{ textAlign: "center",fontSize:'4rem' }}>Our Team</h1>
       <br />
       <div className="row">
         <div className="col-md-4">

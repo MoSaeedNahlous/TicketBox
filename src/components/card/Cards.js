@@ -8,7 +8,7 @@ const Cards = ({cards}) => {
     return (
         <div className="container"  >
         
-            <div className="row">
+            
                 
             
                 <div className="Mycards" >
@@ -30,7 +30,7 @@ const Cards = ({cards}) => {
             
             <br />
                 
-            </div>    
+              
             
         </div>
     )

@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios'
-import bg from '../../res/loginbg.jpeg'
+import bg from '../../res/login.jpg'
 
  const Signup = () =>{
 
@@ -36,12 +36,12 @@ import bg from '../../res/loginbg.jpeg'
 
     return (
       <div style={{backgroundImage: `url(${bg})`,
-      backgroundPosition: "75% 60%",backgroundRepeat:'no-repeat' ,backgroundSize:'cover'}}>
+      backgroundPosition: "75% 60%",backgroundRepeat:'no-repeat' ,backgroundSize:'cover',paddingTop:'3rem',paddingBottom:'3rem'}}>
       <div className="container wite" >
         <br />
         <form onSubmit={HandleSubmit}>
           <div className="form-group" style={{color:'white'}}>
-            <h1 className="flex-center">Create your new account</h1>
+            <h1 className="flex-center" style={{paddingBottom:'1.5rem'}}>Create your new account</h1>
             <label>Name</label>
             <input
               type="text"

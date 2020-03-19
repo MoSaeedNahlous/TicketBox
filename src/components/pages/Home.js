@@ -10,7 +10,7 @@ import ScrollButton from "../layout/ScrollButton";
 import Pagination from '../layout/Pagination';
 import Tables from "../layout/Tables";
 import News from "../News";
-import bg from '../../res/home.jpg'
+import bg from '../../res/bghome.jpg'
 const Home = () =>  {
   
   const [cards, setCards] = useState([
@@ -46,17 +46,21 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
 
 
     return (
-      <div style={{backgroundImage: `url(${bg})`,backgroundSize:'cover',backgroundRepeat:'no-repeat'}}>
+      <div style={{backgroundImage: `url(${bg})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>
         <Navbar bg={NavImg} />
         <ImageSlider scrollStepInPx="1" delayInMs="16.66" />
         <Specs />
         
-        
+        <div className="crimsonRedBg wite" style={{textAlign:"center",border:'solid #151719 2px'}}>
+            <h1 style={{fontSize:"4rem"}}
+            >Upcoming Matches</h1>
+        </div>
         
         
             
-        <div style={{textAlign:'center', backgroundImage: `url(${matches})`,
-    backgroundPosition: "50% 7%" , height:'85px',width:'100%',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}>.</div>
+        
+
+    
             <br />
           <div className="row" style={{width:'100%'}}>
           

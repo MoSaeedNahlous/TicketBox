@@ -7,8 +7,10 @@ const News = () => {
     return (
         <div>
             <br />
-            <div style={{textAlign:'center', backgroundImage: `url(${newsimg})`,
-    backgroundPosition: "50% 38%" , height:'90px',width:'100%',backgroundRepeat:'no-repeat',backgroundSize:'100% auto'}}>.</div>
+            <div className="crimsonRedBg wite" style={{textAlign:"center",border:'solid #151719 2px'}}>
+            <h1 style={{fontSize:"4rem"}}
+            >Latest News</h1>
+        </div>
             <br />
             <div className="row" style={{width:'100%'}}>
                 <div className="col-sm-4">

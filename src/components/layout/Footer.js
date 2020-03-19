@@ -4,11 +4,9 @@ import footerImg from '../../res/footer1.jpg'
 
 const Footer = props => {
   const FooterStyle = {
-    backgroundColor: "#494E53",
-    color: "white",
+    backgroundColor: "#990000",
+    color: "black",
     width: "100%",
-    backgroundImage: `url(${footerImg})`,
-    backgroundPosition: "50% 25%"
   };
 
   Footer.defaultProps = {
@@ -22,37 +20,37 @@ const Footer = props => {
     >
       <div className="container-fluid">
         <div className="row mt3 full-width">
-          <div className="col-md-4" style={{ color: "white" }}>
+          <div className="col-md-4" style={{ }}>
             <h5
               className="font-weight-bold text-uppercase mt3  "
-              style={{ color: "white", marginLeft: "5%", marginTop: "3.2%" }}
+              style={{marginLeft: "5%", marginTop: "3.2%" }}
             >
               Company Details
             </h5>
             <ul className="list-unstyled">
               <li>
-                <Link to="/aboutUs" style={{ color: "white" }}>
+                <Link to="/aboutUs" className='links footerItem' style={{ }}>
                   <i className="fas fa-hand-point-right" /> Our Team
                 </Link>
               </li>
               <li>
-                <Link to="/contactUs" style={{ color: "white" }}>
+                <Link to="/contactUs"  className='links footerItem' style={{ }}>
                   <i className="fas fa-hand-point-right" /> Contact us
                 </Link>
               </li>
               <li>
-                <Link to="/partnerAffiliation" style={{ color: "white" }}>
+                <Link to="/partnerAffiliation" className='links footerItem'style={{ }}>
                   <i className="fas fa-hand-point-right" />{" "}
                   Partnership/Affiliation
                 </Link>
               </li>
               <li>
-                <Link to="/termsAndConditions" style={{ color: "white" }}>
+                <Link to="/termsAndConditions"className='links footerItem' style={{ }}>
                   <i className="fas fa-hand-point-right" /> Terms and Conditions
                 </Link>
               </li>
               <li>
-                <Link to="/cookiePolicy" style={{ color: "white" }}>
+                <Link to="/cookiePolicy" className='links footerItem' style={{ }}>
                   <i className="fas fa-hand-point-right" /> Cookie Policy
                 </Link>
               </li>
@@ -61,7 +59,7 @@ const Footer = props => {
           <div className="col-md-4">
             <h5
               className="font-weight-bold text-uppercase mt-3 mb-4"
-              style={{ color: "white" }}
+              style={{ }}
             >
               Download our App
             </h5>
@@ -91,7 +89,7 @@ const Footer = props => {
           <div className="col-md-4">
             <h5
               className="font-weight-bold text-uppercase mt-3 mb-4"
-              style={{ color: "white" }}
+              style={{ }}
             >
               Follow us
             </h5>
@@ -127,11 +125,11 @@ const Footer = props => {
           </div>
         </div>
 
-        <hr />
-        <div className="row">
+        <hr style={{marginBottom:'0',paddingBottom:'0'}}/>
+        <div className="row blackBg crimsonRed" style={{marginTop:'0',paddingTop:'0'}}>
           <div
-            className="footer-copyright text-center py-1 col-md-6 "
-            style={{ color: "white" }}
+            className="footer-copyright text-center py-1 col-md-6 wite"
+            style={{ }}
           >
             © 2020 Copyright
           </div>
