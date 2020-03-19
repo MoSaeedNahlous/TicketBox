@@ -75,7 +75,7 @@ const App =() => {
             <Route exact path='/ticket' component={Ticket} />
             
 
-            <Route path="" component={NotFound} />
+            
           </Switch>
           </div>
       </div>
