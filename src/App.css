@@ -257,6 +257,11 @@ html, body {
   color:#F5F3F5;
   transform: rotateY(180deg);
 }
+
+canvas{
+  width:40px;
+  height: 40px;
+}
 @media only screen and (max-width:775px){
     .Mycards{
         

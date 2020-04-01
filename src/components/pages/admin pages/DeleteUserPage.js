@@ -9,33 +9,33 @@ const DeleteUserPage = () => {
 
     const [users, setUsers] = useState([])
 
-    useEffect(() => {
+  //   useEffect(() => {
         
-         axios.get('/users/findAll').then((res)=>{
-        setUsers(res.data)
-        console.log(res.data)
-    }
+  //        axios.get('/users/findAll').then((res)=>{
+  //       setUsers(res.data)
+  //       console.log(res.data)
+  //   }
     
-  )
-  .catch((error)=>{console.log(error)}
+  // )
+  // .catch((error)=>{console.log(error)}
     
-  );
+  // );
         
-    }, [])
+  //   }, [])
    
-    const handleRefresh =(e) =>{
-        e.preventDefault();
-        axios.get('/users/findAll').then((res)=>{
-            setUsers(res.data)
-            console.log(res.data)
-        }
+    // const handleRefresh =(e) =>{
+    //     e.preventDefault();
+    //     axios.get('/users/findAll').then((res)=>{
+    //         setUsers(res.data)
+    //         console.log(res.data)
+    //     }
         
-      )
-      .catch((error)=>{console.log(error)}
+    //   )
+    //   .catch((error)=>{console.log(error)}
         
-      );
+    //   );
 
-    }
+    // }
 
 
 
@@ -48,7 +48,7 @@ const DeleteUserPage = () => {
         <DeleteUser />
         <br />
        <UsersTable users={users} />
-       <button onClick={handleRefresh} style={{display:'block',
+       <button  style={{display:'block',
     marginLeft: 'auto',marginRight: 'auto' }}><i className="fa fa-refresh fa-2x" aria-hidden="true"
        ></i></button>
        

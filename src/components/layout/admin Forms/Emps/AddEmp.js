@@ -3,8 +3,11 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
+
+
 const AddEmp = () => {
       const history = useHistory();
+
 
 
       const [name, setName] = useState('')
@@ -21,19 +24,8 @@ const AddEmp = () => {
       "password":password,
       "employeeType":type,
       "phone":phone}
-      console.log(emp)
-      const url="/employee/save"
-      axios.post(url,emp).then((response) => {
-      console.log(response);
-      alert("Success!!")
-    
-      
-    })
-    .catch( (err) => {
-   
-        console.log(err);
-    });
 
+      
     }
 
 
@@ -41,7 +33,7 @@ const AddEmp = () => {
 
 
     return (
-
+      
         <div className='container' style={{backgroundColor:'#F1F1F1'}}>
           <br />
         <form onSubmit={handleSubmit}>

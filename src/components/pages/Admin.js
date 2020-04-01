@@ -9,32 +9,32 @@ const Admin = () => {
     const [usersCounter, setUsersCounter] = useState(0)
     const [empsCounter, setEmpsCounter] = useState(0)
 
-    useEffect(() => {
-        Axios.get('/employee/count').then(
-            (res) => {setEmpsCounter(res.data)}
-        ).catch(
-            err => alert(err)
-        );
-        Axios.get('/users/count').then(
-            (res) => {setUsersCounter(res.data)}
-        ).catch(
-            err => alert(err)
-        );
-    }, [])
+    // useEffect(() => {
+    //     Axios.get('/employee/count').then(
+    //         (res) => {setEmpsCounter(res.data)}
+    //     ).catch(
+    //         err => alert(err)
+    //     );
+    //     Axios.get('/users/count').then(
+    //         (res) => {setUsersCounter(res.data)}
+    //     ).catch(
+    //         err => alert(err)
+    //     );
+    // }, [])
 
-    const handleRefresh = (e) =>{
-        e.preventDefault();
-         Axios.get('/employee/count').then(
-            res => setEmpsCounter(res.data)
-        ).catch(
-            err => alert(err)
-        );
-        Axios.get('/users/count').then(
-            res => setUsersCounter(res.data)
-        ).catch(
-            err => alert(err)
-        );
-    }
+    // const handleRefresh = (e) =>{
+    //     e.preventDefault();
+    //      Axios.get('/employee/count').then(
+    //         res => setEmpsCounter(res.data)
+    //     ).catch(
+    //         err => alert(err)
+    //     );
+    //     Axios.get('/users/count').then(
+    //         res => setUsersCounter(res.data)
+    //     ).catch(
+    //         err => alert(err)
+    //     );
+    // }
 
 
 
@@ -49,7 +49,7 @@ const Admin = () => {
         <div className="card " style={{width:'100%'}}>
   <div className="card-header">
     Counters
-    <button onClick={handleRefresh} style={{float:'right'}}><i className="fa fa-refresh" aria-hidden="true"
+    <button style={{float:'right'}}><i className="fa fa-refresh" aria-hidden="true"
        ></i></button>
   </div>
   <div className="card-body">

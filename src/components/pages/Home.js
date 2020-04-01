@@ -31,6 +31,7 @@ import bm from '../../res/bm.png'
 import bvb from '../../res/bvb.png'
 import b04 from '../../res/b04.png'
 import rb from '../../res/rb.png'
+import {StadiumGlobalProvider} from '../../contexts/stadiumContext/StadiumGlobalState'
 const Home = () =>  {
   
   const [cards, setCards] = useState([
@@ -66,6 +67,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
 
 
     return (
+      <StadiumGlobalProvider>
       <div style={{backgroundImage: `url(${bg})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>
         <Navbar bg={NavImg} />
         <ImageSlider scrollStepInPx="1" delayInMs="16.66" />
@@ -144,6 +146,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
         <Footer />
         <ScrollButton />
       </div>
+      </StadiumGlobalProvider>
     );
   
 }

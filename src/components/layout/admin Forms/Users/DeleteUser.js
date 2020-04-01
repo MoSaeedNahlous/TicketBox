@@ -10,31 +10,31 @@ const [userId, setUserId] = useState('')
 const [secret, setSecret] = useState(0)
 const [display, setDisplay] = useState('none')
 
-  const handleSubmit = (e) =>{
-  e.preventDefault();
-  Axios.delete(`http://localhost:8080/api/users/deleteById/${userId}`).then(
-    (res) =>{alert (res.data)}
-  ).catch(
-    (err)=>{alert(err)}
-  );
-}
+//   const handleSubmit = (e) =>{
+//   e.preventDefault();
+//   Axios.delete(`http://localhost:8080/api/users/deleteById/${userId}`).then(
+//     (res) =>{alert (res.data)}
+//   ).catch(
+//     (err)=>{alert(err)}
+//   );
+// }
 
-const handleSubmitAll =(e) =>{  e.preventDefault();
-    Axios.delete('http://localhost:8080/api/users/deleteAll').then((res) =>{
-      console.log(res)
-       alert(res.data)
-      }).catch( (err) => {
-        alert(err.data)
-  })}
+// const handleSubmitAll =(e) =>{  e.preventDefault();
+//     Axios.delete('http://localhost:8080/api/users/deleteAll').then((res) =>{
+//       console.log(res)
+//        alert(res.data)
+//       }).catch( (err) => {
+//         alert(err.data)
+//   })}
 
 
-const handleClick = ()=>{
-      setSecret(secret+1)
-      if(secret===3){
-        setDisplay('block')
+// const handleClick = ()=>{
+//       setSecret(secret+1)
+//       if(secret===3){
+//         setDisplay('block')
 
-      }
-}
+//       }
+// }
 
 
 
@@ -43,8 +43,8 @@ const handleClick = ()=>{
         <div style={{backgroundColor:'#F1F1F1'}}>
         <div className='container' >
           <br/>
-        <form onSubmit={handleSubmit}>
-  <h1 onClick={handleClick}>Delete User</h1>
+        <form >
+  <h1>Delete User</h1>
   <div className="form-group">
     <label>User Id</label>
     <input type="text" className="form-control" placeholder="User Id" onChange={(e)=>{setUserId(e.target.value)}}/>
@@ -65,7 +65,7 @@ const handleClick = ()=>{
 <div>
 
 
-             <form onSubmit={handleSubmitAll}>
+             <form >
              <div className="form-group">
   <button type="submit" className="btn btn-danger" id='2' style={{float:'right',display:display}}>Delete All Users</button>
   </div>

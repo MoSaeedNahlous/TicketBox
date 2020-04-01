@@ -4,14 +4,10 @@ import Axios from 'axios'
 
 const AdminNav = () => {
 
-  useEffect(() => {
-    Axios.get("http://localhost:8080/api/users/count").then(
-      (res) =>{setUsersCount(res.data)}
-    ).catch(err =>{alert(err)});
-  }, [])
+ 
 
 
-  const [usersCount, setUsersCount] = useState('')
+  
 
     return (
         
@@ -64,6 +60,7 @@ const AdminNav = () => {
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link className="dropdown-item" to='/addStadium'>Add Stadium</Link>
           <Link className="dropdown-item" to='/deleteStadium'>Delete Stadium</Link>
+          <Link className="dropdown-item" to='/editStadium'>Edit Stadium</Link>
         </div>
       </li>
       

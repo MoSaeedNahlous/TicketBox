@@ -15,7 +15,7 @@ import Admin from './components/pages/Admin';
 import CardPage from './components/pages/CardPage';
 
 
-import AuthState from './contexts/auth/AuthState' 
+ 
 import LoginAdmin from './components/pages/admin pages/LoginAdmin';
 import NotFound from './components/pages/NotFound';
 import AddEmpPage from './components/pages/admin pages/AddEmpPage';
@@ -31,12 +31,15 @@ import Ticket from './components/layout/admin Forms/Tickets/Ticket';
 import ForgetPassword from './components/pages/ForgetPassword';
 import Teams from './components/pages/Teams';
 import Stadiums from './components/pages/Stadiums';
+import EditStadiumPage from './components/pages/admin pages/EditStadiumPage';
+import { StadiumGlobalProvider } from './contexts/stadiumContext/StadiumGlobalState';
 
 
  
 const App =() => {
   return (
-    <AuthState>
+    <StadiumGlobalProvider>
+    
     <Router>
       <div className="App full-width " >
           <div>
@@ -72,6 +75,7 @@ const App =() => {
             <Route exact path='/deleteTicket' component={DeleteTicketPage} />
             <Route exact path='/addStadium' component={AddStadiumPage} />
             <Route exact path='/deleteStadium' component={DeleteStadiumPage} />
+            <Route exact path='/editStadium' component={EditStadiumPage} />
             <Route exact path='/ticket' component={Ticket} />
             
 
@@ -80,7 +84,7 @@ const App =() => {
           </div>
       </div>
     </Router>
-    </AuthState>
+    </StadiumGlobalProvider>
   );
 }
 export default App;
