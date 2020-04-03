@@ -9,7 +9,7 @@ const DeleteStadium = () => {
 
   const context = useContext(StadiumGlobalContext)
   let stadId=''
- 
+  
     useEffect(() => {
         context.GetStadiums();
     }, [])
@@ -63,7 +63,7 @@ const DeleteStadium = () => {
       <th scope="col">Name</th>
       <th scope="col">City</th>
       <th scope="col">Capacity</th>
-      <th></th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>

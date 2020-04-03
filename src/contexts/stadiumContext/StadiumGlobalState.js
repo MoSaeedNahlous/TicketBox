@@ -8,7 +8,8 @@ import axios from 'axios'
 const intialState={
     stadiums:[],
     stadium:{},
-    error:{}
+    error:{},
+    current:{'stadiumId':'','name':'','city':'','capacity':'',imgBlob:''}
 }
 
 // create context
@@ -52,8 +53,17 @@ export const StadiumGlobalProvider = ({children}) => {
                 (res) =>{dispatch({
                     type:'DELETE_STADIUM',payload:stadId
                 })}
-              ).catch(err=>{console.log(err.response.data)
-                  dispatch({type:'HANDLING_ERROR',payload:err.response.data})})
+              ).catch(err=>{dispatch({type:'HANDLING_ERROR',payload:err.response.data})})
+        }
+    
+    //UpdateStadiumById
+
+        const UpdateStadiumById = (stad) =>{
+            axios.post('/stadium/save',stad).then(
+                (res) =>{dispatch({
+                    type:'UPDATE_STADIUM',payload:stad
+                })}
+            ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})})
         }
 
     //GetStadiumByID
@@ -64,6 +74,18 @@ export const StadiumGlobalProvider = ({children}) => {
             })}
         ).catch();
     }
+    //SetCuurent
+    const SetCurrent = stad =>{
+        dispatch({
+            type:'SET_CURRENT',payload:stad
+        })
+    }
+    //ClearCuurent
+    const ClearCurrent = () =>{
+        dispatch({
+            type:'ClEAR_CUURENT'
+        })
+    }
 
     
 
@@ -73,10 +95,14 @@ export const StadiumGlobalProvider = ({children}) => {
             stadiums:state.stadiums,
             stadium:state.stadium,
             error:state.error,
+            current:state.current,
             GetStadiums,
             AddStadium,
             DeleteStadium,
-            GetStadiumByID
+            GetStadiumByID,
+            UpdateStadiumById,
+            SetCurrent,
+            ClearCurrent
         }}>
             {children}
         </StadiumGlobalContext.Provider>

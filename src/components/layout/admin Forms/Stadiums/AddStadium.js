@@ -11,10 +11,6 @@ const AddStadium = () => {
 
   const context = useContext(StadiumGlobalContext)
 
- 
-
-  
-    
 
   const addStadium =(e)=>{
     e.preventDefault();
