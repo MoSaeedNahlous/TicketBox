@@ -29,7 +29,7 @@ export default (state,action) =>{
             case 'CLEAR_CURRENT':
                 return{
                     ...state,
-                    current:{'stadiumId':'','name':'','city':'','capacity':'',imgBlob:''}
+                    current:null
                 }
             case 'HANDLING_ERROR':
                 return{

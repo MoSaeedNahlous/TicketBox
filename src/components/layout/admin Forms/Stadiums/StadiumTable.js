@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import StadiumTableRow from './StadiumTableRow'
+import { useContext } from 'react'
+import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
 
-const StadiumTable = ({stadiums}) => {
+const StadiumTable = () => {
+  const context = useContext(StadiumGlobalContext)
+  useEffect(() => {
+    context.GetStadiums()
+    
+  }, [])
 
     return (
         <div className='container'>
@@ -12,11 +19,11 @@ const StadiumTable = ({stadiums}) => {
       <th scope="col">Name</th>
       <th scope="col">City</th>
       <th scope="col">Capacity</th>
-      <th></th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    {stadiums.map((Stadium) =><StadiumTableRow key={Stadium.stadiumId} Stadium={Stadium} />)}
+    {context.stadiums.map((Stadium) =><StadiumTableRow key={Stadium.stadiumId} Stadium={Stadium} />)}
   </tbody>
 </table>
         </div>

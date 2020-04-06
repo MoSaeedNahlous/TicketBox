@@ -9,7 +9,7 @@ const intialState={
     stadiums:[],
     stadium:{},
     error:{},
-    current:{'stadiumId':'','name':'','city':'','capacity':'',imgBlob:''}
+    current:null
 }
 
 // create context
@@ -58,8 +58,8 @@ export const StadiumGlobalProvider = ({children}) => {
     
     //UpdateStadiumById
 
-        const UpdateStadiumById = (stad) =>{
-            axios.post('/stadium/save',stad).then(
+        const UpdateStadiumById = async (stad) =>{
+            await axios.post('/stadium/save',stad).then(
                 (res) =>{dispatch({
                     type:'UPDATE_STADIUM',payload:stad
                 })}
@@ -83,7 +83,7 @@ export const StadiumGlobalProvider = ({children}) => {
     //ClearCuurent
     const ClearCurrent = () =>{
         dispatch({
-            type:'ClEAR_CUURENT'
+            type:'CLEAR_CURRENT'
         })
     }
 

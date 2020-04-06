@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { useContext,useState } from 'react'
+import { useContext} from 'react'
 import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
 
 const StadiumTableRow = ({Stadium}) => {
@@ -7,18 +7,15 @@ const StadiumTableRow = ({Stadium}) => {
   
 
     const context = useContext(StadiumGlobalContext)
-    const [id, setId] = useState(Stadium.stadiumId)
-    const [name, setName] = useState(Stadium.name)
-    const [city, setCity] = useState(Stadium.city)
-    const [capacity, setCapacity] = useState(Stadium.capacity)
-    const [img, setImg] = useState(Stadium.imgBlob)
+    
     
     
     
 
-    const deleteRow = (id)=>{
+    const deleteRow = ()=>{
         
-        context.DeleteStadium(id);
+        context.DeleteStadium(Stadium.stadiumId);
+        context.ClearCurrent();
     }
       
   
@@ -32,7 +29,7 @@ const StadiumTableRow = ({Stadium}) => {
         
         <td>
           <button onClick={()=>context.SetCurrent(Stadium)}> <i className="fa fa-pencil" aria-hidden="true"></i></button>
-          <button onClick={()=>deleteRow(Stadium.stadiumId)}><i className="fa fa-trash" aria-hidden="true"></i></button>
+          <button onClick={()=>deleteRow()}><i className="fa fa-trash" aria-hidden="true"></i></button>
         </td>
       </tr>
     </Fragment>

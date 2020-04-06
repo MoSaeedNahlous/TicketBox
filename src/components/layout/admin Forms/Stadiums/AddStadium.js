@@ -1,21 +1,27 @@
 import React from 'react'
 import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
 import { useContext,useState } from 'react'
-import axios from 'axios'
+
 
 
 
 const AddStadium = () => {
 
-  let newStad={'name':'','city':'','capacity':'',imgBlob:''}
+
 
   const context = useContext(StadiumGlobalContext)
+  const [stadium, setStadium] = useState({'name':'','city':'','capacity':'','image':''})
 
 
   const addStadium =(e)=>{
     e.preventDefault();
-    context.AddStadium(newStad);
+    console.log(stadium);
+    context.AddStadium(stadium);
+    setStadium({'name':'','city':'','capacity':'','image':''})
+    document.getElementById('imgg').value=""
+    document.getElementById('img').setAttribute('src',"")
   }
+  const onChangeHandler = (e) =>{setStadium({...stadium,[e.target.name]:e.target.value})}
 
 
   const fileSelectedHandler = (e) =>{
@@ -47,7 +53,8 @@ const AddStadium = () => {
      //ctx.drawImage(this,0,0);
      var data=canvas.toDataURL('image/jpeg')
      
-     newStad.imgBlob= data
+     
+     setStadium({...stadium,'image':data})
    }
   }
   
@@ -58,14 +65,14 @@ const AddStadium = () => {
       <h1>Add Stadium</h1>
     <div className="form-group">
       <label>Stadium Name</label>
-      <input type="text" className="form-control" placeholder="Stadium Name" onChange={e => newStad.name = e.target.value} required/>
+      <input type="text" className="form-control" name='name' placeholder="Stadium Name" value={stadium.name} onChange={onChangeHandler} required/>
       <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {context.error.name}</strong>
           </div>
     </div>
     <div className="form-group">
       <label >City</label>
-      <select required className="form-control" onChange={e =>newStad.city = e.target.value} >
+      <select required className="form-control" value={stadium.city} name='city' onChange={onChangeHandler} >
       <option value="" hidden> 
           Select City 
       </option> 
@@ -76,7 +83,7 @@ const AddStadium = () => {
         <option value='Tartous'>Tartous</option>
         <option value='Daraa'>Daraa</option>
         <option value='Der-El-Zour'>Der El-Zour</option>
-        <option value='FAl-Rakka'>Al-Rakka</option>
+        <option value='Al-Rakka'>Al-Rakka</option>
         <option value='Al-Hasakeh'>Al-Hasakeh</option>
         <option value='Al-Swedaa'>Al-Swedaa</option>
         <option value='Idlib'>Idlib</option>
@@ -88,7 +95,7 @@ const AddStadium = () => {
     </div>
     <div className="form-group">
       <label>Capacity</label>
-      <input type="number" className="form-control"  placeholder="capacity" onChange={e => newStad.capacity = e.target.value} required/>
+      <input type="number" className="form-control"value={stadium.capacity} name='capacity' placeholder="capacity" onChange={onChangeHandler} required/>
       <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {context.error.capacity}</strong>
           </div>
@@ -99,7 +106,7 @@ const AddStadium = () => {
     <br/ >
     <img id='img' src="" alt="" width='400px' height='250px'/>
     <br/>
-    <input type="file" className="form-control-file" onChange={fileSelectedHandler} />
+    <input type="file" className="form-control-file" id='imgg' onChange={fileSelectedHandler} />
     <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {context.error.image}</strong>
           </div>
@@ -109,8 +116,10 @@ const AddStadium = () => {
 </form>
         </div>
     )
-}
+    }
+    export default AddStadium
 
 
 
-export default AddStadium
+
+

@@ -1,38 +1,25 @@
-import React from 'react'
+import React,{ useContext,useState,useEffect } from 'react'
 import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
-import { useContext,useState } from 'react'
-import { useEffect } from 'react'
-import StadiumTableRow from './StadiumTableRow'
+import StadiumTable from './StadiumTable'
 
 const EditStadium = () => {
-    
 
   const context = useContext(StadiumGlobalContext)
+  const {error,UpdateStadiumById,GetStadiums,current} = context
+  const [stad, setStad] = useState({'stadiumId':'','name':'','city':'','capacity':'','image':''})
+  useEffect(() => {
+    if(current!==null){
+      setStad(current)
+    }else{
+      setStad({'stadiumId':'','name':'','city':'','capacity':'','image':''})
+    }
+  }, [current])
   
-
-  const [stadium, setStadium] = useState({'stadiumId':'','name':'','city':'','capacity':'',imgBlob:''})
-  var dis='none'
-
-    useEffect(() => {
-        context.GetStadiums();
-        if(context.current !== null){
-          setStadium(context.current)
-          
-        }else{
-          setStadium({'stadiumId':'','name':'','city':'','capacity':'',imgBlob:''})
-        }
-    }, [context,context.current])
-
   
-
-  const UpdateStadium = (e)=>{
-    console.log(context.current)
-    e.preventDefault();
-    context.UpdateStadiumById(context.current)
   
-    context.GetStadiums();
-
-  }
+  
+  
+  
 
   const fileSelectedHandler = (e) =>{
     var url = e.target.value;
@@ -59,34 +46,57 @@ const EditStadium = () => {
    canvas.width= 1
    //ctx.drawImage(this,0,0);
    var data=canvas.toDataURL('image/jpeg')
-   
-   context.current.imgBlob= data
+   setStad({...stad,'image':data})
  }
 }
+ const onSubmitHandler = e =>{
+   e.preventDefault();
+   UpdateStadiumById(stad)
+   setStad({'stadiumId':'','name':'','city':'','capacity':'','image':''})
+   GetStadiums()
+ }
+ 
+ const onChangeHandler = e =>{setStad({...stad,[e.target.name]:e.target.value})}
 
-    return (
-        <div style={{backgroundColor:'#F1F1F1'}}>
-        <div className='container' >
-          <br/>
-        <form onSubmit={UpdateStadium}>
-  <h1>Edit Stadium</h1>
-  <div className="form-group">
-    <label>Stadium Id</label>
-    <input type="text" className="form-control" placeholder="Stadium Id" id='in' disabled defaultValue={stadium.stadiumId} onChange={e => context.current.stadiumId=e.target.value} required/>
-    <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> {context.error.message}</strong>
+
+
+
+
+
+
+  
+  return(
+    <div className='container'>
+      
+      <form onSubmit={onSubmitHandler}>
+        <h1>Edit Stadium</h1>
+        <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.message}</strong>
           </div>
-  </div>
-  <div className="form-group">
-      <label>Stadium Name</label>
-      <input type="text" className="form-control" placeholder="Stadium Name"id='in1' defaultValue={stadium.name} onChange={e => context.current.name = e.target.value} required/>
+        <div className="form-group">
+      <label>Stadium ID</label>
+      <input type="number" className="form-control" required name='stadiumId' placeholder="Stadium ID" value={stad.stadiumId} onChange={onChangeHandler} disabled />
       <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> {context.error.name}</strong>
+            <strong style={{color:'red'}}> {error.stadiumId}</strong>
           </div>
     </div>
     <div className="form-group">
-      <label >City</label>
-      <select required className="form-control"id='in2' value={stadium.city} onChange={e =>context.current.city = e.target.value} >
+      <label>Stadium Name</label>
+      <input type="text" className="form-control" required name='name' onChange={onChangeHandler} value={stad.name} placeholder="Stadium Name"/>
+      <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.name}</strong>
+          </div>
+    </div>
+    <div className="form-group">
+      <label>Stadium Capacity</label>
+      <input type="number" className="form-control" required name='capacity' onChange={onChangeHandler} value={stad.capacity} placeholder="Stadium Capacity" />
+      <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.capacity}</strong>
+          </div>
+    </div>
+    <div className="form-group">
+      <label>Stadium City</label>
+      <select className="form-control" onChange={onChangeHandler} value={stad.city} name='city' required >
       <option value="" hidden> 
           Select City 
       </option> 
@@ -97,77 +107,48 @@ const EditStadium = () => {
         <option value='Tartous'>Tartous</option>
         <option value='Daraa'>Daraa</option>
         <option value='Der-El-Zour'>Der El-Zour</option>
-        <option value='FAl-Rakka'>Al-Rakka</option>
+        <option value='Al-Rakka'>Al-Rakka</option>
         <option value='Al-Hasakeh'>Al-Hasakeh</option>
         <option value='Al-Swedaa'>Al-Swedaa</option>
         <option value='Idlib'>Idlib</option>
         <option value='Al-Kuneterah'>Al-Kuneterah</option>
       </select>
       <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> {context.error.city}</strong>
+            <strong style={{color:'red'}}> {error.city}</strong>
           </div>
     </div>
     <div className="form-group">
-      <label>Capacity</label>
-      <input type="number" className="form-control"id='in3'  placeholder="capacity" defaultValue={stadium.capacity} onChange={e => context.current.capacity = e.target.value} required/>
-      <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> {context.error.capacity}</strong>
-          </div>
-    </div>
-  
-  <div className="form-group">
     <label>Stadium Image file</label>
     <br/ >
     <img id='img' src="" alt="" width='400px' height='250px'/>
     <br/>
-    <input type="file" className="form-control-file" id="in4" defaultValue={stadium.imgBlob} onChange={fileSelectedHandler} />
+    <input type="file" onChange={fileSelectedHandler} className="form-control-file" id='imgg'  />
     <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> {context.error.image}</strong>
+            <strong style={{color:'red'}}> {error.image}</strong>
           </div>
   </div>
-  
-  <div className="form-group">
-    <div className="form-check">
-      <input className="form-check-input" type="checkbox"  required/>
-      <label className="form-check-label">
-        Are you Sure?
-      </label>
-    </div>
-  </div>
-  <div className="form-group">
-  <button onClick={()=>context.ClearCurrent()}  className="btn btn-danger" style={{float:'right',display:dis}}>Clear</button>
-  <button type="submit" className="btn btn-primary" style={{float:'right'}}>Update</button>
-  </div>
-</form>
-        </div>
-        <h1 style={{color:'#F1F1F1'}}>.</h1>
 
-        <div className='container'>
-        <table className="table">
-  <thead className="thead-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">City</th>
-      <th scope="col">Capacity</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  {context.stadiums.map((Stadium) =><StadiumTableRow key={Stadium.stadiumId} Stadium={Stadium} />)}
-  </tbody>
-</table>
-        </div>
-        <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> {context.error.message}</strong>
-          </div>
-        <button onClick={(e)=>{e.preventDefault();context.GetStadiums();}} style={{display:'block',
-    marginLeft: 'auto',marginRight: 'auto' }}><i className="fa fa-refresh fa-2x" aria-hidden="true"
-       ></i></button>
-        
-        
-       </div>
-    )
-}
+  <button type="submit" className="btn btn-primary" style={{float:'right'}}>Update Stadium</button>
+  <br />
+</form>
+
+<br />
+<StadiumTable />
+
+
+
+
+
+
+
+
+    </div>)
+
+  
+  }
+ 
+    
+
+
 
 export default EditStadium

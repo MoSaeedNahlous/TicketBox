@@ -1,9 +1,9 @@
 import React, { Fragment ,useContext} from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'                                                                      
+import { Link } from 'react-router-dom'                                                                   
 import { useEffect } from 'react'
 import { useState } from 'react'
 import {StadiumGlobalContext} from './../../contexts/stadiumContext/StadiumGlobalState'
+import Row from './Row'
 
 
 
@@ -13,12 +13,14 @@ const Tables = () => {
          
 
 
-    const [stadiums, setStadiums] = useState([]);
+         const [stadium, setStadium] = useState({})
 
-    useEffect(() => {
-        context.GetStadiums()   
-    }, [])
+         useEffect(() => {
+            context.GetStadiums();
+ 
+        }, [])
 
+       
 
 
     
@@ -33,18 +35,25 @@ const Tables = () => {
                         <li className="list-group-item   links " style={{backgroundColor:'#151719'}}><Link to='/teams'><button className='btn btn-primary'> more </button></Link></li>
                     </ul>
                     <br />
-                    <ul className="list-group">
-                        <li className="list-group-item crimsonRedBg wite links">Stadiums</li>
+        <ul className="list-group">
+            <li className="list-group-item crimsonRedBg wite links">Stadiums</li>
                         
-                            {
-                                (context.stadiums.length>5) ? <Fragment>
-                                    {context.stadiums.slice(0,5).map((stad) =><li className="list-group-item  wite links" style={{backgroundColor:'#151719'}} key={stad.stadiumId}><Link to='/' className='links wite'>{stad.name}</Link></li>)}
-                                    <li className="list-group-item   links " style={{backgroundColor:'#151719'}}><Link to='/teams'><button className='btn btn-primary'> more </button></Link></li>
-                                    </Fragment>
-                            :  context.stadiums.map((stad) =><li className="list-group-item  wite links" style={{backgroundColor:'#151719'}} key={stad.stadiumId}><Link to='/' className='links wite'>{stad.name}</Link></li>)
+            {
+                (context.stadiums.length>5) ? <Fragment>
+                {context.stadiums.slice(0,5).map((stad) =>
+                <Row stadium={stad} />)}
+                <li className="list-group-item   links " style={{backgroundColor:'#151719'}}>
+                    
+                <Link to='/teams'>
+                <button className='btn btn-primary' > more </button>
+                </Link>
+                </li>
+                </Fragment>
+                :   
+                context.stadiums.map((stad) =><Row stadium={stad}/>)
                                 
                                 
-                            }
+            }
                             
                             
                             
