@@ -18,10 +18,7 @@ const Cards = ({cards}) => {
 
 
 
-                    <div  style={{display:'flex',justifyContent:'center'}}>
-                        
-                        
-                    </div>
+                    
                     </div>
                     
                     

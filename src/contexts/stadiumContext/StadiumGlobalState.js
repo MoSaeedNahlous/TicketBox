@@ -31,7 +31,7 @@ export const StadiumGlobalProvider = ({children}) => {
                     payload:res.data
                 })}
             ).catch(
-                (err) =>{alert(err.response.data)}
+                (err) =>{alert(err.response)}
             );
         }
 
@@ -70,9 +70,9 @@ export const StadiumGlobalProvider = ({children}) => {
     const GetStadiumByID = (stadId) =>{
         axios.get(`/stadium/findById/${stadId}`).then(
             res =>{dispatch({
-                type:'GET_STADIUM_BY_ID',payload:stadId
+                type:'GET_STADIUM_BY_ID',payload:res.data
             })}
-        ).catch();
+        ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})});
     }
     //SetCuurent
     const SetCurrent = stad =>{
@@ -86,6 +86,14 @@ export const StadiumGlobalProvider = ({children}) => {
             type:'CLEAR_CURRENT'
         })
     }
+    //ClearCuurent
+    const ClearError = () =>{
+        dispatch({
+            type:'CLEAR_ERROR'
+        })
+    }
+    
+
 
     
 
@@ -102,7 +110,8 @@ export const StadiumGlobalProvider = ({children}) => {
             GetStadiumByID,
             UpdateStadiumById,
             SetCurrent,
-            ClearCurrent
+            ClearCurrent,
+            ClearError
         }}>
             {children}
         </StadiumGlobalContext.Provider>

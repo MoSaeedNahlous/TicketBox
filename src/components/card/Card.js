@@ -9,7 +9,7 @@ const Card = (props) => {
 
 
     return (
-        <Link to='/cardPage' className='zoom links'>
+        <Link to='/cardPage' className='zoom' style={{textDecoration:'none'}}>
         <div style={{backgroundColor:'#151719',padding:'1rem',margin:'1rem',textAlign:'center'}}>
           <div  className="wite" style={{width:'100%'}}><p style={{padding:'0',margin:'0',textAlign:"center",display:'block'}} >for {props.card.tour}  at {props.card.stad}</p></div>
           <div className='row wite'>

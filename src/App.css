@@ -5,8 +5,16 @@ html, body {
     font-family: 'Alegreya', serif;
     font-family: 'B612', sans-serif;
     
-    
+
    }
+   a{
+    text-decoration: none;
+  }
+  Link{
+    
+      text-decoration: none;
+    
+  }
    .bg-blu{
      background-color: #0A2E52;
    }
@@ -54,8 +62,20 @@ html, body {
   .footerItem:hover{
     color:grey;
   }
+  .links{
+    text-decoration: none;
+  }
   
   .links:hover{
+    text-decoration: none;
+  }
+  .linksStad{
+    color: black;
+    text-decoration: none;
+  }
+  
+  .linksStad:hover{
+    color: black;
     text-decoration: none;
   }
   .margin1{
@@ -178,6 +198,10 @@ html, body {
     display:grid;
     grid-template-columns: 50% 50%  ;
 }
+.MyStadiums{
+  display:grid;
+  grid-template-columns: 25% 25% 25% 25%  ;
+}
 
 .specDiv{color:white;
       background-color:#990000;
@@ -267,6 +291,10 @@ canvas{
         
         grid-template-columns: 50% 50%;
     }
+    .MyStadiums{
+      
+      grid-template-columns: 50% 50%   ;
+    }
     
         
 }
@@ -274,6 +302,10 @@ canvas{
     .Mycards{
         
         grid-template-columns: 100%;
+    }
+    .MyStadiums{
+      
+      grid-template-columns: 100%  ;
     }
     
         

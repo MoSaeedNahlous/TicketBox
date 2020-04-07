@@ -101,7 +101,7 @@ const paginateFun = (pageNumber) => {setcurrentPage(pageNumber)
           <div className="crimsonRedBg wite" style={{textAlign:"center",border:'solid #151719 2px'}}>
             <h1 style={{fontSize:"4rem"}}>Top Leagues</h1>
           </div>
-          <div className="row" style={{padding:'1.5rem'}}>
+          <div className="row" style={{padding:'1.5rem',width:'100%'}}>
           <div className="col-sm-3">
             <ul className="list-group">
               <li className="list-group-item crimsonRedBg wite links"><img src={epl} width='35px' height='35px' alt="logo"/> Premium League</li>

@@ -13,7 +13,7 @@ const Tables = () => {
          
 
 
-         const [stadium, setStadium] = useState({})
+         
 
          useEffect(() => {
             context.GetStadiums();
@@ -41,16 +41,16 @@ const Tables = () => {
             {
                 (context.stadiums.length>5) ? <Fragment>
                 {context.stadiums.slice(0,5).map((stad) =>
-                <Row stadium={stad} />)}
+                <Row stadium={stad} key={stad.stadiumId} />)}
                 <li className="list-group-item   links " style={{backgroundColor:'#151719'}}>
                     
-                <Link to='/teams'>
+                <Link to='/Stadiums'>
                 <button className='btn btn-primary' > more </button>
                 </Link>
                 </li>
                 </Fragment>
                 :   
-                context.stadiums.map((stad) =><Row stadium={stad}/>)
+                context.stadiums.map((stad1) =><Row stadium={stad1} key={stad1.stadiumId}/>)
                                 
                                 
             }

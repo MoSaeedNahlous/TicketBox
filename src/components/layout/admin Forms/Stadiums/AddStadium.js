@@ -1,11 +1,15 @@
 import React from 'react'
 import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
 import { useContext,useState } from 'react'
+import { useEffect } from 'react'
 
 
 
 
 const AddStadium = () => {
+  useEffect(() => {
+    context.ClearError()
+  }, [])
 
 
 
@@ -41,17 +45,19 @@ const AddStadium = () => {
       }else{
            document.getElementById('img').setAttribute('src', '/assets/no_preview.png');
       }
+      
   
     
-   var img =document.getElementById('img')
+   var img = document.getElementById('img')
    img.crossOrigin='Anonymous'
-   img.onload =()=>{
+   img.onload=function(){
      var canvas = document.createElement('canvas')
      var ctx = canvas.getContext('2d')
-     canvas.height=1
-     canvas.width= 1
-     //ctx.drawImage(this,0,0);
+           canvas.height=this.naturalHeight
+            canvas.width=this.naturalWidth
+     ctx.drawImage(this,0,0);
      var data=canvas.toDataURL('image/jpeg')
+     console.log(data);
      
      
      setStadium({...stadium,'image':data})
@@ -95,7 +101,7 @@ const AddStadium = () => {
     </div>
     <div className="form-group">
       <label>Capacity</label>
-      <input type="number" className="form-control"value={stadium.capacity} name='capacity' placeholder="capacity" onChange={onChangeHandler} required/>
+      <input type='number' className="form-control"value={stadium.capacity} name='capacity' placeholder="capacity" onChange={onChangeHandler} required/>
       <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {context.error.capacity}</strong>
           </div>
@@ -111,6 +117,10 @@ const AddStadium = () => {
             <strong style={{color:'red'}}> {context.error.image}</strong>
           </div>
   </div>
+  
+  <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {context.error.message}</strong>
+          </div>
 
   <button type="submit" className="btn btn-primary" style={{float:'right'}}>Add Stadium</button>
 </form>

@@ -1,21 +1,57 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
+import StadiumCard from '../layout/StadiumCard'
+import {StadiumGlobalContext} from '../../contexts/stadiumContext/StadiumGlobalState'
+import bg from '../../res/bghome.jpg'
+
+import '../../App.css'
+import { useContext } from 'react'
 import NavBar from '../layout/NavBar'
 import Footer from '../layout/Footer'
 
 const Stadiums = () => {
+
+    const context = useContext(StadiumGlobalContext)
+    const {stadiums,GetStadiums} = context
+    useEffect(() => {
+        GetStadiums()
+    }, [Stadiums])
+
     return (
-        <div className='bg-blu wite'>
+        <div style={{backgroundImage: `url(${bg})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>
             <NavBar />
-            <div className="container">
-            <h1 style={{textAlign:'center'}}>Stadiums</h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aliquid nisi cum repudiandae accusamus quas unde dolorum, nemo ex ipsam? Atque harum, quia beatae similique dicta quo dolor eligendi enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptatum illo eligendi minima nobis? Odit provident expedita praesentium, excepturi commodi eaque explicabo architecto facilis adipisci debitis, in corporis ex sequi?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sit ex molestias, vero exercitationem eius labore cumque ipsum atque optio consequuntur soluta facilis ullam, laudantium rerum earum provident. Nesciunt, maiores.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis pariatur perferendis recusandae itaque. Unde adipisci libero repellendus eum, aut molestias quos dolore impedit doloremque, eaque labore totam ab perspiciatis praesentium.
-            </div>
-            <Footer />
+        <div className="container"> 
+            <br/>
+            <h1 className="wite" style={{textAlign:'center'}}>Stadiums</h1>
+        
+            
+                
+            
+                <div className="MyStadiums" >
+                    
+
+                {stadiums.map((stadium)=>(<StadiumCard key={stadium.stadiumId} stadium={stadium}/>))}
+
+
+
+                    <div  style={{display:'flex',justifyContent:'center'}}>
+                        
+                        
+                    </div>
+                    </div>
+                    
+                    
+                    
+                
+            
+            <br />
+                
+              
+            
+        </div>
+        <Footer />
         </div>
     )
 }
 
 export default Stadiums
+

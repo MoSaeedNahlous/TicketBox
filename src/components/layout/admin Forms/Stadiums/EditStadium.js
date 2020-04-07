@@ -5,9 +5,10 @@ import StadiumTable from './StadiumTable'
 const EditStadium = () => {
 
   const context = useContext(StadiumGlobalContext)
-  const {error,UpdateStadiumById,GetStadiums,current} = context
+  const {error,UpdateStadiumById,GetStadiums,current,ClearError} = context
   const [stad, setStad] = useState({'stadiumId':'','name':'','city':'','capacity':'','image':''})
   useEffect(() => {
+    ClearError()
     if(current!==null){
       setStad(current)
     }else{
@@ -89,7 +90,7 @@ const EditStadium = () => {
     </div>
     <div className="form-group">
       <label>Stadium Capacity</label>
-      <input type="number" className="form-control" required name='capacity' onChange={onChangeHandler} value={stad.capacity} placeholder="Stadium Capacity" />
+      <input type='number' className="form-control" required name='capacity' onChange={onChangeHandler} value={stad.capacity} placeholder="Stadium Capacity" />
       <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {error.capacity}</strong>
           </div>

@@ -1,6 +1,6 @@
-import React,{ useEffect,useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import Axios from 'axios'
+
 
 const AdminNav = () => {
 
@@ -59,7 +59,6 @@ const AdminNav = () => {
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link className="dropdown-item" to='/addStadium'>Add Stadium</Link>
-          <Link className="dropdown-item" to='/deleteStadium'>Delete Stadium</Link>
           <Link className="dropdown-item" to='/editStadium'>Edit Stadium</Link>
         </div>
       </li>

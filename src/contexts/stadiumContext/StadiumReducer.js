@@ -5,6 +5,11 @@ export default (state,action) =>{
                     ...state,
                     stadiums:action.payload
                 }
+            case 'GET_STADIUM_BY_ID':
+                return{
+                    ...state,
+                    stadium:action.payload
+                }
             case 'ADD_STADIUM': 
                 return{
                     ...state,
@@ -35,6 +40,12 @@ export default (state,action) =>{
                 return{
                     ...state,
                     error:action.payload
+                }
+            case 'CLEAR_ERROR':
+                return{
+                    ...state,
+                    error:{}
+                    
                 }
 
         default: 

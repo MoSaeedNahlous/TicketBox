@@ -26,11 +26,12 @@ import DeleteGamePage from './components/pages/admin pages/DeleteGamePage';
 import AddTicketPage from './components/pages/admin pages/AddTicketPage';
 import DeleteTicketPage from './components/pages/admin pages/DeleteTicketPage';
 import AddStadiumPage from './components/pages/admin pages/AddStadiumPage';
-import DeleteStadiumPage from './components/pages/admin pages/DeleteStadiumPage';
+
 import Ticket from './components/layout/admin Forms/Tickets/Ticket';
 import ForgetPassword from './components/pages/ForgetPassword';
 import Teams from './components/pages/Teams';
 import Stadiums from './components/pages/Stadiums';
+import StadiumPage from './components/pages/StadiumPage'
 import EditStadiumPage from './components/pages/admin pages/EditStadiumPage';
 import { StadiumGlobalProvider } from './contexts/stadiumContext/StadiumGlobalState';
 
@@ -74,10 +75,9 @@ const App =() => {
             <Route exact path='/addTicket' component={AddTicketPage} />
             <Route exact path='/deleteTicket' component={DeleteTicketPage} />
             <Route exact path='/addStadium' component={AddStadiumPage} />
-            <Route exact path='/deleteStadium' component={DeleteStadiumPage} />
             <Route exact path='/editStadium' component={EditStadiumPage} />
             <Route exact path='/ticket' component={Ticket} />
-            
+            <Route exact path='/stadium/:stadiumId' component={StadiumPage} />
 
             
           </Switch>
