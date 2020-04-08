@@ -24,29 +24,30 @@ const EditStadium = () => {
 
   const fileSelectedHandler = (e) =>{
     var url = e.target.value;
-    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-    if (e.target.files && e.target.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            document.getElementById('img').setAttribute('src', e.target.result);
-        }
-
-        reader.readAsDataURL(e.target.files[0]);
-    }else{
-         document.getElementById('img').setAttribute('src', '/assets/no_preview.png');
-    }
-
+      var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+      if (e.target.files && e.target.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+          var reader = new FileReader();
   
- var img =document.getElementById('img')
- img.crossOrigin='Anonymous'
- img.onload =()=>{
-   var canvas = document.createElement('canvas')
-   var ctx = canvas.getContext('2d')
-   canvas.height=1
-   canvas.width= 1
-   //ctx.drawImage(this,0,0);
-   var data=canvas.toDataURL('image/jpeg')
+          reader.onload = function (e) {
+              document.getElementById('img').setAttribute('src', e.target.result);
+          }
+  
+          reader.readAsDataURL(e.target.files[0]);
+      }else{
+           document.getElementById('img').setAttribute('src', '/assets/no_preview.png');
+      }
+      
+  
+    
+   var img = document.getElementById('img')
+   img.crossOrigin='Anonymous'
+   img.onload=function(){
+     var canvas = document.createElement('canvas')
+     var ctx = canvas.getContext('2d')
+           canvas.height=this.naturalHeight
+            canvas.width=this.naturalWidth
+     ctx.drawImage(this,0,0);
+     var data=canvas.toDataURL('image/jpeg')
    setStad({...stad,'image':data})
  }
 }
