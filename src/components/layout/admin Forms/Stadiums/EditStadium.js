@@ -122,7 +122,7 @@ const EditStadium = () => {
     <div className="form-group">
     <label>Stadium Image file</label>
     <br/ >
-    <img id='img' src="" alt="" width='400px' height='250px'/>
+    <img id='img' src={stad.image} alt="" width='400px' height='250px'/>
     <br/>
     <input type="file" onChange={fileSelectedHandler} className="form-control-file" id='imgg'  />
     <div role="alert" style={{ width: "50%" }}>
