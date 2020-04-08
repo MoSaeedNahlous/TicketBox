@@ -24,8 +24,12 @@ const StadiumTableRow = ({Stadium}) => {
         <tr>
         <td>{Stadium.stadiumId}</td>
         <td>{Stadium.name}</td>
+        <td>{Stadium.country}</td>
         <td>{Stadium.city}</td>
         <td>{Stadium.capacity}</td>
+        <td><img height="75px" width="150px" src={Stadium.image} alt={Stadium.image}/></td>
+        <td>{Stadium.createdAt}</td>
+        <td>{Stadium.updatedAt}</td>
         
         <td>
           <button onClick={()=>context.SetCurrent(Stadium)}> <i className="fa fa-pencil" aria-hidden="true"></i></button>

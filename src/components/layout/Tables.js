@@ -1,15 +1,17 @@
 import React, { Fragment ,useContext} from 'react'
 import { Link } from 'react-router-dom'                                                                   
 import { useEffect } from 'react'
-import { useState } from 'react'
 import {StadiumGlobalContext} from './../../contexts/stadiumContext/StadiumGlobalState'
+import {TeamGlobalContext} from './../../contexts/teamContext/TeamGlobalState'
 import Row from './Row'
+import Row2 from './Row2'
 
 
 
 const Tables = () => {
 
          const context = useContext(StadiumGlobalContext)
+         const context2 = useContext(TeamGlobalContext)
          
 
 
@@ -17,6 +19,7 @@ const Tables = () => {
 
          useEffect(() => {
             context.GetStadiums();
+            context2.GetTeams();
  
         }, [])
 
@@ -26,13 +29,31 @@ const Tables = () => {
     
     return (
         <div className="container">
-                    <ul className="list-group">
-                        <li className="list-group-item crimsonRedBg wite links">Teams</li>
-                        <li className="list-group-item   links " style={{backgroundColor:'#151719'}}><Link to='/' className='links wite'>Bayern</Link></li>
-                        <li className="list-group-item   links " style={{backgroundColor:'#151719'}}><Link to='/' className='links wite'>BVB</Link></li>
-                        <li className="list-group-item   links " style={{backgroundColor:'#151719'}}><Link to='/' className='links wite'>S04</Link></li>
-                        <li className="list-group-item   links " style={{backgroundColor:'#151719'}}><Link to='/' className='links wite'>Hoffienhiem</Link></li>
-                        <li className="list-group-item   links " style={{backgroundColor:'#151719'}}><Link to='/teams'><button className='btn btn-primary'> more </button></Link></li>
+        <ul className="list-group">
+            <li className="list-group-item crimsonRedBg wite links">Teams</li>
+                        
+            {
+                (context2.teams.length>5) ? <Fragment>
+                {context2.teams.slice(0,5).map((team) =>
+                <Row2 team={team} key={team.id} />)}
+                <li className="list-group-item   links " style={{backgroundColor:'#151719'}}>
+                    
+                <Link to='/Teams'>
+                <button className='btn btn-primary' > more </button>
+                </Link>
+                </li>
+                </Fragment>
+                :   
+                context2.teams.map((team1) =><Row2 team={team1} key={team1.id}/>)
+                                
+                                
+            }
+                            
+                            
+                            
+                        
+                        
+                    
                     </ul>
                     <br />
         <ul className="list-group">

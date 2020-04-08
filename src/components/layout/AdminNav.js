@@ -46,6 +46,15 @@ const AdminNav = () => {
       </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Teams Actions
+        </a>
+        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <Link className="dropdown-item" to='/addTeam' >Add Team</Link>
+          <Link className="dropdown-item" to='/editTeam'>Edit Team</Link>
+        </div>
+      </li>
+      <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tickets Actions
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

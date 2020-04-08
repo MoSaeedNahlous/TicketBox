@@ -1,29 +1,29 @@
 export default (state,action) =>{
     switch(action.type){
-            case 'GET_STADIUMS':
+            case 'GET_TEAMS':
                 return{
                     ...state,
-                    stadiums:action.payload
+                    teams:action.payload
                 }
-            case 'GET_STADIUM_BY_ID':
+            case 'GET_TEAM_BY_ID':
                 return{
                     ...state,
-                    stadium:action.payload
+                    team:action.payload
                 }
-            case 'ADD_STADIUM': 
+            case 'ADD_TEAM': 
                 return{
                     ...state,
-                    stadiums: [action.payload,...state.stadiums]
+                    teams: [action.payload,...state.teams]
                 }
-            case 'DELETE_STADIUM':
+            case 'DELETE_TEAM':
                 return{
                     ...state,
-                    stadiums:state.stadiums.filter(stadium => stadium.stadiumId !== action.payload)
+                    teams:state.teams.filter(team => team.id !== action.payload)
                 }
-            case 'UPDATE_STADIUM':
+            case 'UPDATE_TEAM':
                 return{
                     ...state,
-                    stadiums:state.stadiums.map(stadium => stadium.stadiumId === action.payload.stadiumId ? action.payload : stadium)
+                    teams:state.teams.map(team => team.id === action.payload.id ? action.payload : team)
                     
                 }
             case 'SET_CURRENT':

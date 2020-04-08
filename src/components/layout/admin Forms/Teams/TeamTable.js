@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import StadiumTableRow from './StadiumTableRow'
+import TeamTableRow from './TeamTableRow'
 import { useContext } from 'react'
-import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
+import {TeamGlobalContext} from '../../../../contexts/teamContext/TeamGlobalState'
 
-const StadiumTable = () => {
-  const context = useContext(StadiumGlobalContext)
+const TeamTable = () => {
+  const context = useContext(TeamGlobalContext)
   useEffect(() => {
-    context.GetStadiums()
+    context.GetTeams()
     
   }, [])
 
@@ -17,20 +17,20 @@ const StadiumTable = () => {
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Name</th>
+      <th scope="col">Country</th>
       <th scope="col">City</th>
-      <th scope="col">Capacity</th>
-      <th scope="col">Image</th>
+      <th scope="col">Logo</th>
       <th scope="col">Create Time</th>
       <th scope="col">Last Update Time</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    {context.stadiums.map((Stadium) =><StadiumTableRow key={Stadium.stadiumId} Stadium={Stadium} />)}
+    {context.teams.map((Team1) =><TeamTableRow key={Team1.id} Team={Team1} />)}
   </tbody>
 </table>
         </div>
     )
 }
 
-export default StadiumTable
+export default TeamTable

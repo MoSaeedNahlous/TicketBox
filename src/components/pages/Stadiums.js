@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React,{useEffect} from 'react'
 import StadiumCard from '../layout/StadiumCard'
 import {StadiumGlobalContext} from '../../contexts/stadiumContext/StadiumGlobalState'
 import bg from '../../res/bghome.jpg'
@@ -14,7 +14,7 @@ const Stadiums = () => {
     const {stadiums,GetStadiums} = context
     useEffect(() => {
         GetStadiums()
-    }, [Stadiums])
+    }, [stadiums])
 
     return (
         <div style={{backgroundImage: `url(${bg})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>

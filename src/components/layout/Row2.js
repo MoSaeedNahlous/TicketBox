@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 
 
 
-const Row = ({stadium}) => {
+const Row2 = ({team}) => {
     
 
     return (
         
 
                 <li className="list-group-item  wite links" style={{backgroundColor:'#151719'}} >
-                <Link to={`/stadium/${stadium.stadiumId}`} className='links wite'>{stadium.name}</Link>
+                <Link to={`/team/${team.id}`} className='links wite'>{team.name}</Link>
                 </li>
     )
 }
 
-export default Row
+export default Row2

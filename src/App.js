@@ -32,13 +32,19 @@ import ForgetPassword from './components/pages/ForgetPassword';
 import Teams from './components/pages/Teams';
 import Stadiums from './components/pages/Stadiums';
 import StadiumPage from './components/pages/StadiumPage'
+import TeamPage from './components/pages/TeamPage'
 import EditStadiumPage from './components/pages/admin pages/EditStadiumPage';
 import { StadiumGlobalProvider } from './contexts/stadiumContext/StadiumGlobalState';
+import { TeamGlobalProvider } from './contexts/teamContext/TeamGlobalState';
+import AddTeamPage from './components/pages/admin pages/AddTeamPage';
+import EditTeamPage from './components/pages/admin pages/EditTeamPage';
+
 
 
  
 const App =() => {
   return (
+    <TeamGlobalProvider>
     <StadiumGlobalProvider>
     
     <Router>
@@ -76,8 +82,13 @@ const App =() => {
             <Route exact path='/deleteTicket' component={DeleteTicketPage} />
             <Route exact path='/addStadium' component={AddStadiumPage} />
             <Route exact path='/editStadium' component={EditStadiumPage} />
+
+            <Route exact path='/addTeam' component={AddTeamPage} />
+            <Route exact path='/editTeam' component={EditTeamPage} />
+            
             <Route exact path='/ticket' component={Ticket} />
             <Route exact path='/stadium/:stadiumId' component={StadiumPage} />
+            <Route exact path='/team/:id' component={TeamPage} />
 
             
           </Switch>
@@ -85,6 +96,7 @@ const App =() => {
       </div>
     </Router>
     </StadiumGlobalProvider>
+    </TeamGlobalProvider>
   );
 }
 export default App;
