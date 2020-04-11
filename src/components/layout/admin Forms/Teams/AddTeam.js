@@ -19,11 +19,20 @@ const AddTeam = () => {
 
   const addTeam =(e)=>{
     e.preventDefault();
-    console.log(team);
-    context.AddTeam(team);
-    setTeam({'name':'','country':'','city':'','image':''})
-    document.getElementById('imgg').value=""
-    document.getElementById('img').setAttribute('src',"")
+    if(/^[a-zA-Z]+$/.test(team.name))
+      {
+      console.log(team);
+      context.AddTeam(team);
+      setTeam({'name':'','country':'','city':'','image':''})
+      document.getElementById('imgg').value=""
+      document.getElementById('img').setAttribute('src',"")
+      }
+      else
+      {
+       
+      alert('Please input alphabet characters only in name!!!');
+      
+      }
   }
   const onChangeHandler = (e) =>{setTeam({...team,[e.target.name]:e.target.value})}
 

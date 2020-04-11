@@ -53,9 +53,21 @@ const EditTeam = () => {
 }
  const onSubmitHandler = e =>{
    e.preventDefault();
-   UpdateTeamById(team)
-   setTeam({'id':'','name':'','city':'','country':'','image':''})
-   GetTeams()
+   if(/^[a-zA-Z]+$/.test(team.name))
+     {
+     UpdateTeamById(team)
+     setTeam({'id':'','name':'','city':'','country':'','image':''})
+     document.getElementById('imgg').value=""
+     document.getElementById('img').setAttribute('src',"") 
+     GetTeams()
+     }
+     else
+     {
+      
+     alert('Please input alphabet characters only in name!!!');
+     
+     }
+    
  }
  
  const onChangeHandler = e =>{setTeam({...team,[e.target.name]:e.target.value})}

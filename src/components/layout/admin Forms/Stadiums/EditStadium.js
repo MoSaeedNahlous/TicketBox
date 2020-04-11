@@ -52,10 +52,22 @@ const EditStadium = () => {
  }
 }
  const onSubmitHandler = e =>{
-   e.preventDefault();
-   UpdateStadiumById(stad)
-   setStad({'stadiumId':'','name':'','city':'','capacity':'','image':''})
-   GetStadiums()
+  e.preventDefault();
+  if(/^[a-zA-Z]+$/.test(stad.name))
+    {
+    UpdateStadiumById(stad)
+    setStad({'stadiumId':'','name':'','city':'','capacity':'','image':''})
+    document.getElementById('imgg').value=""
+    document.getElementById('img').setAttribute('src',"") 
+    GetStadiums()
+    }
+    else
+    {
+     
+    alert('Please input alphabet characters only in name!!!');
+    
+    }
+   
  }
  
  const onChangeHandler = e =>{setStad({...stad,[e.target.name]:e.target.value})}

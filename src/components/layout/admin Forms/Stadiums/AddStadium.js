@@ -10,6 +10,11 @@ const AddStadium = () => {
   useEffect(() => {
     context.ClearError()
   }, [])
+  
+
+
+
+  
 
 
 
@@ -19,13 +24,29 @@ const AddStadium = () => {
 
   const addStadium =(e)=>{
     e.preventDefault();
+    if(/^[a-zA-Z]+$/.test(stadium.name))
+      {
     console.log(stadium);
     context.AddStadium(stadium);
     setStadium({'name':'','city':'','capacity':'','image':''})
     document.getElementById('imgg').value=""
     document.getElementById('img').setAttribute('src',"")
+      }
+      else
+      {
+       
+      alert('Please input alphabet characters only in name!!!');
+      
+      }
+    
   }
   const onChangeHandler = (e) =>{setStadium({...stadium,[e.target.name]:e.target.value})}
+  
+  const inputHandler =(txt,e)=>{
+     e.preventDefault();
+      
+
+  }
 
 
   const fileSelectedHandler = (e) =>{
@@ -64,6 +85,7 @@ const AddStadium = () => {
    }
   }
   
+  
 
     return (
         <div className='container'>
@@ -71,7 +93,7 @@ const AddStadium = () => {
       <h1>Add Stadium</h1>
     <div className="form-group">
       <label>Stadium Name</label>
-      <input type="text" className="form-control" name='name' placeholder="Stadium Name" value={stadium.name} onChange={onChangeHandler} required/>
+      <input id='txt' type="text" className="form-control" name='name' placeholder="Stadium Name" value={stadium.name} onChange={onChangeHandler} required/>
       <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {context.error.name}</strong>
           </div>
