@@ -22,7 +22,7 @@ import AddEmpPage from './components/pages/admin pages/AddEmpPage';
 import DeleteEmpPage from './components/pages/admin pages/DeleteEmpPage';
 import DeleteUserPage from './components/pages/admin pages/DeleteUserPage';
 import AddGamePage from './components/pages/admin pages/AddGamePage';
-import DeleteGamePage from './components/pages/admin pages/DeleteGamePage';
+
 import AddTicketPage from './components/pages/admin pages/AddTicketPage';
 import DeleteTicketPage from './components/pages/admin pages/DeleteTicketPage';
 import AddStadiumPage from './components/pages/admin pages/AddStadiumPage';
@@ -36,8 +36,10 @@ import TeamPage from './components/pages/TeamPage'
 import EditStadiumPage from './components/pages/admin pages/EditStadiumPage';
 import { StadiumGlobalProvider } from './contexts/stadiumContext/StadiumGlobalState';
 import { TeamGlobalProvider } from './contexts/teamContext/TeamGlobalState';
+import { GameGlobalProvider } from './contexts/gameContext/GameGlobalState';
 import AddTeamPage from './components/pages/admin pages/AddTeamPage';
 import EditTeamPage from './components/pages/admin pages/EditTeamPage';
+import EditGamePage from './components/pages/admin pages/EditGamePage';
 
 
 
@@ -46,6 +48,7 @@ const App =() => {
   return (
     <TeamGlobalProvider>
     <StadiumGlobalProvider>
+    <GameGlobalProvider>
     
     <Router>
       <div className="App full-width " >
@@ -76,8 +79,10 @@ const App =() => {
             <Route exact path='/addEmp' component={AddEmpPage} />
             <Route exact path='/deleteEmp' component={DeleteEmpPage} />
             <Route exact path='/deleteUser' component={DeleteUserPage} />
+
             <Route exact path='/addGame' component={AddGamePage} />
-            <Route exact path='/deleteGame' component={DeleteGamePage} />
+            <Route exact path='/editGame' component={EditGamePage} />
+
             <Route exact path='/addTicket' component={AddTicketPage} />
             <Route exact path='/deleteTicket' component={DeleteTicketPage} />
             <Route exact path='/addStadium' component={AddStadiumPage} />
@@ -95,6 +100,7 @@ const App =() => {
           </div>
       </div>
     </Router>
+    </GameGlobalProvider>
     </StadiumGlobalProvider>
     </TeamGlobalProvider>
   );

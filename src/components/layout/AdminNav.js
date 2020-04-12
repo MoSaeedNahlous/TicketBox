@@ -41,7 +41,7 @@ const AdminNav = () => {
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link className="dropdown-item" to='/addGame'>Add Game</Link>
-          <Link className="dropdown-item" to='/deleteGame'>Delete Game</Link>
+          <Link className="dropdown-item" to='/editGame'>Edit Game</Link>
         </div>
       </li>
       <li className="nav-item dropdown">
