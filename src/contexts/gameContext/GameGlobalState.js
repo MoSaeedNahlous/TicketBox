@@ -94,6 +94,12 @@ export const GameGlobalProvider = ({children}) => {
         .then()
         .catch()
     }
+    //DeleteAllTeamsFromTheGame
+    const DeleteTeamsFromTheGame = async (gameId)=>{
+        await axios.delete(`/game/deleteTeams/${gameId}`)
+        .then()
+        .catch()
+    }
     //AddStadiumToTheGame
     const AddStadiumToTheGame = async (gameId,stadId)=>{
         await axios.post(`/game/addStadium/${gameId}/${stadId}`)
@@ -203,7 +209,8 @@ export const GameGlobalProvider = ({children}) => {
             ClearCurrent4,
             ClearError,
             ClearGame,
-            AddStadiumToTheGame
+            AddStadiumToTheGame,
+            DeleteTeamsFromTheGame
         }}>
             {children}
         </GameGlobalContext.Provider>

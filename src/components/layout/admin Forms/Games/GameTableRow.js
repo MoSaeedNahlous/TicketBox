@@ -22,6 +22,7 @@ console.log(Game);
     const deleteRow = ()=>{
         
         context.DeleteGame(Game.id);
+        context.DeleteTeamsFromTheGame(Game.id);
         context.ClearCurrent3();
     }
       
