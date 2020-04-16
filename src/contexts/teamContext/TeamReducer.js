@@ -10,6 +10,11 @@ export default (state,action) =>{
                     ...state,
                     team:action.payload
                 }
+            case 'GET_TEAM_BY_ID2':
+                return{
+                    ...state,
+                    team2:action.payload
+                }
             case 'ADD_TEAM': 
                 return{
                     ...state,

@@ -1,97 +1,179 @@
 import React,{ useContext,useState,useEffect } from 'react'
 import {GameGlobalContext} from '../../../../contexts/gameContext/GameGlobalState'
+import {TeamGlobalContext} from '../../../../contexts/teamContext/TeamGlobalState'
+import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
+import GameTable from './GameTable'
 
 
 const EditGame = () => {
 
-  const context = useContext(GameGlobalContext)
+  const gmcontext = useContext(GameGlobalContext)
+  const tmcontext = useContext(TeamGlobalContext)
+  const stdcontext = useContext(StadiumGlobalContext)
+  const {UpdateGameById,current3,ClearError,current1,current2,SetCurrent2,SetCurrent1,SetCurrent4,current4,DeleteTeamFromTheGame,AddTeamToTheGame} = gmcontext
+  const {teams,GetTeams,GetTeamByID,GetTeamByID2,team,team2} = tmcontext
+  const {stadiums,GetStadiums,GetStadiumByID} = stdcontext
+  const [state, setState] = useState({"deadLine":'','id':'','stadium':'','teams':[],'tickets':[],'gameIdentifier':''})
+  const [host,setHost] = useState({})
+  const [guest,setGuest] = useState({})
+  const [stad,setStad] = useState({})
+  const [deadLine,setDeadline]= useState("")
+ 
+
+
   
 
   useEffect(() => {
-   
-  }, [])
-  
-  
-  
-  
-  
-  
-
-  
-      
-  
     
-   
+    ClearError()
+    GetTeams()
+    GetStadiums()
+    if(current3 !== null){
+      setHost(current3.teams[0])
+      setGuest(current3.teams[1])
+      setStad(current3.stadium)
+      setState(current3)
+      
+    }else{
+      setState({"deadLine":'','id':'','stadium':{},'teams':[{},{}],'tickets':[],'gameIdentifier':''})
+      setHost("")
+      setGuest("")
+      setStad("")
+    }
+  }, [current3])
+  useEffect(() => {
+    
+    ClearError()
+    GetTeams()
+    GetStadiums()
+    setStad(stdcontext.stadium)
+    setHost(team)
+    setGuest(team2)
+    
+  }, [team,team2,stdcontext.stadium])
 
+  
+  
 
+  const onClick1Handler =(e)=>{
+    e.preventDefault()
+    document.getElementById('host').disabled=false;
+    //DeleteTeamFromTheGame(state.id,document.getElementById('host').value)
+    document.getElementById('host').value=""
+  }
+  const onClick2Handler =(e)=>{
+    e.preventDefault()
+    document.getElementById('guest').disabled=false;
+    //DeleteTeamFromTheGame(state.id,document.getElementById('guest').value)
+    document.getElementById('guest').value=""
+  }
+  const onChangeHost =(e)=>{
+    e.preventDefault()
+    setHost(e.target.value)
+    GetTeamByID(e.target.value)
+    setState({...state,teams:[team,state.teams[1]]})
+    console.log(team);
+    
+  }
+  const onChangeGuest =(e)=>{
+    e.preventDefault()
+    setGuest(e.target.value)
+    GetTeamByID2(e.target.value)
+    setState({...state,teams:[state.teams[0],team2]})
+    console.log(team2);
+  }
+  const onChangeDeadLine =(e)=>{
+    e.preventDefault()
+    setState({...state,deadLine:e.target.value})
+  }
+  const onChangeStadium =(e)=>{
+    e.preventDefault()
+    setStad(e.target.value)
+    GetStadiumByID(e.target.value)
+    setState({...state,stadium:stdcontext.stadium})
 
+  }
+  
+  const onSubmitHandler = e =>{
+    e.preventDefault()
+    
+    
+    
+    var obj ={"deadLine":state.deadLine,'id':state.id,'stadium':stdcontext.stadium,'teams':[team,team2],'tickets':state.tickets,'gameIdentifier':state.gameIdentifier}
+    console.log("this should be the new game   "+JSON.stringify(obj));
+    
+    
+    UpdateGameById(obj);
+    document.getElementById("small").innerText=JSON.stringify(obj)
 
+    
 
-
-
-
-
-
+  }
+  
 
   return(
     <div className='container'>
       
-      <form >
-        <h1>Edit Stadium</h1>
-        <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> </strong>
-          </div>
-        <div className="form-group">
-      <label>Stadium ID</label>
-      <input type="number" className="form-control" required name='stadiumId' placeholder="Stadium ID"  disabled />
-      <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> </strong>
-          </div>
-    </div>
-    <div className="form-group">
-      <label>Stadium Name</label>
-      <input type="text" className="form-control" required name='name' placeholder="Stadium Name"/>
-      <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> </strong>
-          </div>
-    </div>
-    <div className="form-group">
-      <label>Stadium Capacity</label>
-      <input type='number' className="form-control" required name='capacity'  placeholder="Stadium Capacity" />
-      <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> </strong>
-          </div>
-    </div>
-    <div className="form-group">
-      <label>Stadium City</label>
-      <select className="form-control"   name='city' required >
+    <form onSubmit={onSubmitHandler}>
+        <h1>Edit Game</h1>
+        
+        <div className="row">
+          <div className="col-sm-6">
+          <div className="form-group">
+      <label>Host Team</label>
+      <select required className="form-control" id='host' onChange={onChangeHost} value={host.id} disabled >
       <option value="" hidden> 
-          Select City 
+          Select Host team 
       </option> 
-        <option value='Damascus'>Damascus</option>
-        <option value='Aleppo'>Aleppo</option>
-        <option value='Lattakia'>Lattakia</option>
-        <option value='Homs'>Homs</option>
-        <option value='Tartous'>Tartous</option>
-        <option value='Daraa'>Daraa</option>
-        <option value='Der-El-Zour'>Der El-Zour</option>
-        <option value='Al-Rakka'>Al-Rakka</option>
-        <option value='Al-Hasakeh'>Al-Hasakeh</option>
-        <option value='Al-Swedaa'>Al-Swedaa</option>
-        <option value='Idlib'>Idlib</option>
-        <option value='Al-Kuneterah'>Al-Kuneterah</option>
+      {teams.map((team)=><option key={team.id} value={team.id}>{team.name}</option>)}
       </select>
-      <div role="alert" style={{ width: "50%" }}>
-            <strong style={{color:'red'}}> </strong>
-          </div>
-    </div>
+    <button className="btn btn-dark" onClick={onClick1Handler} >Edit Host</button>
     
+    </div>
+     </div>
+          <div className="col-sm-6">
+          <div className="form-group">
+      <label>Guest Team</label>
+      <select required className="form-control" onChange={onChangeGuest} id='guest' value={guest.id} disabled>
+      <option value="" hidden> 
+          Select Guest team 
+      </option> 
+      {teams.map((team)=><option key={team.id} value={team.id} >{team.name}</option>)}
+      </select>
+      <button className="btn btn-dark" onClick={onClick2Handler} >Edit Guest</button>
+    </div>
+     </div>
 
-  <button type="submit" className="btn btn-primary" style={{float:'right'}}>Update Stadium</button>
-  <br />
-</form>
+          
+        </div>
+        
+    <div className="form-group">
+      <label>Stadium</label>
+      <select required className="form-control" onChange={onChangeStadium} value={stad.stadiumId} >
+      <option value="" hidden> 
+          Select Stadium
+      </option> 
+      {stadiums.map((stadium)=><option key={stadium.stadiumId} value={stadium.stadiumId}>{stadium.name}</option>)}
+      </select>
+    </div>
+
+    <div className="form-group">
+      <label>Game DeadLine</label>
+      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" value={state.deadLine} onChange={onChangeDeadLine} required />
+      <small> example : 31/12/1997 13:10 </small>
+    </div>
+  
+
+
+      <button type="submit" className="btn btn-primary" style={{float:'right'}}>Update Game</button>
+
+
+
+        </form>
+        <small id="small"></small>
 
 <br />
+    <GameTable />
 
 
 

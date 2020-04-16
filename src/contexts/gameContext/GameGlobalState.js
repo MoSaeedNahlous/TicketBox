@@ -11,6 +11,7 @@ const intialState={
     error:{},
     current1:{},
     current2:{},
+    current4:{},
     current3:null,
     ready:'no'
 }
@@ -82,9 +83,20 @@ export const GameGlobalProvider = ({children}) => {
         }
 
     //AddTeamToTheGame
-
     const AddTeamToTheGame = async (gameId,teamId)=>{
         await axios.post(`/game/addTeam/${gameId}/${teamId}`)
+        .then()
+        .catch()
+    }
+    //DeleteTeamFromTheGame
+    const DeleteTeamFromTheGame = async (gameId,teamId)=>{
+        await axios.delete(`/game/deleteTeam/${gameId}/${teamId}`)
+        .then()
+        .catch()
+    }
+    //AddStadiumToTheGame
+    const AddStadiumToTheGame = async (gameId,stadId)=>{
+        await axios.post(`/game/addStadium/${gameId}/${stadId}`)
         .then()
         .catch()
     }
@@ -133,6 +145,18 @@ export const GameGlobalProvider = ({children}) => {
             type:'CLEAR_CURRENT3'
         })
     }
+    //SetCuurent4
+    const SetCurrent4 = stad =>{
+        dispatch({
+            type:'SET_CURRENT4',payload:stad
+        })
+    }
+    //ClearCuurent4
+    const ClearCurrent4 = () =>{
+        dispatch({
+            type:'CLEAR_CURRENT4'
+        })
+    }
     //ClearCuurent
     const ClearError = () =>{
         dispatch({
@@ -159,6 +183,7 @@ export const GameGlobalProvider = ({children}) => {
             current1:state.current1 ,
             current2:state.current2 ,
             current3:state.current3 ,
+            current4:state.current4 ,
             ready:state.ready,
             GetGames,
             AddGame,
@@ -167,14 +192,18 @@ export const GameGlobalProvider = ({children}) => {
             GetGameByID,
             UpdateGameById,
             AddTeamToTheGame,
+            DeleteTeamFromTheGame,
             SetCurrent1,
             ClearCurrent1,
             SetCurrent2,
             ClearCurrent2,
             SetCurrent3,
             ClearCurrent3,
+            SetCurrent4,
+            ClearCurrent4,
             ClearError,
-            ClearGame
+            ClearGame,
+            AddStadiumToTheGame
         }}>
             {children}
         </GameGlobalContext.Provider>

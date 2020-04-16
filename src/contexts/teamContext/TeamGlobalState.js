@@ -8,6 +8,7 @@ import axios from 'axios'
 const intialState={
     teams:[],
     team:{},
+    team2:{},
     error:{},
     current:null
 }
@@ -74,6 +75,13 @@ export const TeamGlobalProvider = ({children}) => {
             })}
         ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})});
     }
+    const GetTeamByID2 = (id) =>{
+        axios.get(`/team/findById/${id}`).then(
+            res =>{dispatch({
+                type:'GET_TEAM_BY_ID2',payload:res.data
+            })}
+        ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})});
+    }
 
     //SetCuurent
     const SetCurrent = team =>{
@@ -103,12 +111,14 @@ export const TeamGlobalProvider = ({children}) => {
         <TeamGlobalContext.Provider value={{
             teams:state.teams,
             team:state.team,
+            team2:state.team2,
             error:state.error,
             current:state.current,
             GetTeams,
             AddTeam,
             DeleteTeam,
             GetTeamByID,
+            GetTeamByID2,
             UpdateTeamById,
             SetCurrent,
             ClearCurrent,
