@@ -49,10 +49,16 @@ const AddStadium = () => {
   }
 
 
+
+
   const fileSelectedHandler = (e) =>{
 
 
-    
+    var fileName = document.getElementById("imgg").value;
+    var idxDot = fileName.lastIndexOf(".") + 1;
+    var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+    if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" ||extFile=="gif"){
+
       var url = e.target.value;
       var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
       if (e.target.files && e.target.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
@@ -83,6 +89,12 @@ const AddStadium = () => {
      
      setStadium({...stadium,'image':data})
    }
+    }else{
+        alert("Only jpg/jpeg , png and gif files are allowed!");
+        document.getElementById('imgg').value=null
+        document.getElementById('img').setAttribute('src', '');
+    }
+      
   }
   
   
@@ -134,7 +146,7 @@ const AddStadium = () => {
     <br/ >
     <img id='img' src="" alt="" width='400px' height='250px'/>
     <br/>
-    <input type="file" className="form-control-file" id='imgg' onChange={fileSelectedHandler} />
+    <input type="file" className="form-control-file" accept=".png, .jpg, .jpeg, .gif" id='imgg' onChange={fileSelectedHandler} />
     <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {context.error.image}</strong>
           </div>

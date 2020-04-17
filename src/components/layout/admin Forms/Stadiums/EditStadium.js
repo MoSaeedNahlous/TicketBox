@@ -18,12 +18,15 @@ const EditStadium = () => {
   
   
   
-  
-  
-  
-
   const fileSelectedHandler = (e) =>{
-    var url = e.target.value;
+
+
+    var fileName = document.getElementById("imgg").value;
+    var idxDot = fileName.lastIndexOf(".") + 1;
+    var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+    if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" ||extFile=="gif"){
+
+      var url = e.target.value;
       var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
       if (e.target.files && e.target.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
           var reader = new FileReader();
@@ -48,9 +51,23 @@ const EditStadium = () => {
             canvas.width=this.naturalWidth
      ctx.drawImage(this,0,0);
      var data=canvas.toDataURL('image/jpeg')
-   setStad({...stad,'image':data})
- }
-}
+     console.log(data);
+     
+     
+     setStad({...stad,'image':data})
+   }
+    }else{
+        alert("Only jpg/jpeg , png and gif files are allowed!");
+        document.getElementById('imgg').value=null
+        document.getElementById('img').setAttribute('src', '');
+    }
+      
+  }
+  
+  
+  
+
+  
  const onSubmitHandler = e =>{
   e.preventDefault();
   if(/^[a-zA-Z]+$/.test(stad.name))
@@ -136,7 +153,7 @@ const EditStadium = () => {
     <br/ >
     <img id='img' src={stad.image} alt="" width='400px' height='250px'/>
     <br/>
-    <input type="file" onChange={fileSelectedHandler} className="form-control-file" id='imgg'  />
+    <input type="file" onChange={fileSelectedHandler} accept=".png, .jpg, .jpeg, .gif" className="form-control-file" id='imgg'  />
     <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {error.image}</strong>
           </div>

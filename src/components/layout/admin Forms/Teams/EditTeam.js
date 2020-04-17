@@ -18,12 +18,15 @@ const EditTeam = () => {
   
   
   
-  
-  
-  
-
   const fileSelectedHandler = (e) =>{
-    var url = e.target.value;
+
+
+    var fileName = document.getElementById("imgg").value;
+    var idxDot = fileName.lastIndexOf(".") + 1;
+    var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+    if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" ||extFile=="gif"){
+
+      var url = e.target.value;
       var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
       if (e.target.files && e.target.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
           var reader = new FileReader();
@@ -34,7 +37,7 @@ const EditTeam = () => {
   
           reader.readAsDataURL(e.target.files[0]);
       }else{
-           document.getElementById('img').setAttribute('src', '/assets/no_preview.png');
+           document.getElementById('img').setAttribute('src', '');
       }
       
   
@@ -48,9 +51,20 @@ const EditTeam = () => {
             canvas.width=this.naturalWidth
      ctx.drawImage(this,0,0);
      var data=canvas.toDataURL('image/jpeg')
-   setTeam({...team,'image':data})
- }
-}
+     console.log(data);
+     setTeam({...team,'image':data})
+     
+
+   }
+    }else{
+        alert("Only jpg/jpeg , png and gif files are allowed!");
+        document.getElementById('imgg').value=null
+        document.getElementById('img').setAttribute('src', '');
+    }
+      
+  }
+  
+
  const onSubmitHandler = e =>{
    e.preventDefault();
    if(/^[a-zA-Z]+$/.test(team.name))
@@ -141,7 +155,7 @@ const EditTeam = () => {
     <br/ >
     <img id='img' src={team.image} alt="" width='250px' height='250px'/>
     <br/>
-    <input type="file" onChange={fileSelectedHandler} className="form-control-file" id='imgg'  />
+    <input type="file" accept=".png, .jpg, .jpeg, .gif" onChange={fileSelectedHandler} className="form-control-file" id='imgg'  />
     <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {error.image}</strong>
           </div>
