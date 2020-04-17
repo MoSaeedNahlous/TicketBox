@@ -39,27 +39,14 @@ export const GameGlobalProvider = ({children}) => {
             );
         }
 
-    //AddGame
-        const AddGame = () =>{
-            axios.post('/game/save',{}).then(
-                (res) =>{dispatch({
-                    type:'ADD_GAME',payload:res.data
-                    
-                })
-                console.log(res.data)
-                alert("proceed to the next Step...")               
-                }
-            ).catch(err=>{dispatch({type:'HANDLING_ERROR',payload:err.response.data})})
-        }
 
     //AddGame
-        const AddGame2 = (game) =>{
-            axios.post('/game/save',game).then(
-                (res) =>{dispatch({
-                    type:'ADD_GAME2',payload:game
-                    
-                })
-                alert("Game added!!")               
+        const AddGame = async(game) =>{
+           await axios.post('/game/save',game).then(
+                (res) =>{
+                    dispatch({type:'ADD_GAME',payload:res.data})
+                    console.log(res.data);
+                                  
                 }
             ).catch(err=>{dispatch({type:'HANDLING_ERROR',payload:err.response.data})})
         }
@@ -193,7 +180,6 @@ export const GameGlobalProvider = ({children}) => {
             ready:state.ready,
             GetGames,
             AddGame,
-            AddGame2,
             DeleteGame,
             GetGameByID,
             UpdateGameById,

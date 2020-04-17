@@ -14,14 +14,7 @@ export default (state,action) =>{
                 return{
                     ...state,
                     game:action.payload,
-                    ready:'yes',
-                    
-                }
-            case 'ADD_GAME2':
-                return{
-                    ...state,
                     games:[action.payload,...state.games]
-                    
                 }
             case 'DELETE_GAME':
                 return{

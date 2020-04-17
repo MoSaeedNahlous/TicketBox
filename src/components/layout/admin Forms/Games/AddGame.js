@@ -7,80 +7,59 @@ import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumG
 const AddGame = () => {
 
   const GameContext = useContext(GameGlobalContext)
-  const {game,AddGame,ClearGame,AddGame2,SetCurrent1,SetCurrent2,ClearCurrent1,ClearCurrent2,current1,current2,ClearError,AddTeamToTheGame,AddStadiumToTheGame} = GameContext
   const TeamContext = useContext(TeamGlobalContext)
-  const {teams,GetTeams,} = TeamContext
   const StadiumContext = useContext(StadiumGlobalContext)
+  const {teams,GetTeams} = TeamContext
   const {stadiums,GetStadiums} = StadiumContext
-  const [gameSt, setGameSt] = useState({"id":'',"gameIdentifier":'',"tickets":[],"teams":[],"deadLine":''})
-  
+  const [state, setState] = useState({"deadLine":"","host":"","guest":"","stadium":"","game":{}})
+  var next = false
+
+
   useEffect(() => {
-    ClearError()
     GetStadiums()
     GetTeams()
-  }, [])
-  var deadLine = ""
-  var team1Id = ""
-  var team2Id = ""
-  var stadId = ""
+    setState({...state,game:GameContext.game})
+  }, [GameContext.game])
 
-  const onSubmitHandler =(e)=>{
-    e.preventDefault();
-    AddGame({})
-    document.getElementById("firstForm").style.display="none"
-    document.getElementById("secondForm").style.display="block"
-  }
-
-  const onChangeTeam =(e)=>{
-  
-    team1Id=e.target.value
-    console.log(e.target.value)
-    
-  }
-  const onChangeTeam2 =(e)=>{
-    
-    team2Id=e.target.value
-    console.log(e.target.value)
-    
-    
-  }
-  const onChangeTeam3 =(e)=>{
-    
-    stadId=e.target.value
-    console.log(e.target.value)
-    
-    
-  }
-  const onSubmitHandler1 =(e)=>{
-    e.preventDefault();
-    console.log(game.id)
-    AddTeamToTheGame(game.id,team1Id);
-    AddTeamToTheGame(game.id,team2Id);
-    AddStadiumToTheGame(game.id,stadId)
-    
-    console.log({
-      "id":game.id,
-      "gameIdentifier":Math.floor(Math.random() * (999999999999999999 - 1) ) + 1,
-      "teams": [],
-      "tickets": [],
-      "deadLine": deadLine
-    })
-    AddGame2({
-      "id":game.id,
-      "gameIdentifier":Math.floor(Math.random() * (999999999999999999 - 1) ) + 1,
-      "teams": [],
-      "tickets": [],
-      "deadLine": deadLine
-    })
-    ClearCurrent1()
-    ClearCurrent2()
-    document.getElementById("firstForm").style.display="block"
-    document.getElementById("secondForm").style.display="none"
-    ClearGame()
-  }
-
-
+  const onChangeHandler =(e)=>{setState({...state,[e.target.name]:e.target.value})}
     //var gameIdentifier = Math.floor(Math.random() * (999999999999999999 - 1) ) + 1
+
+  const onSubmitHandler1 =(e)=>{
+    e.preventDefault()
+    GameContext.AddGame({"gameIdentifier":Math.floor(Math.random() * (999999999999999999 - 1) ) + 1,"deadLine":state.deadLine})
+    setState({...state,game:GameContext.game})
+    document.getElementById("bt").disabled=true
+    document.getElementById("bt2").disabled=false
+    document.getElementById("stadium").disabled=false
+    document.getElementById("host").disabled=false
+    document.getElementById("guest").disabled=false
+    document.getElementById("deadline").disabled=true
+    document.getElementById("firstform").disabled=true
+    document.getElementById("secondform").disabled=false
+    }
+    
+    const onSubmitHandler2 =(e)=>{
+      e.preventDefault()
+      GameContext.AddTeamToTheGame(state.game.id,state.host)
+      GameContext.AddTeamToTheGame(state.game.id,state.guest)
+      GameContext.AddStadiumToTheGame(state.game.id,state.stadium)
+      document.getElementById("bt").disabled=false
+      document.getElementById("bt2").disabled=true
+      document.getElementById("stadium").disabled=true
+      document.getElementById("host").disabled=true
+      document.getElementById("guest").disabled=true
+      document.getElementById("deadline").disabled=false
+      document.getElementById("firstform").disabled=false
+      document.getElementById("secondform").disabled=true
+      setState({"deadLine":"","host":"","guest":"","stadium":"","game":{}})
+      document.getElementById("stadium").value=""
+      document.getElementById("host").value=""
+      document.getElementById("guest").value=""
+      document.getElementById("deadline").value=""
+
+    }
+      
+      
 
 
 
@@ -88,35 +67,36 @@ const AddGame = () => {
     return (
         
         <div className='container'>
+
+
+
         
-        <form onSubmit={onSubmitHandler} id='firstForm' style={{textAlign:"center",display:'block'}}>
-        <br />
-        <br />
-        <br />
-        <br />
-          <h1>AddGame</h1>
-          <br />
-        <button type="submit" className="btn btn-primary">Next</button>
+        <h1>AddGame</h1>
+        <form onSubmit={onSubmitHandler1} id="firstform">
 
-
-
-
-
-
+        <div className="form-group">
+              <label>Game DeadLine</label>
+              <input type="text" className="form-control" placeholder="day/month/year hour:minutes " id="deadline" required name="deadLine" onChange={onChangeHandler}/>
+              <small> example : 31/12/1997 13:10  </small>
+            </div>
+        <button type="submit" id='bt' className="btn btn-primary" style={{float:'right'}}>Next</button>
+              
 
 
 
         </form>
+        <br />
+        <br />
+        <br />
+        <hr/>
 
+        <form onSubmit={onSubmitHandler2} id="secondform" disabled>
 
-        <form id='secondForm' style={{display:'none'}} onSubmit={onSubmitHandler1}>
-        <h1>AddGame</h1>
-        
         <div className="row">
           <div className="col-sm-6">
           <div className="form-group">
       <label>Host Team</label>
-      <select required className="form-control" onChange={onChangeTeam} >
+      <select required className="form-control"id='host' name="host" onChange={onChangeHandler} disabled>
       <option value="" hidden> 
           Select Host team 
       </option> 
@@ -128,7 +108,7 @@ const AddGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Guest Team</label>
-      <select required className="form-control" onChange={onChangeTeam2}>
+      <select required className="form-control" id='guest' name="guest" onChange={onChangeHandler} disabled>
       <option value="" hidden> 
           Select Guest team 
       </option> 
@@ -142,7 +122,7 @@ const AddGame = () => {
         
     <div className="form-group">
       <label>Stadium</label>
-      <select required className="form-control" onChange={onChangeTeam3}>
+      <select required className="form-control" id='stadium' name="stadium" onChange={onChangeHandler} disabled>
       <option value="" hidden> 
           Select Stadium
       </option> 
@@ -150,19 +130,11 @@ const AddGame = () => {
       </select>
     </div>
 
-    <div className="form-group">
-      <label>Game DeadLine</label>
-      <input type="text" className="form-control" placeholder="day/month/year hour:minutes " onChange={(e)=>{deadLine=e.target.value; console.log(deadLine)}}  required />
-      <small> example : 31/12/1997 13:10  </small>
-    </div>
+    
   
 
-
-      <button type="submit" className="btn btn-primary" style={{float:'right'}}>Add Game</button>
-
-
-
-        </form>
+      <button type="submit"  id='bt2' className="btn btn-primary" style={{float:'right'}} disabled>AddGame</button>
+      </form>
 
         
 
