@@ -27,8 +27,8 @@ const GameTable = () => {
     </tr>
   </thead>
   <tbody>
-    {context.games.filter(game => game.teams.length !== 0 || game.stadium !== null).map((Game) => <GameTableRow key={Game.id} Game={Game} HostName={Game.teams[0].name}
-    GuestName={Game.teams[1].name} StadName={Game.stadium}/>)}
+    {context.games.filter(game => game.teams.length !== 0 || game.stadium !== null).map((Game) => <GameTableRow key={Game.id} Game={Game} Host={Game.teams[0]}
+    Guest={Game.teams[1]} Stad={Game.stadium}/>)}
   </tbody>
 </table>
 </Fragment>

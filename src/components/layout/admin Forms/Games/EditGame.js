@@ -99,13 +99,13 @@ const EditGame = () => {
     
     
     
-    var obj ={"deadLine":state.deadLine,'id':state.id,'stadium':stdcontext.stadium,'teams':[team,team2],'tickets':state.tickets,'gameIdentifier':state.gameIdentifier}
+    var obj ={"deadLine":state.deadLine,'id':state.id,'stadium':stdcontext.stadium,'teams':[team,team2],'tickets':state.tickets,'gameIdentifier':state.gameIdentifier
+    ,"createdAt":state.createdAt,"updatedAt":state.updatedAt}
     console.log("this should be the new game   "+JSON.stringify(obj));
     
     
     UpdateGameById(obj);
-    document.getElementById("small").innerText=JSON.stringify(obj)
-
+    
     
 
   }
@@ -170,7 +170,7 @@ const EditGame = () => {
 
 
         </form>
-        <small id="small"></small>
+        
 
 <br />
     <GameTable />
