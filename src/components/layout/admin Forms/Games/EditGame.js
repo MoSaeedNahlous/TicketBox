@@ -10,7 +10,7 @@ const EditGame = () => {
   const gmcontext = useContext(GameGlobalContext)
   const tmcontext = useContext(TeamGlobalContext)
   const stdcontext = useContext(StadiumGlobalContext)
-  const {UpdateGameById,current,ready,SetReady,ClearReady,DeleteTeamsFromTheGame,AddTeamToTheGame,AddStadiumToTheGame} = gmcontext
+  const {UpdateGameById,current,ready,SetReady,ClearCurrent,DeleteTeamsFromTheGame,AddTeamToTheGame,AddStadiumToTheGame} = gmcontext
   const {teams,GetTeams,GetTeamByID,GetTeamByID2,team,team2} = tmcontext
   const {stadiums,GetStadiums,GetStadiumByID} = stdcontext
 
@@ -25,12 +25,23 @@ const EditGame = () => {
       setState(current)
       setTeamsSt({"host":current.teams[0],"guest":current.teams[1]})
       console.log("current !== null");
+      document.getElementById("host").disabled=false;
+      document.getElementById("guest").disabled=false;
+      document.getElementById("stadium").disabled=false;
+      document.getElementById("deadLine").disabled=false;
+      document.getElementById("btn").disabled=false;
+      
       
     }else{
       setState({"id":"","gameIdentifier":"","teams":[],"stadium":"","tickets": [],"deadLine": ""})
       setTeamsSt({"host":"","guest":""})
       console.log("current === null");
-      
+      document.getElementById("host").disabled=true;
+      document.getElementById("guest").disabled=true;
+      document.getElementById("stadium").disabled=true;
+      document.getElementById("deadLine").disabled=true;
+      document.getElementById("btn").disabled=true;
+
     }
   }, [current])
 
@@ -62,20 +73,28 @@ const EditGame = () => {
     AddStadiumToTheGame(state.id,state.stadium);
 
 
+    document.getElementById("host").disabled=true;
+    document.getElementById("guest").disabled=true;
+    document.getElementById("stadium").disabled=true;
+    document.getElementById("deadLine").disabled=true;
+    document.getElementById("btn").disabled=true;
+    ClearCurrent()
+
+
   }
 
 
   return(
     <div className='container'>
       
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} id="form1">
         <h1>Edit Game</h1>
         
         <div className="row">
           <div className="col-sm-6">
           <div className="form-group">
       <label>Host Team</label>
-      <select required className="form-control" name="host" value={teamsSt.host.id} onChange={onChangeTeams} required>
+      <select required className="form-control" name="host" id="host" value={teamsSt.host.id} onChange={onChangeTeams} required>
       <option value="" hidden> 
           Select Host team 
       </option> 
@@ -88,7 +107,7 @@ const EditGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Guest Team</label>
-      <select required className="form-control" name="guest" value={teamsSt.guest.id} onChange={onChangeTeams} required>
+      <select required className="form-control" name="guest" id="guest" value={teamsSt.guest.id} onChange={onChangeTeams} required>
       <option value="" hidden> 
           Select Guest team 
       </option> 
@@ -103,7 +122,7 @@ const EditGame = () => {
         
     <div className="form-group">
       <label>Stadium</label>
-      <select className="form-control" name="stadium" value={state.stadium.stadiumId} onChange={onChangeState} required>
+      <select className="form-control" name="stadium" id="stadium" value={state.stadium.stadiumId} onChange={onChangeState} required>
       <option value="" hidden> 
           Select Stadium
       </option> 
@@ -113,13 +132,13 @@ const EditGame = () => {
 
     <div className="form-group">
       <label>Game DeadLine</label>
-      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" name="deadLine" value={state.deadLine} onChange={onChangeState} required/>
+      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" name="deadLine" id="deadLine" value={state.deadLine} onChange={onChangeState} required/>
       <small> example : 31/12/1997 13:10 </small>
     </div>
   
 
       <small id="small"></small>
-      <button type="submit" className="btn btn-primary" style={{float:'right'}}>Update Game</button>
+      <button type="submit" className="btn btn-primary" id="btn" style={{float:'right'}}>Update Game</button>
 
 
 
