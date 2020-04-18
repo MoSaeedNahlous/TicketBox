@@ -12,7 +12,7 @@ import CookiePolicy from './components/pages/CookiePolicy';
 import PartnershipAffiliation from './components/pages/PartnershipAffiliation';
 import SearchPage from './components/pages/SearchPage';
 import Admin from './components/pages/Admin';
-import CardPage from './components/pages/CardPage';
+import MatchPage from './components/pages/MatchPage';
 
 
  
@@ -58,7 +58,7 @@ const App =() => {
               
             <Route exact path='/adminLogin' component={LoginAdmin} />
             <Route exact path='/' component={Home} />
-            <Route exact path='/cardPage' component={CardPage} />
+
             <Route exact path='/about' component={About} />
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/register' component={SignupPage} />
@@ -82,6 +82,7 @@ const App =() => {
 
             <Route exact path='/addGame' component={AddGamePage} />
             <Route exact path='/editGame' component={EditGamePage} />
+            <Route exact path='/game/:id' component={MatchPage} />
 
             <Route exact path='/addTicket' component={AddTicketPage} />
             <Route exact path='/deleteTicket' component={DeleteTicketPage} />

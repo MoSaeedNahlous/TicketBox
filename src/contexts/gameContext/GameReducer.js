@@ -24,9 +24,21 @@ export default (state,action) =>{
 
             case 'UPDATE_GAME':
                 return{
-                    ...state,
-                    games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
+                    ...state
+                    //,
+
+                    // games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
                     
+                }
+            case 'SET_READY':
+                return{
+                    ...state,
+                    ready:true
+                }
+            case 'CLEAR_READY':
+                return{
+                    ...state,
+                    ready:false
                 }
             case 'SET_CURRENT1':
                 return{
@@ -38,7 +50,7 @@ export default (state,action) =>{
                     ...state,
                     current1:null
                 }
-                case 'SET_CURRENT2':
+            case 'SET_CURRENT2':
                 return{
                     ...state,
                     current2:action.payload
@@ -48,15 +60,15 @@ export default (state,action) =>{
                     ...state,
                     current2:null
                 }
-                case 'SET_CURRENT3':
+            case 'SET_CURRENT':
                 return{
                     ...state,
-                    current3:action.payload
+                    current:action.payload
                 }
-            case 'CLEAR_CURRENT3':
+            case 'CLEAR_CURRENT':
                 return{
                     ...state,
-                    current3:null
+                    current:null
                 }
             case 'SET_CURRENT4':
                 return{
@@ -85,6 +97,11 @@ export default (state,action) =>{
                 game:{}
                         
                     }
+            case 'ADD_STADIUM_TO_GAME':
+                return{
+                ...state,
+                games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
+                }
 
         default: 
         return state;

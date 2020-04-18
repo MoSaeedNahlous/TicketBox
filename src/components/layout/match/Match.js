@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom'
 
 
 
-const Card = ({game}) => {
+const Match = ({game}) => {
 
   
 
 
     return (
-        <Link to='/cardPage' className='zoom' style={{textDecoration:'none'}}>
+        <Link to={`/game/${game.id}`} className='zoom' style={{textDecoration:'none'}}>
         <div style={{backgroundColor:'#151719',padding:'1rem',margin:'1rem',textAlign:'center'}}>
           <div  className="wite" style={{width:'100%'}}><p style={{padding:'0',margin:'0',textAlign:"center",display:'block'}} > at {game.stadium.name} </p></div>
           <div className='row wite'>
@@ -24,4 +24,4 @@ const Card = ({game}) => {
     )
 }
 
-export default Card
+export default Match

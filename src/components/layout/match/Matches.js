@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Card from './Card'
+import Match from './Match'
 import {GameGlobalContext} from '../../../contexts/gameContext/GameGlobalState'
 import { useContext } from 'react'
 import Pagination from '../Pagination'
 import { useEffect } from 'react'
 
-const Cards = () => {
+const Matches = () => {
     const context = useContext(GameGlobalContext)
     const {games,GetGames,ClearError} = context
 
@@ -38,7 +38,7 @@ const Cards = () => {
                 <div className="Mycards" >
                     
 
-                {currentCards.map((game)=>(<Card key={game.id} game={game}/>))}
+                {currentCards.map((game)=>(<Match key={game.id} game={game}/>))}
 
 
 
@@ -57,5 +57,5 @@ const Cards = () => {
     )
 }
 
-export default Cards
+export default Matches
 

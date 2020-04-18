@@ -10,107 +10,60 @@ const EditGame = () => {
   const gmcontext = useContext(GameGlobalContext)
   const tmcontext = useContext(TeamGlobalContext)
   const stdcontext = useContext(StadiumGlobalContext)
-  const {UpdateGameById,current3,ClearError,current1,current2,SetCurrent2,SetCurrent1,SetCurrent4,current4,DeleteTeamFromTheGame,AddTeamToTheGame} = gmcontext
+  const {UpdateGameById,current,ready,SetReady,ClearReady,DeleteTeamsFromTheGame,AddTeamToTheGame,AddStadiumToTheGame} = gmcontext
   const {teams,GetTeams,GetTeamByID,GetTeamByID2,team,team2} = tmcontext
   const {stadiums,GetStadiums,GetStadiumByID} = stdcontext
-  const [state, setState] = useState({"deadLine":'','id':'','stadium':'','teams':[],'tickets':[],'gameIdentifier':''})
-  const [host,setHost] = useState({})
-  const [guest,setGuest] = useState({})
-  const [stad,setStad] = useState({})
-  const [deadLine,setDeadline]= useState("")
- 
 
+  const [state, setState] = useState({"id":"","gameIdentifier":"","teams":[],"stadium":"","tickets": [],"deadLine": ""})
+  const [teamsSt,setTeamsSt] = useState({"host":"","guest":""})
 
-  
 
   useEffect(() => {
-    
-    ClearError()
     GetTeams()
     GetStadiums()
-    if(current3 !== null){
-      setHost(current3.teams[0])
-      setGuest(current3.teams[1])
-      setStad(current3.stadium)
-      setState(current3)
+    if(current !== null){
+      setState(current)
+      setTeamsSt({"host":current.teams[0],"guest":current.teams[1]})
+      console.log("current !== null");
       
     }else{
-      setState({"deadLine":'','id':'','stadium':{},'teams':[{},{}],'tickets':[],'gameIdentifier':''})
-      setHost("")
-      setGuest("")
-      setStad("")
+      setState({"id":"","gameIdentifier":"","teams":[],"stadium":"","tickets": [],"deadLine": ""})
+      setTeamsSt({"host":"","guest":""})
+      console.log("current === null");
+      
     }
-  }, [current3])
-  useEffect(() => {
-    
-    ClearError()
-    GetTeams()
-    GetStadiums()
-    setStad(stdcontext.stadium)
-    setHost(team)
-    setGuest(team2)
-    
-  }, [team,team2,stdcontext.stadium])
+  }, [current])
 
   
-  
 
-  const onClick1Handler =(e)=>{
-    e.preventDefault()
-    document.getElementById('host').disabled=false;
-    //DeleteTeamFromTheGame(state.id,document.getElementById('host').value)
-    document.getElementById('host').value=""
-  }
-  const onClick2Handler =(e)=>{
-    e.preventDefault()
-    document.getElementById('guest').disabled=false;
-    //DeleteTeamFromTheGame(state.id,document.getElementById('guest').value)
-    document.getElementById('guest').value=""
-  }
-  const onChangeHost =(e)=>{
-    e.preventDefault()
-    setHost(e.target.value)
-    GetTeamByID(e.target.value)
-    setState({...state,teams:[team,state.teams[1]]})
-    console.log(team);
-    
-  }
-  const onChangeGuest =(e)=>{
-    e.preventDefault()
-    setGuest(e.target.value)
-    GetTeamByID2(e.target.value)
-    setState({...state,teams:[state.teams[0],team2]})
-    console.log(team2);
-  }
-  const onChangeDeadLine =(e)=>{
-    e.preventDefault()
-    setState({...state,deadLine:e.target.value})
-  }
-  const onChangeStadium =(e)=>{
-    e.preventDefault()
-    setStad(e.target.value)
-    GetStadiumByID(e.target.value)
-    setState({...state,stadium:stdcontext.stadium})
+  const onChangeTeams =(e)=>{setTeamsSt({...teamsSt,[e.target.name]:e.target.value});console.log(JSON.stringify(state));console.log(JSON.stringify(state));}
+  const onChangeState =(e)=>{setState({...state,[e.target.name]:e.target.value});console.log(JSON.stringify(state));console.log(JSON.stringify(state));}
+  const onSubmitHandler =(e)=>{
+    e.preventDefault();
+    console.log("this is state : "+JSON.stringify(state));
+    console.log(teamsSt);
+    var obj={
+      "id": state.id,
+      "deadLine": state.deadLine,}
+      console.log("this is obj "+JSON.stringify(obj));
 
-  }
-  
-  const onSubmitHandler = e =>{
-    e.preventDefault()
-    
-    
-    
-    var obj ={"deadLine":state.deadLine,'id':state.id,'stadium':stdcontext.stadium,'teams':[team,team2],'tickets':state.tickets,'gameIdentifier':state.gameIdentifier
-    ,"createdAt":state.createdAt,"updatedAt":state.updatedAt}
-    console.log("this should be the new game   "+JSON.stringify(obj));
-    
-    
-    UpdateGameById(obj);
-    
-    
+
+    //REQUESTS
     
 
+    DeleteTeamsFromTheGame(state.id)
+
+    AddTeamToTheGame(state.id,teamsSt.host);
+
+    AddTeamToTheGame(state.id,teamsSt.guest);
+
+    UpdateGameById({obj});
+
+    AddStadiumToTheGame(state.id,state.stadium);
+
+
   }
-  
+
 
   return(
     <div className='container'>
@@ -122,26 +75,26 @@ const EditGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Host Team</label>
-      <select required className="form-control" id='host' onChange={onChangeHost} value={host.id} disabled >
+      <select required className="form-control" name="host" value={teamsSt.host.id} onChange={onChangeTeams} required>
       <option value="" hidden> 
           Select Host team 
       </option> 
       {teams.map((team)=><option key={team.id} value={team.id}>{team.name}</option>)}
       </select>
-    <button className="btn btn-dark" onClick={onClick1Handler} >Edit Host</button>
+
     
     </div>
      </div>
           <div className="col-sm-6">
           <div className="form-group">
       <label>Guest Team</label>
-      <select required className="form-control" onChange={onChangeGuest} id='guest' value={guest.id} disabled>
+      <select required className="form-control" name="guest" value={teamsSt.guest.id} onChange={onChangeTeams} required>
       <option value="" hidden> 
           Select Guest team 
       </option> 
       {teams.map((team)=><option key={team.id} value={team.id} >{team.name}</option>)}
       </select>
-      <button className="btn btn-dark" onClick={onClick2Handler} >Edit Guest</button>
+
     </div>
      </div>
 
@@ -150,7 +103,7 @@ const EditGame = () => {
         
     <div className="form-group">
       <label>Stadium</label>
-      <select required className="form-control" onChange={onChangeStadium} value={stad.stadiumId} >
+      <select className="form-control" name="stadium" value={state.stadium.stadiumId} onChange={onChangeState} required>
       <option value="" hidden> 
           Select Stadium
       </option> 
@@ -160,12 +113,12 @@ const EditGame = () => {
 
     <div className="form-group">
       <label>Game DeadLine</label>
-      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" value={state.deadLine} onChange={onChangeDeadLine} required />
+      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" name="deadLine" value={state.deadLine} onChange={onChangeState} required/>
       <small> example : 31/12/1997 13:10 </small>
     </div>
   
 
-
+      <small id="small"></small>
       <button type="submit" className="btn btn-primary" style={{float:'right'}}>Update Game</button>
 
 

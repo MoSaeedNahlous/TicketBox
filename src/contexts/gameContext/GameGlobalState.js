@@ -12,7 +12,7 @@ const intialState={
     current1:{},
     current2:{},
     current4:{},
-    current3:null,
+    current:null,
     ready:'no'
 }
 
@@ -41,7 +41,7 @@ export const GameGlobalProvider = ({children}) => {
 
 
     //AddGame
-        const AddGame = async(game) =>{
+        const AddGame = async (game) =>{
            await axios.post('/game/save',game).then(
                 (res) =>{
                     dispatch({type:'ADD_GAME',payload:res.data})
@@ -64,7 +64,7 @@ export const GameGlobalProvider = ({children}) => {
         const UpdateGameById = async (game) =>{
             await axios.post('/game/save',game).then(
                 (res) =>{dispatch({
-                    type:'UPDATE_GAME',payload:game
+                    type:'UPDATE_GAME'
                 })}
             ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})})
         }
@@ -90,7 +90,7 @@ export const GameGlobalProvider = ({children}) => {
     //AddStadiumToTheGame
     const AddStadiumToTheGame = async (gameId,stadId)=>{
         await axios.post(`/game/addStadium/${gameId}/${stadId}`)
-        .then()
+        .then(res =>dispatch({type:'ADD_STADIUM_TO_GAME',payload:res.data}))
         .catch()
     }
 
@@ -114,6 +114,18 @@ export const GameGlobalProvider = ({children}) => {
             type:'CLEAR_CURRENT1'
         })
     }
+    //SetReady
+    const SetReady = () =>{
+        dispatch({
+            type:'SET_READY'
+        })
+    }
+    //ClearReady
+    const ClearReady = () =>{
+        dispatch({
+            type:'CLEAR_READY'
+        })
+    }
     //SetCuurent2
     const SetCurrent2 = (team2) =>{
         dispatch({
@@ -127,15 +139,15 @@ export const GameGlobalProvider = ({children}) => {
         })
     }
     //SetCuurent3
-    const SetCurrent3 = stad =>{
+    const SetCurrent = stad =>{
         dispatch({
-            type:'SET_CURRENT3',payload:stad
+            type:'SET_CURRENT',payload:stad
         })
     }
     //ClearCuurent3
-    const ClearCurrent3 = () =>{
+    const ClearCurrent = () =>{
         dispatch({
-            type:'CLEAR_CURRENT3'
+            type:'CLEAR_CURRENT'
         })
     }
     //SetCuurent4
@@ -175,7 +187,7 @@ export const GameGlobalProvider = ({children}) => {
             error:state.error ,
             current1:state.current1 ,
             current2:state.current2 ,
-            current3:state.current3 ,
+            current:state.current ,
             current4:state.current4 ,
             ready:state.ready,
             GetGames,
@@ -189,14 +201,16 @@ export const GameGlobalProvider = ({children}) => {
             ClearCurrent1,
             SetCurrent2,
             ClearCurrent2,
-            SetCurrent3,
-            ClearCurrent3,
+            SetCurrent,
+            ClearCurrent,
             SetCurrent4,
             ClearCurrent4,
             ClearError,
             ClearGame,
             AddStadiumToTheGame,
-            DeleteTeamsFromTheGame
+            DeleteTeamsFromTheGame,
+            SetReady,
+            ClearReady
         }}>
             {children}
         </GameGlobalContext.Provider>

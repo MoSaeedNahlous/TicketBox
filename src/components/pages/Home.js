@@ -1,6 +1,6 @@
 import React from "react";
 import ImageSlider from "../layout/ImageSlider";
-import Cards from "../layout/card/Cards";
+import Matches from "../layout/match/Matches";
 import Navbar from "../layout/NavBar";
 import NavImg from "../../res/footer.png";
 import Footer from "../layout/Footer";
@@ -55,7 +55,7 @@ const Home = () =>  {
             
             
             <div className="col-md-3 container"><Tables/></div>
-            <div className="col-md-9 container"><Cards/>
+            <div className="col-md-9 container"><Matches/>
             
             </div>
           </div>

@@ -1,32 +1,25 @@
 import React, { Fragment } from 'react'
 import { useContext} from 'react'
 import {GameGlobalContext} from '../../../../contexts/gameContext/GameGlobalState'
+import { useEffect } from 'react'
 
 const GameTableRow = ({Game,Host,Guest,Stad}) => {
+ 
 
   
-console.log(Game);
+
     const context = useContext(GameGlobalContext)
-    const {SetCurrent3,SetCurrent2,SetCurrent1,SetCurrent4} = context
     
-    
-    const setHandler = () =>{
-      SetCurrent1(Host)
-      SetCurrent2(Guest)
-      SetCurrent3(Game)
-      SetCurrent4(Stad)
-
+    const setHandler =()=>{
+      context.ClearCurrent()
+      context.SetCurrent(Game)
+      console.log("this is should be Game : " + JSON.stringify(Game));
     }
-    
 
-    const deleteRow = ()=>{
-        
-        context.DeleteGame(Game.id);
-  
-        context.ClearCurrent3();
+    const deleteRowHandler =()=>{
+      context.DeleteGame(Game.id);
+      context.ClearCurrent()
     }
-      
-  
     return (
         <Fragment>
         <tr>
@@ -40,7 +33,7 @@ console.log(Game);
         
         <td>
           <button onClick={setHandler}> <i className="fa fa-pencil" aria-hidden="true"></i></button>
-          <button onClick={()=>deleteRow()}><i className="fa fa-trash" aria-hidden="true"></i></button>
+          <button onClick={deleteRowHandler}><i className="fa fa-trash" aria-hidden="true"></i></button>
         </td>
       </tr>
     </Fragment>

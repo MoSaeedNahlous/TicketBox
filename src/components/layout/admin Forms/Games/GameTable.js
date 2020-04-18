@@ -7,7 +7,6 @@ const GameTable = () => {
   const context = useContext(GameGlobalContext)
   useEffect(() => {
     context.GetGames()
-    
   }, [])
 
     return (
@@ -20,7 +19,7 @@ const GameTable = () => {
       <th scope="col">Host Team</th>
       <th scope="col">Guest Team</th>
       <th scope="col">Stadium</th>
-      <th scope="col">Dead Line</th>
+      <th scope="col">DeadLine</th>
       <th scope="col">Create Time</th>
       <th scope="col">Last Update Time</th>
       <th scope="col">Actions</th>
