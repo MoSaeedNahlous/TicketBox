@@ -10,11 +10,13 @@ const EditGame = () => {
   const gmcontext = useContext(GameGlobalContext)
   const tmcontext = useContext(TeamGlobalContext)
   const stdcontext = useContext(StadiumGlobalContext)
-  const {current,ClearCurrent} = gmcontext
+  const {current,ClearCurrent,UpdateGameById} = gmcontext
   const {GetTeams,teams} = tmcontext
   const {GetStadiums,stadiums} = stdcontext
 
   const [state, setState] = useState({"id":"","deadLine":"","host":"","guest":"","stadium":""})
+
+ 
 
 
 
@@ -27,14 +29,40 @@ const EditGame = () => {
       setState({"id":current.id,"deadLine":current.deadLine,"host":current.teams[0].id,"guest":current.teams[1].id,"stadium":current.stadium.stadiumId})
       document.getElementById("btn2").disabled=false;
       document.getElementById("btn").disabled=false;
+      document.getElementById("host").disabled=false;
+      document.getElementById("guest").disabled=false;
+      document.getElementById("stadium").disabled=false;
+      document.getElementById("deadLine").disabled=false;
 
     }else{
       setState({"id":"","deadLine":"","host":"","guest":"","stadium":""})
       document.getElementById("btn2").disabled=true;
       document.getElementById("btn").disabled=true;
+      document.getElementById("host").disabled=true;
+      document.getElementById("guest").disabled=true;
+      document.getElementById("stadium").disabled=true;
+      document.getElementById("deadLine").disabled=true;
     }
    
   }, [current])
+
+  const onSubmitHandler =(e)=>{
+    e.preventDefault();
+    if(current.deadLine!==state.deadLine){
+      console.log({"id":state.id,"deadLine":state.deadLine});
+      UpdateGameById({"id":state.id,"deadLine":state.deadLine})
+      
+
+    }
+  }
+
+  const onDeadLineChangeHandler =(event)=>{
+
+    
+    setState({...state,deadLine:event.target.value})
+
+  }
+  const onChangeHandler =(e)=>{setState({...state,[e.target.name]:e.target.value})}
 
   
 
@@ -42,7 +70,7 @@ const EditGame = () => {
   return(
     <div className='container'>
       
-    <form id="form1">
+    <form id="form1" onSubmit={onSubmitHandler}>
         <h1>Edit Game</h1>
         <div className="form-group">
       <label>Game Id</label>
@@ -91,7 +119,7 @@ const EditGame = () => {
 
     <div className="form-group">
       <label>Game DeadLine</label>
-      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" value={state.deadLine} name="deadLine" id="deadLine" required/>
+      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" onChange={onDeadLineChangeHandler}value={state.deadLine} name="deadLine" id="deadLine" required/>
       <small> example : 31/12/1997 13:10 </small>
     </div>
   
