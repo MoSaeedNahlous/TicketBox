@@ -70,14 +70,14 @@ export const GameGlobalProvider = ({children}) => {
         }
 
     //AddTeamToTheGame
-    const AddTeamToTheGame = async (gameId,teamId)=>{
-        await axios.post(`/game/addTeam/${gameId}/${teamId}`)
+    const AddTeamToTheGame =  (gameId,teamId)=>{
+         axios.post(`/game/addTeam/${gameId}/${teamId}`)
         .then()
         .catch()
     }
     //DeleteTeamFromTheGame
-    const DeleteTeamFromTheGame = async (gameId,teamId)=>{
-        await axios.delete(`/game/deleteTeam/${gameId}/${teamId}`)
+    const DeleteTeamFromTheGame = (gameId,teamId)=>{
+         axios.delete(`/game/deleteTeam/${gameId}/${teamId}`)
         .then()
         .catch()
     }

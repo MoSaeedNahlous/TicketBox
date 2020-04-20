@@ -10,7 +10,7 @@ const EditGame = () => {
   const gmcontext = useContext(GameGlobalContext)
   const tmcontext = useContext(TeamGlobalContext)
   const stdcontext = useContext(StadiumGlobalContext)
-  const {current,ClearCurrent,UpdateGameById,AddStadiumToTheGame} = gmcontext
+  const {current,ClearCurrent,UpdateGameById,AddStadiumToTheGame,DeleteTeamFromTheGame,AddTeamToTheGame} = gmcontext
   const {GetTeams,teams} = tmcontext
   const {GetStadiums,stadiums} = stdcontext
 
@@ -55,8 +55,19 @@ const EditGame = () => {
     if(current.stadium!==state.stadium){
       console.log({"id":state.id,"stadium":state.stadium});
       AddStadiumToTheGame(state.id,state.stadium)
-      
     }
+    if(current.teams[0].id!==state.host){
+      console.log({"id":state.id,"host":state.host});
+      DeleteTeamFromTheGame(state.id,state.host)
+      AddTeamToTheGame(state.id,state.host)
+    }
+    if(current.teams[1].id!==state.guest){
+      console.log({"id":state.id,"guest":state.guest});
+      DeleteTeamFromTheGame(state.id,state.guest)
+      AddTeamToTheGame(state.id,state.guest)
+    }
+      
+    
     ClearCurrent()
   }
 
@@ -80,7 +91,7 @@ const EditGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Host Team</label>
-      <select required className="form-control" name="host" id="host" value={state.host} >
+      <select required className="form-control" name="host" id="host" onChange={onChangeHandler} value={state.host} >
       <option value="" hidden> 
           Select Host team 
       </option> 
@@ -93,7 +104,7 @@ const EditGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Guest Team</label>
-      <select required className="form-control" name="guest" id="guest" value={state.guest} >
+      <select required className="form-control" name="guest" id="guest" onChange={onChangeHandler} value={state.guest} >
       <option value="" hidden> 
           Select Guest team 
       </option> 
