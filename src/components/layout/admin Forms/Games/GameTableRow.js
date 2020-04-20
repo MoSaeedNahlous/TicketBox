@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useContext} from 'react'
 import {GameGlobalContext} from '../../../../contexts/gameContext/GameGlobalState'
-import { useEffect } from 'react'
+
 
 const GameTableRow = ({Game,Host,Guest,Stad}) => {
  
