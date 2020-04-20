@@ -10,7 +10,7 @@ const EditGame = () => {
   const gmcontext = useContext(GameGlobalContext)
   const tmcontext = useContext(TeamGlobalContext)
   const stdcontext = useContext(StadiumGlobalContext)
-  const {current,ClearCurrent,UpdateGameById} = gmcontext
+  const {current,ClearCurrent,UpdateGameById,AddStadiumToTheGame} = gmcontext
   const {GetTeams,teams} = tmcontext
   const {GetStadiums,stadiums} = stdcontext
 
@@ -51,17 +51,16 @@ const EditGame = () => {
     if(current.deadLine!==state.deadLine){
       console.log({"id":state.id,"deadLine":state.deadLine});
       UpdateGameById({"id":state.id,"deadLine":state.deadLine})
-      
-
     }
+    if(current.stadium!==state.stadium){
+      console.log({"id":state.id,"stadium":state.stadium});
+      AddStadiumToTheGame(state.id,state.stadium)
+      
+    }
+    ClearCurrent()
   }
 
-  const onDeadLineChangeHandler =(event)=>{
-
-    
-    setState({...state,deadLine:event.target.value})
-
-  }
+  
   const onChangeHandler =(e)=>{setState({...state,[e.target.name]:e.target.value})}
 
   
@@ -109,7 +108,7 @@ const EditGame = () => {
         
     <div className="form-group">
       <label>Stadium</label>
-      <select className="form-control" name="stadium" value={state.stadium} id="stadium" required>
+      <select className="form-control" name="stadium" value={state.stadium} onChange={onChangeHandler}id="stadium" required>
       <option value="" hidden> 
           Select Stadium
       </option> 
@@ -119,7 +118,7 @@ const EditGame = () => {
 
     <div className="form-group">
       <label>Game DeadLine</label>
-      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" onChange={onDeadLineChangeHandler}value={state.deadLine} name="deadLine" id="deadLine" required/>
+      <input type="text" className="form-control" placeholder="day/month/year hour:minutes" onChange={onChangeHandler}value={state.deadLine} name="deadLine" id="deadLine" required/>
       <small> example : 31/12/1997 13:10 </small>
     </div>
   
