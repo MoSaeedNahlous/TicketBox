@@ -10,12 +10,21 @@ const EditGame = () => {
   const gmcontext = useContext(GameGlobalContext)
   const tmcontext = useContext(TeamGlobalContext)
   const stdcontext = useContext(StadiumGlobalContext)
-  const {current,ClearCurrent,UpdateGameById,AddStadiumToTheGame,DeleteTeamFromTheGame,AddTeamToTheGame} = gmcontext
+  const {current,ClearCurrent,UpdateGameById,AddStadiumToTheGame,DeleteTeamFromTheGame,AddTeamToTheGame,SetCurrent1,SetCurrent2,current1,current2,ClearCurrent1,ClearCurrent2} = gmcontext
   const {GetTeams,teams} = tmcontext
   const {GetStadiums,stadiums} = stdcontext
 
-  const [state, setState] = useState({"id":"","deadLine":"","host":"","guest":"","stadium":""})
+  const [state, setState] = useState({"id":"","deadLine":"","host":"","guest":"","stadium":"" ,"gameIdentifier":""})
+  
+  useEffect(() => {
+    GetTeams()
+    
+  }, [current1,current2])
 
+  useEffect(() => {
+    ClearCurrent2()
+    ClearCurrent1()
+  }, [])
  
 
 
@@ -23,10 +32,15 @@ const EditGame = () => {
 
 
   useEffect(() => {
+    
     GetStadiums()
     GetTeams()
     if(current!==null){
-      setState({"id":current.id,"deadLine":current.deadLine,"host":current.teams[0].id,"guest":current.teams[1].id,"stadium":current.stadium.stadiumId})
+      // SetCurrent2(current.teams[0].id)
+      // SetCurrent1(current.teams[1].id)
+      // document.getElementById("host").value=current.teams[0].id
+      // document.getElementById("guest").value=current.teams[1].id
+      setState({"id":current.id,"deadLine":current.deadLine,"host":current.teams[0].id,"guest":current.teams[1].id,"stadium":current.stadium.stadiumId,"gameIdentifier":current.gameIdentifier})
       document.getElementById("btn2").disabled=false;
       document.getElementById("btn").disabled=false;
       document.getElementById("host").disabled=false;
@@ -35,7 +49,7 @@ const EditGame = () => {
       document.getElementById("deadLine").disabled=false;
 
     }else{
-      setState({"id":"","deadLine":"","host":"","guest":"","stadium":""})
+      setState({"id":"","deadLine":"","host":"","guest":"","stadium":"","gameIdentifier":""})
       document.getElementById("btn2").disabled=true;
       document.getElementById("btn").disabled=true;
       document.getElementById("host").disabled=true;
@@ -66,14 +80,21 @@ const EditGame = () => {
       DeleteTeamFromTheGame(state.id,state.guest)
       AddTeamToTheGame(state.id,state.guest)
     }
-      
-    
+    ClearCurrent2()
+    ClearCurrent1()
     ClearCurrent()
   }
 
   
   const onChangeHandler =(e)=>{setState({...state,[e.target.name]:e.target.value})}
-
+  const onlyOneTeamHost =e=>{
+    setState({...state,host:e.target.value})
+    SetCurrent1(e.target.value)
+  }
+  const onlyOneTeamGuest =e=>{
+    setState({...state,guest:e.target.value})
+    SetCurrent2(e.target.value)
+  }
   
 
 
@@ -85,17 +106,21 @@ const EditGame = () => {
         <div className="form-group">
       <label>Game Id</label>
       <h6>{state.id==="" ? "Select a game from the table by pressing pencil button from the wanted game!" : state.id }</h6>
+      <br/>
+      <label>Game Identifier</label>
+      <h6>{state.gameIdentifier==="" ? "Select a game from the table by pressing pencil button from the wanted game!" : state.gameIdentifier }</h6>
+      <br/>
     </div>
         
         <div className="row">
           <div className="col-sm-6">
           <div className="form-group">
       <label>Host Team</label>
-      <select required className="form-control" name="host" id="host" onChange={onChangeHandler} value={state.host} >
+      <select required className="form-control" name="host" id="host" onChange={onlyOneTeamHost} value={state.host} >
       <option value="" hidden> 
           Select Host team 
       </option> 
-       {teams.map((team)=><option key={team.id} value={team.id}>{team.name}</option>)}
+       {teams.map((team)=> team.id === current2 ? null : <option key={team.id} value={team.id}>{team.name}</option> )}
       </select>
 
     
@@ -104,11 +129,11 @@ const EditGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Guest Team</label>
-      <select required className="form-control" name="guest" id="guest" onChange={onChangeHandler} value={state.guest} >
+      <select required className="form-control" name="guest" id="guest" onChange={onlyOneTeamGuest} value={state.guest} >
       <option value="" hidden> 
           Select Guest team 
       </option> 
-      {teams.map((team)=><option key={team.id} value={team.id} >{team.name}</option>)}
+      {teams.map((team)=> team.id == current1 ? null : <option key={team.id} value={team.id}>{team.name}</option> )}
       </select>
 
     </div>
