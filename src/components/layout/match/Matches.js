@@ -38,7 +38,7 @@ const Matches = () => {
                 <div className="Mycards" >
                     
 
-                {currentCards.map((game)=>(<Match key={game.id} game={game}/>))}
+                {currentCards.map((game)=>(<Match key={game.id} game={game} host={game.teams[0]} guest={game.teams[1]}/>))}
 
 
 
