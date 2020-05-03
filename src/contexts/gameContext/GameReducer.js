@@ -1,5 +1,20 @@
 export default (state,action) =>{
     switch(action.type){
+            case 'ADD_TEAMS':
+                return{
+                    ...state,
+                    games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
+                }
+            case 'SET_HOST':
+                return{
+                    ...state,
+                    host:action.payload
+                }
+            case 'SET_GUEST':
+                return{
+                    ...state,
+                    guest:action.payload
+                }
             case 'GET_GAMES':
                 return{
                     ...state,
@@ -24,10 +39,8 @@ export default (state,action) =>{
 
             case 'UPDATE_GAME':
                 return{
-                    ...state
-                    //,
-
-                    // games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
+                    ...state,
+                    games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
                     
                 }
             case 'SET_READY':

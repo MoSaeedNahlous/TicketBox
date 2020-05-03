@@ -1,14 +1,40 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect,useRef } from 'react'
 import { useContext} from 'react'
 import {GameGlobalContext} from '../../../../contexts/gameContext/GameGlobalState'
 
 
-const GameTableRow = ({Game,Host,Guest,Stad}) => {
+const GameTableRow = ({Game,Stad}) => {
  
 
   
 
     const context = useContext(GameGlobalContext)
+    
+    const firstRender = useRef(true)
+    const firstRun = useRef(true)
+    useEffect(() => {
+      context.SetTeams(Game.gameTeams.host,Game.gameTeams.guest)
+      firstRender.current=true
+      firstRun.current=true
+    }, [])
+
+    useEffect(() => {
+      if(firstRender.current){
+        firstRender.current=false
+      }
+      else{
+        if(firstRun.current){
+        firstRun.current=false
+      }
+      else{
+        context.SetTeams(Game.gameTeams.host,Game.gameTeams.guest)
+        firstRun.current=true
+      }
+      }
+      
+      
+      
+    }, [Game.gameTeams])
     
     const setHandler =()=>{
       context.ClearCurrent()
@@ -24,8 +50,8 @@ const GameTableRow = ({Game,Host,Guest,Stad}) => {
         <Fragment>
         <tr>
         <td>{Game.id}</td>
-        <td>{Host.name}</td>
-        <td>{Guest.name}</td> 
+        <td>{context.host.name}</td>
+        <td>{context.guest.name}</td> 
         <td>{Stad.name}</td>
         <td>{Game.deadLine}</td>
         <td>{Game.createdAt}</td>

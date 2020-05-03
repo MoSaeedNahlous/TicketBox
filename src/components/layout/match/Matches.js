@@ -19,7 +19,7 @@ const Matches = () => {
 
     const indexOfLastCard = currentPage * cardsPerPage
     const indexOfFirstCard = indexOfLastCard - cardsPerPage
-    const currentCards = games.filter(game => game.teams.length !== 0).slice(indexOfFirstCard,indexOfLastCard)
+    const currentCards = games.filter(game => game.stadium !== null).slice(indexOfFirstCard,indexOfLastCard)
 
     //change page
     const paginateFun = (pageNumber) => {
@@ -38,7 +38,7 @@ const Matches = () => {
                 <div className="Mycards" >
                     
 
-                {currentCards.map((game)=>(<Match key={game.id} game={game} host={game.teams[0]} guest={game.teams[1]}/>))}
+                {currentCards.map((game)=>(<Match key={game.id} game={game}/>))}
 
 
 
@@ -51,7 +51,7 @@ const Matches = () => {
             
             <br />
                 
-            <Pagination cardsPerPage={cardsPerPage} totalCards={games.filter(game => game.teams.length !== 0).length} paginate={paginateFun}/>
+            <Pagination cardsPerPage={cardsPerPage} totalCards={games.filter(game => game.stadium !== null).length} paginate={paginateFun}/>
             
         </div>
     )

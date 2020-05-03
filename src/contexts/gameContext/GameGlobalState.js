@@ -13,7 +13,9 @@ const intialState={
     current2:{},
     current4:{},
     current:null,
-    ready:'no'
+    ready:'no',
+    host:{},
+    guest:{}
 }
 
 // create context
@@ -70,10 +72,16 @@ export const GameGlobalProvider = ({children}) => {
         }
 
     //AddTeamToTheGame
-    const AddTeamToTheGame =  (gameId,teamId)=>{
-         axios.post(`/game/addTeam/${gameId}/${teamId}`)
-        .then()
-        .catch()
+    const AddTeamToTheGame = (gameId,hostId,guestId)=>{
+         axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`)}
+        
+    //UpdateTeams
+    const UpdateTeams =(gameId,guestId,hostId)=>{
+        axios.delete(`/gameTeams/deleteTeams/${gameId}`)
+        axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`).then(res =>{
+            dispatch({type:"ADD_TEAMS",payload:res.data})
+            console.log(res.data)
+        })
     }
     //DeleteTeamFromTheGame
     const DeleteTeamFromTheGame = (gameId,teamId)=>{
@@ -82,8 +90,8 @@ export const GameGlobalProvider = ({children}) => {
         .catch()
     }
     //DeleteAllTeamsFromTheGame
-    const DeleteTeamsFromTheGame = async (gameId)=>{
-        await axios.delete(`/game/deleteTeams/${gameId}`)
+    const DeleteTeamsFromTheGame =(gameId)=>{
+        axios.delete(`/gameTeams/deleteTeams/${gameId}`)
         .then()
         .catch()
     }
@@ -101,7 +109,23 @@ export const GameGlobalProvider = ({children}) => {
                 type:'GET_GAME_BY_ID',payload:res.data
             })}
         ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})});
+    } 
+    //SetHostAndGuest
+    const SetTeams = (hostId,guestId)=>{
+        
+        axios.get(`/team/findById/${guestId}`).then(res =>{dispatch({
+            type:'SET_GUEST',payload:res.data
+        })
+    console.log("set guest")})
+    
+        axios.get(`/team/findById/${hostId}`).then(res =>{dispatch({
+            type:'SET_HOST',payload:res.data
+        })
+    console.log("set host")})
+
+    
     }
+
     //SetCuurent1
     const SetCurrent1 = (team1) =>{
         dispatch({
@@ -190,8 +214,11 @@ export const GameGlobalProvider = ({children}) => {
             current:state.current ,
             current4:state.current4 ,
             ready:state.ready,
+            host:state.host,
+            guest:state.guest,
             GetGames,
             AddGame,
+            SetTeams,
             DeleteGame,
             GetGameByID,
             UpdateGameById,
@@ -210,7 +237,8 @@ export const GameGlobalProvider = ({children}) => {
             AddStadiumToTheGame,
             DeleteTeamsFromTheGame,
             SetReady,
-            ClearReady
+            ClearReady,
+            UpdateTeams
         }}>
             {children}
         </GameGlobalContext.Provider>

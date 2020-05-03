@@ -40,8 +40,7 @@ const AddGame = () => {
     
     const onSubmitHandler2 =(e)=>{
       e.preventDefault()
-      GameContext.AddTeamToTheGame(state.game.id,state.host)
-      GameContext.AddTeamToTheGame(state.game.id,state.guest)
+      GameContext.AddTeamToTheGame(state.game.id,state.host,state.guest)
       GameContext.AddStadiumToTheGame(state.game.id,state.stadium)
       document.getElementById("bt").disabled=false
       document.getElementById("bt2").disabled=true

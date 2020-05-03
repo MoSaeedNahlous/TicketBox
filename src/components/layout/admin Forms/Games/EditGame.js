@@ -10,37 +10,20 @@ const EditGame = () => {
   const gmcontext = useContext(GameGlobalContext)
   const tmcontext = useContext(TeamGlobalContext)
   const stdcontext = useContext(StadiumGlobalContext)
-  const {current,ClearCurrent,UpdateGameById,AddStadiumToTheGame,DeleteTeamFromTheGame,AddTeamToTheGame,SetCurrent1,SetCurrent2,current1,current2,ClearCurrent1,ClearCurrent2} = gmcontext
+  const {current,ClearCurrent,UpdateGameById,AddStadiumToTheGame,UpdateTeams,SetCurrent1,SetCurrent2,current1,current2,ClearCurrent1,ClearCurrent2} = gmcontext
   const {GetTeams,teams} = tmcontext
   const {GetStadiums,stadiums} = stdcontext
 
   const [state, setState] = useState({"id":"","deadLine":"","host":"","guest":"","stadium":"" ,"gameIdentifier":""})
   
-  useEffect(() => {
-    GetTeams()
-    
-  }, [current1,current2])
-
-  useEffect(() => {
-    ClearCurrent2()
-    ClearCurrent1()
-  }, [])
- 
-
-
-
-
+  
 
   useEffect(() => {
     
     GetStadiums()
     GetTeams()
     if(current!==null){
-      // SetCurrent2(current.teams[0].id)
-      // SetCurrent1(current.teams[1].id)
-      // document.getElementById("host").value=current.teams[0].id
-      // document.getElementById("guest").value=current.teams[1].id
-      setState({"id":current.id,"deadLine":current.deadLine,"host":current.teams[0].id,"guest":current.teams[1].id,"stadium":current.stadium.stadiumId,"gameIdentifier":current.gameIdentifier})
+      setState({"id":current.id,"deadLine":current.deadLine,"host":current.gameTeams.host,"guest":current.gameTeams.guest,"stadium":current.stadium.stadiumId,"gameIdentifier":current.gameIdentifier})
       document.getElementById("btn2").disabled=false;
       document.getElementById("btn").disabled=false;
       document.getElementById("host").disabled=false;
@@ -70,16 +53,10 @@ const EditGame = () => {
       console.log({"id":state.id,"stadium":state.stadium});
       AddStadiumToTheGame(state.id,state.stadium)
     }
-    if(current.teams[0].id!==state.host){
-      console.log({"id":state.id,"host":state.host});
-      DeleteTeamFromTheGame(state.id,state.host)
-      AddTeamToTheGame(state.id,state.host)
+    if(current.gameTeams.host!==state.host || current.gameTeams.guest!==state.guest ){
+      UpdateTeams(state.id,state.guest,state.host)
     }
-    if(current.teams[1].id!==state.guest){
-      console.log({"id":state.id,"guest":state.guest});
-      DeleteTeamFromTheGame(state.id,state.guest)
-      AddTeamToTheGame(state.id,state.guest)
-    }
+
     ClearCurrent2()
     ClearCurrent1()
     ClearCurrent()
