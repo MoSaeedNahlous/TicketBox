@@ -45,16 +45,21 @@ const EditGame = () => {
 
   const onSubmitHandler =(e)=>{
     e.preventDefault();
+    if(state.host===state.guest){
+        return
+    }
+    
     if(current.deadLine!==state.deadLine){
-      console.log({"id":state.id,"deadLine":state.deadLine});
       UpdateGameById({"id":state.id,"deadLine":state.deadLine})
     }
     if(current.stadium!==state.stadium){
-      console.log({"id":state.id,"stadium":state.stadium});
       AddStadiumToTheGame(state.id,state.stadium)
     }
     if(current.gameTeams.host!==state.host || current.gameTeams.guest!==state.guest ){
-      UpdateTeams(state.id,state.guest,state.host)
+     
+        UpdateTeams(state.id,state.guest,state.host)
+        
+      
     }
 
     ClearCurrent2()
@@ -97,7 +102,7 @@ const EditGame = () => {
       <option value="" hidden> 
           Select Host team 
       </option> 
-       {teams.map((team)=> team.id === current2 ? null : <option key={team.id} value={team.id}>{team.name}</option> )}
+       {teams.map((team)=> team.id == current2 ? null : <option key={team.id} value={team.id}>{team.name}</option> )}
       </select>
 
     
