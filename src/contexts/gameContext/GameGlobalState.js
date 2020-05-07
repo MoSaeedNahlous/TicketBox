@@ -63,10 +63,10 @@ export const GameGlobalProvider = ({children}) => {
     
     //UpdateGameById
 
-        const UpdateGameById = async (game) =>{
-            await axios.post('/game/save',game).then(
+        const UpdateGameById = (game) =>{
+            axios.post('/game/save',game).then(
                 (res) =>{dispatch({
-                    type:'UPDATE_GAME'
+                    type:'UPDATE_GAME',payload:res.data
                 })}
             ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})})
         }

@@ -2,6 +2,8 @@ import React,{useState,useContext, useEffect} from 'react'
 import {GameGlobalContext} from '../../../../contexts/gameContext/GameGlobalState'
 import {TeamGlobalContext} from '../../../../contexts/teamContext/TeamGlobalState'
 import {StadiumGlobalContext} from '../../../../contexts/stadiumContext/StadiumGlobalState'
+import { Prompt } from 'react-router-dom'
+import { useRef } from 'react'
 
 
 const AddGame = () => {
@@ -12,6 +14,7 @@ const AddGame = () => {
   const {teams,GetTeams} = TeamContext
   const {stadiums,GetStadiums} = StadiumContext
   const [state, setState] = useState({"deadLine":"","host":"","guest":"","stadium":"","game":{}})
+  const first =useRef(false)
   var next = false
 
 
@@ -19,7 +22,21 @@ const AddGame = () => {
     GetStadiums()
     GetTeams()
     setState({...state,game:GameContext.game})
+    
   }, [GameContext.game])
+
+  useEffect(() => {
+    first.current=false
+   
+  }, [])
+
+  useEffect(() => {
+    if (first.current) {
+      window.onbeforeunload = () => true
+    } else {
+      window.onbeforeunload = undefined
+    }
+  }, [first.current])
 
   const onChangeHandler =(e)=>{setState({...state,[e.target.name]:e.target.value})}
     //var gameIdentifier = Math.floor(Math.random() * (999999999999999999 - 1) ) + 1
@@ -36,6 +53,9 @@ const AddGame = () => {
     document.getElementById("deadline").disabled=true
     document.getElementById("firstform").disabled=true
     document.getElementById("secondform").disabled=false
+    first.current=true
+    document.getElementById("AddGameModal").style.display="block"
+    console.log(first.current);
     }
     
     const onSubmitHandler2 =(e)=>{
@@ -55,8 +75,36 @@ const AddGame = () => {
       document.getElementById("host").value=""
       document.getElementById("guest").value=""
       document.getElementById("deadline").value=""
+      first.current=false
 
     }
+
+
+    const closeModal=()=>{
+      document.getElementById("AddGameModal").style.display="none"
+      GameContext.DeleteGame(state.game.id);
+      document.getElementById("bt").disabled=false
+      document.getElementById("bt2").disabled=true
+      document.getElementById("stadium").disabled=true
+      document.getElementById("host").disabled=true
+      document.getElementById("guest").disabled=true
+      document.getElementById("deadline").disabled=false
+      document.getElementById("firstform").disabled=false
+      document.getElementById("secondform").disabled=true
+      setState({"deadLine":"","host":"","guest":"","stadium":"","game":{}})
+      document.getElementById("stadium").value=""
+      document.getElementById("host").value=""
+      document.getElementById("guest").value=""
+      document.getElementById("deadline").value=""
+      first.current=false
+      
+    }
+
+    
+
+  
+
+    
       
       
 
@@ -66,7 +114,19 @@ const AddGame = () => {
     return (
         
         <div className='container'>
+        <Prompt
+      when={first.current}
+      message={(location, action) => {
+    if (action === 'POP') {
+      console.log("Backing up...")
+    }
 
+    return location.pathname.startsWith("/app")
+      ? true
+      : `Are you sure you want to go to ${location.pathname}?`
+  }}
+      
+    />
 
 
         
@@ -83,12 +143,17 @@ const AddGame = () => {
 
 
 
+      
         </form>
         <br />
         <br />
         <br />
         <hr/>
 
+      <div id="AddGameModal" style={{"display":"none"}}>
+        <div className="AddGameModalContent">
+          <span id="closeModal" onClick={closeModal}>&times;</span>
+          <br/>
         <form onSubmit={onSubmitHandler2} id="secondform" disabled>
 
         <div className="row">
@@ -120,21 +185,20 @@ const AddGame = () => {
         </div>
         
     <div className="form-group">
-      <label>Stadium</label>
-      <select required className="form-control" id='stadium' name="stadium" onChange={onChangeHandler} disabled>
+      <label style={{"marginLeft":"5%"}}>Stadium</label>
+      <select required className="form-control" id='stadium' name="stadium" style={{"width":"80%","marginLeft":"5%"}} onChange={onChangeHandler} disabled>
       <option value="" hidden> 
           Select Stadium
       </option> 
        {stadiums.map((stadium)=><option key={stadium.stadiumId} value={stadium.stadiumId}>{stadium.name}</option>)}
       </select>
     </div>
-
-    
-  
-
-      <button type="submit"  id='bt2' className="btn btn-primary" style={{float:'right'}} disabled>AddGame</button>
+      <button type="submit"  id='bt2' className="btn btn-primary" style={{float:'right',"marginRight":"5%"}} disabled>AddGame</button>
+      <br/>
+      <br/>
       </form>
-
+      </div>
+    </div>
         
 
         </div>

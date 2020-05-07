@@ -45,7 +45,9 @@ const EditGame = () => {
 
   const onSubmitHandler =(e)=>{
     e.preventDefault();
+
     if(state.host===state.guest){
+        alert("fuck off")
         return
     }
     
@@ -56,8 +58,13 @@ const EditGame = () => {
       AddStadiumToTheGame(state.id,state.stadium)
     }
     if(current.gameTeams.host!==state.host || current.gameTeams.guest!==state.guest ){
-     
+      if(state.id === null){
+        alert("game id is null")
+      }else{
         UpdateTeams(state.id,state.guest,state.host)
+      }
+     
+        
         
       
     }

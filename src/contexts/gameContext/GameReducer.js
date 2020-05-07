@@ -40,8 +40,7 @@ export default (state,action) =>{
             case 'UPDATE_GAME':
                 return{
                     ...state,
-                    games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
-                    
+                    games:state.games.map(game => game.id === action.payload.id ? action.payload : game) 
                 }
             case 'SET_READY':
                 return{
