@@ -47,7 +47,7 @@ const EditGame = () => {
     e.preventDefault();
 
     if(state.host===state.guest){
-        alert("fuck off")
+        alert("cant make same team against it self")
         return
     }
     
@@ -61,10 +61,9 @@ const EditGame = () => {
       if(state.id === null){
         alert("game id is null")
       }else{
-        UpdateTeams(state.id,state.guest,state.host)
+        UpdateTeams(state.host,state.guest,state.id)
       }
      
-        
         
       
     }

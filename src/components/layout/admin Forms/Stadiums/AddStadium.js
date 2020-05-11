@@ -19,7 +19,7 @@ const AddStadium = () => {
 
 
   const context = useContext(StadiumGlobalContext)
-  const [stadium, setStadium] = useState({'name':'','city':'','capacity':'','image':''})
+  const [stadium, setStadium] = useState({'name':'','city':'','capacity':'','image':'','gates':''})
 
 
   const addStadium =(e)=>{
@@ -28,7 +28,7 @@ const AddStadium = () => {
       {
     console.log(stadium);
     context.AddStadium(stadium);
-    setStadium({'name':'','city':'','capacity':'','image':''})
+    setStadium({'name':'','city':'','capacity':'','image':'','gates':''})
     document.getElementById('imgg').value=""
     document.getElementById('img').setAttribute('src',"")
       }
@@ -135,11 +135,19 @@ const AddStadium = () => {
     </div>
     <div className="form-group">
       <label>Capacity</label>
-      <input type='number' className="form-control"value={stadium.capacity} name='capacity' placeholder="capacity" onChange={onChangeHandler} required/>
+      <input type='number' className="form-control" value={stadium.capacity} name='capacity' placeholder="capacity" onChange={onChangeHandler} required/>
       <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {context.error.capacity}</strong>
           </div>
     </div>
+    <div className="form-group">
+      <label>Gates Number</label>
+      <input type='number' className="form-control" value={stadium.gates} name='gates' placeholder="Gates Number" onChange={onChangeHandler} required/>
+      <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {context.error.gates}</strong>
+          </div>
+    </div>
+
   
   <div className="form-group">
     <label>Stadium Image file</label>

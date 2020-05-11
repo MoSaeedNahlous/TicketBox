@@ -60,6 +60,14 @@ export const GameGlobalProvider = ({children}) => {
                 })}
               ).catch(err=>{dispatch({type:'HANDLING_ERROR',payload:err.response.data})})
         }
+    //UpdateTeams
+        const UpdateTeams =(hostId,guestId,gameId)=>{
+            axios.put(`/gameTeams/updateTeams/${hostId}/${guestId}/${gameId}`).then(
+                res=>{
+                    dispatch({type:'UPDATE_TEAMS',payload:res.data})
+                }
+            )
+        }
     
     //UpdateGameById
 
@@ -76,13 +84,13 @@ export const GameGlobalProvider = ({children}) => {
          axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`)}
         
     //UpdateTeams
-    const UpdateTeams =(gameId,guestId,hostId)=>{
-        axios.delete(`/gameTeams/deleteTeams/${gameId}`)
-        axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`).then(res =>{
-            dispatch({type:"ADD_TEAMS",payload:res.data})
-            console.log(res.data)
-        })
-    }
+    // const UpdateTeams =(gameId,guestId,hostId)=>{
+    //     axios.delete(`/gameTeams/deleteTeams/${gameId}`)
+    //     axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`).then(res =>{
+    //         dispatch({type:"ADD_TEAMS",payload:res.data})
+    //         console.log(res.data)
+    //     })
+    // }
     //DeleteTeamFromTheGame
     const DeleteTeamFromTheGame = (gameId,teamId)=>{
          axios.delete(`/game/deleteTeam/${gameId}/${teamId}`)
