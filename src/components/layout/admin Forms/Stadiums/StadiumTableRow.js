@@ -26,6 +26,7 @@ const StadiumTableRow = ({Stadium}) => {
         <td>{Stadium.name}</td>
         <td>{Stadium.city}</td>
         <td>{Stadium.capacity}</td>
+        <td>{Stadium.gates}</td>
         <td><img height="75px" width="150px" src={Stadium.image} alt={Stadium.image}/></td>
         <td>{Stadium.createdAt}</td>
         <td>{Stadium.updatedAt}</td>

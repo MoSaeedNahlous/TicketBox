@@ -19,6 +19,7 @@ const StadiumTable = () => {
       <th scope="col">Name</th>
       <th scope="col">City</th>
       <th scope="col">Capacity</th>
+      <th scope="col">Gates</th>
       <th scope="col">Image</th>
       <th scope="col">Create Time</th>
       <th scope="col">Last Update Time</th>

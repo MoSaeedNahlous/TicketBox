@@ -6,13 +6,13 @@ const EditStadium = () => {
 
   const context = useContext(StadiumGlobalContext)
   const {error,UpdateStadiumById,GetStadiums,current,ClearError} = context
-  const [stad, setStad] = useState({'stadiumId':'','name':'','city':'','capacity':'','image':''})
+  const [stad, setStad] = useState({'stadiumId':'','name':'','city':'','capacity':'','image':'','gates':''})
   useEffect(() => {
     ClearError()
     if(current!==null){
       setStad(current)
     }else{
-      setStad({'stadiumId':'','name':'','city':'','capacity':'','image':''})
+      setStad({'stadiumId':'','name':'','city':'','capacity':'','image':'','gates':''})
     }
   }, [current])
   
@@ -73,7 +73,7 @@ const EditStadium = () => {
   if(/^[a-zA-Z]+$/.test(stad.name))
     {
     UpdateStadiumById(stad)
-    setStad({'stadiumId':'','name':'','city':'','capacity':'','image':''})
+    setStad({'stadiumId':'','name':'','city':'','capacity':'','image':'','gates':''})
     document.getElementById('imgg').value=""
     document.getElementById('img').setAttribute('src',"") 
     GetStadiums()
@@ -123,6 +123,13 @@ const EditStadium = () => {
       <input type='number' className="form-control" required name='capacity' onChange={onChangeHandler} value={stad.capacity} placeholder="Stadium Capacity" />
       <div role="alert" style={{ width: "50%" }}>
             <strong style={{color:'red'}}> {error.capacity}</strong>
+          </div>
+    </div>
+    <div className="form-group">
+      <label>Gates Number</label>
+      <input type='number' className="form-control" required name='gates' onChange={onChangeHandler} value={stad.gates} placeholder="Gates Number" />
+      <div role="alert" style={{ width: "50%" }}>
+            <strong style={{color:'red'}}> {error.gates}</strong>
           </div>
     </div>
     <div className="form-group">
