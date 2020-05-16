@@ -75,6 +75,7 @@ const AddGame = () => {
       document.getElementById("host").value=""
       document.getElementById("guest").value=""
       document.getElementById("deadline").value=""
+      document.getElementById("AddGameModal").style.display="none"
       first.current=false
 
     }
@@ -98,6 +99,115 @@ const AddGame = () => {
       document.getElementById("deadline").value=""
       first.current=false
       
+    }
+
+    const submitForm=(e)=>{
+      e.preventDefault();
+      
+
+    }
+
+    const AddForm=()=>{
+      var form =document.createElement("form");
+      form.setAttribute("onSubmit","submitForm");
+      form.setAttribute("style","margin-left:100px")
+
+      var formGroup1=document.createElement("div")
+      formGroup1.setAttribute("className","form-group")
+
+      var formGroup2=document.createElement("div")
+      formGroup2.setAttribute("className","form-group")
+
+      var formGroup3=document.createElement("div")
+      formGroup3.setAttribute("className","form-group")
+
+      var formGroup4=document.createElement("div")
+      formGroup4.setAttribute("className","form-group")
+
+      var formGroup5=document.createElement("div")
+      formGroup5.setAttribute("className","form-group")
+
+      var formGroup6=document.createElement("div")
+      formGroup6.setAttribute("className","form-group")
+
+
+      var ticketsNumber=document.createElement("input")
+      ticketsNumber.setAttribute("type","number")
+      ticketsNumber.setAttribute("name","ticketsNumber")
+      ticketsNumber.setAttribute("placeholder","ticketsNumber")
+      ticketsNumber.required=true;
+
+      var ticketsPrice=document.createElement("input")
+      ticketsPrice.setAttribute("type","number")
+      ticketsPrice.setAttribute("name","ticketsPrice")
+      ticketsPrice.setAttribute("placeholder","ticketsPrice")
+      ticketsPrice.required=true;
+
+      var ticketsGate=document.createElement("input")
+      ticketsGate.setAttribute("type","number")
+      ticketsGate.setAttribute("name","ticketsGate")
+      ticketsGate.setAttribute("placeholder","ticketsGate")
+      ticketsGate.required=true;
+
+      var ticketsDeadLine=document.createElement("input")
+      ticketsDeadLine.setAttribute("type","text")
+      ticketsDeadLine.setAttribute("name","ticketsDeadLine")
+      ticketsDeadLine.setAttribute("placeholder","ticketsDeadLine")
+      ticketsDeadLine.required=true;
+
+      var ticketsReturn=document.createElement("input")
+      ticketsReturn.setAttribute("type","text")
+      ticketsReturn.setAttribute("name","ticketsReturn")
+      ticketsReturn.setAttribute("placeholder","ticketsReturn")
+      ticketsReturn.required=true;
+
+      var submitTickets=document.createElement("button")
+     submitTickets.setAttribute("type","submit")
+     submitTickets.innerHTML="Submit Tickets"
+     
+      
+
+      var brLine=document.createElement("hr")
+      
+
+
+
+      form.append(formGroup1);
+      formGroup1.append(ticketsNumber);
+      
+
+      form.append(formGroup2);
+      formGroup2.append(ticketsPrice);
+      
+
+
+      form.append(formGroup3);
+      formGroup3.append(ticketsGate);
+      
+
+
+      form.append(formGroup4);
+      formGroup4.append(ticketsDeadLine);
+      
+
+
+      form.append(formGroup5);
+      formGroup5.append(ticketsReturn);
+
+      form.append(formGroup6);
+      formGroup6.append(submitTickets);
+      
+      form.append(brLine)
+
+      
+      
+      
+      
+      
+
+      document.getElementById("AddGameModalContent1").append(form);
+
+
     }
 
     
@@ -199,10 +309,21 @@ const AddGame = () => {
       </form>
       </div>
     </div>
+
+    <div id="AddGameModal1" >
+        <div id="AddGameModalContent1">
+          <span id="closeModal">&times;</span>
+          <br/>
+          <button onClick={AddForm} className="btn btn-success" style={{textAlign:'center',margin:'auto'}}>Add Tickets</button>
+
+      <br/>
+      <br/>
+      
+      </div>
         
 
         </div>
-        
+        </div>
     )
 }
 

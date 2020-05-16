@@ -28,7 +28,24 @@ html, body {
     left: 0;
     padding: 5%;
   }
+  #AddGameModal1{
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 5%;
+  }
   .AddGameModalContent{
+    background-color:white;
+    margin-top: 20%;
+
+  }
+  #AddGameModalContent1{
     background-color:white;
     margin-top: 20%;
 
@@ -44,6 +61,7 @@ html, body {
     
     color: #909090;
   }
+  
   #closeModal:hover{
     color: black;
     cursor: pointer;

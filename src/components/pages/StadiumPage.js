@@ -9,7 +9,7 @@ const StadiumPage = ({match}) => {
 
     const context = useContext(StadiumGlobalContext)
     const {GetStadiumByID,stadium} = context
-    const {name,city,capacity,image} = stadium
+    const {name,city,capacity,image,gates} = stadium
 
     useEffect(() => {
         GetStadiumByID(match.params.stadiumId)
@@ -26,6 +26,7 @@ const StadiumPage = ({match}) => {
                     <div className="col-sm-6">
                         <h2 className='wite'>City: {city}</h2>
                         <h3 className='wite'>Capacity: {capacity}</h3>
+                        <h3 className='wite'>Gates Number: {gates}</h3>
                     </div>
                     <div className="col-sm-6">
                         <img src={image} width='450' height='300' alt="Sadium Image"/>
