@@ -15,7 +15,8 @@ const intialState={
     current:null,
     ready:'no',
     host:{},
-    guest:{}
+    guest:{},
+    ticketId:""
 }
 
 // create context
@@ -206,6 +207,19 @@ export const GameGlobalProvider = ({children}) => {
             type:'CLEAR_GAME'
         })
     }
+    //AddTickets
+    const AddTicket =(ticket,gameId)=>{
+        axios.post('/ticket/save',ticket).then(res=>{
+            alert("Added!")
+            dispatch({type:'SET_TICKET_ID',payload:res.data.id})
+            axios.post(`/ticket/addGame/${res.data.id}/${gameId}`)
+            alert("Done! ticket:"+res.data.id+"added to game:"+ gameId+"  Succesfully!")
+        })
+        
+            
+            
+
+    }
     
 
 
@@ -224,6 +238,7 @@ export const GameGlobalProvider = ({children}) => {
             ready:state.ready,
             host:state.host,
             guest:state.guest,
+            ticketId:state.ticketId,
             GetGames,
             AddGame,
             SetTeams,
@@ -246,7 +261,8 @@ export const GameGlobalProvider = ({children}) => {
             DeleteTeamsFromTheGame,
             SetReady,
             ClearReady,
-            UpdateTeams
+            UpdateTeams,
+            AddTicket
         }}>
             {children}
         </GameGlobalContext.Provider>

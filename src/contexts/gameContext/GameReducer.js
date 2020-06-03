@@ -115,10 +115,15 @@ export default (state,action) =>{
                 games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
                 }
             case 'UPDATE_TEAMS':
-            return{
+                return{
                 ...state,
                 games:state.games.map(game => game.id === action.payload.id ? action.payload : game)
-            }
+                }
+            case 'SET_TICKET_ID':
+                return{
+                    ...state,
+                    ticketId:action.payload
+                }
 
         default: 
         return state;

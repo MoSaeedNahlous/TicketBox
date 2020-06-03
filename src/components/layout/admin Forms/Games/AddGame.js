@@ -14,6 +14,7 @@ const AddGame = () => {
   const {teams,GetTeams} = TeamContext
   const {stadiums,GetStadiums} = StadiumContext
   const [state, setState] = useState({"deadLine":"","host":"","guest":"","stadium":"","game":{}})
+  const [ticketInfo, setTicketInfo] = useState({"counter":'',"releaseDate":'',"endDate":'',"price":'',"returnable":'',"returnDate":'',"gates":[],"ticketSequence":''})
   const first =useRef(false)
   var next = false
 
@@ -77,6 +78,7 @@ const AddGame = () => {
       document.getElementById("deadline").value=""
       document.getElementById("AddGameModal").style.display="none"
       first.current=false
+      document.getElementById("AddGameModal1").style.display="block"
 
     }
 
@@ -98,128 +100,47 @@ const AddGame = () => {
       document.getElementById("guest").value=""
       document.getElementById("deadline").value=""
       first.current=false
+      GameContext.ClearCurrent1()
+      GameContext.ClearCurrent2()
+      
+    }
+    const closeModal1=()=>{
+      document.getElementById("AddGameModal1").style.display="none"
+      
       
     }
 
-    const submitForm=(e)=>{
-      e.preventDefault();
-      
-
-    }
-
-    const AddForm=()=>{
-      var form =document.createElement("form");
-      form.setAttribute("onSubmit","submitForm");
-      form.setAttribute("style","margin-left:100px")
-
-      var formGroup1=document.createElement("div")
-      formGroup1.setAttribute("className","form-group")
-
-      var formGroup2=document.createElement("div")
-      formGroup2.setAttribute("className","form-group")
-
-      var formGroup3=document.createElement("div")
-      formGroup3.setAttribute("className","form-group")
-
-      var formGroup4=document.createElement("div")
-      formGroup4.setAttribute("className","form-group")
-
-      var formGroup5=document.createElement("div")
-      formGroup5.setAttribute("className","form-group")
-
-      var formGroup6=document.createElement("div")
-      formGroup6.setAttribute("className","form-group")
-
-
-      var ticketsNumber=document.createElement("input")
-      ticketsNumber.setAttribute("type","number")
-      ticketsNumber.setAttribute("name","ticketsNumber")
-      ticketsNumber.setAttribute("placeholder","ticketsNumber")
-      ticketsNumber.required=true;
-
-      var ticketsPrice=document.createElement("input")
-      ticketsPrice.setAttribute("type","number")
-      ticketsPrice.setAttribute("name","ticketsPrice")
-      ticketsPrice.setAttribute("placeholder","ticketsPrice")
-      ticketsPrice.required=true;
-
-      var ticketsGate=document.createElement("input")
-      ticketsGate.setAttribute("type","number")
-      ticketsGate.setAttribute("name","ticketsGate")
-      ticketsGate.setAttribute("placeholder","ticketsGate")
-      ticketsGate.required=true;
-
-      var ticketsDeadLine=document.createElement("input")
-      ticketsDeadLine.setAttribute("type","text")
-      ticketsDeadLine.setAttribute("name","ticketsDeadLine")
-      ticketsDeadLine.setAttribute("placeholder","ticketsDeadLine")
-      ticketsDeadLine.required=true;
-
-      var ticketsReturn=document.createElement("input")
-      ticketsReturn.setAttribute("type","text")
-      ticketsReturn.setAttribute("name","ticketsReturn")
-      ticketsReturn.setAttribute("placeholder","ticketsReturn")
-      ticketsReturn.required=true;
-
-      var submitTickets=document.createElement("button")
-     submitTickets.setAttribute("type","submit")
-     submitTickets.innerHTML="Submit Tickets"
-     
-      
-
-      var brLine=document.createElement("hr")
-      
-
-
-
-      form.append(formGroup1);
-      formGroup1.append(ticketsNumber);
-      
-
-      form.append(formGroup2);
-      formGroup2.append(ticketsPrice);
-      
-
-
-      form.append(formGroup3);
-      formGroup3.append(ticketsGate);
-      
-
-
-      form.append(formGroup4);
-      formGroup4.append(ticketsDeadLine);
-      
-
-
-      form.append(formGroup5);
-      formGroup5.append(ticketsReturn);
-
-      form.append(formGroup6);
-      formGroup6.append(submitTickets);
-      
-      form.append(brLine)
+    const onChangeHandlerTkt=(e)=>{
 
       
-      
-      
-      
-      
+      setTicketInfo({...ticketInfo,[e.target.name]:e.target.value})}
 
-      document.getElementById("AddGameModalContent1").append(form);
-
-
-    }
-
-    
-
+      const onBlurHandler =(e)=>{
+        var str=e.target.value.split('')
+        setTicketInfo({...ticketInfo,[e.target.name]:str})
+      }
   
+    const AddTkt =(e)=>{
+        e.preventDefault()
+        
+        
+        console.log(ticketInfo)
+        GameContext.AddTicket(ticketInfo,GameContext.game.id);
+        setTicketInfo({"counter":'',"releaseDate":'',"endDate":'',"price":'',"returnable":'',"returnDate":'',"gates":[],"ticketSequence":''})
+        
+        
+    }
 
-    
-      
-      
+    const onChangeHandlerHost =(e)=>{
+      setState({...state,[e.target.name]:e.target.value})
+      GameContext.SetCurrent1(e.target.value)
 
+    }
+    const onChangeHandlerGuest =(e)=>{
+      setState({...state,[e.target.name]:e.target.value})
+      GameContext.SetCurrent2(e.target.value)
 
-
+    }
 
     return (
         
@@ -270,11 +191,11 @@ const AddGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Host Team</label>
-      <select required className="form-control"id='host' name="host" onChange={onChangeHandler} disabled>
+      <select required className="form-control"id='host' name="host" onChange={onChangeHandlerHost} disabled>
       <option value="" hidden> 
           Select Host team 
       </option> 
-       {teams.map((team)=><option key={team.id} value={team.id}>{team.name}</option>)}
+      {teams.map((team)=> team.id == GameContext.current2 ? null : <option key={team.id} value={team.id}>{team.name}</option> )}
       </select>
     </div>
     
@@ -282,11 +203,11 @@ const AddGame = () => {
           <div className="col-sm-6">
           <div className="form-group">
       <label>Guest Team</label>
-      <select required className="form-control" id='guest' name="guest" onChange={onChangeHandler} disabled>
+      <select required className="form-control" id='guest' name="guest" onChange={onChangeHandlerGuest} disabled>
       <option value="" hidden> 
           Select Guest team 
       </option> 
-      {teams.map((team)=><option key={team.id} value={team.id}>{team.name}</option>)}
+      {teams.map((team)=> team.id == GameContext.current1 ? null : <option key={team.id} value={team.id}>{team.name}</option> )}
       </select>
     </div>
      </div>
@@ -310,11 +231,69 @@ const AddGame = () => {
       </div>
     </div>
 
-    <div id="AddGameModal1" >
+
+    <div id="AddGameModal1" name="ticketsModal" style={{display:"none"}}  >
         <div id="AddGameModalContent1">
-          <span id="closeModal">&times;</span>
+          <span onClick={closeModal1} id="closeModal">&times;</span>
+          <h2 style={{textAlign:'center'}}>Press Add Tickets to add Tickets to the New Game</h2>
           <br/>
-          <button onClick={AddForm} className="btn btn-success" style={{textAlign:'center',margin:'auto'}}>Add Tickets</button>
+          <form onSubmit={AddTkt} id="tktForm" style={{padding:'4%',display:"none"}}>
+            <h3>Ticket information</h3>
+            <br/>
+            <div className="form-group">
+              <label>Counter</label>
+              <input type="number" name="counter" value={ticketInfo.counter} className="form-control" placeholder="Counter" onChange={onChangeHandlerTkt} required/>
+            </div>
+            <div className="form-group">
+              <label>Price</label>
+              <input type="number" name="price" value={ticketInfo.price} className="form-control" placeholder="Price" onChange={onChangeHandlerTkt} required/>
+            </div>
+            <div className="form-group">
+              <label>Gates</label>
+              <input type="text" id="gates" name="gates" value={ticketInfo.gates} className="form-control" placeholder="Gates"onChange={onChangeHandlerTkt} onBlur={onBlurHandler} required/>
+            </div>
+            <div className="form-group">
+              <label>Release date</label>
+              <input type="text" name="releaseDate" value={ticketInfo.releaseDate} className="form-control" placeholder="Release Date ex: 5/5/2021" onChange={onChangeHandlerTkt} required/>
+            </div>
+            <div className="form-group">
+              <label>End date</label>
+              <input type="text" name="endDate" value={ticketInfo.endDate} className="form-control" placeholder="End Date ex: 5/5/2021" onChange={onChangeHandlerTkt} required/>
+            </div>
+            <div className="form-group">
+              
+              <label>Returnable</label>
+              
+              <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{marginLeft:'3%'}}>
+  
+              <label className="btn btn-secondary">
+              <input type="radio" name="returnable" value="true"  required 
+              onClick={()=>{setTicketInfo({...ticketInfo,returnable:true,ticketSequence:(Math.floor(Math.random() * (99999999999999999999999999 - 1) ) + 1).toString()});
+                document.getElementById("returnDate").disabled=false}}/> Yes
+              </label>
+
+              <label className="btn btn-secondary">
+              <input type="radio" name="returnable" value="false" 
+              onClick={()=>{setTicketInfo({...ticketInfo,returnDate:"",returnable:false,ticketSequence:(Math.floor(Math.random() * (99999999999999999999999999999 - 1) ) + 1).toString()})
+                document.getElementById("returnDate").disabled=true}} /> No
+              </label>
+              </div>
+            </div>
+            
+            <div className="form-group">
+              <label>Return date</label>
+              <input type="text" name="returnDate" value={ticketInfo.returnDate} id="returnDate" className="form-control" placeholder="Return Date" onChange={onChangeHandlerTkt} required/>
+            </div>
+            
+            <div className="form-group">
+              <button type="submit" className="btn btn-primary">Add & continue</button>
+            </div>
+
+          </form>
+          <button className="btn btn-success" id="plus" onClick={()=> {
+            document.getElementById("plus").disabled=true;
+            document.getElementById("tktForm").style.display="block"
+            }} style={{textAlign:'center',margin:'auto'}}>Add Tickets</button>
 
       <br/>
       <br/>
@@ -323,7 +302,9 @@ const AddGame = () => {
         
 
         </div>
+    
         </div>
+        
     )
 }
 
