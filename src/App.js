@@ -24,7 +24,7 @@ import DeleteUserPage from './components/pages/admin pages/DeleteUserPage';
 import AddGamePage from './components/pages/admin pages/AddGamePage';
 
 import AddTicketPage from './components/pages/admin pages/AddTicketPage';
-import DeleteTicketPage from './components/pages/admin pages/DeleteTicketPage';
+import EditTicketPage from './components/pages/admin pages/EditTicketPage';
 import AddStadiumPage from './components/pages/admin pages/AddStadiumPage';
 
 import Ticket from './components/layout/admin Forms/Tickets/Ticket';
@@ -85,7 +85,7 @@ const App =() => {
             <Route exact path='/game/:id' component={MatchPage} />
 
             <Route exact path='/addTicket' component={AddTicketPage} />
-            <Route exact path='/deleteTicket' component={DeleteTicketPage} />
+            <Route exact path='/editTicket' component={EditTicketPage} />
             <Route exact path='/addStadium' component={AddStadiumPage} />
             <Route exact path='/editStadium' component={EditStadiumPage} />
 

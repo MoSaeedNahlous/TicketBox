@@ -28,6 +28,22 @@ html, body {
     left: 0;
     padding: 5%;
   }
+  #viewModal{
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 5%;
+  }
+  #viewModalContent{
+    background-color:white;
+    margin-top: 20%;
+  }
   #AddGameModal1{
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.5);

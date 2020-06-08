@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect,useRef } from 'react'
-import { useContext} from 'react'
+import React, { Fragment, useEffect,useContext } from 'react'
 import {GameGlobalContext} from '../../../../contexts/gameContext/GameGlobalState'
 
 
@@ -10,31 +9,13 @@ const GameTableRow = ({Game,Stad}) => {
 
     const context = useContext(GameGlobalContext)
     
-    const firstRender = useRef(true)
-    const firstRun = useRef(true)
-    useEffect(() => {
-      context.SetTeams(Game.gameTeams.host,Game.gameTeams.guest)
-      firstRender.current=true
-      firstRun.current=true
-    }, [])
 
     useEffect(() => {
-      if(firstRender.current){
-        firstRender.current=false
-      }
-      else{
-        if(firstRun.current){
-        firstRun.current=false
-      }
-      else{
-        context.SetTeams(Game.gameTeams.host,Game.gameTeams.guest)
-        firstRun.current=true
-      }
-      }
-      
-      
-      
-    }, [Game.gameTeams])
+      context.SetHost(Game.gameTeams.host)
+      context.SetGuest(Game.gameTeams.guest)
+    }, [context.games])
+
+    
     
     const setHandler =()=>{
       context.ClearCurrent()
@@ -60,6 +41,7 @@ const GameTableRow = ({Game,Stad}) => {
         <td>
           <button onClick={setHandler}> <i className="fa fa-pencil" aria-hidden="true"></i></button>
           <button onClick={deleteRowHandler}><i className="fa fa-trash" aria-hidden="true"></i></button>
+          
         </td>
       </tr>
     </Fragment>

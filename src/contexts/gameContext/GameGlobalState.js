@@ -8,6 +8,7 @@ import axios from 'axios'
 const intialState={
     games:[],
     game:{},
+    tickets:[],
     error:{},
     current1:{},
     current2:{},
@@ -119,22 +120,19 @@ export const GameGlobalProvider = ({children}) => {
             })}
         ).catch(err =>{dispatch({type:'HANDLING_ERROR',payload:err.response})});
     } 
+
     //SetHostAndGuest
-    const SetTeams = (hostId,guestId)=>{
-        
+    const SetHost = (hostId)=>{
+        axios.get(`/team/findById/${hostId}`).then(res =>{
+            dispatch({type:'SET_HOST',payload:res.data})
+    })}
+
+    const SetGuest = (guestId)=>{
         axios.get(`/team/findById/${guestId}`).then(res =>{dispatch({
             type:'SET_GUEST',payload:res.data
         })
-    console.log("set guest")})
+})}
     
-        axios.get(`/team/findById/${hostId}`).then(res =>{dispatch({
-            type:'SET_HOST',payload:res.data
-        })
-    console.log("set host")})
-
-    
-    }
-
     //SetCuurent1
     const SetCurrent1 = (team1) =>{
         dispatch({
@@ -220,6 +218,28 @@ export const GameGlobalProvider = ({children}) => {
             
 
     }
+
+    //ViewGameTickets
+    const ViewTickets =(gameId) =>{
+        axios.get('/ticket/findAll').then(res=>{
+            dispatch({type:'VIEW_TICKETS',payload:res.data.filter(tkt=>tkt.game.id=== gameId)})
+        })
+    }
+
+    //DeleteTickets
+    const DeleteTickets =(ticketId)=>{
+        axios.delete(`/ticket/deleteById/${ticketId}`).then(res=>{
+            dispatch({type:'DELETE_TICKETS',payload:ticketId})
+        })
+    }
+
+    //EditTickets
+    const EditTickets =(ticket)=>{
+        axios.post('/ticket/save',ticket).then(res=>{
+            dispatch({type:'UPDATE_TICKETS',payload:res.data})
+        })
+
+    }
     
 
 
@@ -230,6 +250,7 @@ export const GameGlobalProvider = ({children}) => {
         <GameGlobalContext.Provider value={{
             games:state.games ,
             game:state.game ,
+            tickets:state.tickets,
             error:state.error ,
             current1:state.current1 ,
             current2:state.current2 ,
@@ -241,7 +262,8 @@ export const GameGlobalProvider = ({children}) => {
             ticketId:state.ticketId,
             GetGames,
             AddGame,
-            SetTeams,
+            SetHost,
+            SetGuest,
             DeleteGame,
             GetGameByID,
             UpdateGameById,
@@ -262,7 +284,10 @@ export const GameGlobalProvider = ({children}) => {
             SetReady,
             ClearReady,
             UpdateTeams,
-            AddTicket
+            AddTicket,
+            ViewTickets,
+            DeleteTickets,
+            EditTickets
         }}>
             {children}
         </GameGlobalContext.Provider>

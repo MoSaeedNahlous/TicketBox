@@ -5,6 +5,7 @@ import {GameGlobalContext} from '../../../../contexts/gameContext/GameGlobalStat
 
 const GameTable = () => {
   const context = useContext(GameGlobalContext)
+
   useEffect(() => {
     context.GetGames()
   }, [])

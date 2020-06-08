@@ -123,10 +123,10 @@ const AddGame = () => {
     const AddTkt =(e)=>{
         e.preventDefault()
         
-        
+        setTicketInfo({...ticketInfo,ticketSequence:(Math.floor(Math.random() * (99999999999999999999999999 - 1) ) + 1).toString()})
         console.log(ticketInfo)
         GameContext.AddTicket(ticketInfo,GameContext.game.id);
-        setTicketInfo({"counter":'',"releaseDate":'',"endDate":'',"price":'',"returnable":'',"returnDate":'',"gates":[],"ticketSequence":''})
+        setTicketInfo({"counter":'',"releaseDate":'',"endDate":'',"price":'',"returnable":'',"returnDate":'',"gates":[],"ticketSequence":(Math.floor(Math.random() * (99999999999999999999999999 - 1) ) + 1).toString()})
         
         
     }

@@ -124,6 +124,21 @@ export default (state,action) =>{
                     ...state,
                     ticketId:action.payload
                 }
+            case 'VIEW_TICKETS':
+                return{
+                    ...state,
+                    tickets:action.payload
+                }
+            case 'DELETE_TICKETS':
+                return{
+                    ...state,
+                    tickets:state.tickets.filter(tkt=>tkt.id !==action.payload)
+                }
+            case 'UPDATE_TICKETS':
+                return{
+                    ...state,
+                    tickets:state.tickets.map(tkt=>tkt.id===action.payload.id ? action.payload : tkt)
+                }
 
         default: 
         return state;
