@@ -139,6 +139,16 @@ export default (state,action) =>{
                     ...state,
                     tickets:state.tickets.map(tkt=>tkt.id===action.payload.id ? action.payload : tkt)
                 }
+            case 'SET_STADIUM' :
+                return{
+                    ...state,
+                    stadium:action.payload
+                }
+            case 'CLEAR_STADIUM' :
+                    return{
+                        ...state,
+                        stadium:{}
+                    }
 
         default: 
         return state;

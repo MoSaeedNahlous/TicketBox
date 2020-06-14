@@ -7,7 +7,8 @@ import axios from 'axios'
 
 const intialState={
     games:[],
-    game:{},
+    game:{"gameTeams":{"host":'',"guest":''},"stadium":{"name":''}},
+    stadium:{},
     tickets:[],
     error:{},
     current1:{},
@@ -132,6 +133,16 @@ export const GameGlobalProvider = ({children}) => {
             type:'SET_GUEST',payload:res.data
         })
 })}
+
+    //Set Stadium
+    const SetStadium =(stadium)=>{
+        dispatch({type:'SET_STADIUM',payload:stadium})
+    }
+
+    //Clear Stadium
+    const ClearStadium =()=>{
+        dispatch({type:'CLEAR_STADIUM'})
+    }
     
     //SetCuurent1
     const SetCurrent1 = (team1) =>{
@@ -250,6 +261,7 @@ export const GameGlobalProvider = ({children}) => {
         <GameGlobalContext.Provider value={{
             games:state.games ,
             game:state.game ,
+            stadium:state.stadium,
             tickets:state.tickets,
             error:state.error ,
             current1:state.current1 ,
@@ -260,6 +272,8 @@ export const GameGlobalProvider = ({children}) => {
             host:state.host,
             guest:state.guest,
             ticketId:state.ticketId,
+            SetStadium,
+            ClearStadium,
             GetGames,
             AddGame,
             SetHost,

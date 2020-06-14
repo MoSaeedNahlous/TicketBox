@@ -15,12 +15,15 @@ const MatchPage = ({match}) => {
     const [gameState, setGameState] = useState({})
     const [hostSt,setHostSt] =useState({})
     const [guestSt,setGuestSt] =useState({})
+
     useEffect(() => {
         context.GetGameByID(match.params.id)
-        setGameState(context.game)
-        setHostSt(context.host)
-        setGuestSt(context.guest)
-    }, [])
+        context.SetHost(context.game.gameTeams.host)
+        context.SetGuest(context.game.gameTeams.guest)
+        context.SetStadium(context.game.stadium)
+
+    }, [context.game.gameTeams.host,context.game.gameTeams.guest])
+
     
     
     return (
@@ -30,8 +33,8 @@ const MatchPage = ({match}) => {
             <div className="container" style={{paddingTop:'5%'}}>
             <div className="row">
                 <div style={{textAlign:'center'}} className="col-sm-4">
-                    <div><img src={hostSt.image} alt={hostSt.name+" Image"} className="wite" /></div>
-                    <div><h2 className="wite">{hostSt.name}</h2></div>
+                    <div><img src={context.host.image} alt={context.host.name+" Image"} className="wite" /></div>
+                    <div><h2 className="wite">{context.host.name}</h2></div>
                     
                 </div>
                 <div className="col-sm-4">
@@ -40,19 +43,38 @@ const MatchPage = ({match}) => {
                     </div>
                 </div>  
                 <div style={{textAlign:'center'}} className="col-sm-4">
-                    <div><img src={guestSt.image} alt={guestSt.name+" Image"} className="wite" /></div>
-                    <div><h2 className="wite">{guestSt.name}</h2></div>
+                    <div><img src={context.guest.image} alt={context.guest.name+" Image"} className="wite" /></div>
+                    <div><h2 className="wite">{context.guest.name}</h2></div>
                 </div>    
             </div>
 
             <br/>
+            <br/>
+<hr/>
+            <div className="wite">
+            <h3 style={{textAlign:'center',borderBottom:"white 1px solid"}}>MatchInfo</h3>
+            <br/>
+            <h4>Location : {context.stadium.city} City in {context.stadium.name} Stadium</h4>
+            <h4>Deadline : {context.game.deadLine}</h4>
+            <h4></h4>
+            </div>
 
+            <hr className="wite"/>
             <div className="row">
-                <p className="wite">{JSON.stringify(gameState)}</p>
+                <div className="col-md-6 wite">
+                    <h3>Ticket Form</h3>
+                    
+                </div>
+                <div className="col-md-6 wite">
+                    <h3>Stadium</h3>
+                    <img src={context.stadium.image} alt="Stadium Imgae"/>
+                </div>
+
             </div>
             
             
             </div>
+            <br/>
             <Footer />
         </div>
     )

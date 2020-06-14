@@ -10,7 +10,8 @@ const Match = ({game}) => {
   const context = useContext(GameGlobalContext)
   const {GetGameByID} = context
   useEffect(() => {
-    context.SetTeams(game.gameTeams.host,game.gameTeams.guest)
+    context.SetHost(game.gameTeams.host)
+    context.SetGuest(game.gameTeams.guest)
   }, [])
 
   

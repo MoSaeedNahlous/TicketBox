@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import TicketsTable from './TicketsTable'
 import GameTicketsTable from './GameTicketsTable'
 import { useContext } from 'react'
+import { GameGlobalContext } from '../../../../contexts/gameContext/GameGlobalState'
 
 const EditTicket = () => {
 
-  const context = useContext()
+  const context = useContext(GameGlobalContext)
 
 
   useEffect(() => {
