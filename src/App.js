@@ -40,15 +40,21 @@ import { GameGlobalProvider } from './contexts/gameContext/GameGlobalState';
 import AddTeamPage from './components/pages/admin pages/AddTeamPage';
 import EditTeamPage from './components/pages/admin pages/EditTeamPage';
 import EditGamePage from './components/pages/admin pages/EditGamePage';
+import { AuthGlobalProvider } from './contexts/AuthContext/AuthGlobalState';
+import { Covid19GlobalProvider } from './contexts/Covid19Tracker/Covid19GlobalState';
+import Profile from './components/pages/Profile';
+
 
 
 
  
 const App =() => {
   return (
+    <AuthGlobalProvider>
     <TeamGlobalProvider>
     <StadiumGlobalProvider>
     <GameGlobalProvider>
+      <Covid19GlobalProvider>
     
     <Router>
       <div className="App full-width " >
@@ -71,6 +77,7 @@ const App =() => {
             <Route exact path='/search' component={SearchPage} />
             <Route exact path='/teams' component={Teams} />
             <Route exact path='/stadiums' component={Stadiums} />
+            <Route exact path ='/profile' component={Profile} />
             
             
               
@@ -101,9 +108,11 @@ const App =() => {
           </div>
       </div>
     </Router>
+    </Covid19GlobalProvider>
     </GameGlobalProvider>
     </StadiumGlobalProvider>
     </TeamGlobalProvider>
+    </AuthGlobalProvider>
   );
 }
 export default App;

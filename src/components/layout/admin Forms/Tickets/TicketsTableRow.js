@@ -40,6 +40,7 @@ const TicketsTableRow = ({Game,Stad}) => {
     }
     
     
+    
     return (
         <Fragment>
         <tr>
@@ -52,7 +53,7 @@ const TicketsTableRow = ({Game,Stad}) => {
         
         <td>
           <button onClick={clickHandler}><i className="fas fa-eye" aria-hidden="true"></i></button>
-          <button> <i className="fas fa-plus" aria-hidden="true"></i></button>
+          
 
 
         </td>

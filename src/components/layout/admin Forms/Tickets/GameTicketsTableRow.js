@@ -12,7 +12,7 @@ const GameTicketsTableRow = ({Ticket}) => {
 
 
     const editHandler =()=>{
-        context.SetCurrent1(Ticket)
+        context.SetCurrent(Ticket)
     }
     
 

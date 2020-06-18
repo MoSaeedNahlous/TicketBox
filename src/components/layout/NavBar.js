@@ -42,6 +42,10 @@ const NavBar = props => {
         <Link to="/login" className='navItem links' style={{padding:'1.5rem'}} >
           <i className="far fa-user" /> Login
         </Link>
+ 
+        <Link to="/profile" className='navItem links' style={{padding:'1.5rem'}} >
+          <i className="far fa-user" /> My profile
+        </Link>
         
 
         

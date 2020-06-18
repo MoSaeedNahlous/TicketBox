@@ -56,7 +56,6 @@ const MatchPage = ({match}) => {
             <br/>
             <h4>Location : {context.stadium.city} City in {context.stadium.name} Stadium</h4>
             <h4>Deadline : {context.game.deadLine}</h4>
-            <h4></h4>
             </div>
 
             <hr className="wite"/>

@@ -29,6 +29,7 @@ import bm from '../../res/bm.png'
 import bvb from '../../res/bvb.png'
 import b04 from '../../res/b04.png'
 import rb from '../../res/rb.png'
+import Covid19Tracker from "../Covid19Tracker";
 
 const Home = () =>  {
 
@@ -38,6 +39,7 @@ const Home = () =>  {
         <Navbar bg={NavImg} />
         <ImageSlider scrollStepInPx="1" delayInMs="16.66" />
         <Specs />
+        <Covid19Tracker />
         
         <div className="crimsonRedBg wite" style={{textAlign:"center",border:'solid #151719 2px'}}>
             <h1 style={{fontSize:"4rem"}}
