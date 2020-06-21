@@ -21,12 +21,17 @@ const Signup = () => {
     confirmPassword: '',
     age: '',
     gender: '',
+    userIdentifier: '',
   });
 
   const history = useHistory();
 
   const HandleSubmit = (e) => {
     e.preventDefault();
+    setNewUser({
+      ...newUser,
+      userIdentifier: Math.floor(Math.random() * (999999999999999999 - 1)) + 1,
+    });
     RegisterUser(newUser);
     alert(
       'Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)'
@@ -39,6 +44,7 @@ const Signup = () => {
       confirmPassword: '',
       age: '',
       gender: '',
+      userIdentifier: '',
     });
   };
   const onChangeHandler = (e) => {
@@ -172,8 +178,8 @@ const Signup = () => {
               <option value='' hidden>
                 Select Gender
               </option>
-              <option value='0'>Male</option>
-              <option value='1'>Female</option>
+              <option value='false'>Male</option>
+              <option value='true'>Female</option>
             </select>
           </div>
           <div className='form-group'>
