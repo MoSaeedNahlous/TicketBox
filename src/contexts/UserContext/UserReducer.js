@@ -15,6 +15,33 @@ export default (state, action) => {
         ...state,
         error: {},
       };
+    case 'GET_USERS':
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case 'SET_CURRENT_USER':
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
+    case 'CLEAR_CURRENT_USER':
+      return {
+        ...state,
+        currentUser: null,
+      };
+    case 'DELETE_USER':
+      return {
+        ...state,
+        users: state.users.filter((user) => user.userId !== action.payload),
+      };
+    case 'UPDATE_USER':
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user.userId === action.payload.userId ? action.payload : user
+        ),
+      };
 
     default:
       return state;

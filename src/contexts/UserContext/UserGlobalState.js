@@ -54,6 +54,42 @@ export const UserGlobalProvider = ({ children }) => {
     dispatch({ type: 'CLEAR_ERROR' });
   };
 
+  //GetUsers
+  const GetUsers = () => {
+    axios.get('/users/findAll').then((res) => {
+      dispatch({ type: 'GET_USERS', payload: res.data });
+    });
+  };
+
+  //SetCurrentUser
+  const SetCurrentUser = (user) => {
+    dispatch({ type: 'SET_CURRENT_USER', payload: user });
+  };
+
+  //ClearCurrentUser
+  const ClearCurrentUser = () => {
+    dispatch({ type: 'CLEAR_CURRENT_USER' });
+  };
+
+  //DeleteUser
+  const DeleteUser = (userID) => {
+    axios
+      .delete(`/users/deleteById/${userID}`)
+      .then({ type: 'DELETE_USER', payload: userID });
+  };
+
+  //UpdateUser
+  const UpdateUser = (user) => {
+    axios
+      .post('/users/save', user)
+      .then((res) => {
+        dispatch({ type: 'UPDATE_USER', payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({ type: 'SET_ERROR', payload: err.response.data });
+      });
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -64,6 +100,11 @@ export const UserGlobalProvider = ({ children }) => {
         RegisterUser,
         ClearError,
         LoginUser,
+        GetUsers,
+        SetCurrentUser,
+        ClearCurrentUser,
+        DeleteUser,
+        UpdateUser,
       }}
     >
       {children}
