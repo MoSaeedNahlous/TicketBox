@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import UserReducer from './UserReducer';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 //intial state
 
@@ -39,16 +40,10 @@ export const UserGlobalProvider = ({ children }) => {
       .post('/users/login', user)
       .then((res) => {
         dispatch({ type: 'LOGIN_USER', payload: res.data });
+
         console.log(res);
-        // localStorage.setItem('jwtToken',response.data.token)
-        // alert("Success!! welcome to TicketBox!");
-        // history.push("/");
-        // setError({});
-        // if(response.data.token){
-        //   axios.defaults.headers.common['Authorization'] =`Bearer ${response.data.token}`}
-        //   else{
-        //     delete axios.defaults.headers.common['Authorization'];
-        //   }
+        localStorage.setItem('jwtToken', res.data.token);
+        alert('Success!! welcome to TicketBox!');
       })
       .catch((err) => {
         dispatch({ type: 'SET_ERROR', payload: err.response.data });

@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
 import bg from '../../res/login.jpg';
+import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
+import { useEffect } from 'react';
 
 const Login = () => {
-  const history = useHistory();
+  const context = useContext(UserGlobalContext);
+  const { LoginUser, ClearError, error } = context;
+  const [user, setUser] = useState({ email: '', password: '' });
+  const onChangeHandler = (e) => {
+    ClearError();
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    ClearError();
+  }, []);
+
   const HandleSubmit = (e) => {
     e.preventDefault();
+    LoginUser(user);
+    setUser({ email: '', password: '' });
   };
 
   return (
@@ -36,7 +51,7 @@ const Login = () => {
             <input
               type='email'
               className='form-control'
-              id='exampleInputEmail1'
+              name='email'
               aria-describedby='emailHelp'
               style={{
                 width: '50%',
@@ -44,11 +59,13 @@ const Login = () => {
                 color: 'white',
               }}
               placeholder='Enter email'
-              name='email'
+              onChange={onChangeHandler}
               required
             />
             <div role='alert' style={{ width: '50%' }}>
-              <strong style={{ color: 'red' }}> </strong>
+              {error.email && (
+                <strong style={{ color: 'red' }}>&times; {error.email} </strong>
+              )}
             </div>
           </div>
           <div className='form-group' style={{ color: 'white' }}>
@@ -56,14 +73,18 @@ const Login = () => {
             <input
               type='password'
               className='form-control'
-              id='exampleInputPassword1'
+              onChange={onChangeHandler}
               style={{ width: '50%', backgroundColor: 'rgba(0, 0, 0, 0)' }}
               name='password'
               placeholder='Password'
               required
             />
             <div role='alert' style={{ width: '50%' }}>
-              <strong style={{ color: 'red' }}> </strong>
+              {error.password && (
+                <strong style={{ color: 'red' }}>
+                  &times; {error.password}{' '}
+                </strong>
+              )}
             </div>
           </div>
           <div className='form-group form-check' style={{ color: 'white' }}>
@@ -84,7 +105,7 @@ const Login = () => {
           <br />
           <br />
           <small className='wite'> Forget your password? Click</small>
-          <Link to='/forgetPassword' className='blu'>
+          <Link to='/forgetPassword' className='red'>
             {' '}
             here
           </Link>
@@ -93,7 +114,7 @@ const Login = () => {
             {' '}
             Don't have an account? You can SignUp by clicking{' '}
           </small>
-          <Link to='/register' className='blu'>
+          <Link to='/register' className='red'>
             {' '}
             here
           </Link>

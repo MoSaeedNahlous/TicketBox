@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import bg from '../../res/login.jpg';
 import { useContext } from 'react';
@@ -24,15 +24,13 @@ const Signup = () => {
     userIdentifier: '',
   });
 
-  const history = useHistory();
-
   const HandleSubmit = (e) => {
     e.preventDefault();
     RegisterUser(newUser);
     alert(
       'Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)'
     );
-    history.push('/login');
+
     setNewUser({
       name: '',
       email: '',
@@ -44,6 +42,7 @@ const Signup = () => {
     });
   };
   const onChangeHandler = (e) => {
+    ClearError();
     setNewUser({
       ...newUser,
       userIdentifier: Math.floor(Math.random() * (999999999999999999 - 1)) + 1,
