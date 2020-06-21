@@ -28,10 +28,6 @@ const Signup = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    setNewUser({
-      ...newUser,
-      userIdentifier: Math.floor(Math.random() * (999999999999999999 - 1)) + 1,
-    });
     RegisterUser(newUser);
     alert(
       'Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)'
@@ -48,7 +44,11 @@ const Signup = () => {
     });
   };
   const onChangeHandler = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    setNewUser({
+      ...newUser,
+      userIdentifier: Math.floor(Math.random() * (999999999999999999 - 1)) + 1,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
