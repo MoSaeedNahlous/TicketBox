@@ -25,14 +25,8 @@ export const AuthGlobalProvider =({children})=>{
  const [state, dispatch] = useReducer(AuthReducer, intialState)
 
 //Methods
-//Register User
-
-const RegisterUser =()=>{
-    
-}
 
 //LoginUser
-
 const LoginUser=()=>{
 
 }
@@ -58,8 +52,7 @@ return(
         error:state.error,
         LoadUser,
         LoginUser,
-        LogoutUser,
-        RegisterUser
+        LogoutUser
     }}>
     {children}
     </AuthGlobalContext.Provider>

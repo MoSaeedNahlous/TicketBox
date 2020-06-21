@@ -43,6 +43,8 @@ import EditGamePage from './components/pages/admin pages/EditGamePage';
 import { AuthGlobalProvider } from './contexts/AuthContext/AuthGlobalState';
 import { Covid19GlobalProvider } from './contexts/Covid19Tracker/Covid19GlobalState';
 import Profile from './components/pages/Profile';
+import { UserGlobalProvider } from './contexts/UserContext/UserGlobalState';
+
 
 
 
@@ -50,6 +52,7 @@ import Profile from './components/pages/Profile';
  
 const App =() => {
   return (
+    <UserGlobalProvider>
     <AuthGlobalProvider>
     <TeamGlobalProvider>
     <StadiumGlobalProvider>
@@ -113,6 +116,7 @@ const App =() => {
     </StadiumGlobalProvider>
     </TeamGlobalProvider>
     </AuthGlobalProvider>
+    </UserGlobalProvider>
   );
 }
 export default App;
