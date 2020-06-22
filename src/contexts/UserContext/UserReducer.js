@@ -42,6 +42,31 @@ export default (state, action) => {
           user.userId === action.payload.userId ? action.payload : user
         ),
       };
+    case 'USERS_COUNT':
+      return {
+        ...state,
+        count: action.payload,
+      };
+    case 'DELETE_ALLL_USERS':
+      return {
+        ...state,
+        users: [],
+      };
+    case 'COUNT_MALE_USERS':
+      return {
+        ...state,
+        malesCount: action.payload,
+      };
+    case 'COUNT_FEMALE_USERS':
+      return {
+        ...state,
+        femalesCount: action.payload,
+      };
+    case 'GET_AGE_STATICS':
+      return {
+        ...state,
+        ageStaics: action.payload,
+      };
 
     default:
       return state;

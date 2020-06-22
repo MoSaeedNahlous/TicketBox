@@ -10,6 +10,10 @@ const intialState = {
   users: [],
   error: {},
   currentUser: null,
+  count: '',
+  malesCount: '',
+  femalesCount: '',
+  ageStatics: {},
 };
 
 // create context
@@ -90,6 +94,41 @@ export const UserGlobalProvider = ({ children }) => {
       });
   };
 
+  //UsersCount
+  const UsersCount = () => {
+    axios.get('/users/count').then((res) => {
+      dispatch({ type: 'USERS_COUNT', payload: res.date });
+    });
+  };
+
+  //DeleteAllUsers
+  const DeleteAllUsers = () => {
+    axios.delete('/users/deleteAll').then((res) => {
+      dispatch({ type: 'DELETE_ALL_USERS' });
+    });
+  };
+
+  //CountMaleUsers
+  const CountMaleUsers = () => {
+    axios.get('/users/statistics/countMaleUsers').then((res) => {
+      dispatch({ type: 'COUNT_MALE_USERS', payload: res.data });
+    });
+  };
+
+  //CountMaleUsers
+  const CountFemaleUsers = () => {
+    axios.get('/users/statistics/countFemaleUsers').then((res) => {
+      dispatch({ type: 'COUNT_FEMALE_USERS', payload: res.data });
+    });
+  };
+
+  //GetAgeStatics
+  const GetAgeStatics = () => {
+    axios.get('/users/statistics/countAgeGroupsOfUsers').then((res) => {
+      dispatch({ type: 'GET_AGE_STATICS', payload: res.data });
+    });
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -97,6 +136,10 @@ export const UserGlobalProvider = ({ children }) => {
         users: state.users,
         error: state.error,
         currentUser: state.currentUser,
+        count: state.count,
+        malesCount: state.malesCount,
+        femalesCount: state.femalesCount,
+        ageStatics: state.ageStatics,
         RegisterUser,
         ClearError,
         LoginUser,
@@ -105,6 +148,11 @@ export const UserGlobalProvider = ({ children }) => {
         ClearCurrentUser,
         DeleteUser,
         UpdateUser,
+        UsersCount,
+        DeleteAllUsers,
+        CountMaleUsers,
+        CountFemaleUsers,
+        GetAgeStatics,
       }}
     >
       {children}
