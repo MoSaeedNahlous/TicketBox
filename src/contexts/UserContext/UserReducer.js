@@ -65,7 +65,6 @@ export default (state, action) => {
     case 'GET_AGE_STATICS':
       return {
         ...state,
-
         ageStatics: action.payload,
       };
 

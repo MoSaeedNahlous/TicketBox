@@ -35,7 +35,14 @@ const AgeStaticsChart = () => {
           'age>=60 and age<70',
           'age>=70',
         ],
-        data: ageData,
+        data: [
+          ageData[0],
+          ageData[1],
+          ageData[2],
+          ageData[3],
+          ageData[4],
+          ageData[5],
+        ],
         backgroundColor: [
           'rgba(0,0,150,0.6)',
           'rgba(150,150,0,0.6)',
