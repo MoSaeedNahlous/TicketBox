@@ -13,7 +13,7 @@ const intialState = {
   count: '',
   malesCount: '',
   femalesCount: '',
-  ageStatics: {},
+  ageStatics: '',
 };
 
 // create context
@@ -125,7 +125,8 @@ export const UserGlobalProvider = ({ children }) => {
   //GetAgeStatics
   const GetAgeStatics = () => {
     axios.get('/users/statistics/countAgeGroupsOfUsers').then((res) => {
-      dispatch({ type: 'GET_AGE_STATICS', payload: res.data });
+      console.log(res.data[0]);
+      dispatch({ type: 'GET_AGE_STATICS', payload: res.data[0] });
     });
   };
 
