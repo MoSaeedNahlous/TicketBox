@@ -188,8 +188,8 @@ const Signup = () => {
               <option value='' hidden>
                 Select Gender
               </option>
-              <option value='false'>Male</option>
-              <option value='true'>Female</option>
+              <option value='false'>Female</option>
+              <option value='true'>Male</option>
             </select>
           </div>
           <div className='form-group'>

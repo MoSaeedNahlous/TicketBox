@@ -8,7 +8,7 @@ const UserTableRow = ({ user }) => {
     context.SetCurrentUser(user);
   };
   const deleteHandler = () => {
-    context.DeleteUser(user.userId);
+    context.DeleteUser(user.id);
   };
 
   return (
@@ -17,6 +17,8 @@ const UserTableRow = ({ user }) => {
         <td>{user.userId}</td>
         <td>{user.name}</td>
         <td>{user.email}</td>
+        <td>{user.age}</td>
+        <td>{user.gender ? 'Male' : 'Female'}</td>
         <td>
           <button>
             {' '}

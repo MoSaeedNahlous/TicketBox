@@ -63,7 +63,7 @@ const AdminNav = () => {
               className='dropdown-menu'
               aria-labelledby='navbarDropdownMenuLink'
             >
-              <Link className='dropdown-item' to='/deleteUser'>
+              <Link className='dropdown-item' to='/editUser'>
                 Edit User
               </Link>
             </div>

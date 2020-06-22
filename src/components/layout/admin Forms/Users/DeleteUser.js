@@ -2,14 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../../../contexts/UserContext/UserGlobalState';
 
-const DeleteUser = () => {
+const EditUser = () => {
   const context = useContext(UserGlobalContext);
   const { currentUser, SetCurrentUser, ClearCurrentUser, UpdateUser } = context;
-  const [user, setUser] = useState({ userId: '', name: '', email: '' });
+  const [user, setUser] = useState({
+    userId: '',
+    name: '',
+    email: '',
+    age: '',
+    gender: '',
+  });
 
   useEffect(() => {
     if (currentUser === null) {
-      setUser({ userId: '', name: '', email: '' });
+      setUser({ userId: '', name: '', email: '', age: '', gender: '' });
     } else {
       setUser(currentUser);
     }
@@ -67,6 +73,36 @@ const DeleteUser = () => {
               onChange={onChangeHandler}
             />
           </div>
+          <div className='form-group'>
+            <label>Gender</label>
+            <select
+              onChange={onChangeHandler}
+              value={user.gender}
+              required
+              name='gender'
+              className='form-control'
+            >
+              <option value='' hidden>
+                Select Gender
+              </option>
+              <option value='true'>Male</option>
+              <option value='false'>Female</option>
+            </select>
+          </div>
+          <div className='form-group'>
+            <label>Age</label>
+            <input
+              onChange={onChangeHandler}
+              className='form-control'
+              placeholder='Age'
+              name='age'
+              value={user.age}
+              type='number'
+              min='18'
+              max='100'
+              required
+            />
+          </div>
 
           <div className='form-group'>
             <button
@@ -84,4 +120,4 @@ const DeleteUser = () => {
   );
 };
 
-export default DeleteUser;
+export default EditUser;

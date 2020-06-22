@@ -17,6 +17,8 @@ const UsersTable = () => {
             <th scope='col'>ID</th>
             <th scope='col'>Name</th>
             <th scope='col'>Email</th>
+            <th scope='col'>Age</th>
+            <th scope='col'>Gender</th>
             <th scope='col'>Actions</th>
           </tr>
         </thead>
