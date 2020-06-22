@@ -8,7 +8,7 @@ const UsersTable = () => {
   const context = useContext(UserGlobalContext);
   useEffect(() => {
     context.GetUsers();
-  }, [context.users]);
+  }, []);
   return (
     <div className='container'>
       <table className='table'>

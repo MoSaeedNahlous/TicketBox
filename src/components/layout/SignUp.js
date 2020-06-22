@@ -26,20 +26,31 @@ const Signup = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    RegisterUser(newUser);
-    alert(
-      'Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)'
-    );
+    if (newUser.password === newUser.confirmPassword) {
+      RegisterUser({
+        name: newUser.name,
+        age: newUser.age,
+        password: newUser.password,
+        email: newUser.email,
+        gender: newUser.gender,
+        userIdentifier: newUser.userIdentifier,
+      });
+      alert(
+        'Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)'
+      );
 
-    setNewUser({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      age: '',
-      gender: '',
-      userIdentifier: '',
-    });
+      setNewUser({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        age: '',
+        gender: '',
+        userIdentifier: '',
+      });
+    } else {
+      alert('check your password..');
+    }
   };
   const onChangeHandler = (e) => {
     ClearError();

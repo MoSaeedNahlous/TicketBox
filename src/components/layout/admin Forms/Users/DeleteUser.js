@@ -13,10 +13,11 @@ const DeleteUser = () => {
     } else {
       setUser(currentUser);
     }
-  }, [currentUser, context]);
+  }, [currentUser]);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    console.log(user);
     UpdateUser(user);
   };
 

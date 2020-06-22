@@ -39,7 +39,21 @@ const GendersChart = () => {
   return (
     <Fragment>
       <h2 style={{ textAlign: 'center' }}>Genders Stats</h2>
-      <Bar data={chartData} options={{ responsive: true }} />
+      <Bar
+        data={chartData}
+        options={{
+          responsive: true,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        }}
+      />
     </Fragment>
   );
 };
