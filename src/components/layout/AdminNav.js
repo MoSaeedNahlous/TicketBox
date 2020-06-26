@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const AdminNav = () => {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-      <Link to='/admin'>
+      <Link to='/admin/home'>
         {' '}
         <label className='navbar-brand' style={{ fontSize: '25px' }}>
           Admin Actions
@@ -39,10 +39,10 @@ const AdminNav = () => {
               className='dropdown-menu'
               aria-labelledby='navbarDropdownMenuLink'
             >
-              <Link className='dropdown-item' to='/addEmp'>
+              <Link className='dropdown-item' to='/admin/addEmp'>
                 Add Employee
               </Link>
-              <Link className='dropdown-item' to='/deleteEmp'>
+              <Link className='dropdown-item' to='/admin/deleteEmp'>
                 Delete Employee
               </Link>
             </div>
@@ -63,7 +63,7 @@ const AdminNav = () => {
               className='dropdown-menu'
               aria-labelledby='navbarDropdownMenuLink'
             >
-              <Link className='dropdown-item' to='/editUser'>
+              <Link className='dropdown-item' to='/admin/editUser'>
                 Edit User
               </Link>
             </div>
@@ -84,10 +84,10 @@ const AdminNav = () => {
               className='dropdown-menu'
               aria-labelledby='navbarDropdownMenuLink'
             >
-              <Link className='dropdown-item' to='/addGame'>
+              <Link className='dropdown-item' to='/admin/addGame'>
                 Add Game
               </Link>
-              <Link className='dropdown-item' to='/editGame'>
+              <Link className='dropdown-item' to='/admin/editGame'>
                 Edit Game
               </Link>
             </div>
@@ -108,10 +108,10 @@ const AdminNav = () => {
               className='dropdown-menu'
               aria-labelledby='navbarDropdownMenuLink'
             >
-              <Link className='dropdown-item' to='/addTeam'>
+              <Link className='dropdown-item' to='/admin/addTeam'>
                 Add Team
               </Link>
-              <Link className='dropdown-item' to='/editTeam'>
+              <Link className='dropdown-item' to='/admin/editTeam'>
                 Edit Team
               </Link>
             </div>
@@ -132,7 +132,7 @@ const AdminNav = () => {
               className='dropdown-menu'
               aria-labelledby='navbarDropdownMenuLink'
             >
-              <Link className='dropdown-item' to='/editTicket'>
+              <Link className='dropdown-item' to='/admin/editTicket'>
                 Ticket Actions
               </Link>
             </div>
@@ -153,10 +153,10 @@ const AdminNav = () => {
               className='dropdown-menu'
               aria-labelledby='navbarDropdownMenuLink'
             >
-              <Link className='dropdown-item' to='/addStadium'>
+              <Link className='dropdown-item' to='/admin/addStadium'>
                 Add Stadium
               </Link>
-              <Link className='dropdown-item' to='/editStadium'>
+              <Link className='dropdown-item' to='/admin/editStadium'>
                 Edit Stadium
               </Link>
             </div>

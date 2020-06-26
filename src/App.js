@@ -97,52 +97,60 @@ const App = () => {
                         <Route exact path='/stadiums' component={Stadiums} />
                         <Route exact path='/profile' component={Profile} />
 
-                        <Route exact path='/admin' component={Admin} />
-                        <Route exact path='/addEmp' component={AddEmpPage} />
+                        <Route exact path='/admin/home' component={Admin} />
                         <Route
                           exact
-                          path='/deleteEmp'
+                          path='/admin/addEmp'
+                          component={AddEmpPage}
+                        />
+                        <Route
+                          exact
+                          path='/admin/deleteEmp'
                           component={DeleteEmpPage}
                         />
                         <Route
                           exact
-                          path='/editUser'
+                          path='/admin/editUser'
                           component={DeleteUserPage}
                         />
 
                         <Route exact path='/addGame' component={AddGamePage} />
                         <Route
                           exact
-                          path='/editGame'
+                          path='/admin/editGame'
                           component={EditGamePage}
                         />
                         <Route exact path='/game/:id' component={MatchPage} />
 
                         <Route
                           exact
-                          path='/addTicket'
+                          path='/admin/addTicket'
                           component={AddTicketPage}
                         />
                         <Route
                           exact
-                          path='/editTicket'
+                          path='/admin/editTicket'
                           component={EditTicketPage}
                         />
                         <Route
                           exact
-                          path='/addStadium'
+                          path='/admin/addStadium'
                           component={AddStadiumPage}
                         />
                         <Route
                           exact
-                          path='/editStadium'
+                          path='/admin/editStadium'
                           component={EditStadiumPage}
                         />
 
-                        <Route exact path='/addTeam' component={AddTeamPage} />
                         <Route
                           exact
-                          path='/editTeam'
+                          path='/admin/addTeam'
+                          component={AddTeamPage}
+                        />
+                        <Route
+                          exact
+                          path='/admin/editTeam'
                           component={EditTeamPage}
                         />
 
