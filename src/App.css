@@ -1,290 +1,285 @@
-html, body {
-    height:100%;
-    padding:0;
-    margin:0;
-    font-family: 'Alegreya', serif;
-    font-family: 'B612', sans-serif;
-    
-
-   }
-   a{
-    text-decoration: none;
-  }
-  Link{
-    
-      text-decoration: none;
-    
-  }
-
-  #AddGameModal{
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2%;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 5%;
-  }
-  #viewModal{
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2%;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 5%;
-  }
-  #viewModalContent{
-    background-color:white;
-    margin-top: 20%;
-  }
-  #AddGameModal1{
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2%;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 5%;
-  }
-  .AddGameModalContent{
-    background-color:white;
-    margin-top: 20%;
-
-  }
-  #AddGameModalContent1{
-    background-color:white;
-    margin-top: 20%;
-
-  }
-  #closeModal{
-    float: right;
-    border: black 0.3px solid;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 3px;
-    font-weight: bold;
-    background: white;
-    
-    color: #909090;
-  }
-  
-  #closeModal:hover{
-    color: black;
-    cursor: pointer;
-  }
-   .bg-blu{
-     background-color: #0A2E52;
-   }
-
-   .bg-gren{
-     background-color: #51CB20;
-   }
-
-   .bg-wite{
-     background-color: #F5F3F5;
-   }
-
-   .bg-orng{
-     background-color: #FF9F1C;
-   }
-   .blu{
-     color: #0A2E52;
-   }
-   .gren{
-     color: #51CB20;
-   }
-   .wite{
-     color: #F5F3F5;
-   }
-   .orng{
-     color: #FF9F1C;
-   }
-   .crimsonRed{
-     color:#990000;
-     
-   }
-   .black{
-     color:black;
-   }
-   .crimsonRedBg{
-    background-color:#990000;
-  }
-  .blackBg{
-    background-color:black;
-  }
-
-  .footerItem{
-    color: #F5F3F5;
-  }
-  .footerItem:hover{
-    color:grey;
-  }
-  .links{
-    text-decoration: none;
-  }
-  
-  .links:hover{
-    text-decoration: none;
-  }
-  .linksStad{
-    color: black;
-    text-decoration: none;
-  }
-  
-  .linksStad:hover{
-    color: black;
-    text-decoration: none;
-  }
-  .margin1{
-    margin:1rem;
-  }
-.navItem{
-    color:#990000;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 0.8rem;
-    }
-
-  .navItem:hover{
-    background-color:#990000;
-    color: white;
-    text-decoration: none;
-    padding: 0.8rem;
-  }
-
-  .navItemAlt{
-    color:white;
-    background-color: #990000;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 1rem;
-
-  }
-  .navItemAlt:hover{
-    background-color:black;
-    color:#990000;
-    text-decoration: none;
-  }
-  .menuItem{
-    color:white;
-    text-align:left;
-    text-decoration: none;
-    margin: 0.5rem;
-  }
-
-  .menuItem:hover{
-    color:#990000;
-    text-decoration: none;
-
-  }
-
-   .zoom {
-
-
-    transition: transform .2s; /* Animation */
-    
-    
-  }
-  
-  .zoom:hover {
-    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    background-color: #990000
-  }
-
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('res/download.jpg');
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-image: url('res/51eMbqHl7PL._AC_SY606_.jpg');
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-
-.Mycards{
-    display:grid;
-    grid-template-columns: 50% 50%  ;
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
-.MyStadiums{
-  display:grid;
-  grid-template-columns: 25% 25% 25% 25%  ;
+.style {
+  height: 50%;
+}
+a {
+  text-decoration: none;
+}
+Link {
+  text-decoration: none;
+}
+.navFont {
+  font-family: 'Montserrat', sans-serif;
+}
+.footerIcon {
+  margin: 30%;
+  display: inline;
+}
+#AddGameModal {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5%;
+}
+#viewModal {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5%;
+}
+#viewModalContent {
+  background-color: white;
+  margin-top: 20%;
+}
+#AddGameModal1 {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5%;
+}
+.AddGameModalContent {
+  background-color: white;
+  margin-top: 20%;
+}
+#AddGameModalContent1 {
+  background-color: white;
+  margin-top: 20%;
+}
+#closeModal {
+  float: right;
+  border: black 0.3px solid;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  font-weight: bold;
+  background: white;
+
+  color: #909090;
 }
 
-.specDiv{color:white;
-      background-color:#990000;
-    }
-  
-.specDiv:hover{
-    
-      color:#990000;
-      background-color:black ;
+#closeModal:hover {
+  color: black;
+  cursor: pointer;
+}
+.bg-blu {
+  background-color: #0a2e52;
+}
 
-    
+.bg-gren {
+  background-color: #51cb20;
+}
+
+.bg-wite {
+  background-color: #f5f3f5;
+}
+
+.bg-orng {
+  background-color: #ff9f1c;
+}
+.blu {
+  color: #0a2e52;
+}
+.gren {
+  color: #51cb20;
+}
+.wite {
+  color: #d8d8d8;
+}
+.orng {
+  color: #ff9f1c;
+}
+.crimsonRed {
+  color: #ff5e5b;
+}
+.black {
+  color: black;
+}
+.crimsonRedBg {
+  background-color: #ff5e5b;
+}
+.blackBg {
+  background-color: black;
+}
+
+.footerItem {
+  color: #d8d8d8;
+}
+.footerItem:hover {
+  color: grey;
+}
+.links {
+  text-decoration: none;
+}
+
+.links:hover {
+}
+.linksStad {
+  color: black;
+  text-decoration: none;
+}
+
+.linksStad:hover {
+  color: black;
+  text-decoration: none;
+}
+.margin1 {
+  margin: 1rem;
+}
+.navItem {
+  color: #d8d8d8;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0.8rem;
+}
+
+.navItem:hover {
+  /* background-color: #fbfbff; */
+  color: #ffffea;
+  text-decoration: none;
+  /* padding: 0.8rem; */
+}
+
+.navItemAlt {
+  color: #d8d8d8;
+  /* background-color: #990000; */
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+.navItemAlt:hover {
+  /* background-color: #fbfbff; */
+  color: #ffffea;
+  text-decoration: none;
+}
+.menuItem {
+  color: #ffffea;
+  text-align: left;
+  text-decoration: none;
+  margin: 0.5rem;
+}
+
+.menuItem:hover {
+  color: #d8d8d8;
+  text-decoration: none;
+}
+
+.zoom {
+  transition: transform 0.2s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(
+    1.2
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  background-color: #990000;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('res/download.jpg');
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-image: url('res/51eMbqHl7PL._AC_SY606_.jpg');
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.Mycards {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.MyStadiums {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.specDiv {
+  color: #ffffea;
+  background-color: #ff5e5b;
+}
+
+.specDiv:hover {
+  color: #ff5e5b;
+  background-color: #ffffea;
 }
 
 .scroll {
   opacity: 0.7;
-  background-color:#990000;
+  background-color: #990000;
   width: 40px;
   height: 40px;
   position: fixed;
@@ -292,8 +287,6 @@ html, body {
   right: 10px;
   border-radius: 5px;
   border: none;
-  
-  
 }
 
 .arrow-up {
@@ -328,7 +321,8 @@ html, body {
 }
 
 /* Position the front and back side */
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -345,35 +339,27 @@ html, body {
 /* Style the back side */
 .flip-card-back {
   background-color: #990000;
-  color:#F5F3F5;
+  color: #f5f3f5;
   transform: rotateY(180deg);
 }
 
-canvas{
-  width:40px;
+canvas {
+  width: 40px;
   height: 40px;
 }
-@media only screen and (max-width:775px){
-    .Mycards{
-        
-        grid-template-columns: 50% 50%;
-    }
-    .MyStadiums{
-      
-      grid-template-columns: 50% 50%   ;
-    }
-    
-        
+@media only screen and (max-width: 775px) {
+  .Mycards {
+    grid-template-columns: 50% 50%;
+  }
+  .MyStadiums {
+    grid-template-columns: 50% 50%;
+  }
 }
-@media only screen and (max-width:575px){
-    .Mycards{
-        
-        grid-template-columns: 100%;
-    }
-    .MyStadiums{
-      
-      grid-template-columns: 100%  ;
-    }
-    
-        
+@media only screen and (max-width: 575px) {
+  .Mycards {
+    grid-template-columns: 100%;
+  }
+  .MyStadiums {
+    grid-template-columns: 100%;
+  }
 }

@@ -114,7 +114,11 @@ const App = () => {
                           component={DeleteUserPage}
                         />
 
-                        <Route exact path='/addGame' component={AddGamePage} />
+                        <Route
+                          exact
+                          path='/admin/addGame'
+                          component={AddGamePage}
+                        />
                         <Route
                           exact
                           path='/admin/editGame'
