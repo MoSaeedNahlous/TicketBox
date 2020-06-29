@@ -98,7 +98,7 @@ const Footer = (props) => {
       <h6
         style={{ paddingBottom: '3%', textAlign: 'center', marginBottom: '0' }}
       >
-        CopyRights <i class='fa fa-copyright' aria-hidden='true'></i> 2020{' '}
+        CopyRights <i className='fa fa-copyright' aria-hidden='true'></i> 2020{' '}
       </h6>
     </footer>
   );

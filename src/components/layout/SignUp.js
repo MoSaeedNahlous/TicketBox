@@ -98,6 +98,8 @@ const Signup = () => {
             <label>Name</label>
             <input
               type='text'
+              maxLength='20'
+              minLength='2'
               className='form-control'
               value={newUser.name}
               name='name'
@@ -148,6 +150,7 @@ const Signup = () => {
               value={newUser.password}
               placeholder='Password'
               name='password'
+              minLength='8'
               style={{
                 width: '50%',
                 backgroundColor: 'rgba(0, 0, 0, 0)',
@@ -172,6 +175,7 @@ const Signup = () => {
               value={newUser.confirmPassword}
               placeholder='Password'
               name='confirmPassword'
+              minLength='8'
               style={{
                 width: '50%',
                 backgroundColor: 'rgba(0, 0, 0, 0)',
