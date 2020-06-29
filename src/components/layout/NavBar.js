@@ -94,7 +94,7 @@ const NavBar = (props) => {
             </Link>
           </li>
           <li className='nav-item menuItem'>
-            <Link to='/admin' className=' menuItem'>
+            <Link to='/admin/home' className=' menuItem'>
               {' '}
               <i className='fas fa-home' /> Admin
             </Link>

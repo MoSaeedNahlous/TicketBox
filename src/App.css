@@ -45,6 +45,12 @@ Link {
   left: 0;
   padding: 5%;
 }
+#viewModalContentSignUp {
+  background-color: green;
+  margin-top: 20%;
+  color: white;
+  text-align: center;
+}
 #viewModalContent {
   background-color: white;
   margin-top: 20%;

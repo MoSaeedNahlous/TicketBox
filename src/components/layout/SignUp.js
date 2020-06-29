@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bg from '../../res/login.jpg';
 import { useContext } from 'react';
@@ -8,11 +8,19 @@ import { useEffect } from 'react';
 
 const Signup = () => {
   const context = useContext(UserGlobalContext);
-  const { RegisterUser, ClearError, error } = context;
-
+  const { RegisterUser, ClearError, error, response, ClearResponse } = context;
+  const history = useHistory();
   useEffect(() => {
     ClearError();
   }, []);
+
+  useEffect(() => {
+    if (response) {
+      document.getElementById('viewModal').style.display = 'block';
+
+      ClearResponse();
+    }
+  }, [response]);
 
   const [newUser, setNewUser] = useState({
     name: '',
@@ -21,7 +29,6 @@ const Signup = () => {
     confirmPassword: '',
     age: '',
     gender: '',
-    userIdentifier: '',
   });
 
   const HandleSubmit = (e) => {
@@ -33,11 +40,7 @@ const Signup = () => {
         password: newUser.password,
         email: newUser.email,
         gender: newUser.gender,
-        userIdentifier: newUser.userIdentifier,
       });
-      alert(
-        'Success!! welcome to TicketBox!! press the button to redirect to login page and login using your new account!!enjoy :-)'
-      );
 
       setNewUser({
         name: '',
@@ -46,7 +49,6 @@ const Signup = () => {
         confirmPassword: '',
         age: '',
         gender: '',
-        userIdentifier: '',
       });
     } else {
       alert('check your password..');
@@ -56,7 +58,6 @@ const Signup = () => {
     ClearError();
     setNewUser({
       ...newUser,
-      userIdentifier: Math.floor(Math.random() * (999999999999999999 - 1)) + 1,
       [e.target.name]: e.target.value,
     });
   };
@@ -72,6 +73,21 @@ const Signup = () => {
         paddingBottom: '3rem',
       }}
     >
+      <div id='viewModal' style={{ display: 'none' }}>
+        <div id='viewModalContentSignUp'>
+          <h4>Success!!</h4>
+          <br />
+          <span
+            style={{ cursor: 'pointer', textDecoration: ' underline' }}
+            onClick={() => {
+              history.push('/login');
+              document.getElementById('viewModal').style.display = 'none';
+            }}
+          >
+            press here to continue!
+          </span>
+        </div>
+      </div>
       <div className='container wite'>
         <br />
         <form onSubmit={HandleSubmit}>
@@ -117,8 +133,10 @@ const Signup = () => {
               required
             />
             <div role='alert' style={{ width: '50%' }}>
-              {error.email && (
-                <strong style={{ color: 'red' }}>&times; {error.email} </strong>
+              {error.message && (
+                <strong style={{ color: 'red' }}>
+                  &times; {error.message}{' '}
+                </strong>
               )}
             </div>
           </div>

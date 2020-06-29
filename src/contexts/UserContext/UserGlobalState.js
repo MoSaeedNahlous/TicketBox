@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import UserReducer from './UserReducer';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 //intial state
 
@@ -14,6 +13,7 @@ const intialState = {
   malesCount: '',
   femalesCount: '',
   ageStatics: '',
+  response: '',
 };
 
 // create context
@@ -30,9 +30,9 @@ export const UserGlobalProvider = ({ children }) => {
   //RegisterUser
   const RegisterUser = (user) => {
     axios
-      .post('/users/save', user)
+      .post('/auth/signup', user)
       .then((res) => {
-        dispatch({ type: 'REGISTER_USER', payload: res.data });
+        dispatch({ type: 'REGISTER_USER', payload: res.data.success });
       })
       .catch((err) => {
         dispatch({ type: 'SET_ERROR', payload: err.response.data });
@@ -41,7 +41,7 @@ export const UserGlobalProvider = ({ children }) => {
   //LoginUser
   const LoginUser = (user) => {
     axios
-      .post('/users/login', user)
+      .post('/auth/signin', user)
       .then((res) => {
         dispatch({ type: 'LOGIN_USER', payload: res.data });
 
@@ -130,6 +130,11 @@ export const UserGlobalProvider = ({ children }) => {
     });
   };
 
+  //ClearResponse
+  const ClearResponse = () => {
+    dispatch({ type: 'CLEAR_RESPONSE' });
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -141,6 +146,8 @@ export const UserGlobalProvider = ({ children }) => {
         malesCount: state.malesCount,
         femalesCount: state.femalesCount,
         ageStatics: state.ageStatics,
+        response: state.response,
+        ClearResponse,
         RegisterUser,
         ClearError,
         LoginUser,

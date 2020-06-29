@@ -3,7 +3,7 @@ export default (state, action) => {
     case 'REGISTER_USER':
       return {
         ...state,
-        users: [action.payload, ...state.users],
+        response: action.payload,
       };
     case 'SET_ERROR':
       return {
@@ -66,6 +66,11 @@ export default (state, action) => {
       return {
         ...state,
         ageStatics: action.payload,
+      };
+    case 'CLEAR_RESPONSE':
+      return {
+        ...state,
+        response: '',
       };
 
     default:
