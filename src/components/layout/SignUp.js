@@ -74,11 +74,17 @@ const Signup = () => {
         paddingBottom: '3rem',
       }}
     >
-      <div id='viewModalSignup' style={{ display: 'none' }}>
+      <div id='viewModalSignup'>
         <div id='viewModalContentSignUp'>
           <h4>Success!!</h4>
           <br />
-          <img src={suc} alt='Success Logo' width='15%' height='15%' />
+          <img
+            src={suc}
+            alt='Success Logo'
+            width='25%'
+            height='25%'
+            style={{ marginBottom: '35px' }}
+          />
           <br />
           <br />
           <span
@@ -102,7 +108,7 @@ const Signup = () => {
             <label>Name(*only Letters)</label>
             <input
               type='text'
-              pattern='[A-Za-z]+'
+              pattern='^(?:[a-zA-Z0-9\s@,=%$#&_\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]|(?:\uD802[\uDE60-\uDE9F]|\uD83B[\uDE00-\uDEFF])){0,30}$'
               maxLength='20'
               minLength='2'
               className='form-control'

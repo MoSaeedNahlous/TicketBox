@@ -48,21 +48,23 @@ Link {
 #viewModalSignup {
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
-
+  overflow: hidden;
   width: 100%;
   height: 100%;
   overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 1%;
 }
 #viewModalContentSignUp {
-  background-color: green;
-  padding-top: 20%;
-  padding-bottom: 18%;
+  background-image: url('./res/succ.jpg');
+  background-position: center;
+  background-size: cover;
+  padding-top: 9%;
+  padding-bottom: 1%;
   color: white;
   text-align: center;
+  overflow: hidden;
 }
 #viewModalContent {
   background-color: white;
