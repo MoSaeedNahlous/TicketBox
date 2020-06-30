@@ -14,6 +14,8 @@ const intialState = {
   femalesCount: '',
   ageStatics: '',
   response: '',
+  token: localStorage.getItem('jwtToken'),
+  isAuthenticated: null,
 };
 
 // create context
@@ -46,7 +48,11 @@ export const UserGlobalProvider = ({ children }) => {
         dispatch({ type: 'LOGIN_USER', payload: res.data });
 
         console.log(res);
-        localStorage.setItem('jwtToken', res.data.token);
+        localStorage.setItem(
+          'jwtToken',
+          res.data.tokenType + ' ' + res.data.accessToken
+        );
+        console.log(localStorage.getItem('jwtToken'));
         alert('Success!! welcome to TicketBox!');
       })
       .catch((err) => {
@@ -147,6 +153,8 @@ export const UserGlobalProvider = ({ children }) => {
         femalesCount: state.femalesCount,
         ageStatics: state.ageStatics,
         response: state.response,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
         ClearResponse,
         RegisterUser,
         ClearError,

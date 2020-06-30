@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import bg from '../../res/login.jpg';
+import suc from '../../res/suc.svg';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 import { useEffect } from 'react';
@@ -73,9 +74,12 @@ const Signup = () => {
         paddingBottom: '3rem',
       }}
     >
-      <div id='viewModal' style={{ display: 'none' }}>
+      <div id='viewModalSignup' style={{ display: 'none' }}>
         <div id='viewModalContentSignUp'>
           <h4>Success!!</h4>
+          <br />
+          <img src={suc} alt='Success Logo' width='15%' height='15%' />
+          <br />
           <br />
           <span
             style={{ cursor: 'pointer', textDecoration: ' underline' }}
@@ -84,7 +88,7 @@ const Signup = () => {
               document.getElementById('viewModal').style.display = 'none';
             }}
           >
-            press here to continue!
+            press here to go to login page!
           </span>
         </div>
       </div>
@@ -95,9 +99,10 @@ const Signup = () => {
             <h1 className='flex-center' style={{ paddingBottom: '1.5rem' }}>
               Create your new account
             </h1>
-            <label>Name</label>
+            <label>Name(*only Letters)</label>
             <input
               type='text'
+              pattern='[A-Za-z]+'
               maxLength='20'
               minLength='2'
               className='form-control'
