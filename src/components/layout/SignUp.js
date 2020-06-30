@@ -17,7 +17,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (response) {
-      document.getElementById('viewModal').style.display = 'block';
+      document.getElementById('viewModalSignup').style.display = 'block';
 
       ClearResponse();
     }
@@ -85,7 +85,7 @@ const Signup = () => {
             style={{ cursor: 'pointer', textDecoration: ' underline' }}
             onClick={() => {
               history.push('/login');
-              document.getElementById('viewModal').style.display = 'none';
+              document.getElementById('viewModalSignup').style.display = 'none';
             }}
           >
             press here to go to login page!
