@@ -74,7 +74,7 @@ const Signup = () => {
         paddingBottom: '3rem',
       }}
     >
-      <div id='viewModalSignup'>
+      <div id='viewModalSignup' style={{ display: 'none' }}>
         <div id='viewModalContentSignUp'>
           <h4>Success!!</h4>
           <br />
