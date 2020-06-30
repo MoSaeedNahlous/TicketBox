@@ -72,6 +72,12 @@ export default (state, action) => {
         ...state,
         response: '',
       };
+    case 'LOGOUT_USER':
+      return {
+        ...state,
+        user: {},
+        token: '',
+      };
 
     default:
       return state;

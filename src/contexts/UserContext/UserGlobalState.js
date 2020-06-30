@@ -141,6 +141,12 @@ export const UserGlobalProvider = ({ children }) => {
     dispatch({ type: 'CLEAR_RESPONSE' });
   };
 
+  //LogOutUser
+  const LogOutUser = () => {
+    localStorage.removeItem('jwtToken');
+    dispatch({ type: 'LOGOUT_USER' });
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -169,6 +175,7 @@ export const UserGlobalProvider = ({ children }) => {
         CountMaleUsers,
         CountFemaleUsers,
         GetAgeStatics,
+        LogOutUser,
       }}
     >
       {children}

@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import br from '../../res/wave.svg';
+import { useContext } from 'react';
+import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 
 const NavBar = (props) => {
+  const context = useContext(UserGlobalContext);
+  const onClickHandler = () => {
+    context.LogOutUser();
+  };
   const NavStyle = {
     width: '100%',
     flexGrow: '1',
@@ -116,7 +122,7 @@ const NavBar = (props) => {
             </Link>
           </li>
           <li className='nav-item menuItem'>
-            <Link to='/login' className=' menuItem'>
+            <Link to='/login' className=' menuItem' onClick={onClickHandler}>
               {' '}
               <i className='fas fa-sign-out-alt' /> Logout
             </Link>
