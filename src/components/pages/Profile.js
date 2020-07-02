@@ -1,31 +1,35 @@
-import React, { Fragment } from 'react'
-import NavBar from '../layout/NavBar'
-import Footer from '../layout/Footer'
+import React, { Fragment } from 'react';
+import NavBar from '../layout/NavBar';
+import Footer from '../layout/Footer';
+import { useContext } from 'react';
+import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
+import { useEffect } from 'react';
 
 const Profile = () => {
-    return (
-        <Fragment>
-            <NavBar />
-            <div className="container">
-                <div className="row">
-                <div className="col-md-3">
-                    <h3>picture</h3>
-                    <hr/>
-                    <h5>name</h5>
-                    <h5>info</h5>
-                </div>
-                <div className="col-md-9">
-                    <h2 style={{textAlign:'center'}}>My Tickets</h2>
-                    <hr/>
-                    <div className="container">
+  const context = useContext(UserGlobalContext);
+  useEffect(() => {
+    context.LoadUser();
+  }, []);
 
-                    </div>
-                </div>
-                </div>
-                </div>
-            <Footer />
-        </Fragment>
-    )
-}
+  return (
+    <Fragment>
+      <NavBar />
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-3'>
+            <h5>Name : {context.user.name}</h5>
+            <h5>Credits : {context.user.credit}</h5>
+          </div>
+          <div className='col-md-9'>
+            <h2 style={{ textAlign: 'center' }}>My Tickets</h2>
+            <hr />
+            <div className='container'></div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Fragment>
+  );
+};
 
-export default Profile
+export default Profile;

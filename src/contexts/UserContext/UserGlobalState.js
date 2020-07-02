@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import UserReducer from './UserReducer';
 import axios from 'axios';
+import setJwtToken from './SetJwtToken';
 
 //intial state
 
@@ -46,14 +47,9 @@ export const UserGlobalProvider = ({ children }) => {
       .post('/auth/signin', user)
       .then((res) => {
         dispatch({ type: 'LOGIN_USER', payload: res.data });
-
-        console.log(res);
-        localStorage.setItem(
-          'jwtToken',
-          res.data.tokenType + ' ' + res.data.accessToken
-        );
-        console.log(localStorage.getItem('jwtToken'));
         alert('Success!! welcome to TicketBox!');
+        localStorage.setItem('jwtToken', res.data.accessToken);
+        LoadUser();
       })
       .catch((err) => {
         dispatch({ type: 'SET_ERROR', payload: err.response.data });
@@ -147,6 +143,44 @@ export const UserGlobalProvider = ({ children }) => {
     dispatch({ type: 'LOGOUT_USER' });
   };
 
+  //LoadUser
+  const LoadUser = () => {
+    axios
+      .post(
+        '/auth/getIdFromToken',
+        { token: localStorage.getItem('jwtToken') },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        axios
+          .get(`/users/show/findById/${res.data}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+            },
+          })
+          .then((response) => {
+            dispatch(
+              { type: 'LOAD_USER', payload: response.data },
+              {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+                },
+              }
+            );
+            console.log(response.data);
+          });
+      })
+      .catch(() => {
+        alert('Token Expired! login Again...');
+        dispatch({ type: 'AUTH_ERROR' });
+      });
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -176,6 +210,7 @@ export const UserGlobalProvider = ({ children }) => {
         CountFemaleUsers,
         GetAgeStatics,
         LogOutUser,
+        LoadUser,
       }}
     >
       {children}

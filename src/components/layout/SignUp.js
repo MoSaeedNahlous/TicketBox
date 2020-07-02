@@ -12,8 +12,11 @@ const Signup = () => {
   const { RegisterUser, ClearError, error, response, ClearResponse } = context;
   const history = useHistory();
   useEffect(() => {
+    if (context.isAuthenticated) {
+      history.push('/');
+    }
     ClearError();
-  }, []);
+  }, [context.isAuthenticated]);
 
   useEffect(() => {
     if (response) {

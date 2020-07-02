@@ -9,20 +9,26 @@ import { useEffect } from 'react';
 
 const Login = () => {
   const context = useContext(UserGlobalContext);
-  const { LoginUser, ClearError, error } = context;
+  const { LoginUser, ClearError, error, LoadUser } = context;
   const [user, setUser] = useState({ email: '', password: '' });
+  const history = useHistory();
   const onChangeHandler = (e) => {
     ClearError();
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
+    //LoadUser();
     ClearError();
-  }, []);
+    if (context.isAuthenticated) {
+      history.push('/');
+    }
+  }, [context.isAuthenticated]);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
     LoginUser(user);
+
     setUser({ email: '', password: '' });
   };
 

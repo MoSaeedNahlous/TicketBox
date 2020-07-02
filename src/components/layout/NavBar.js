@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import br from '../../res/wave.svg';
 import { useContext } from 'react';
@@ -16,6 +16,9 @@ const NavBar = (props) => {
     padding: '0',
     lineHeight: '1.2',
   };
+  useEffect(() => {
+    context.LoadUser();
+  }, []);
 
   return (
     <nav className='navbar navbar-dark navFont' style={NavStyle}>
@@ -44,33 +47,45 @@ const NavBar = (props) => {
           justifyContent: 'space-around',
         }}
       >
-        <Link
-          to='/login'
-          className='navItem links'
-          style={{ padding: '1.5rem' }}
-        >
-          <i className='far fa-user' /> Login
-        </Link>
+        {!context.user.name && (
+          <Link
+            to='/login'
+            className='navItem links'
+            style={{ padding: '1.5rem' }}
+          >
+            <i className='far fa-user' /> Login
+          </Link>
+        )}
 
-        <Link
-          to='/profile'
-          className='navItem links'
-          style={{ padding: '1.5rem' }}
-        >
-          <i className='far fa-user' /> My profile
-        </Link>
+        {context.user.name && (
+          <Link
+            to='/profile'
+            className='navItem links'
+            style={{ padding: '1.5rem', margin: '0' }}
+          >
+            <i className='far fa-user' /> {context.user.name}
+          </Link>
+        )}
 
-        <Link
-          to='/register'
-          className=' navItemAlt'
-          style={{
-            float: 'left',
-            lineHeight: '1.2',
-            padding: '1.5rem',
-          }}
-        >
-          <i className='fas fa-plus' /> Join for free
-        </Link>
+        {context.user.name && (
+          <Link to='#' className='navItem links' style={{ padding: '1.5rem' }}>
+            <i className='fas fa-coins    '></i> {context.user.credit}
+          </Link>
+        )}
+
+        {!context.user.name && (
+          <Link
+            to='/register'
+            className=' navItemAlt'
+            style={{
+              float: 'left',
+              lineHeight: '1.2',
+              padding: '1.5rem',
+            }}
+          >
+            <i className='fas fa-plus' /> Join for free
+          </Link>
+        )}
 
         <button
           className='navbar-toggler'
@@ -110,17 +125,21 @@ const NavBar = (props) => {
               <i className='fas fa-info-circle' /> About
             </Link>
           </li>
-          <li className='nav-item menuItem'>
-            <Link to='/login' className=' menuItem'>
-              {' '}
-              <i className='far fa-user' /> Login
-            </Link>
-          </li>
-          <li className='nav-item menuItem'>
-            <Link to='/register' className=' menuItem'>
-              <i className='fas fa-sign-in-alt' /> signup
-            </Link>
-          </li>
+          {!context.user.name && (
+            <li className='nav-item menuItem'>
+              <Link to='/login' className=' menuItem'>
+                {' '}
+                <i className='far fa-user' /> Login
+              </Link>
+            </li>
+          )}
+          {!context.user.name && (
+            <li className='nav-item menuItem'>
+              <Link to='/register' className=' menuItem'>
+                <i className='fas fa-sign-in-alt' /> signup
+              </Link>
+            </li>
+          )}
           <li className='nav-item menuItem'>
             <Link to='/login' className=' menuItem' onClick={onClickHandler}>
               {' '}

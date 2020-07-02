@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ImageSlider from '../layout/ImageSlider';
 import Matches from '../layout/match/Matches';
 import Navbar from '../layout/NavBar';
@@ -30,8 +30,15 @@ import bvb from '../../res/bvb.png';
 import b04 from '../../res/b04.png';
 import rb from '../../res/rb.png';
 import Covid19Tracker from '../Covid19Tracker';
+import { useContext } from 'react';
+import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 
 const Home = () => {
+  const context = useContext(UserGlobalContext);
+
+  useEffect(() => {
+    context.LoadUser();
+  }, []);
   return (
     <div
       style={{

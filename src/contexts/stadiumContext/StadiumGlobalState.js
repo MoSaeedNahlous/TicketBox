@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import StadiumReducer from './StadiumReducer';
 import axios from 'axios';
-import { configure } from '@testing-library/react';
 
 //intial state
 
@@ -20,17 +19,17 @@ export const StadiumGlobalContext = createContext(intialState);
 
 export const StadiumGlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(StadiumReducer, intialState);
-  axios.interceptors.request.use(
-    (config) => {
-      var token = localStorage.getItem('jwtToken');
-      console.log(token);
-      config.headers.Authorization = token;
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
+  // axios.interceptors.request.use(
+  //   (config) => {
+  //     var token = localStorage.getItem('jwtToken');
+  //     console.log(token);
+  //     config.headers.Authorization = token;
+  //     return config;
+  //   },
+  //   (error) => {
+  //     return Promise.reject(error);
+  //   }
+  // );
 
   //Actions
   //GetAllStadiums

@@ -5,6 +5,13 @@ export default (state, action) => {
         ...state,
         response: action.payload,
       };
+    case 'LOGIN_USER':
+      localStorage.setItem('jwtToken', action.payload.accessToken);
+      return {
+        ...state,
+        token: action.payload.accessToken,
+        isAuthenticated: true,
+      };
     case 'SET_ERROR':
       return {
         ...state,
@@ -77,6 +84,21 @@ export default (state, action) => {
         ...state,
         user: {},
         token: '',
+        isAuthenticated: false,
+      };
+    case 'LOAD_USER':
+      return {
+        ...state,
+        user: action.payload,
+        isAuthenticated: true,
+      };
+    case 'AUTH_ERROR':
+      localStorage.removeItem('jwtToken');
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        user: {},
       };
 
     default:

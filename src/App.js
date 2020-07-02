@@ -43,137 +43,131 @@ import { GameGlobalProvider } from './contexts/gameContext/GameGlobalState';
 import AddTeamPage from './components/pages/admin pages/AddTeamPage';
 import EditTeamPage from './components/pages/admin pages/EditTeamPage';
 import EditGamePage from './components/pages/admin pages/EditGamePage';
-import { AuthGlobalProvider } from './contexts/AuthContext/AuthGlobalState';
 import { Covid19GlobalProvider } from './contexts/Covid19Tracker/Covid19GlobalState';
 import Profile from './components/pages/Profile';
 import { UserGlobalProvider } from './contexts/UserContext/UserGlobalState';
+import setJwtToken from './contexts/UserContext/SetJwtToken';
 
 const App = () => {
   return (
     <UserGlobalProvider>
-      <AuthGlobalProvider>
-        <TeamGlobalProvider>
-          <StadiumGlobalProvider>
-            <GameGlobalProvider>
-              <Covid19GlobalProvider>
-                <Router>
-                  <div className='App full-width '>
-                    <div>
-                      <Switch>
-                        <Route
-                          exact
-                          path='/adminLogin'
-                          component={LoginAdmin}
-                        />
-                        <Route exact path='/' component={Home} />
+      <TeamGlobalProvider>
+        <StadiumGlobalProvider>
+          <GameGlobalProvider>
+            <Covid19GlobalProvider>
+              <Router>
+                <div className='App full-width '>
+                  <div>
+                    <Switch>
+                      <Route exact path='/adminLogin' component={LoginAdmin} />
+                      <Route exact path='/' component={Home} />
 
-                        <Route exact path='/about' component={About} />
-                        <Route exact path='/login' component={LoginPage} />
-                        <Route exact path='/register' component={SignupPage} />
-                        <Route
-                          exact
-                          path='/forgetPassword'
-                          component={ForgetPassword}
-                        />
-                        <Route exact path='/aboutUs' component={AboutUs} />
-                        <Route
-                          exact
-                          path='/partnerAffiliation'
-                          component={PartnershipAffiliation}
-                        />
-                        <Route
-                          exact
-                          path='/termsAndConditions'
-                          component={TermsAndConditions}
-                        />
-                        <Route
-                          exact
-                          path='/cookiePolicy'
-                          component={CookiePolicy}
-                        />
-                        <Route exact path='/contactUs' component={ContactUs} />
-                        <Route exact path='/search' component={SearchPage} />
-                        <Route exact path='/teams' component={Teams} />
-                        <Route exact path='/stadiums' component={Stadiums} />
-                        <Route exact path='/profile' component={Profile} />
+                      <Route exact path='/about' component={About} />
+                      <Route exact path='/login' component={LoginPage} />
+                      <Route exact path='/register' component={SignupPage} />
+                      <Route
+                        exact
+                        path='/forgetPassword'
+                        component={ForgetPassword}
+                      />
+                      <Route exact path='/aboutUs' component={AboutUs} />
+                      <Route
+                        exact
+                        path='/partnerAffiliation'
+                        component={PartnershipAffiliation}
+                      />
+                      <Route
+                        exact
+                        path='/termsAndConditions'
+                        component={TermsAndConditions}
+                      />
+                      <Route
+                        exact
+                        path='/cookiePolicy'
+                        component={CookiePolicy}
+                      />
+                      <Route exact path='/contactUs' component={ContactUs} />
+                      <Route exact path='/search' component={SearchPage} />
+                      <Route exact path='/teams' component={Teams} />
+                      <Route exact path='/stadiums' component={Stadiums} />
+                      <Route exact path='/profile' component={Profile} />
 
-                        <Route exact path='/admin/home' component={Admin} />
-                        <Route
-                          exact
-                          path='/admin/addEmp'
-                          component={AddEmpPage}
-                        />
-                        <Route
-                          exact
-                          path='/admin/deleteEmp'
-                          component={DeleteEmpPage}
-                        />
-                        <Route
-                          exact
-                          path='/admin/editUser'
-                          component={DeleteUserPage}
-                        />
+                      <Route exact path='/admin/home' component={Admin} />
+                      <Route
+                        exact
+                        path='/admin/addEmp'
+                        component={AddEmpPage}
+                      />
+                      <Route
+                        exact
+                        path='/admin/deleteEmp'
+                        component={DeleteEmpPage}
+                      />
+                      <Route
+                        exact
+                        path='/admin/editUser'
+                        component={DeleteUserPage}
+                      />
 
-                        <Route
-                          exact
-                          path='/admin/addGame'
-                          component={AddGamePage}
-                        />
-                        <Route
-                          exact
-                          path='/admin/editGame'
-                          component={EditGamePage}
-                        />
-                        <Route exact path='/game/:id' component={MatchPage} />
+                      <Route
+                        exact
+                        path='/admin/addGame'
+                        component={AddGamePage}
+                      />
+                      <Route
+                        exact
+                        path='/admin/editGame'
+                        component={EditGamePage}
+                      />
+                      <Route exact path='/game/:id' component={MatchPage} />
 
-                        <Route
-                          exact
-                          path='/admin/addTicket'
-                          component={AddTicketPage}
-                        />
-                        <Route
-                          exact
-                          path='/admin/editTicket'
-                          component={EditTicketPage}
-                        />
-                        <Route
-                          exact
-                          path='/admin/addStadium'
-                          component={AddStadiumPage}
-                        />
-                        <Route
-                          exact
-                          path='/admin/editStadium'
-                          component={EditStadiumPage}
-                        />
+                      <Route
+                        exact
+                        path='/admin/addTicket'
+                        component={AddTicketPage}
+                      />
+                      <Route
+                        exact
+                        path='/admin/editTicket'
+                        component={EditTicketPage}
+                      />
+                      <Route
+                        exact
+                        path='/admin/addStadium'
+                        component={AddStadiumPage}
+                      />
+                      <Route
+                        exact
+                        path='/admin/editStadium'
+                        component={EditStadiumPage}
+                      />
 
-                        <Route
-                          exact
-                          path='/admin/addTeam'
-                          component={AddTeamPage}
-                        />
-                        <Route
-                          exact
-                          path='/admin/editTeam'
-                          component={EditTeamPage}
-                        />
+                      <Route
+                        exact
+                        path='/admin/addTeam'
+                        component={AddTeamPage}
+                      />
+                      <Route
+                        exact
+                        path='/admin/editTeam'
+                        component={EditTeamPage}
+                      />
 
-                        <Route exact path='/ticket' component={Ticket} />
-                        <Route
-                          exact
-                          path='/stadium/:stadiumId'
-                          component={StadiumPage}
-                        />
-                        <Route exact path='/team/:id' component={TeamPage} />
-                      </Switch>
-                    </div>
+                      <Route exact path='/ticket' component={Ticket} />
+                      <Route
+                        exact
+                        path='/stadium/:stadiumId'
+                        component={StadiumPage}
+                      />
+                      <Route exact path='/team/:id' component={TeamPage} />
+                    </Switch>
                   </div>
-                </Router>
-              </Covid19GlobalProvider>
-            </GameGlobalProvider>
-          </StadiumGlobalProvider>
-        </TeamGlobalProvider>
-      </AuthGlobalProvider>
+                </div>
+              </Router>
+            </Covid19GlobalProvider>
+          </GameGlobalProvider>
+        </StadiumGlobalProvider>
+      </TeamGlobalProvider>
     </UserGlobalProvider>
   );
 };
