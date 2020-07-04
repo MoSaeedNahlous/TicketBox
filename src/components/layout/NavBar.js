@@ -114,12 +114,14 @@ const NavBar = (props) => {
               <i className='fas fa-home' /> Home
             </Link>
           </li>
-          <li className='nav-item menuItem'>
-            <Link to='/admin/home' className=' menuItem'>
-              {' '}
-              <i className='fas fa-home' /> Admin
-            </Link>
-          </li>
+          {context.user.roles.length === 2 && (
+            <li className='nav-item menuItem'>
+              <Link to='/admin/home' className=' menuItem'>
+                {' '}
+                <i className='fas fa-home' /> Admin
+              </Link>
+            </li>
+          )}
           <li className='nav-item menuItem'>
             <Link to='/About' className=' menuItem'>
               <i className='fas fa-info-circle' /> About

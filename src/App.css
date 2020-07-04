@@ -101,6 +101,14 @@ Link {
 
   color: #909090;
 }
+#facebook {
+  text-decoration: none;
+  cursor: pointer;
+}
+#facebook:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
 
 #closeModal:hover {
   color: black;

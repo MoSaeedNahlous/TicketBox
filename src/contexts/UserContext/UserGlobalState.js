@@ -6,7 +6,7 @@ import setJwtToken from './SetJwtToken';
 //intial state
 
 const intialState = {
-  user: {},
+  user: { roles: [] },
   users: [],
   error: {},
   currentUser: null,
@@ -176,7 +176,6 @@ export const UserGlobalProvider = ({ children }) => {
           });
       })
       .catch(() => {
-        alert('Token Expired! login Again...');
         dispatch({ type: 'AUTH_ERROR' });
       });
   };

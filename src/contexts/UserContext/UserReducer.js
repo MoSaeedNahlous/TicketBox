@@ -82,7 +82,7 @@ export default (state, action) => {
     case 'LOGOUT_USER':
       return {
         ...state,
-        user: {},
+        user: { roles: [] },
         token: '',
         isAuthenticated: false,
       };
@@ -98,7 +98,7 @@ export default (state, action) => {
         ...state,
         token: null,
         isAuthenticated: false,
-        user: {},
+        user: { roles: [] },
       };
 
     default:

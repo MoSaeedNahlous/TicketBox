@@ -1,7 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
+import { useEffect } from 'react';
 
 const AdminNav = () => {
+  const context = useContext(UserGlobalContext);
+  const history = useHistory();
+  useEffect(() => {
+    context.LoadUser();
+    if (context.user.roles.length !== 2) {
+      history.push('/');
+    }
+  }, []);
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <Link to='/admin/home'>

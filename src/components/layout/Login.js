@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
-import axios from 'axios';
 
 import bg from '../../res/login.jpg';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 import { useEffect } from 'react';
+import Home from '../pages/Home';
 
 const Login = () => {
   const context = useContext(UserGlobalContext);
@@ -18,7 +18,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    //LoadUser();
+    LoadUser();
     ClearError();
     if (context.isAuthenticated) {
       history.push('/');
@@ -31,7 +31,6 @@ const Login = () => {
 
     setUser({ email: '', password: '' });
   };
-
   return (
     <div
       style={{

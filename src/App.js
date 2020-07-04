@@ -86,6 +86,7 @@ const App = () => {
                         path='/cookiePolicy'
                         component={CookiePolicy}
                       />
+                      {/* <Route path='*' component={NotFound} /> */}
                       <Route exact path='/contactUs' component={ContactUs} />
                       <Route exact path='/search' component={SearchPage} />
                       <Route exact path='/teams' component={Teams} />

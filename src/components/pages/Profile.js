@@ -4,29 +4,56 @@ import Footer from '../layout/Footer';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import bg from '../../res/grayBg.jpg';
 
 const Profile = () => {
+  const history = useHistory();
   const context = useContext(UserGlobalContext);
   useEffect(() => {
-    context.LoadUser();
+    if (!context.isAuthenticated) {
+      history.push('/');
+    }
   }, []);
 
   return (
     <Fragment>
       <NavBar />
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-3'>
-            <h5>Name : {context.user.name}</h5>
-            <h5>Credits : {context.user.credit}</h5>
-          </div>
-          <div className='col-md-9'>
-            <h2 style={{ textAlign: 'center' }}>My Tickets</h2>
-            <hr />
-            <div className='container'></div>
+      <div
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'repeat',
+          backgroundPositionX: '75%',
+          color: 'white',
+        }}
+      >
+        <div className='container'>
+          <br />
+          <h1 style={{ textAlign: 'center' }}>My Profile</h1>
+          <hr />
+          <div className='row' style={{ textAlign: 'center' }}>
+            <div className='col-md-3'>
+              <h2>My information</h2>
+              <hr />
+              <h5>Name : {context.user.name}</h5>
+              <h5>Credits : {context.user.credit}</h5>
+            </div>
+            <div className='col-md-9' style={{ borderLeft: '2px solid black' }}>
+              <h2 style={{ textAlign: 'center' }}>My Tickets</h2>
+              <hr />
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-sm-6'>test</div>
+                  <div className='col-sm-6'>test</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <br />
       </div>
+
       <Footer />
     </Fragment>
   );

@@ -35,32 +35,47 @@ const Footer = (props) => {
       >
         <p style={{ textAlign: 'center', marginLeft: '33.8%' }}>
           <span>
-            <i
-              className='fa fa-2x fa-facebook footerIcon'
-              aria-hidden='true'
-              style={{ color: '#3b5998' }}
-            ></i>
+            <a
+              id='facebook'
+              href='https://www.facebook.com/saeed.nahlous'
+              target='_blank'
+            >
+              <i
+                className='fa fa-2x fa-facebook footerIcon'
+                id='facebook'
+                aria-hidden='true'
+                style={{ color: '#3b5998' }}
+              />
+            </a>
+          </span>
+          <span>
+            <a
+              href='https://www.instagram.com/saeednahlous/'
+              id='facebook'
+              target='_blank'
+            >
+              <i
+                className='fa fa-2x fa-instagram footerIcon'
+                aria-hidden='true'
+                style={{ color: '#C62D88' }}
+              ></i>
+            </a>
           </span>
           <span>
             <i
-              className='fa fa-2x fa-instagram footerIcon'
+              className='fa fa-2x fa-github-alt footerIcon'
               aria-hidden='true'
-              style={{ color: '#C62D88' }}
+              style={{ color: '#fff' }}
             ></i>
           </span>
           <span>
-            <i
-              className='fa fa-2x fa-twitter footerIcon'
-              aria-hidden='true'
-              style={{ color: '#3f729b' }}
-            ></i>
-          </span>
-          <span>
-            <i
-              className='fa fa-2x fa-telegram footerIcon'
-              aria-hidden='true'
-              style={{ color: '#3f729b' }}
-            ></i>
+            <a href='https://t.me/MoSaeedNahlous' id='facebook' target='_blank'>
+              <i
+                className='fa fa-2x fa-telegram footerIcon'
+                aria-hidden='true'
+                style={{ color: '#3f729b' }}
+              ></i>
+            </a>
           </span>
         </p>
       </div>
