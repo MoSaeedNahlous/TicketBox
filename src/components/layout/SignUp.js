@@ -68,6 +68,28 @@ const Signup = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const showPassword = () => {
+    var icon = document.getElementById('eyeIcon');
+    var input = document.getElementById('input');
+    if (icon.className === 'fa fa-eye' && input.type === 'password') {
+      icon.className = 'fa fa-eye-slash';
+      input.type = 'text';
+    } else {
+      icon.className = 'fa fa-eye';
+      input.type = 'password';
+    }
+  };
+  const showPassword2 = () => {
+    var icon = document.getElementById('eyeIcon2');
+    var input = document.getElementById('input2');
+    if (icon.className === 'fa fa-eye' && input.type === 'password') {
+      icon.className = 'fa fa-eye-slash';
+      input.type = 'text';
+    } else {
+      icon.className = 'fa fa-eye';
+      input.type = 'password';
+    }
+  };
 
   return (
     <div
@@ -162,6 +184,7 @@ const Signup = () => {
           <div className='form-group'>
             <label>Password</label>
             <input
+              id='input'
               type='password'
               className='form-control'
               value={newUser.password}
@@ -176,6 +199,19 @@ const Signup = () => {
               onChange={onChangeHandler}
               required
             />
+            <i
+              onClick={showPassword}
+              id='eyeIcon'
+              class='fa fa-eye'
+              aria-hidden='true'
+              style={{
+                position: 'absolute',
+                top: '76.4%',
+                right: '53%',
+                color: 'grey',
+                cursor: 'pointer',
+              }}
+            ></i>
             <div role='alert' style={{ width: '50%' }}>
               {error.password && (
                 <strong style={{ color: 'red' }}>
@@ -187,6 +223,7 @@ const Signup = () => {
           <div className='form-group'>
             <label>reEnter Password</label>
             <input
+              id='input2'
               type='password'
               className='form-control'
               value={newUser.confirmPassword}
@@ -200,7 +237,20 @@ const Signup = () => {
               }}
               onChange={onChangeHandler}
               required
-            />
+            />{' '}
+            <i
+              id='eyeIcon2'
+              class='fa fa-eye'
+              aria-hidden='true'
+              onClick={showPassword2}
+              style={{
+                position: 'absolute',
+                top: '91%',
+                right: '53%',
+                color: 'grey',
+                cursor: 'pointer',
+              }}
+            ></i>
             <div
               role='alert'
               id='passwordAlert'
@@ -224,14 +274,24 @@ const Signup = () => {
               style={{
                 width: '50%',
                 backgroundColor: 'rgba(0, 0, 0, 0)',
-                color: 'grey',
+                color: 'white',
               }}
             >
-              <option value='' hidden>
+              <option value='' hidden style={{ color: 'grey' }}>
                 Select Gender
               </option>
-              <option value='false'>Female</option>
-              <option value='true'>Male</option>
+              <option
+                value='false'
+                style={{ color: 'black', backgroundColor: 'rgba(0, 0, 0, 0)' }}
+              >
+                Female
+              </option>
+              <option
+                value='true'
+                style={{ color: 'black', backgroundColor: 'rgba(0, 0, 0, 0)' }}
+              >
+                Male
+              </option>
             </select>
           </div>
           <div className='form-group'>
@@ -264,7 +324,7 @@ const Signup = () => {
             <label className='form-check-label'>
               by clicking here you are accepting our
             </label>
-            <Link to='/termsAndConditions' className='blu'>
+            <Link to='/termsAndConditions' style={{ color: 'grey' }}>
               {' '}
               Terms and Conditions.
             </Link>
@@ -275,7 +335,7 @@ const Signup = () => {
           <br />
           <br />
           <small> Do you have an account? You can login by clicking</small>
-          <Link to='/login' className='blu'>
+          <Link to='/login' style={{ color: 'grey' }}>
             {' '}
             here
           </Link>

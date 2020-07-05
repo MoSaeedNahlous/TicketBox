@@ -31,6 +31,17 @@ const Login = () => {
 
     setUser({ email: '', password: '' });
   };
+  const showPassword = () => {
+    var icon = document.getElementById('eyeIcon');
+    var input = document.getElementById('input');
+    if (icon.className === 'fa fa-eye' && input.type === 'password') {
+      icon.className = 'fa fa-eye-slash';
+      input.type = 'text';
+    } else {
+      icon.className = 'fa fa-eye';
+      input.type = 'password';
+    }
+  };
   return (
     <div
       style={{
@@ -75,15 +86,34 @@ const Login = () => {
           </div>
           <div className='form-group' style={{ color: 'white' }}>
             <label>Password</label>
+
             <input
               type='password'
               className='form-control'
               onChange={onChangeHandler}
-              style={{ width: '50%', backgroundColor: 'rgba(0, 0, 0, 0)' }}
+              style={{
+                width: '50%',
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                color: 'white',
+              }}
               name='password'
               placeholder='Password'
               required
+              id='input'
             />
+            <i
+              id='eyeIcon'
+              class='fa fa-eye'
+              aria-hidden='true'
+              onClick={showPassword}
+              style={{
+                position: 'absolute',
+                top: '61.3%',
+                right: '53%',
+                color: 'grey',
+                cursor: 'pointer',
+              }}
+            ></i>
             <div role='alert' style={{ width: '50%' }}>
               {error.password && (
                 <strong style={{ color: 'red' }}>

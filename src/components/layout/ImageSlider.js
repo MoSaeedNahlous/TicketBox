@@ -1,7 +1,7 @@
 import React from 'react';
 import download12 from '../../res/s1.jpg';
-import download13 from '../../res/k2.jpg';
-import download14 from '../../res/k1.jpg';
+import download13 from '../../res/s2.jpg';
+import download14 from '../../res/s3.jpg';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -20,10 +20,10 @@ const ImageSlider = () => {
         <img src={download12} alt='img1' />
       </div>
       <div>
-        <img src={download12} alt='img2' />
+        <img src={download13} alt='img2' />
       </div>
       <div>
-        <img src={download12} alt='img3' />
+        <img src={download14} alt='img3' />
       </div>
     </Carousel>
   );
