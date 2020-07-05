@@ -1,48 +1,48 @@
-import React, { createContext,useReducer} from 'react'
-import axios from 'axios'
-import Covid19Reducer from './Covid19Reducer'
-
+import React, { createContext, useReducer } from 'react';
+import axios from 'axios';
+import Covid19Reducer from './Covid19Reducer';
 
 //initialState
 
-const intialState={
-    worldData:{"NewConfirmed": '',
-    "TotalConfirmed": '',
-    "NewDeaths": '',
-    "TotalDeaths": '',
-    "NewRecovered": '',
-    "TotalRecovered": ''}
-}
+const intialState = {
+  worldData: {
+    NewConfirmed: '',
+    TotalConfirmed: '',
+    NewDeaths: '',
+    TotalDeaths: '',
+    NewRecovered: '',
+    TotalRecovered: '',
+  },
+  isLoading: true,
+};
 
 //Create Context
-export const Covid19GlobalContext = createContext(intialState)
+export const Covid19GlobalContext = createContext(intialState);
 
 //Proider
 
-export const Covid19GlobalProvider =({children})=>{
+export const Covid19GlobalProvider = ({ children }) => {
+  //Create Reducer
 
-//Create Reducer
+  const [state, dispatch] = useReducer(Covid19Reducer, intialState);
 
- const [state, dispatch] = useReducer(Covid19Reducer, intialState)
+  //Methods
+  //GetData
+  const GetDataCovid19 = () => {
+    axios.get('https://api.covid19api.com/summary').then((res) => {
+      dispatch({ type: 'GET_DATA', payload: res.data });
+    });
+  };
 
-//Methods
-//GetData
-const GetDataCovid19=()=>{
-    axios.get('https://api.covid19api.com/summary').then(
-        res=>{
-            dispatch({type:'GET_DATA',payload:res.data})
-        }
-    )
-}
-
-
-return(
-    <Covid19GlobalContext.Provider value={{
-        worldData:state.worldData,
-        GetDataCovid19
-    }}>
-    {children}
+  return (
+    <Covid19GlobalContext.Provider
+      value={{
+        worldData: state.worldData,
+        isLoading: state.isLoading,
+        GetDataCovid19,
+      }}
+    >
+      {children}
     </Covid19GlobalContext.Provider>
-    
-)
-}
+  );
+};

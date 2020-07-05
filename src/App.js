@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
   HashRouter,
+  Redirect,
 } from 'react-router-dom';
 import LoginPage from './components/pages/LoginPage';
 import SignupPage from './components/pages/SignupPage';
@@ -160,7 +161,11 @@ const App = () => {
                         path='/stadium/:stadiumId'
                         component={StadiumPage}
                       />
+
                       <Route exact path='/team/:id' component={TeamPage} />
+
+                      <Route path='/404' component={NotFound} />
+                      <Redirect to='/404' />
                     </Switch>
                   </div>
                 </div>

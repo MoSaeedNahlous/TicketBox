@@ -47,7 +47,6 @@ export const UserGlobalProvider = ({ children }) => {
       .post('/auth/signin', user)
       .then((res) => {
         dispatch({ type: 'LOGIN_USER', payload: res.data });
-        alert('Success!! welcome to TicketBox!');
         localStorage.setItem('jwtToken', res.data.accessToken);
         LoadUser();
       })

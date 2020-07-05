@@ -1,43 +1,49 @@
-import React from 'react'
-import NavBar from '../layout/NavBar'
-import Footer from '../layout/Footer'
-import imag from '../../res/bghome.jpg'
+import React from 'react';
+import NavBar from '../layout/NavBar';
+import Footer from '../layout/Footer';
+import imag from '../../res/Page-Turner.svg';
 
 const TermsAndConditions = () => {
-    return (
-        <div className='wite' style={{backgroundImage: `url(${imag})`,backgroundSize:'cover',backgroundRepeat:'repeat',backgroundPositionX:'75%'}}>
-            <NavBar />
-        <div className="container">
+  return (
+    <div
+      className='wite'
+      style={{
+        backgroundImage: `url(${imag})`,
+        backgroundSize: 'cover',
+        backgroundPositionX: '100%',
+      }}
+    >
+      <NavBar />
+      <div className='container'>
         <br />
-            <h1 style={{textAlign:'center'}}>Terms and Conditions</h1>
-            <br />
-            <p style={{textAlign:'center'}}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero vero eveniet, cum expedita,
-                 illo obcaecati eaque fugiat eos est deserunt rem maiores tenetur quae mollitia. Enim esse aut vel. Nostrum!
-                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia provident praesentium dicta quas distinctio odio? Inve
-                 ntore, soluta! Aut, repudiandae sapiente ut iste nemo nesciunt eveniet corrupti amet atque hic laudantium?
-                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate optio ex quisquam et aliquam, blanditiis dolorum
-                  distinctio assumenda perspiciatis rem cumque aut eaque temporibus voluptatem, ut a libero earum ratione?
-                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias maiores vero dolorum odio, placeat amet eos ut modi quibusdam itaque facere.
-                  Vero quia iusto voluptas voluptatum eos voluptates. Expedita, praesentium!</p>
-                  <br />
-                 <ul>
-                     <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, libero,
-                          dignissimos neque soluta molestiae ex explicabo ipsam distinctio eveniet quibusdam voluptatem eum provident! Totam est eligendi voluptate eaque esse vel!</li>
-                          <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, libero,
-                          dignissimos neque soluta molestiae ex explicabo ipsam distinctio eveniet quibusdam voluptatem eum provident! Totam est eligendi voluptate eaque esse vel!</li>
-                          <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, libero,
-                          dignissimos neque soluta molestiae ex explicabo ipsam distinctio eveniet quibusdam voluptatem eum provident! Totam est eligendi voluptate eaque esse vel!</li>
-                          <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, libero,
-                          dignissimos neque soluta molestiae ex explicabo ipsam distinctio eveniet quibusdam voluptatem eum provident! Totam est eligendi voluptate eaque esse vel!</li>
-                          <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, libero,
-                          dignissimos neque soluta molestiae ex explicabo ipsam distinctio eveniet quibusdam voluptatem eum provident! Totam est eligendi voluptate eaque esse vel!</li>
+        <h1 style={{ textAlign: 'center' }}>Terms and Conditions</h1>
+        <br />
+        <p style={{ textAlign: 'center', color: 'black' }}>
+          These terms and conditions outline the rules and regulations for the
+          use of TicketBox's Website, located at TicketBox.com. By accessing
+          this website we assume you accept these terms and conditions. Do not
+          continue to use TicketBox if you do not agree to take all of the terms
+          and conditions stated on this page. Our Terms and Conditions were
+          created with the help of the Terms And Conditions Generator and the
+          Free Terms & Conditions Generator. The following terminology applies
+          to these Terms and Conditions, Privacy Statement and Disclaimer Notice
+          and all Agreements: "Client", "You" and "Your" refers to you, the
+          person log on this website and compliant to the Company’s terms and
+          conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers
+          to our Company. "Party", "Parties", or "Us", refers to both the Client
+          and ourselves. All terms refer to the offer, acceptance and
+          consideration of payment necessary to undertake the process of our
+          assistance to the Client in the most appropriate manner for the
+          express purpose of meeting the Client’s needs in respect of provision
+          of the Company’s stated services, in accordance with and subject to,
+          prevailing law of Netherlands. Any use of the above terminology or
+          other words in the singular, plural, capitalization and/or he/she or
+          they, are taken as interchangeable and therefore as referring to same.
+        </p>
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
-                 </ul>
-                 <br />
-        </div>
-        <Footer />
-        </div>
-    )
-}
-
-export default TermsAndConditions
+export default TermsAndConditions;

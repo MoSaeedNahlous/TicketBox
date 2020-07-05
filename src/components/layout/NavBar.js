@@ -1,5 +1,6 @@
+/* eslint-disable no-lone-blocks */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import br from '../../res/wave.svg';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
@@ -16,9 +17,15 @@ const NavBar = (props) => {
     padding: '0',
     lineHeight: '1.2',
   };
+  const history = useHistory();
   useEffect(() => {
     context.LoadUser();
   }, []);
+  {
+    window.onpopstate = function () {
+      history.replace('/');
+    };
+  }
 
   return (
     <nav className='navbar navbar-dark navFont' style={NavStyle}>

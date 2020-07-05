@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
@@ -13,6 +14,11 @@ const AdminNav = () => {
       history.push('/');
     }
   }, []);
+  {
+    window.onpopstate = function () {
+      history.replace('/admin/home');
+    };
+  }
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <Link to='/admin/home'>

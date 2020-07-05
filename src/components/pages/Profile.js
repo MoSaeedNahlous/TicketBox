@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import bg from '../../res/grayBg.jpg';
+import bg from '../../res/Page-Turner.svg';
 
 const Profile = () => {
   const history = useHistory();
@@ -25,29 +25,30 @@ const Profile = () => {
           backgroundSize: 'cover',
           backgroundRepeat: 'repeat',
           backgroundPositionX: '75%',
-          color: 'white',
+          color: 'black',
         }}
       >
         <div className='container'>
           <br />
-          <h1 style={{ textAlign: 'center' }}>My Profile</h1>
+          <h1 style={{ textAlign: 'center', border: 'dotted 2px grey' }}>
+            My Profile
+          </h1>
           <hr />
           <div className='row' style={{ textAlign: 'center' }}>
             <div className='col-md-3'>
-              <h2>My information</h2>
+              <h2 style={{ textAlign: 'center', border: 'solid 2px grey' }}>
+                My information
+              </h2>
               <hr />
               <h5>Name : {context.user.name}</h5>
               <h5>Credits : {context.user.credit}</h5>
             </div>
             <div className='col-md-9' style={{ borderLeft: '2px solid black' }}>
-              <h2 style={{ textAlign: 'center' }}>My Tickets</h2>
+              <h2 style={{ textAlign: 'center', border: 'solid 2px grey' }}>
+                My Tickets
+              </h2>
               <hr />
-              <div className='container'>
-                <div className='row'>
-                  <div className='col-sm-6'>test</div>
-                  <div className='col-sm-6'>test</div>
-                </div>
-              </div>
+              <div className='container'></div>
             </div>
           </div>
         </div>

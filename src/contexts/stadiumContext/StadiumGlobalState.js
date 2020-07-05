@@ -9,6 +9,7 @@ const intialState = {
   stadium: {},
   error: {},
   current: null,
+  isLoading: true,
 };
 
 // create context
@@ -19,18 +20,6 @@ export const StadiumGlobalContext = createContext(intialState);
 
 export const StadiumGlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(StadiumReducer, intialState);
-  // axios.interceptors.request.use(
-  //   (config) => {
-  //     var token = localStorage.getItem('jwtToken');
-  //     console.log(token);
-  //     config.headers.Authorization = token;
-  //     return config;
-  //   },
-  //   (error) => {
-  //     return Promise.reject(error);
-  //   }
-  // );
-
   //Actions
   //GetAllStadiums
   const GetStadiums = () => {
@@ -135,6 +124,7 @@ export const StadiumGlobalProvider = ({ children }) => {
         stadium: state.stadium,
         error: state.error,
         current: state.current,
+        isLoading: state.isLoading,
         GetStadiums,
         AddStadium,
         DeleteStadium,

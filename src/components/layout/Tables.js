@@ -1,10 +1,12 @@
+/* eslint-disable no-lone-blocks */
 import React, { Fragment, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { StadiumGlobalContext } from './../../contexts/stadiumContext/StadiumGlobalState';
 import { TeamGlobalContext } from './../../contexts/teamContext/TeamGlobalState';
 import Row from './Row';
 import Row2 from './Row2';
+import Spinner from './Spinner';
 
 const Tables = () => {
   const context = useContext(StadiumGlobalContext);
@@ -14,66 +16,95 @@ const Tables = () => {
     context.GetStadiums();
     context2.GetTeams();
   }, []);
+  const history = useHistory();
 
-  return (
-    <div className='container'>
-      <ul className='list-group'>
-        <li
-          className='list-group-item links'
-          style={{ backgroundColor: '#FF5E5B', color: '#FFFFEA' }}
-        >
-          Teams
-        </li>
+  const onClickeTeams = () => {
+    history.push('/teams');
+  };
+  const onClickeStadiums = () => {
+    history.push('/stadiums');
+  };
 
-        {context2.teams.length > 5 ? (
-          <Fragment>
-            {context2.teams.slice(0, 5).map((team) => (
-              <Row2 team={team} key={team.id} />
-            ))}
+  {
+    if (context.isLoading) {
+      return (
+        <div style={{ textAlign: 'center' }}>
+          <Spinner />
+        </div>
+      );
+    } else
+      return (
+        <div className='container'>
+          <ul className='list-group'>
             <li
-              className='list-group-item   links '
-              style={{ backgroundColor: '#151719' }}
+              onClick={onClickeTeams}
+              className='list-group-item links'
+              style={{
+                backgroundColor: '#FF5E5B',
+                color: '#FFFFEA',
+                cursor: 'pointer',
+              }}
             >
-              <Link to='/Teams'>
-                <button className='btn btn-primary'> more </button>
-              </Link>
+              Teams
             </li>
-          </Fragment>
-        ) : (
-          context2.teams.map((team1) => <Row2 team={team1} key={team1.id} />)
-        )}
-      </ul>
-      <br />
-      <ul className='list-group'>
-        <li
-          className='list-group-item links'
-          style={{ backgroundColor: '#FF5E5B', color: '#FFFFEA' }}
-        >
-          Stadiums
-        </li>
 
-        {context.stadiums.length > 5 ? (
-          <Fragment>
-            {context.stadiums.slice(0, 5).map((stad) => (
-              <Row stadium={stad} key={stad.stadiumId} />
-            ))}
+            {context2.teams.length > 5 ? (
+              <Fragment>
+                {context2.teams.slice(0, 5).map((team) => (
+                  <Row2 team={team} key={team.id} />
+                ))}
+                <li
+                  className='list-group-item   links '
+                  style={{ backgroundColor: '#151719' }}
+                >
+                  <Link to='/Teams'>
+                    <button className='btn btn-primary'> more </button>
+                  </Link>
+                </li>
+              </Fragment>
+            ) : (
+              context2.teams.map((team1) => (
+                <Row2 team={team1} key={team1.id} />
+              ))
+            )}
+          </ul>
+          <br />
+          <ul className='list-group'>
             <li
-              className='list-group-item   links '
-              style={{ backgroundColor: '#151719' }}
+              onClick={onClickeStadiums}
+              className='list-group-item links'
+              style={{
+                backgroundColor: '#FF5E5B',
+                color: '#FFFFEA',
+                cursor: 'pointer',
+              }}
             >
-              <Link to='/Stadiums'>
-                <button className='btn btn-primary'> more </button>
-              </Link>
+              Stadiums
             </li>
-          </Fragment>
-        ) : (
-          context.stadiums.map((stad1) => (
-            <Row stadium={stad1} key={stad1.stadiumId} />
-          ))
-        )}
-      </ul>
-    </div>
-  );
+
+            {context.stadiums.length > 5 ? (
+              <Fragment>
+                {context.stadiums.slice(0, 5).map((stad) => (
+                  <Row stadium={stad} key={stad.stadiumId} />
+                ))}
+                <li
+                  className='list-group-item   links '
+                  style={{ backgroundColor: '#151719' }}
+                >
+                  <Link to='/Stadiums'>
+                    <button className='btn btn-primary'> more </button>
+                  </Link>
+                </li>
+              </Fragment>
+            ) : (
+              context.stadiums.map((stad1) => (
+                <Row stadium={stad1} key={stad1.stadiumId} />
+              ))
+            )}
+          </ul>
+        </div>
+      );
+  }
 };
 
 export default Tables;

@@ -12,6 +12,7 @@ const Signup = () => {
   const { RegisterUser, ClearError, error, response, ClearResponse } = context;
   const history = useHistory();
   useEffect(() => {
+    document.getElementById('passwordAlert').style.display = 'none';
     if (context.isAuthenticated) {
       history.push('/');
     }
@@ -37,6 +38,7 @@ const Signup = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
+
     if (newUser.password === newUser.confirmPassword) {
       RegisterUser({
         name: newUser.name,
@@ -54,8 +56,9 @@ const Signup = () => {
         age: '',
         gender: '',
       });
+      document.getElementById('passwordAlert').style.display = 'none';
     } else {
-      alert('check your password..');
+      document.getElementById('passwordAlert').style.display = 'block';
     }
   };
   const onChangeHandler = (e) => {
@@ -198,12 +201,15 @@ const Signup = () => {
               onChange={onChangeHandler}
               required
             />
-            <div role='alert' style={{ width: '50%' }}>
-              {error.confirmPassword && (
-                <strong style={{ color: 'red' }}>
-                  &times; {error.confirmPassword}{' '}
-                </strong>
-              )}
+            <div
+              role='alert'
+              id='passwordAlert'
+              style={{ width: '50%', display: 'none' }}
+            >
+              <strong style={{ color: 'red' }}>
+                &times; Check Your Entered Password!!
+              </strong>
+              }
             </div>
           </div>
 
