@@ -30,7 +30,7 @@ export const Covid19GlobalProvider = ({ children }) => {
   //Methods
   //GetData
   const GetDataCovid19 = () => {
-    axios.get('api.covid19api.com/summary').then((res) => {
+    axios.get('https://api.covid19api.com/summary').then((res) => {
       dispatch({ type: 'GET_DATA', payload: res.data });
     });
   };

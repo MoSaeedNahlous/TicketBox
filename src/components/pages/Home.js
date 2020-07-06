@@ -102,7 +102,7 @@ const Home = () => {
             <li className='list-group-item'>
               <a
                 style={{
-                  color: '#FFFFEA',
+                  color: '#000',
                   cursor: 'pointer',
                 }}
                 className='links'
@@ -116,7 +116,7 @@ const Home = () => {
             <li className='list-group-item'>
               <a
                 style={{
-                  color: '#FFFFEA',
+                  color: '#000',
                   cursor: 'pointer',
                 }}
                 className='links'
@@ -130,7 +130,7 @@ const Home = () => {
             <li className='list-group-item'>
               <a
                 style={{
-                  color: '#FFFFEA',
+                  color: '#000',
                   cursor: 'pointer',
                 }}
                 className='links'
@@ -144,7 +144,7 @@ const Home = () => {
             <li className='list-group-item'>
               <a
                 style={{
-                  color: '#FFFFEA',
+                  color: '#000',
                   cursor: 'pointer',
                 }}
                 className='links'

@@ -149,12 +149,15 @@ const NavBar = (props) => {
               </Link>
             </li>
           )}
-          <li className='nav-item menuItem'>
-            <Link to='/login' className=' menuItem' onClick={onClickHandler}>
-              {' '}
-              <i className='fas fa-sign-out-alt' /> Logout
-            </Link>
-          </li>
+
+          {context.user.name && (
+            <li className='nav-item menuItem'>
+              <Link to='/login' className=' menuItem' onClick={onClickHandler}>
+                {' '}
+                <i className='fas fa-sign-out-alt' /> Logout
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

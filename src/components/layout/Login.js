@@ -51,6 +51,7 @@ const Login = () => {
         backgroundSize: 'cover',
         paddingTop: '3rem',
         paddingBottom: '3rem',
+        width: '100%',
       }}
     >
       <div className='container wite'>
@@ -103,7 +104,7 @@ const Login = () => {
             />
             <i
               id='eyeIcon'
-              class='fa fa-eye'
+              className='fa fa-eye'
               aria-hidden='true'
               onClick={showPassword}
               style={{

@@ -202,7 +202,7 @@ const Signup = () => {
             <i
               onClick={showPassword}
               id='eyeIcon'
-              class='fa fa-eye'
+              className='fa fa-eye'
               aria-hidden='true'
               style={{
                 position: 'absolute',
@@ -240,7 +240,7 @@ const Signup = () => {
             />{' '}
             <i
               id='eyeIcon2'
-              class='fa fa-eye'
+              className='fa fa-eye'
               aria-hidden='true'
               onClick={showPassword2}
               style={{
