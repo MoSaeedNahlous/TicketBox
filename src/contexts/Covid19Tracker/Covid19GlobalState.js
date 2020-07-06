@@ -15,6 +15,7 @@ const intialState = {
   },
   isLoading: true,
 };
+const URL = 'https://api.covid19api.com/summary';
 
 //Create Context
 export const Covid19GlobalContext = createContext(intialState);
@@ -29,7 +30,7 @@ export const Covid19GlobalProvider = ({ children }) => {
   //Methods
   //GetData
   const GetDataCovid19 = () => {
-    axios.get('https://api.covid19api.com/summary').then((res) => {
+    axios.get('api.covid19api.com/summary').then((res) => {
       dispatch({ type: 'GET_DATA', payload: res.data });
     });
   };

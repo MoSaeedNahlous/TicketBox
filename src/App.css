@@ -165,6 +165,7 @@ Link {
 }
 
 .links:hover {
+  text-decoration: none;
 }
 .linksStad {
   color: black;

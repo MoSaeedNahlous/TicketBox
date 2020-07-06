@@ -86,30 +86,91 @@ const Home = () => {
         <div className='col-sm-3'>
           <ul className='list-group'>
             <li className='list-group-item crimsonRedBg wite links'>
-              <img src={epl} width='35px' height='35px' alt='logo' /> Premium
-              League
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='https://www.premierleague.com'
+                target='_blank'
+              >
+                <img src={epl} width='35px' height='35px' alt='logo' /> Premium
+                League
+              </a>
             </li>
             <li className='list-group-item'>
-              <img src={liver} width='35px' height='35px' alt='logo' />{' '}
-              Liverpool
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='https://www.liverpoolfc.com/'
+                target='_blank'
+              >
+                <img src={liver} width='35px' height='35px' alt='logo' />{' '}
+                Liverpool
+              </a>
             </li>
             <li className='list-group-item'>
-              <img src={mc} width='35px' height='35px' alt='logo' /> Manchester
-              City
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='https://www.mancity.com/'
+                target='_blank'
+              >
+                <img src={mc} width='35px' height='35px' alt='logo' />{' '}
+                Manchester City
+              </a>
             </li>
             <li className='list-group-item'>
-              <img src={mu} width='35px' height='35px' alt='logo' /> Manchester
-              United
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='https://www.manutd.com/'
+                target='_blank'
+              >
+                <img src={mu} width='35px' height='35px' alt='logo' />{' '}
+                Manchester United
+              </a>
             </li>
             <li className='list-group-item'>
-              <img src={che} width='35px' height='35px' alt='logo' /> Chelsea
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='https://www.chelseafc.com/en'
+                target='_blank'
+              >
+                <img src={che} width='35px' height='35px' alt='logo' /> Chelsea
+              </a>
             </li>
           </ul>
         </div>
         <div className='col-sm-3'>
           <ul className='list-group'>
             <li className='list-group-item crimsonRedBg wite links'>
-              <img src={laliga} width='35px' height='35px' alt='logo' /> La Liga
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='https://www.laliga.com/en-GB'
+                target='_blank'
+              >
+                <img src={laliga} width='35px' height='35px' alt='logo' /> La
+                Liga
+              </a>
             </li>
             <li className='list-group-item'>
               <img src={fcb} width='35px' height='35px' alt='logo' /> Barcelona
@@ -129,7 +190,17 @@ const Home = () => {
         <div className='col-sm-3'>
           <ul className='list-group'>
             <li className='list-group-item crimsonRedBg wite links'>
-              <img src={sa} width='35px' height='35px' alt='logo' /> Serie A
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='http://www.legaseriea.it/en'
+                target='_blank'
+              >
+                <img src={sa} width='35px' height='35px' alt='logo' /> Serie A
+              </a>
             </li>
             <li className='list-group-item'>
               <img src={inter} width='35px' height='35px' alt='logo' /> Inter
@@ -149,8 +220,18 @@ const Home = () => {
         <div className='col-sm-3'>
           <ul className='list-group'>
             <li className='list-group-item crimsonRedBg wite links'>
-              <img src={bundes} width='35px' height='35px' alt='logo' />{' '}
-              BundesLiga
+              <a
+                style={{
+                  color: '#FFFFEA',
+                  cursor: 'pointer',
+                }}
+                className='links'
+                href='https://www.bundesliga.com/en/bundesliga'
+                target='_blank'
+              >
+                <img src={bundes} width='35px' height='35px' alt='logo' />{' '}
+                BundesLiga
+              </a>
             </li>
             <li className='list-group-item'>
               <img src={bm} width='35px' height='35px' alt='logo' /> Bayern

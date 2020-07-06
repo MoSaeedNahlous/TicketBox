@@ -1,15 +1,14 @@
-import React from 'react'
-import EditGame from '../../../components/layout/admin Forms/Games/EditGame'
-import AdminNav from '../../layout/AdminNav'
+import React from 'react';
+import EditGame from '../../../components/layout/admin Forms/Games/EditGame';
+import AdminNav from '../../layout/AdminNav';
 
 const EditGamePage = () => {
-    return (
-        <div>
-            <AdminNav />
-            <EditGame />
-            
-        </div>
-    )
-}
+  return (
+    <div>
+      <AdminNav />
+      <EditGame />
+    </div>
+  );
+};
 
-export default EditGamePage
+export default EditGamePage;
