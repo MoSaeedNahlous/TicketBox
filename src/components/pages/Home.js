@@ -66,10 +66,10 @@ const Home = () => {
 
       <br />
       <div className='row' style={{ width: '100%' }}>
-        <div className='col-md-3 container'>
+        <div className='col-sm-3 container'>
           <Tables />
         </div>
-        <div className='col-md-9 container'>
+        <div className='col-sm-9 container'>
           <Matches />
         </div>
       </div>

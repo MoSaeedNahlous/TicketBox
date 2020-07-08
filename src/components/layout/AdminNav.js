@@ -17,7 +17,7 @@ const AdminNav = () => {
     };
   }
   {
-    if (context.user.roles.length !== 2) {
+    if (context.user.roles[0].name !== 'ROLE_ADMIN') {
       return <Fragment>{history.push('/404')}</Fragment>;
     } else {
       return (

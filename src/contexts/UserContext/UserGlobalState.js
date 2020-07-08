@@ -6,7 +6,7 @@ import setJwtToken from './SetJwtToken';
 //intial state
 
 const intialState = {
-  user: { roles: [] },
+  user: { roles: [{ id: '', name: '' }] },
   users: [],
   error: {},
   currentUser: null,
@@ -17,6 +17,7 @@ const intialState = {
   response: '',
   token: localStorage.getItem('jwtToken'),
   isAuthenticated: null,
+  isLoading: true,
 };
 
 // create context
@@ -193,6 +194,7 @@ export const UserGlobalProvider = ({ children }) => {
         response: state.response,
         token: state.token,
         isAuthenticated: state.isAuthenticated,
+        isLoading: state.isLoading,
         ClearResponse,
         RegisterUser,
         ClearError,

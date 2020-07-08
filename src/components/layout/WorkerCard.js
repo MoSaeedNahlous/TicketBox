@@ -21,7 +21,7 @@ const WorkerCard = () => {
         </h1>
         <br />
         <div className='row'>
-          <div className='col-md-4'>
+          <div className='col-sm-4'>
             <div className='flip-card'>
               <div className='flip-card-inner'>
                 <div className='flip-card-front'>
@@ -36,7 +36,7 @@ const WorkerCard = () => {
               </div>
             </div>
           </div>
-          <div className='col-md-4'>
+          <div className='col-sm-4'>
             <div className='flip-card'>
               <div className='flip-card-inner'>
                 <div className='flip-card-front'>
@@ -51,7 +51,7 @@ const WorkerCard = () => {
               </div>
             </div>
           </div>
-          <div className='col-md-4'>
+          <div className='col-sm-4'>
             <div className='flip-card'>
               <div className='flip-card-inner'>
                 <div className='flip-card-front'>

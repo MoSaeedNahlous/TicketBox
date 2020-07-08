@@ -47,7 +47,8 @@ import EditGamePage from './components/pages/admin pages/EditGamePage';
 import { Covid19GlobalProvider } from './contexts/Covid19Tracker/Covid19GlobalState';
 import Profile from './components/pages/Profile';
 import { UserGlobalProvider } from './contexts/UserContext/UserGlobalState';
-import setJwtToken from './contexts/UserContext/SetJwtToken';
+import PrivateUserRoute from './components/Routing/PrivateUserRoute';
+import PrivateAdminRoute from './components/Routing/PrivateAdminRoute';
 
 const App = () => {
   return (
@@ -60,7 +61,7 @@ const App = () => {
                 <div className='App full-width '>
                   <div>
                     <Switch>
-                      <Route exact path='/adminLogin' component={LoginAdmin} />
+                      {/* <Route exact path='/adminLogin' component={LoginAdmin} /> */}
                       <Route exact path='/' component={Home} />
 
                       <Route exact path='/about' component={About} />
@@ -89,67 +90,76 @@ const App = () => {
                       />
                       {/* <Route path='*' component={NotFound} /> */}
                       <Route exact path='/contactUs' component={ContactUs} />
-                      <Route exact path='/search' component={SearchPage} />
+                      {/* <Route exact path='/search' component={SearchPage} /> */}
                       <Route exact path='/teams' component={Teams} />
                       <Route exact path='/stadiums' component={Stadiums} />
-                      <Route exact path='/profile' component={Profile} />
 
-                      <Route exact path='/admin/home' component={Admin} />
-                      <Route
+                      <PrivateUserRoute
+                        exact
+                        path='/profile'
+                        component={Profile}
+                      />
+
+                      <PrivateAdminRoute
+                        exact
+                        path='/admin/home'
+                        component={Admin}
+                      />
+                      <PrivateAdminRoute
                         exact
                         path='/admin/addEmp'
                         component={AddEmpPage}
                       />
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/deleteEmp'
                         component={DeleteEmpPage}
                       />
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/editUser'
                         component={DeleteUserPage}
                       />
 
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/addGame'
                         component={AddGamePage}
                       />
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/editGame'
                         component={EditGamePage}
                       />
                       <Route exact path='/game/:id' component={MatchPage} />
 
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/addTicket'
                         component={AddTicketPage}
                       />
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/editTicket'
                         component={EditTicketPage}
                       />
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/addStadium'
                         component={AddStadiumPage}
                       />
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/editStadium'
                         component={EditStadiumPage}
                       />
 
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/addTeam'
                         component={AddTeamPage}
                       />
-                      <Route
+                      <PrivateAdminRoute
                         exact
                         path='/admin/editTeam'
                         component={EditTeamPage}
