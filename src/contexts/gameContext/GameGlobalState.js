@@ -48,7 +48,11 @@ export const GameGlobalProvider = ({ children }) => {
   //AddGame
   const AddGame = async (game) => {
     await axios
-      .post('/game/save', game)
+      .post('/game/save', game, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({ type: 'ADD_GAME', payload: res.data });
         console.log(res.data);
@@ -60,7 +64,11 @@ export const GameGlobalProvider = ({ children }) => {
   //DeleteGameById
   const DeleteGame = (gameId) => {
     axios
-      .delete(`/game/deleteById/${gameId}`)
+      .delete(`/game/deleteById/${gameId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'DELETE_GAME',
@@ -74,7 +82,11 @@ export const GameGlobalProvider = ({ children }) => {
   //UpdateTeams
   const UpdateTeams = (hostId, guestId, gameId) => {
     axios
-      .put(`/gameTeams/updateTeams/${hostId}/${guestId}/${gameId}`)
+      .put(`/gameTeams/updateTeams/${hostId}/${guestId}/${gameId}`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({ type: 'UPDATE_TEAMS', payload: res.data });
       });
@@ -84,7 +96,11 @@ export const GameGlobalProvider = ({ children }) => {
 
   const UpdateGameById = (game) => {
     axios
-      .post('/game/save', game)
+      .post('/game/save', game, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'UPDATE_GAME',
@@ -98,7 +114,11 @@ export const GameGlobalProvider = ({ children }) => {
 
   //AddTeamToTheGame
   const AddTeamToTheGame = (gameId, hostId, guestId) => {
-    axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`);
+    axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`, null, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
+    });
   };
 
   //UpdateTeams
@@ -111,16 +131,34 @@ export const GameGlobalProvider = ({ children }) => {
   // }
   //DeleteTeamFromTheGame
   const DeleteTeamFromTheGame = (gameId, teamId) => {
-    axios.delete(`/game/deleteTeam/${gameId}/${teamId}`).then().catch();
+    axios
+      .delete(`/game/deleteTeam/${gameId}/${teamId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then()
+      .catch();
   };
   //DeleteAllTeamsFromTheGame
   const DeleteTeamsFromTheGame = (gameId) => {
-    axios.delete(`/gameTeams/deleteTeams/${gameId}`).then().catch();
+    axios
+      .delete(`/gameTeams/deleteTeams/${gameId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then()
+      .catch();
   };
   //AddStadiumToTheGame
   const AddStadiumToTheGame = async (gameId, stadId) => {
     await axios
-      .post(`/game/addStadium/${gameId}/${stadId}`)
+      .post(`/game/addStadium/${gameId}/${stadId}`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) =>
         dispatch({ type: 'ADD_STADIUM_TO_GAME', payload: res.data })
       )
@@ -144,13 +182,13 @@ export const GameGlobalProvider = ({ children }) => {
 
   //SetHostAndGuest
   const SetHost = (hostId) => {
-    axios.get(`/team/findById/${hostId}`).then((res) => {
+    axios.get(`/game/show/findById/${hostId}`).then((res) => {
       dispatch({ type: 'SET_HOST', payload: res.data });
     });
   };
 
   const SetGuest = (guestId) => {
-    axios.get(`/team/findById/${guestId}`).then((res) => {
+    axios.get(`/game/show/findById/${guestId}`).then((res) => {
       dispatch({
         type: 'SET_GUEST',
         payload: res.data,
@@ -246,18 +284,24 @@ export const GameGlobalProvider = ({ children }) => {
   };
   //AddTickets
   const AddTicket = (ticket, gameId) => {
-    axios.post('/ticket/save', ticket).then((res) => {
-      alert('Added!');
-      dispatch({ type: 'SET_TICKET_ID', payload: res.data.id });
-      axios.post(`/ticket/addGame/${res.data.id}/${gameId}`);
-      alert(
-        'Done! ticket:' +
-          res.data.id +
-          'added to game:' +
-          gameId +
-          '  Succesfully!'
-      );
-    });
+    axios
+      .post('/ticket/save', ticket, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        alert('Added!');
+        dispatch({ type: 'SET_TICKET_ID', payload: res.data.id });
+        axios.post(`/ticket/addGame/${res.data.id}/${gameId}`);
+        alert(
+          'Done! ticket:' +
+            res.data.id +
+            'added to game:' +
+            gameId +
+            '  Succesfully!'
+        );
+      });
   };
 
   //ViewGameTickets
@@ -272,16 +316,28 @@ export const GameGlobalProvider = ({ children }) => {
 
   //DeleteTickets
   const DeleteTickets = (ticketId) => {
-    axios.delete(`/ticket/deleteById/${ticketId}`).then((res) => {
-      dispatch({ type: 'DELETE_TICKETS', payload: ticketId });
-    });
+    axios
+      .delete(`/ticket/deleteById/${ticketId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'DELETE_TICKETS', payload: ticketId });
+      });
   };
 
   //EditTickets
   const EditTickets = (ticket) => {
-    axios.post('/ticket/save', ticket).then((res) => {
-      dispatch({ type: 'UPDATE_TICKETS', payload: res.data });
-    });
+    axios
+      .post('/ticket/save', ticket, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'UPDATE_TICKETS', payload: res.data });
+      });
   };
 
   return (
