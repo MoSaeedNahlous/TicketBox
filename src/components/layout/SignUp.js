@@ -183,6 +183,17 @@ const Signup = () => {
           </div>
           <div className='form-group'>
             <label>Password</label>
+            <i
+              onClick={showPassword}
+              id='eyeIcon'
+              className='fa fa-eye'
+              aria-hidden='true'
+              style={{
+                position: 'sticky',
+                color: 'white',
+                cursor: 'pointer',
+              }}
+            ></i>
             <input
               id='input'
               type='password'
@@ -199,19 +210,7 @@ const Signup = () => {
               onChange={onChangeHandler}
               required
             />
-            <i
-              onClick={showPassword}
-              id='eyeIcon'
-              className='fa fa-eye'
-              aria-hidden='true'
-              style={{
-                position: 'absolute',
-                top: '76.4%',
-                right: '53%',
-                color: 'grey',
-                cursor: 'pointer',
-              }}
-            ></i>
+
             <div role='alert' style={{ width: '50%' }}>
               {error.password && (
                 <strong style={{ color: 'red' }}>
@@ -222,6 +221,17 @@ const Signup = () => {
           </div>
           <div className='form-group'>
             <label>reEnter Password</label>
+            <i
+              id='eyeIcon2'
+              className='fa fa-eye'
+              aria-hidden='true'
+              onClick={showPassword2}
+              style={{
+                position: 'sticky',
+                color: 'white',
+                cursor: 'pointer',
+              }}
+            ></i>
             <input
               id='input2'
               type='password'
@@ -238,19 +248,6 @@ const Signup = () => {
               onChange={onChangeHandler}
               required
             />{' '}
-            <i
-              id='eyeIcon2'
-              className='fa fa-eye'
-              aria-hidden='true'
-              onClick={showPassword2}
-              style={{
-                position: 'absolute',
-                top: '91%',
-                right: '53%',
-                color: 'grey',
-                cursor: 'pointer',
-              }}
-            ></i>
             <div
               role='alert'
               id='passwordAlert'

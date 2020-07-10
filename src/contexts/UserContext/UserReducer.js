@@ -8,6 +8,7 @@ export default (state, action) => {
       };
     case 'LOGIN_USER':
       localStorage.setItem('jwtToken', action.payload.accessToken);
+      console.log('login suc');
       return {
         ...state,
         token: action.payload.accessToken,
@@ -22,7 +23,7 @@ export default (state, action) => {
     case 'CLEAR_ERROR':
       return {
         ...state,
-        error: {},
+        error: '',
       };
     case 'GET_USERS':
       return {
@@ -85,12 +86,13 @@ export default (state, action) => {
     case 'LOGOUT_USER':
       return {
         ...state,
-        user: { roles: [{ id: '', name: '' }] },
+        user: { id: '', roles: [{ id: '', name: '' }] },
         token: '',
         isAuthenticated: false,
         isLoading: false,
       };
     case 'LOAD_USER':
+      console.log('load suc');
       return {
         ...state,
         user: action.payload,
@@ -99,11 +101,12 @@ export default (state, action) => {
       };
     case 'AUTH_ERROR':
       localStorage.removeItem('jwtToken');
+      console.log('auth err');
       return {
         ...state,
         token: null,
         isAuthenticated: false,
-        user: { roles: [{ id: '', name: '' }] },
+        user: { id: '', roles: [{ id: '', name: '' }] },
       };
 
     default:

@@ -6,9 +6,9 @@ import setJwtToken from './SetJwtToken';
 //intial state
 
 const intialState = {
-  user: { roles: [{ id: '', name: '' }] },
+  user: { id: '', roles: [{ id: '', name: '' }] },
   users: [],
-  error: {},
+  error: '',
   currentUser: null,
   count: '',
   malesCount: '',
@@ -52,7 +52,7 @@ export const UserGlobalProvider = ({ children }) => {
         LoadUser();
       })
       .catch((err) => {
-        dispatch({ type: 'SET_ERROR', payload: err.response.data });
+        dispatch({ type: 'SET_ERROR', payload: 'Wrong data!' });
       });
   };
   //Clear Error
@@ -62,9 +62,15 @@ export const UserGlobalProvider = ({ children }) => {
 
   //GetUsers
   const GetUsers = () => {
-    axios.get('/users/findAll').then((res) => {
-      dispatch({ type: 'GET_USERS', payload: res.data });
-    });
+    axios
+      .get('/users/show/admin/findAll', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'GET_USERS', payload: res.data });
+      });
   };
 
   //SetCurrentUser
@@ -180,6 +186,19 @@ export const UserGlobalProvider = ({ children }) => {
       });
   };
 
+  //AddCredits
+  const AddCredits = (data) => {
+    axios
+      .post('/creditRequest/admin/addCreditByEmail', data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'ADD_CREDITS' });
+        alert('Success!!');
+      });
+  };
   return (
     <UserGlobalContext.Provider
       value={{
@@ -211,6 +230,7 @@ export const UserGlobalProvider = ({ children }) => {
         GetAgeStatics,
         LogOutUser,
         LoadUser,
+        AddCredits,
       }}
     >
       {children}

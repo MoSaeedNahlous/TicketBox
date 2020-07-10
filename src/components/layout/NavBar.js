@@ -127,6 +127,16 @@ const NavBar = (props) => {
                 <i className='fas fa-home' /> Home
               </Link>
             </li>
+            {(context.user.roles[0].name === 'ROLE_ADMIN' ||
+              context.user.roles[0].name === 'ROLE_DISTU') && (
+              <li className=' menuItem'>
+                <Link to='/addCredits' className=' menuItem'>
+                  {' '}
+                  <i className='fas fa-coins' /> Add Credits
+                </Link>
+              </li>
+            )}
+
             {context.user.roles[0].name === 'ROLE_ADMIN' && (
               <li className='nav-item menuItem'>
                 <Link to='/admin/home' className=' menuItem'>

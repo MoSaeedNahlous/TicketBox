@@ -84,16 +84,20 @@ const Login = () => {
                   onChange={onChangeHandler}
                   required
                 />
-                <div role='alert' style={{ width: '50%' }}>
-                  {error.email && (
-                    <strong style={{ color: 'red' }}>
-                      &times; {error.email}{' '}
-                    </strong>
-                  )}
-                </div>
               </div>
               <div className='form-group' style={{ color: 'white' }}>
-                <label>Password</label>
+                <label>Password </label>
+                <i
+                  id='eyeIcon'
+                  className='fa fa-eye'
+                  aria-hidden='true'
+                  onClick={showPassword}
+                  style={{
+                    position: 'sticky',
+                    color: 'white',
+                    cursor: 'pointer',
+                  }}
+                ></i>
 
                 <input
                   type='password'
@@ -109,26 +113,6 @@ const Login = () => {
                   required
                   id='input'
                 />
-                <i
-                  id='eyeIcon'
-                  className='fa fa-eye'
-                  aria-hidden='true'
-                  onClick={showPassword}
-                  style={{
-                    position: 'absolute',
-                    top: '61.3%',
-                    right: '53%',
-                    color: 'grey',
-                    cursor: 'pointer',
-                  }}
-                ></i>
-                <div role='alert' style={{ width: '50%' }}>
-                  {error.password && (
-                    <strong style={{ color: 'red' }}>
-                      &times; {error.password}{' '}
-                    </strong>
-                  )}
-                </div>
               </div>
               <div className='form-group form-check' style={{ color: 'white' }}>
                 <input
@@ -138,6 +122,7 @@ const Login = () => {
                 />
                 <label className='form-check-label'>Save my password</label>
               </div>
+
               <button
                 type='submit'
                 onSubmit={HandleSubmit}
@@ -145,6 +130,13 @@ const Login = () => {
               >
                 Login
               </button>
+              <div role='alert' style={{ width: '50%' }}>
+                {error !== '' && (
+                  <strong style={{ color: 'red' }}>
+                    &times; Wrong data!!{' '}
+                  </strong>
+                )}
+              </div>
               <br />
               <br />
               <small className='wite'> Forget your password? Click</small>

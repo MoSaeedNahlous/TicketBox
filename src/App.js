@@ -49,6 +49,8 @@ import Profile from './components/pages/Profile';
 import { UserGlobalProvider } from './contexts/UserContext/UserGlobalState';
 import PrivateUserRoute from './components/Routing/PrivateUserRoute';
 import PrivateAdminRoute from './components/Routing/PrivateAdminRoute';
+import PrivateDistruRoute from './components/Routing/PrivateDistruRoute';
+import AddCredits from './components/pages/distru pages/AddCredits';
 
 const App = () => {
   return (
@@ -163,6 +165,11 @@ const App = () => {
                         exact
                         path='/admin/editTeam'
                         component={EditTeamPage}
+                      />
+                      <PrivateDistruRoute
+                        exact
+                        path='/addCredits'
+                        component={AddCredits}
                       />
 
                       <Route exact path='/ticket' component={Ticket} />
