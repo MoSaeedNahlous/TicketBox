@@ -118,24 +118,42 @@ export const UserGlobalProvider = ({ children }) => {
 
   //CountMaleUsers
   const CountMaleUsers = () => {
-    axios.get('/users/statistics/countMaleUsers').then((res) => {
-      dispatch({ type: 'COUNT_MALE_USERS', payload: res.data });
-    });
+    axios
+      .get('/users/admin/statistics/countMaleUsers', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'COUNT_MALE_USERS', payload: res.data });
+      });
   };
 
   //CountMaleUsers
   const CountFemaleUsers = () => {
-    axios.get('/users/statistics/countFemaleUsers').then((res) => {
-      dispatch({ type: 'COUNT_FEMALE_USERS', payload: res.data });
-    });
+    axios
+      .get('/users/admin/statistics/countFemaleUsers', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'COUNT_FEMALE_USERS', payload: res.data });
+      });
   };
 
   //GetAgeStatics
   const GetAgeStatics = () => {
-    axios.get('/users/statistics/countAgeGroupsOfUsers').then((res) => {
-      console.log(res.data[0]);
-      dispatch({ type: 'GET_AGE_STATICS', payload: res.data[0] });
-    });
+    axios
+      .get('/users/admin/statistics/countAgeGroupsOfUsers', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data[0]);
+        dispatch({ type: 'GET_AGE_STATICS', payload: res.data[0] });
+      });
   };
 
   //ClearResponse
@@ -170,18 +188,12 @@ export const UserGlobalProvider = ({ children }) => {
             },
           })
           .then((response) => {
-            dispatch(
-              { type: 'LOAD_USER', payload: response.data },
-              {
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
-                },
-              }
-            );
+            dispatch({ type: 'LOAD_USER', payload: response.data });
             console.log(response.data);
           });
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err.response.data.trace);
         dispatch({ type: 'AUTH_ERROR' });
       });
   };
@@ -197,6 +209,9 @@ export const UserGlobalProvider = ({ children }) => {
       .then((res) => {
         dispatch({ type: 'ADD_CREDITS' });
         alert('Success!!');
+      })
+      .catch((err) => {
+        alert('the entered email is not vaild!!');
       });
   };
   return (

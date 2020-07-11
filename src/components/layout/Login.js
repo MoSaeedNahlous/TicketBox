@@ -27,9 +27,9 @@ const Login = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    LoginUser(user);
-
     setUser({ email: '', password: '' });
+    ClearError();
+    LoginUser(user);
   };
   const showPassword = () => {
     var icon = document.getElementById('eyeIcon');
