@@ -40,7 +40,11 @@ export const TeamGlobalProvider = ({ children }) => {
   //AddTeam
   const AddTeam = (team) => {
     axios
-      .post('/team/save', team)
+      .post('/team/save', team, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'ADD_TEAM',
@@ -56,7 +60,11 @@ export const TeamGlobalProvider = ({ children }) => {
   //DeleteTeamById
   const DeleteTeam = (id) => {
     axios
-      .delete(`/team/deleteById/${id}`)
+      .delete(`/team/deleteById/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'DELETE_TEAM',
@@ -70,9 +78,13 @@ export const TeamGlobalProvider = ({ children }) => {
 
   //UpdateTeamById
 
-  const UpdateTeamById = async (team) => {
-    await axios
-      .post('/team/save', team)
+  const UpdateTeamById = (team) => {
+    axios
+      .post('/team/save', team, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'UPDATE_TEAM',
@@ -100,7 +112,11 @@ export const TeamGlobalProvider = ({ children }) => {
   };
   const GetTeamByID2 = (id) => {
     axios
-      .get(`/team/findById/${id}`)
+      .get(`/team/findById/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'GET_TEAM_BY_ID2',

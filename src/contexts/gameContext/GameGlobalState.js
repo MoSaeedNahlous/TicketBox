@@ -46,8 +46,8 @@ export const GameGlobalProvider = ({ children }) => {
   };
 
   //AddGame
-  const AddGame = async (game) => {
-    await axios
+  const AddGame = (game) => {
+    axios
       .post('/game/save', game, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -121,14 +121,6 @@ export const GameGlobalProvider = ({ children }) => {
     });
   };
 
-  //UpdateTeams
-  // const UpdateTeams =(gameId,guestId,hostId)=>{
-  //     axios.delete(`/gameTeams/deleteTeams/${gameId}`)
-  //     axios.post(`/gameTeams/insertTeam/${guestId}/${hostId}/${gameId}`).then(res =>{
-  //         dispatch({type:"ADD_TEAMS",payload:res.data})
-  //         console.log(res.data)
-  //     })
-  // }
   //DeleteTeamFromTheGame
   const DeleteTeamFromTheGame = (gameId, teamId) => {
     axios
@@ -152,8 +144,8 @@ export const GameGlobalProvider = ({ children }) => {
       .catch();
   };
   //AddStadiumToTheGame
-  const AddStadiumToTheGame = async (gameId, stadId) => {
-    await axios
+  const AddStadiumToTheGame = (gameId, stadId) => {
+    axios
       .post(`/game/addStadium/${gameId}/${stadId}`, null, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -182,19 +174,21 @@ export const GameGlobalProvider = ({ children }) => {
 
   //SetHostAndGuest
   const SetHost = (hostId) => {
-    axios.get(`/game/show/findById/${hostId}`).then((res) => {
+    axios.get(`/team/show/findById/${hostId}`).then((res) => {
       dispatch({ type: 'SET_HOST', payload: res.data });
     });
   };
 
   const SetGuest = (guestId) => {
-    axios.get(`/game/show/findById/${guestId}`).then((res) => {
+    axios.get(`/team/show/findById/${guestId}`).then((res) => {
       dispatch({
         type: 'SET_GUEST',
         payload: res.data,
       });
     });
   };
+
+  const SetHostAndGuest = (hostId, guestId, gameId) => {};
 
   //Set Stadium
   const SetStadium = (stadium) => {
@@ -293,11 +287,15 @@ export const GameGlobalProvider = ({ children }) => {
       .then((res) => {
         alert('Added!');
         dispatch({ type: 'SET_TICKET_ID', payload: res.data.id });
-        axios.post(`/ticket/addGame/${res.data.id}/${gameId}`);
+        axios.post(`/ticket/addGame/${res.data.id}/${gameId}`, null, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          },
+        });
         alert(
-          'Done! ticket:' +
+          'Done! ticket : ' +
             res.data.id +
-            'added to game:' +
+            ' added to game : ' +
             gameId +
             '  Succesfully!'
         );

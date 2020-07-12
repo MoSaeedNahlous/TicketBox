@@ -39,7 +39,11 @@ export const StadiumGlobalProvider = ({ children }) => {
   //AddStadium
   const AddStadium = (stad) => {
     axios
-      .post('/stadium/save', stad)
+      .post('/stadium/save', stad, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'ADD_STADIUM',
@@ -55,7 +59,11 @@ export const StadiumGlobalProvider = ({ children }) => {
   //DeleteStadiumById
   const DeleteStadium = (stadId) => {
     axios
-      .delete(`/stadium/deleteById/${stadId}`)
+      .delete(`/stadium/deleteById/${stadId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'DELETE_STADIUM',
@@ -69,9 +77,13 @@ export const StadiumGlobalProvider = ({ children }) => {
 
   //UpdateStadiumById
 
-  const UpdateStadiumById = async (stad) => {
-    await axios
-      .post('/stadium/save', stad)
+  const UpdateStadiumById = (stad) => {
+    axios
+      .post('/stadium/save', stad, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({
           type: 'UPDATE_STADIUM',

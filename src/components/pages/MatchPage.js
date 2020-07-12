@@ -7,9 +7,6 @@ import bg from '../../res/bghome.jpg';
 
 const MatchPage = ({ match }) => {
   const context = useContext(GameGlobalContext);
-  const [gameState, setGameState] = useState({});
-  const [hostSt, setHostSt] = useState({});
-  const [guestSt, setGuestSt] = useState({});
 
   useEffect(() => {
     context.GetGameByID(match.params.id);
@@ -36,6 +33,8 @@ const MatchPage = ({ match }) => {
                 src={context.host.image}
                 alt={context.host.name + ' Image'}
                 className='wite'
+                width='50%'
+                height='50%'
               />
             </div>
             <div>
@@ -44,7 +43,10 @@ const MatchPage = ({ match }) => {
           </div>
           <div className='col-sm-4'>
             <div>
-              <h1 className='wite' style={{ textAlign: 'center' }}>
+              <h1
+                className='wite'
+                style={{ textAlign: 'center', marginTop: '30%' }}
+              >
                 V.S
               </h1>
             </div>
@@ -55,6 +57,8 @@ const MatchPage = ({ match }) => {
                 src={context.guest.image}
                 alt={context.guest.name + ' Image'}
                 className='wite'
+                width='50%'
+                height='50%'
               />
             </div>
             <div>
@@ -66,7 +70,10 @@ const MatchPage = ({ match }) => {
         <br />
         <br />
         <hr />
-        <div className='wite'>
+        <div
+          className='wite'
+          style={{ textAlign: 'center', borderBottom: 'white 1px solid' }}
+        >
           <h3 style={{ textAlign: 'center', borderBottom: 'white 1px solid' }}>
             MatchInfo
           </h3>
@@ -77,15 +84,24 @@ const MatchPage = ({ match }) => {
           </h4>
           <h4>Deadline : {context.game.deadLine}</h4>
         </div>
+        <hr />
 
         <hr className='wite' />
         <div className='row'>
-          <div className='col-sm-6 wite'>
-            <h3>Ticket Form</h3>
+          <div
+            className='col-sm-6 wite'
+            style={{ borderRight: 'white 4px solid' }}
+          >
+            <h3 style={{ textAlign: 'center' }}>Ticket Form</h3>
           </div>
           <div className='col-sm-6 wite'>
-            <h3>Stadium</h3>
-            <img src={context.stadium.image} alt='Stadium Imgae' />
+            <h3 style={{ textAlign: 'center' }}>Stadium</h3>
+            <img
+              src={context.stadium.image}
+              alt='Stadium Imgae'
+              width='100%'
+              height='80%'
+            />
           </div>
         </div>
       </div>
