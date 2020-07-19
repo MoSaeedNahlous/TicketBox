@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-lone-blocks */
 import React, { Fragment } from 'react';
 import { Link, useHistory } from 'react-router-dom';

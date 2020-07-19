@@ -351,7 +351,6 @@ const AddGame = () => {
                 className='form-control'
                 placeholder='Gates'
                 onChange={onChangeHandlerTkt}
-                onBlur={onBlurHandler}
                 required
               />
             </div>

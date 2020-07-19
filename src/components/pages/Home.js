@@ -32,12 +32,15 @@ import rb from '../../res/rb.png';
 import Covid19Tracker from '../Covid19Tracker';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
+import { GameGlobalContext } from '../../contexts/gameContext/GameGlobalState';
 
 const Home = () => {
   const context = useContext(UserGlobalContext);
+  const gameContext = useContext(GameGlobalContext);
 
   useEffect(() => {
     context.LoadUser();
+    gameContext.GetGames();
   }, []);
   return (
     <div
@@ -70,7 +73,7 @@ const Home = () => {
           <Tables />
         </div>
         <div className='col-sm-9 container'>
-          <Matches />
+          <Matches games={gameContext.games} />
         </div>
       </div>
 

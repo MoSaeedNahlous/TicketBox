@@ -18,6 +18,7 @@ const intialState = {
   host: {},
   guest: {},
   ticketId: '',
+  isLoading: true,
 };
 
 // create context
@@ -173,22 +174,20 @@ export const GameGlobalProvider = ({ children }) => {
   };
 
   //SetHostAndGuest
-  const SetHost = (hostId) => {
-    axios.get(`/team/show/findById/${hostId}`).then((res) => {
-      dispatch({ type: 'SET_HOST', payload: res.data });
-    });
+  const SetHost = async (hostId) => {
+    const res = await axios.get(`/team/show/findById/${hostId}`);
+    dispatch({ type: 'SET_HOST', payload: res.data });
+    return res.data;
   };
 
-  const SetGuest = (guestId) => {
-    axios.get(`/team/show/findById/${guestId}`).then((res) => {
-      dispatch({
-        type: 'SET_GUEST',
-        payload: res.data,
-      });
+  const SetGuest = async (guestId) => {
+    const res = await axios.get(`/team/show/findById/${guestId}`);
+    dispatch({
+      type: 'SET_GUEST',
+      payload: res.data,
     });
+    return res.data;
   };
-
-  const SetHostAndGuest = (hostId, guestId, gameId) => {};
 
   //Set Stadium
   const SetStadium = (stadium) => {
@@ -354,6 +353,7 @@ export const GameGlobalProvider = ({ children }) => {
         host: state.host,
         guest: state.guest,
         ticketId: state.ticketId,
+        isLoading: state.isLoading,
         SetStadium,
         ClearStadium,
         GetGames,

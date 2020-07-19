@@ -5,16 +5,48 @@ import Footer from '../layout/Footer';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import bg from '../../res/Page-Turner.svg';
 import Spinner from '../layout/Spinner';
+import { useState } from 'react';
+import Ticket from '../layout/Ticket';
 
 const Profile = () => {
-  const history = useHistory();
   const context = useContext(UserGlobalContext);
+  const { LoadUser, GetTickets } = context;
+  const [state, setState] = useState({
+    name: context.user.name,
+    email: context.user.email,
+    age: context.user.age,
+    gender: context.user.gender,
+    id: context.user.id,
+  });
+
   useEffect(() => {
-    context.LoadUser();
+    LoadUser();
   }, []);
+
+  useEffect(() => {
+    GetTickets(context.user.id);
+  }, [context.user.id]);
+  const closeModal = () => {
+    document.getElementById('viewModal').style.display = 'none';
+  };
+  const openModal = () => {
+    document.getElementById('viewModal').style.display = 'block';
+    setState({
+      name: context.user.name,
+      email: context.user.email,
+      age: context.user.age,
+      gender: context.user.gender,
+    });
+  };
+  const onChangeHandler = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    closeModal();
+  };
 
   {
     while (context.isLoading) {
@@ -57,7 +89,9 @@ const Profile = () => {
                 <h5>Gender : {context.user.gender ? 'Male' : 'Female'}</h5>
                 <h5>Created At: {context.user.createdAt}</h5>
                 <h5>Last Update: {context.user.updatedAt}</h5>
-                <button className='btn btn-dark'>Edit My information</button>
+                <button className='btn btn-dark' onClick={openModal}>
+                  Edit My information
+                </button>
               </div>
               <div
                 className='col-sm-8'
@@ -67,20 +101,33 @@ const Profile = () => {
                   My Tickets
                 </h2>
                 <hr />
-                <div className='container'></div>
+
+                <div className='container'>
+                  <div className='MyCards'>
+                    {context.tickets === [] ? (
+                      <h3>There's no tickets....</h3>
+                    ) : (
+                      context.tickets.map((item) => (
+                        <Ticket ticket={item} key={item.id} />
+                      ))
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <br />
-          <div id='viewModal'>
+          <div id='viewModal' style={{ display: 'none' }}>
             <div
               id='viewModalContent'
               className='container'
               style={{ backgroundColor: '#fff' }}
             >
-              <form>
+              <form onSubmit={onSubmitHandler}>
                 <h1 style={{ textAlign: 'center' }}>Edit My information</h1>
-                <span id='closeModal'>&times;</span>
+                <span id='closeModal' onClick={closeModal}>
+                  &times;
+                </span>
                 <hr />
                 <div className='form-group'>
                   <label>Name(*only Letters)</label>
@@ -90,7 +137,7 @@ const Profile = () => {
                     maxLength='20'
                     minLength='2'
                     className='form-control'
-                    /* value={newUser.name} */
+                    value={state.name}
                     name='name'
                     placeholder='FullName'
                     style={{
@@ -98,7 +145,7 @@ const Profile = () => {
                       backgroundColor: '#fff',
                       color: 'black',
                     }}
-                    /* onChange={onChangeHandler} */
+                    onChange={onChangeHandler}
                     required
                   />
                 </div>
@@ -107,7 +154,7 @@ const Profile = () => {
                   <input
                     type='email'
                     className='form-control'
-                    /* value={newUser.email} */
+                    value={state.email}
                     name='email'
                     placeholder='Email'
                     style={{
@@ -115,7 +162,7 @@ const Profile = () => {
                       backgroundColor: '#fff',
                       color: 'black',
                     }}
-                    /* onChange={onChangeHandler} */
+                    onChange={onChangeHandler}
                     required
                   />
                 </div>
@@ -123,6 +170,8 @@ const Profile = () => {
                   <label>Gender</label>
                   <select
                     required
+                    value={state.gender}
+                    onChange={onChangeHandler}
                     name='gender'
                     className='form-control'
                     style={{
@@ -157,9 +206,11 @@ const Profile = () => {
                 <div className='form-group'>
                   <label>Age</label>
                   <input
+                    onChange={onChangeHandler}
                     className='form-control'
                     placeholder='Age'
                     name='age'
+                    value={state.age}
                     type='number'
                     min='18'
                     max='100'

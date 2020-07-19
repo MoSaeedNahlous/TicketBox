@@ -18,6 +18,10 @@ const intialState = {
   token: localStorage.getItem('jwtToken'),
   isAuthenticated: null,
   isLoading: true,
+  ticket: {},
+  tickets: [],
+  ticketsLoading: true,
+  notReady: true,
 };
 
 // create context
@@ -52,6 +56,7 @@ export const UserGlobalProvider = ({ children }) => {
         LoadUser();
       })
       .catch((err) => {
+        localStorage.removeItem('jwtToken');
         dispatch({ type: 'SET_ERROR', payload: 'Wrong data!' });
       });
   };
@@ -93,7 +98,11 @@ export const UserGlobalProvider = ({ children }) => {
   //UpdateUser
   const UpdateUser = (user) => {
     axios
-      .post('/users/save', user)
+      .post('/users/save', user, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
       .then((res) => {
         dispatch({ type: 'UPDATE_USER', payload: res.data });
       })
@@ -104,9 +113,15 @@ export const UserGlobalProvider = ({ children }) => {
 
   //UsersCount
   const UsersCount = () => {
-    axios.get('/users/count').then((res) => {
-      dispatch({ type: 'USERS_COUNT', payload: res.date });
-    });
+    axios
+      .get('/users/admin/count', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'USERS_COUNT', payload: res.date });
+      });
   };
 
   //DeleteAllUsers
@@ -151,7 +166,6 @@ export const UserGlobalProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        console.log(res.data[0]);
         dispatch({ type: 'GET_AGE_STATICS', payload: res.data[0] });
       });
   };
@@ -180,7 +194,6 @@ export const UserGlobalProvider = ({ children }) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         axios
           .get(`/users/show/findById/${res.data}`, {
             headers: {
@@ -189,11 +202,9 @@ export const UserGlobalProvider = ({ children }) => {
           })
           .then((response) => {
             dispatch({ type: 'LOAD_USER', payload: response.data });
-            console.log(response.data);
           });
       })
       .catch((err) => {
-        console.log(err.response.data.trace);
         dispatch({ type: 'AUTH_ERROR' });
       });
   };
@@ -214,6 +225,32 @@ export const UserGlobalProvider = ({ children }) => {
         alert('the entered email is not vaild!!');
       });
   };
+
+  //GetUserTickets
+  const GetTickets = (userId) => {
+    axios
+      .get(`/users/getTicketsByUserId/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'GET_TICKETSID', payload: res.data });
+      });
+  };
+  //GetTicketInfo
+  const GetTicketInfo = (ticketId) => {
+    axios
+      .get(`/ticket/findById/${ticketId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'GET_TICKETINFO', payload: res.data });
+      });
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -229,6 +266,10 @@ export const UserGlobalProvider = ({ children }) => {
         token: state.token,
         isAuthenticated: state.isAuthenticated,
         isLoading: state.isLoading,
+        ticket: state.ticket,
+        tickets: state.tickets,
+        ticketsLoading: state.ticketsLoading,
+        notReady: state.notReady,
         ClearResponse,
         RegisterUser,
         ClearError,
@@ -246,6 +287,8 @@ export const UserGlobalProvider = ({ children }) => {
         LogOutUser,
         LoadUser,
         AddCredits,
+        GetTicketInfo,
+        GetTickets,
       }}
     >
       {children}

@@ -2,13 +2,35 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { GameGlobalContext } from '../../../contexts/gameContext/GameGlobalState';
 import { useEffect } from 'react';
+import Title from './Title';
+import { useRef } from 'react';
 
-const Match = ({ game }) => {
+const Match = ({ game, host, guest }) => {
   const context = useContext(GameGlobalContext);
   const { GetGameByID } = context;
+  const hostRef = useRef({});
+  const guestRef = useRef({});
+
   useEffect(() => {
-    context.SetGuest(game.gameTeams.guest);
-    context.SetHost(game.gameTeams.host);
+    context.SetHost(host).then((res) => {
+      var txt = JSON.stringify(res);
+      var obj = JSON.parse(txt);
+      hostRef.current = obj;
+    });
+  }, []);
+
+  useEffect(() => {
+    context.SetHost(guest).then((res) => {
+      var txt = JSON.stringify(res);
+      var obj = JSON.parse(txt);
+      guestRef.current = obj;
+    });
+  }, []);
+  useEffect(() => {
+    context.SetHost(534534534535).then((res) => {
+      var txt = JSON.stringify(res);
+      var obj = JSON.parse(txt);
+    });
   }, []);
 
   return (
@@ -43,15 +65,7 @@ const Match = ({ game }) => {
         </div>
         <div className='row wite'>
           <div className='col-sm-5'>
-            <div>
-              <img
-                width='75'
-                height='75'
-                src={context.host.image}
-                alt={context.host.name + 'Logo'}
-              />{' '}
-              {context.host.name}
-            </div>
+            <Title team={hostRef.current} />
           </div>
           <div className='col-sm-2'>
             <br />
@@ -60,15 +74,7 @@ const Match = ({ game }) => {
             </div>
           </div>
           <div className='col-sm-5'>
-            <div>
-              {context.guest.name}
-              <img
-                width='75'
-                height='75'
-                src={context.guest.image}
-                alt={context.guest.name + 'Logo'}
-              />
-            </div>
+            <Title team={guestRef.current} />
           </div>
         </div>
         <div className='wite' style={{ width: '100%' }}>

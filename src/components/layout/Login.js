@@ -27,7 +27,6 @@ const Login = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    setUser({ email: '', password: '' });
     ClearError();
     LoginUser(user);
   };

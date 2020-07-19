@@ -93,6 +93,29 @@ const MatchPage = ({ match }) => {
             style={{ borderRight: 'white 4px solid' }}
           >
             <h3 style={{ textAlign: 'center' }}>Ticket Form</h3>
+            <form>
+              <div className='form-group'>
+                <label>Ticket Type</label>
+                <select name='' id='' className='form-control'>
+                  <option value='' hidden>
+                    Select ticket Type
+                  </option>
+                </select>
+              </div>
+              <div className='form-group'>
+                <label>Ticket Price</label>
+                <label></label>
+              </div>
+
+              <div className='form-group'>
+                <label>Ticket Type</label>
+                <label></label>
+              </div>
+              <div className='form-group'>
+                <label>Ticket Type</label>
+                <label></label>
+              </div>
+            </form>
           </div>
           <div className='col-sm-6 wite'>
             <h3 style={{ textAlign: 'center' }}>Stadium</h3>
