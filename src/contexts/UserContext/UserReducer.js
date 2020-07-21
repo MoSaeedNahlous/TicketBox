@@ -111,6 +111,34 @@ export default (state, action) => {
         notReady: false,
         tickets: action.payload,
       };
+    case 'EDIT_USER':
+      return {
+        ...state,
+        user: action.payload,
+        response: 'Success!!',
+      };
+    case 'EDIT_ERROR':
+      if (action.payload.status == '401') {
+        return {
+          ...state,
+          error: 'Wrong password!!',
+        };
+      } else if (action.payload.status == '500') {
+        return {
+          ...state,
+          error: 'The entered is email already taken!!',
+        };
+      }
+    case 'EDIT_PASSWORD_SUC':
+      return {
+        ...state,
+        response: 'Success!!',
+      };
+    case 'EDIT_PASSWORD_FAIL':
+      return {
+        ...state,
+        error: 'Check your entered data!!',
+      };
 
     default:
       return state;

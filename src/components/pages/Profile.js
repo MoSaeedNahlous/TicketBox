@@ -19,9 +19,20 @@ const Profile = () => {
     age: context.user.age,
     gender: context.user.gender,
     id: context.user.id,
+    password: '',
+    roles: context.user.roles,
+    credit: context.user.credit,
+  });
+  const [passwordSt, setPasswordSt] = useState({
+    idOfUser: context.user.id,
+    oldPass: '',
+    newPass: '',
+    newPass2: '',
   });
 
   useEffect(() => {
+    context.ClearError();
+    context.ClearResponse();
     LoadUser();
   }, []);
 
@@ -30,7 +41,31 @@ const Profile = () => {
   }, [context.user.id]);
   const closeModal = () => {
     document.getElementById('viewModal').style.display = 'none';
+    context.ClearError();
+    context.ClearResponse();
+    setState({
+      name: context.user.name,
+      email: context.user.email,
+      age: context.user.age,
+      gender: context.user.gender,
+      password: '',
+      roles: context.user.roles,
+      credit: context.user.credit,
+      id: context.user.id,
+    });
   };
+  const closeModal3 = () => {
+    document.getElementById('viewModal3').style.display = 'none';
+    context.ClearError();
+    context.ClearResponse();
+    setPasswordSt({
+      idOfUser: context.user.id,
+      oldPass: '',
+      newPass: '',
+      newPass2: '',
+    });
+  };
+
   const openModal = () => {
     document.getElementById('viewModal').style.display = 'block';
     setState({
@@ -38,14 +73,48 @@ const Profile = () => {
       email: context.user.email,
       age: context.user.age,
       gender: context.user.gender,
+      password: '',
+      roles: context.user.roles,
+      credit: context.user.credit,
+      id: context.user.id,
+    });
+  };
+
+  const openModal3 = () => {
+    document.getElementById('viewModal3').style.display = 'block';
+    setPasswordSt({
+      idOfUser: context.user.id,
+      oldPass: '',
+      newPass: '',
+      newPass2: '',
     });
   };
   const onChangeHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
+  const onChangeHandler2 = (e) => {
+    setPasswordSt({ ...passwordSt, [e.target.name]: e.target.value });
+  };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    closeModal();
+    context.EditUser(state);
+  };
+  const onSubmitHandler2 = (e) => {
+    e.preventDefault();
+    if (passwordSt.newPass === passwordSt.newPass2) {
+      console.log({
+        idOfUser: context.user.id,
+        oldPass: passwordSt.oldPass,
+        newPass: passwordSt.newPass,
+      });
+      context.EditUserPassword({
+        idOfUser: context.user.id,
+        oldPass: passwordSt.oldPass,
+        newPass: passwordSt.newPass,
+      });
+    } else {
+      alert('new passwords are not matched!!');
+    }
   };
 
   {
@@ -92,6 +161,10 @@ const Profile = () => {
                 <button className='btn btn-dark' onClick={openModal}>
                   Edit My information
                 </button>
+                <br />
+                <button className='btn btn-dark' onClick={openModal3}>
+                  Change My Password
+                </button>
               </div>
               <div
                 className='col-sm-8'
@@ -132,6 +205,7 @@ const Profile = () => {
                 <div className='form-group'>
                   <label>Name(*only Letters)</label>
                   <input
+                    onChange={onChangeHandler}
                     type='text'
                     pattern='^(?:[a-zA-Z0-9\s@,=%$#&_\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDCF\uFDF0-\uFDFF\uFE70-\uFEFF]|(?:\uD802[\uDE60-\uDE9F]|\uD83B[\uDE00-\uDEFF])){0,30}$'
                     maxLength='20'
@@ -145,7 +219,6 @@ const Profile = () => {
                       backgroundColor: '#fff',
                       color: 'black',
                     }}
-                    onChange={onChangeHandler}
                     required
                   />
                 </div>
@@ -223,7 +296,130 @@ const Profile = () => {
                   />
                 </div>
                 <div className='form-group'>
+                  <label>Enter your password</label>
+                  <input
+                    onChange={onChangeHandler}
+                    className='form-control'
+                    placeholder='Password'
+                    name='password'
+                    value={state.password}
+                    type='password'
+                    minLength='8'
+                    required
+                    style={{
+                      width: '50%',
+                      backgroundColor: '#fff',
+                      color: 'black',
+                    }}
+                  />
+                </div>
+                <div role='alert' style={{ width: '50%' }}>
+                  {context.error && (
+                    <strong style={{ color: 'red' }}>
+                      &times; {context.error}{' '}
+                    </strong>
+                  )}
+                </div>
+                <div role='alert' style={{ width: '50%' }}>
+                  {context.response && (
+                    <strong style={{ color: 'green' }}>
+                      {context.response}{' '}
+                    </strong>
+                  )}
+                </div>
+                <div className='form-group'>
                   <button className='btn btn-dark'>Edit My information</button>
+                </div>
+                <br />
+              </form>
+            </div>
+          </div>
+
+          {/*ggregergegrgergergegregerafdsfsfdsfsdfsdfsdfsgdsgdrgshsfherherharnhinagiuasipgnpasgnasipniyngergergerg*/}
+
+          <div id='viewModal3' style={{ display: 'none' }}>
+            <div
+              id='viewModalContent3'
+              className='container'
+              style={{ backgroundColor: '#fff' }}
+            >
+              <form onSubmit={onSubmitHandler2}>
+                <h1 style={{ textAlign: 'center' }}>Change My Password</h1>
+                <span id='closeModal' onClick={closeModal3}>
+                  &times;
+                </span>
+                <hr />
+                <div className='form-group'>
+                  <label>Enter New password</label>
+                  <input
+                    onChange={onChangeHandler2}
+                    className='form-control'
+                    placeholder='New Password'
+                    name='newPass'
+                    value={passwordSt.newPass}
+                    type='password'
+                    minLength='8'
+                    required
+                    style={{
+                      width: '50%',
+                      backgroundColor: '#fff',
+                      color: 'black',
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  <label>Re-Enter New password</label>
+                  <input
+                    onChange={onChangeHandler2}
+                    className='form-control'
+                    placeholder='New Password'
+                    name='newPass2'
+                    value={passwordSt.newPass2}
+                    type='password'
+                    minLength='8'
+                    required
+                    style={{
+                      width: '50%',
+                      backgroundColor: '#fff',
+                      color: 'black',
+                    }}
+                  />
+                </div>
+
+                <div className='form-group'>
+                  <label>Enter your old password</label>
+                  <input
+                    onChange={onChangeHandler2}
+                    className='form-control'
+                    placeholder=' Old Password'
+                    name='oldPass'
+                    value={passwordSt.oldPass}
+                    type='password'
+                    minLength='8'
+                    required
+                    style={{
+                      width: '50%',
+                      backgroundColor: '#fff',
+                      color: 'black',
+                    }}
+                  />
+                </div>
+                <div role='alert' style={{ width: '50%' }}>
+                  {context.error && (
+                    <strong style={{ color: 'red' }}>
+                      &times; {context.error}{' '}
+                    </strong>
+                  )}
+                </div>
+                <div role='alert' style={{ width: '50%' }}>
+                  {context.response && (
+                    <strong style={{ color: 'green' }}>
+                      {context.response}{' '}
+                    </strong>
+                  )}
+                </div>
+                <div className='form-group'>
+                  <button className='btn btn-dark'>Change My Password</button>
                 </div>
                 <br />
               </form>

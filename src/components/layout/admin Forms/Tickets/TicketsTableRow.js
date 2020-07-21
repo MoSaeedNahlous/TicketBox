@@ -3,15 +3,31 @@ import { useContext } from 'react';
 import { useEffect } from 'react';
 import { GameGlobalContext } from '../../../../contexts/gameContext/GameGlobalState';
 
-const TicketsTableRow = ({ Game, Stad }) => {
+const TicketsTableRow = ({ Game, Stad, host, guest }) => {
   const context = useContext(GameGlobalContext);
-  const host = useRef({ name: '' });
-  const guest = useRef({ name: '' });
+  const hostRef = useRef({});
+  const guestRef = useRef({});
 
   useEffect(() => {
-    console.log(context.SetHost(Game.gameTeams.host));
+    context.SetHost(host).then((res) => {
+      var txt = JSON.stringify(res);
+      var obj = JSON.parse(txt);
+      hostRef.current = obj;
+    });
+  }, []);
 
-    context.SetGuest(Game.gameTeams.guest);
+  useEffect(() => {
+    context.SetHost(guest).then((res) => {
+      var txt = JSON.stringify(res);
+      var obj = JSON.parse(txt);
+      guestRef.current = obj;
+    });
+  }, []);
+  useEffect(() => {
+    context.SetHost(983498239482).then((res) => {
+      var txt = JSON.stringify(res);
+      var obj = JSON.parse(txt);
+    });
   }, []);
 
   const clickHandler = () => {
@@ -22,8 +38,8 @@ const TicketsTableRow = ({ Game, Stad }) => {
     <Fragment>
       <tr>
         <td>{Game.id}</td>
-        <td>{context.host.name}</td>
-        <td>{context.guest.name}</td>
+        <td>{hostRef.current.name}</td>
+        <td>{guestRef.current.name}</td>
         <td>{Stad.name}</td>
         <td>{Game.deadLine}</td>
 

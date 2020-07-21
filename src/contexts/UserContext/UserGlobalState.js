@@ -251,6 +251,37 @@ export const UserGlobalProvider = ({ children }) => {
       });
   };
 
+  //EditUser
+  const EditUser = (user) => {
+    axios
+      .post('/users/save', user, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'EDIT_USER', payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({ type: 'EDIT_ERROR', payload: err.response });
+      });
+  };
+  //EditUserPassword
+  const EditUserPassword = (passwordInfo) => {
+    axios
+      .post('/users/changePassword', passwordInfo, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'EDIT_PASSWORD_SUC', payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({ type: 'EDIT_PASSWORD_FAIL', payload: err.response });
+      });
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -289,6 +320,8 @@ export const UserGlobalProvider = ({ children }) => {
         AddCredits,
         GetTicketInfo,
         GetTickets,
+        EditUser,
+        EditUserPassword,
       }}
     >
       {children}

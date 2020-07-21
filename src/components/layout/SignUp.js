@@ -256,7 +256,6 @@ const Signup = () => {
               <strong style={{ color: 'red' }}>
                 &times; Check Your Entered Password!!
               </strong>
-              }
             </div>
           </div>
 
