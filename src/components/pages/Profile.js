@@ -12,7 +12,7 @@ import Ticket from '../layout/Ticket';
 
 const Profile = () => {
   const context = useContext(UserGlobalContext);
-  const { LoadUser, GetTickets } = context;
+  const { LoadUser, GetBookedTicketsByEmail } = context;
   const [state, setState] = useState({
     name: context.user.name,
     email: context.user.email,
@@ -37,7 +37,7 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    GetTickets(context.user.id);
+    GetBookedTicketsByEmail(context.user.email);
   }, [context.user.id]);
   const closeModal = () => {
     document.getElementById('viewModal').style.display = 'none';

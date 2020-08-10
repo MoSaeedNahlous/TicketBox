@@ -51,6 +51,7 @@ import PrivateUserRoute from './components/Routing/PrivateUserRoute';
 import PrivateAdminRoute from './components/Routing/PrivateAdminRoute';
 import PrivateDistruRoute from './components/Routing/PrivateDistruRoute';
 import AddCredits from './components/pages/distru pages/AddCredits';
+import TicketPage from './components/pages/TicketPage';
 
 const App = () => {
   return (
@@ -100,6 +101,11 @@ const App = () => {
                         exact
                         path='/profile'
                         component={Profile}
+                      />
+                      <PrivateUserRoute
+                        exact
+                        path='/ticket/:id'
+                        component={TicketPage}
                       />
 
                       <PrivateAdminRoute

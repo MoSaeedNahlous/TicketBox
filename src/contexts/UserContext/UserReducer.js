@@ -139,6 +139,16 @@ export default (state, action) => {
         ...state,
         error: 'Check your entered data!!',
       };
+    case 'GET_BOOKED_TICKETS':
+      return {
+        ...state,
+        tickets: action.payload,
+      };
+    case 'GET_TICKETINFO':
+      return {
+        ...state,
+        ticket: action.payload,
+      };
 
     default:
       return state;

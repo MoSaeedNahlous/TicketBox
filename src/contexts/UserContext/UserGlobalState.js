@@ -250,6 +250,19 @@ export const UserGlobalProvider = ({ children }) => {
         dispatch({ type: 'GET_TICKETINFO', payload: res.data });
       });
   };
+  //GetTicketInfo2
+  const GetTicketInfo2 = (ticketId) => {
+    axios
+      .get(`/ticket/findById/${ticketId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'GET_TICKETINFO', payload: res.data });
+        return res.data;
+      });
+  };
 
   //EditUser
   const EditUser = (user) => {
@@ -279,6 +292,30 @@ export const UserGlobalProvider = ({ children }) => {
       })
       .catch((err) => {
         dispatch({ type: 'EDIT_PASSWORD_FAIL', payload: err.response });
+      });
+  };
+  //TicketBooking
+  const TicketBooking = (data) => {
+    axios
+      .post('/bookRequests/book', data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'TICKET_BOOKING', payload: res.data });
+      });
+  };
+  //GetBookedTicketsByEmail
+  const GetBookedTicketsByEmail = (email) => {
+    axios
+      .get(`/bookRequests/myreservations/${email}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: 'GET_BOOKED_TICKETS', payload: res.data });
       });
   };
 
@@ -319,9 +356,12 @@ export const UserGlobalProvider = ({ children }) => {
         LoadUser,
         AddCredits,
         GetTicketInfo,
+        GetTicketInfo2,
         GetTickets,
         EditUser,
         EditUserPassword,
+        TicketBooking,
+        GetBookedTicketsByEmail,
       }}
     >
       {children}
