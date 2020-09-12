@@ -33,8 +33,8 @@ const MatchPage = ({ match }) => {
                 src={context.host.image}
                 alt={context.host.name + ' Image'}
                 className='wite'
-                width='50%'
-                height='50%'
+                width='250px'
+                height='250px'
               />
             </div>
             <div>
@@ -57,8 +57,8 @@ const MatchPage = ({ match }) => {
                 src={context.guest.image}
                 alt={context.guest.name + ' Image'}
                 className='wite'
-                width='50%'
-                height='50%'
+                width='250px'
+                height='250px'
               />
             </div>
             <div>
@@ -94,27 +94,10 @@ const MatchPage = ({ match }) => {
           >
             <h3 style={{ textAlign: 'center' }}>Ticket Form</h3>
             <form>
-              <div className='form-group'>
-                <label>Ticket Type</label>
-                <select name='' id='' className='form-control'>
-                  <option value='' hidden>
-                    Select ticket Type
-                  </option>
-                </select>
-              </div>
-              <div className='form-group'>
-                <label>Ticket Price</label>
-                <label></label>
-              </div>
-
-              <div className='form-group'>
-                <label>Ticket Type</label>
-                <label></label>
-              </div>
-              <div className='form-group'>
-                <label>Ticket Type</label>
-                <label></label>
-              </div>
+              <label htmlFor=''>Ticket Type</label>
+              <select name='' id=''></select>
+              <label>Quantity</label>
+              <select></select>
             </form>
           </div>
           <div className='col-sm-6 wite'>
