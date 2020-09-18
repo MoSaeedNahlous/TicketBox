@@ -5,6 +5,7 @@ import Footer from '../../layout/Footer';
 import UsersTable from '../../layout/admin Forms/Users/UsersTable';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../../contexts/UserContext/UserGlobalState';
+import imag from '../../../res/Page-Turner.svg';
 import { useEffect } from 'react';
 
 const AddCredits = () => {
@@ -32,10 +33,18 @@ const AddCredits = () => {
     });
   };
   return (
-    <Fragment>
+    <div
+      style={{
+        backgroundImage: `url(${imag})`,
+        backgroundSize: 'cover',
+        backgroundPositionX: '100%',
+      }}
+    >
       <NavBar />
       <div className='container'>
-        <h1 style={{ textAlign: 'center' }}>Add Credits</h1>
+        <h1 style={{ textAlign: 'center', color: 'white', marginTop: '25px' }}>
+          Add Credits
+        </h1>
         <hr />
         <form onSubmit={onSubmitHandler}>
           <div className='row'>
@@ -74,7 +83,7 @@ const AddCredits = () => {
         </form>
       </div>
       <Footer />
-    </Fragment>
+    </div>
   );
 };
 

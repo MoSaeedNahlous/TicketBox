@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef } from 'react';
 import NavBar from '../layout/NavBar';
 import Footer from '../layout/Footer';
 import { useContext } from 'react';
@@ -9,20 +9,16 @@ import bg from '../../res/Page-Turner.svg';
 import Spinner from '../layout/Spinner';
 import { useState } from 'react';
 import Ticket from '../layout/Ticket';
+import { GameGlobalContext } from '../../contexts/gameContext/GameGlobalState';
+import UserTickets from '../layout/UserTickets';
+import { Link } from 'react-router-dom';
+import { TestGlobalContext } from '../../contexts/testContext/TestGlobalState';
 
 const Profile = () => {
   const context = useContext(UserGlobalContext);
-  const { LoadUser, GetBookedTicketsByEmail } = context;
-  const [state, setState] = useState({
-    name: context.user.name,
-    email: context.user.email,
-    age: context.user.age,
-    gender: context.user.gender,
-    id: context.user.id,
-    password: '',
-    roles: context.user.roles,
-    credit: context.user.credit,
-  });
+  const context2 = useContext(TestGlobalContext);
+  const { LoadUser } = context;
+  const [state, setState] = useState({ email: '' });
   const [passwordSt, setPasswordSt] = useState({
     idOfUser: context.user.id,
     oldPass: '',
@@ -30,29 +26,27 @@ const Profile = () => {
     newPass2: '',
   });
 
-  useEffect(() => {
-    context.ClearError();
-    context.ClearResponse();
-    LoadUser();
-  }, []);
+  const ref = useRef(false);
 
   useEffect(() => {
-    GetBookedTicketsByEmail(context.user.email);
-  }, [context.user.id]);
+    LoadUser();
+    context2.LoadUser();
+    context.ClearError();
+    context.ClearResponse();
+  }, []);
+
+  // useEffect(() => {
+  //   context2.TicketDisplaying(context.user.email);
+  // }, [context.user.email]);
+
   const closeModal = () => {
     document.getElementById('viewModal').style.display = 'none';
     context.ClearError();
     context.ClearResponse();
-    setState({
-      name: context.user.name,
-      email: context.user.email,
-      age: context.user.age,
-      gender: context.user.gender,
-      password: '',
-      roles: context.user.roles,
-      credit: context.user.credit,
-      id: context.user.id,
-    });
+  };
+  const closeModal4 = () => {
+    document.getElementById('viewModal4').style.display = 'none';
+    context.TicketDisplaying(context.user.email);
   };
   const closeModal3 = () => {
     document.getElementById('viewModal3').style.display = 'none';
@@ -89,6 +83,10 @@ const Profile = () => {
       newPass2: '',
     });
   };
+  const openModal4 = () => {
+    document.getElementById('viewModal4').style.display = 'block';
+    context.TicketDisplaying(context.user.email);
+  };
   const onChangeHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
@@ -118,7 +116,7 @@ const Profile = () => {
   };
 
   {
-    while (context.isLoading) {
+    while (context.isLoading && !context2.ready) {
       return <Spinner />;
     }
     return (
@@ -174,18 +172,9 @@ const Profile = () => {
                   My Tickets
                 </h2>
                 <hr />
-
-                <div className='container'>
-                  <div className='MyCards'>
-                    {context.tickets === [] ? (
-                      <h3>There's no tickets....</h3>
-                    ) : (
-                      context.tickets.map((item) => (
-                        <Ticket ticket={item} key={item.id} />
-                      ))
-                    )}
-                  </div>
-                </div>
+                <Link to='/MyTickets'>
+                  <button className='btn btn-dark'>MyTickets</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -227,7 +216,7 @@ const Profile = () => {
                   <input
                     type='email'
                     className='form-control'
-                    value={state.email}
+                    defaultValue={state.email}
                     name='email'
                     placeholder='Email'
                     style={{
@@ -235,8 +224,8 @@ const Profile = () => {
                       backgroundColor: '#fff',
                       color: 'black',
                     }}
-                    onChange={onChangeHandler}
                     required
+                    disabled
                   />
                 </div>
                 <div className='form-group'>
@@ -423,6 +412,19 @@ const Profile = () => {
                 </div>
                 <br />
               </form>
+            </div>
+          </div>
+          <div id='viewModal4' style={{ display: 'none' }}>
+            <div
+              id='viewModalContent4'
+              className='container'
+              style={{ backgroundColor: '#fff' }}
+            >
+              <h1 style={{ textAlign: 'center' }}>MyTickets</h1>
+              <span id='closeModal4' onClick={closeModal4}>
+                &times;
+              </span>
+              <hr />
             </div>
           </div>
         </div>

@@ -39,8 +39,13 @@ const TermsAndConditions = () => {
           prevailing law of Netherlands. Any use of the above terminology or
           other words in the singular, plural, capitalization and/or he/she or
           they, are taken as interchangeable and therefore as referring to same.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus labore
+          id ut alias? Quas vitae similique, amet eligendi nesciunt dignissimos
+          officiis totam voluptate, corrupti id consequuntur eos est suscipit
+          saepe.
         </p>
       </div>
+
       <Footer />
     </div>
   );

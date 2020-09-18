@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import GameReducer from './GameReducer';
+import {} from '../UserContext/UserGlobalState';
 import axios from 'axios';
 
 //intial state
@@ -306,7 +307,7 @@ export const GameGlobalProvider = ({ children }) => {
     axios.get('/ticket/show/findAll').then((res) => {
       dispatch({
         type: 'VIEW_TICKETS',
-        payload: res.data.filter((tkt) => tkt.game.id === gameId),
+        payload: res.data.filter((tkt) => tkt.game.id == gameId),
       });
     });
   };
@@ -334,6 +335,28 @@ export const GameGlobalProvider = ({ children }) => {
       })
       .then((res) => {
         dispatch({ type: 'UPDATE_TICKETS', payload: res.data });
+      });
+  };
+
+  //BookATicket
+  const TicketBooking = (data) => {
+    axios
+      .post('/bookRequests/book', data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        alert('Success!!');
+
+        dispatch({ type: 'BOOK_A_TICKET', payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({
+          type: 'HANDLING_ERROR',
+          payload: err.response.data.message,
+        });
+        alert(err.response.data.message);
       });
   };
 
@@ -384,6 +407,7 @@ export const GameGlobalProvider = ({ children }) => {
         ViewTickets,
         DeleteTickets,
         EditTickets,
+        TicketBooking,
       }}
     >
       {children}

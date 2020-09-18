@@ -396,10 +396,8 @@ const AddGame = () => {
                       setTicketInfo({
                         ...ticketInfo,
                         returnable: true,
-                        ticketSequence: (
-                          Math.floor(
-                            Math.random() * (99999999999999999999999999 - 1)
-                          ) + 1
+                        ticketSequence: Math.floor(
+                          Math.random() * 9999999
                         ).toString(),
                       });
                       document.getElementById('returnDate').disabled = false;
@@ -418,10 +416,8 @@ const AddGame = () => {
                         ...ticketInfo,
                         returnDate: '',
                         returnable: false,
-                        ticketSequence: (
-                          Math.floor(
-                            Math.random() * (99999999999999999999999999999 - 1)
-                          ) + 1
+                        ticketSequence: Math.floor(
+                          Math.random() * 9999999
                         ).toString(),
                       });
                       document.getElementById('returnDate').disabled = true;

@@ -4,17 +4,23 @@ import { GameGlobalContext } from '../../contexts/gameContext/GameGlobalState';
 import NavBar from '../layout/NavBar';
 import Footer from '../layout/Footer';
 import bg from '../../res/bghome.jpg';
+import MatchTicketsTable from './MatchTicketsTable';
+import Spinner from '../layout/Spinner';
 
 const MatchPage = ({ match }) => {
   const context = useContext(GameGlobalContext);
 
   useEffect(() => {
+    context.ViewTickets(match.params.id);
     context.GetGameByID(match.params.id);
+
     context.SetHost(context.game.gameTeams.host);
     context.SetGuest(context.game.gameTeams.guest);
     context.SetStadium(context.game.stadium);
   }, [context.game.gameTeams.host, context.game.gameTeams.guest]);
-
+  while (context.host === null) {
+    return <Spinner />;
+  }
   return (
     <div
       style={{
@@ -92,13 +98,9 @@ const MatchPage = ({ match }) => {
             className='col-sm-6 wite'
             style={{ borderRight: 'white 4px solid' }}
           >
-            <h3 style={{ textAlign: 'center' }}>Ticket Form</h3>
-            <form>
-              <label htmlFor=''>Ticket Type</label>
-              <select name='' id=''></select>
-              <label>Quantity</label>
-              <select></select>
-            </form>
+            <h3 style={{ textAlign: 'center' }}>Ticket Types</h3>
+            <MatchTicketsTable tickets={context.tickets} />
+            <br />
           </div>
           <div className='col-sm-6 wite'>
             <h3 style={{ textAlign: 'center' }}>Stadium</h3>

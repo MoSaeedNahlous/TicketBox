@@ -13,7 +13,7 @@ const Teams = () => {
   const { teams, GetTeams } = context;
   useEffect(() => {
     GetTeams();
-  }, [teams]);
+  }, []);
 
   return (
     <div

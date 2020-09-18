@@ -49,51 +49,6 @@ const AdminNav = () => {
               aria-haspopup='true'
               aria-expanded='false'
             >
-              Employees Actions
-            </a>
-            <div
-              className='dropdown-menu'
-              aria-labelledby='navbarDropdownMenuLink'
-            >
-              <Link className='dropdown-item' to='/admin/addEmp'>
-                Add Employee
-              </Link>
-              <Link className='dropdown-item' to='/admin/deleteEmp'>
-                Delete Employee
-              </Link>
-            </div>
-          </li>
-          <li className='nav-item dropdown'>
-            <a
-              className='nav-link dropdown-toggle'
-              href='#'
-              id='navbarDropdownMenuLink'
-              role='button'
-              data-toggle='dropdown'
-              aria-haspopup='true'
-              aria-expanded='false'
-            >
-              Users Actions
-            </a>
-            <div
-              className='dropdown-menu'
-              aria-labelledby='navbarDropdownMenuLink'
-            >
-              <Link className='dropdown-item' to='/admin/editUser'>
-                Edit User
-              </Link>
-            </div>
-          </li>
-          <li className='nav-item dropdown'>
-            <a
-              className='nav-link dropdown-toggle'
-              href='#'
-              id='navbarDropdownMenuLink'
-              role='button'
-              data-toggle='dropdown'
-              aria-haspopup='true'
-              aria-expanded='false'
-            >
               Games Actions
             </a>
             <div

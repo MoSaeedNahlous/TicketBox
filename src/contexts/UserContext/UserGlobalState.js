@@ -19,7 +19,7 @@ const intialState = {
   isAuthenticated: null,
   isLoading: true,
   ticket: {},
-  tickets: [],
+  tickets: null,
   ticketsLoading: true,
   notReady: true,
 };
@@ -182,9 +182,9 @@ export const UserGlobalProvider = ({ children }) => {
   };
 
   //LoadUser
-  const LoadUser = () => {
-    axios
-      .post(
+  const LoadUser = async () => {
+    try {
+      var res = await axios.post(
         '/auth/getIdFromToken',
         { token: localStorage.getItem('jwtToken') },
         {
@@ -192,21 +192,17 @@ export const UserGlobalProvider = ({ children }) => {
             Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
           },
         }
-      )
-      .then((res) => {
-        axios
-          .get(`/users/show/findById/${res.data}`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
-            },
-          })
-          .then((response) => {
-            dispatch({ type: 'LOAD_USER', payload: response.data });
-          });
-      })
-      .catch((err) => {
-        dispatch({ type: 'AUTH_ERROR' });
+      );
+      var response = await axios.get(`/users/show/findById/${res.data}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
       });
+
+      dispatch({ type: 'LOAD_USER', payload: response.data });
+    } catch (err) {
+      dispatch({ type: 'AUTH_ERROR' });
+    }
   };
 
   //AddCredits
@@ -227,8 +223,8 @@ export const UserGlobalProvider = ({ children }) => {
   };
 
   //GetUserTickets
-  const GetTickets = (userId) => {
-    axios
+  const GetTickets = async (userId) => {
+    await axios
       .get(`/users/getTicketsByUserId/${userId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -239,8 +235,8 @@ export const UserGlobalProvider = ({ children }) => {
       });
   };
   //GetTicketInfo
-  const GetTicketInfo = (ticketId) => {
-    axios
+  const GetTicketInfo = async (ticketId) => {
+    await axios
       .get(`/ticket/findById/${ticketId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -251,8 +247,8 @@ export const UserGlobalProvider = ({ children }) => {
       });
   };
   //GetTicketInfo2
-  const GetTicketInfo2 = (ticketId) => {
-    axios
+  const GetTicketInfo2 = async (ticketId) => {
+    await axios
       .get(`/ticket/findById/${ticketId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -319,6 +315,60 @@ export const UserGlobalProvider = ({ children }) => {
       });
   };
 
+  const TicketDisplaying = async (email) => {
+    const ticketsArr = await axios.get(`/qrcode/findByEmail/${email}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
+    });
+    var final = [];
+    ticketsArr.data.map(async (tkt) => {
+      var obj = {
+        ticket: {},
+        hostName: '',
+        guestName: '',
+        tkt: {},
+        QrImage: '',
+      };
+      obj.QrImage = tkt.image;
+      var ticketInfo = await GetTicket(tkt.bookRequest.ticketId);
+      obj.ticket = ticketInfo;
+      // GetHost(res.game.gameTeams.host).then((resHost) => {
+      //   obj.host = resHost;
+      // });
+      var hostObj = await GetHost(ticketInfo.game.gameTeams.host);
+      obj.hostName = hostObj.name;
+      // GetGuest(res.game.gameTeams.guest).then((resGuest) => {
+      //   obj.guest = resGuest;
+      var guestObj = await GetGuest(ticketInfo.game.gameTeams.guest);
+      obj.guestName = guestObj.name;
+
+      final.push(obj);
+    });
+
+    console.log(final);
+    dispatch({ payload: final, type: 'TICKETS_DISPLAYING' });
+  };
+
+  const GetTicket = (tktId) => {
+    var x = axios.get(`/ticket/show/findById/${tktId}`).then((res) => {
+      return res.data;
+    });
+    return x;
+  };
+  const GetHost = (hostId) => {
+    var x = axios.get(`/team/show/findById/${hostId}`).then((res) => {
+      return res.data;
+    });
+    return x;
+  };
+  const GetGuest = (guestId) => {
+    var x = axios.get(`/team/show/findById/${guestId}`).then((res) => {
+      return res.data;
+    });
+    return x;
+  };
+
   return (
     <UserGlobalContext.Provider
       value={{
@@ -338,6 +388,7 @@ export const UserGlobalProvider = ({ children }) => {
         tickets: state.tickets,
         ticketsLoading: state.ticketsLoading,
         notReady: state.notReady,
+        TicketDisplaying,
         ClearResponse,
         RegisterUser,
         ClearError,

@@ -105,12 +105,7 @@ export default (state, action) => {
         isAuthenticated: false,
         user: { id: '', roles: [{ id: '', name: '' }] },
       };
-    case 'GET_TICKETSID':
-      return {
-        ...state,
-        notReady: false,
-        tickets: action.payload,
-      };
+
     case 'EDIT_USER':
       return {
         ...state,
@@ -139,15 +134,17 @@ export default (state, action) => {
         ...state,
         error: 'Check your entered data!!',
       };
-    case 'GET_BOOKED_TICKETS':
-      return {
-        ...state,
-        tickets: action.payload,
-      };
+
     case 'GET_TICKETINFO':
       return {
         ...state,
         ticket: action.payload,
+      };
+    case 'TICKETS_DISPLAYING':
+      return {
+        ...state,
+        tickets: action.payload,
+        ticketLoading: false,
       };
 
     default:

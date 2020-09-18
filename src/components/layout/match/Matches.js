@@ -38,6 +38,7 @@ const Matches = ({ games }) => {
               game={game}
               host={game.gameTeams.host}
               guest={game.gameTeams.guest}
+              key={game.id}
             />
           );
         })}
