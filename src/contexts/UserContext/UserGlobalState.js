@@ -277,6 +277,7 @@ export const UserGlobalProvider = ({ children }) => {
   };
   //EditUserPassword
   const EditUserPassword = (passwordInfo) => {
+    console.log(passwordInfo);
     axios
       .post('/users/changePassword', passwordInfo, {
         headers: {

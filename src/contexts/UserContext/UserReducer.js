@@ -3,7 +3,7 @@ export default (state, action) => {
     case 'REGISTER_USER':
       return {
         ...state,
-        response: action.payload,
+        response: true,
         isLoading: false,
       };
     case 'LOGIN_USER':

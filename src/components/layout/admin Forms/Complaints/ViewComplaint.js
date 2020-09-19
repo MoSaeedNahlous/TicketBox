@@ -27,20 +27,20 @@ const ViewComplaint = () => {
             {state.email}
           </label>
         </div>
-        <br />
+
         <div style={{ border: '1px solid black', margin: '10px' }}>
           <label>
             <strong>Subject: </strong>
             {state.subject}
           </label>
         </div>
-        <br />
+
         <div style={{ border: '1px solid black', margin: '10px' }}>
           <label>
             {' '}
             <strong>Message: </strong>
           </label>
-          <br />
+
           <p>{state.message}</p>
         </div>
         <hr />

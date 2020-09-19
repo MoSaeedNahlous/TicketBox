@@ -8,9 +8,6 @@ import { useEffect } from 'react';
 import bg from '../../res/Page-Turner.svg';
 import Spinner from '../layout/Spinner';
 import { useState } from 'react';
-import Ticket from '../layout/Ticket';
-import { GameGlobalContext } from '../../contexts/gameContext/GameGlobalState';
-import UserTickets from '../layout/UserTickets';
 import { Link } from 'react-router-dom';
 import { TestGlobalContext } from '../../contexts/testContext/TestGlobalState';
 
@@ -26,6 +23,40 @@ const Profile = () => {
     newPass2: '',
   });
 
+  const showPassword1 = () => {
+    var icon = document.getElementById('eyeIcon1');
+    var input = document.getElementById('input1');
+    if (icon.className === 'fa fa-eye' && input.type === 'password') {
+      icon.className = 'fa fa-eye-slash';
+      input.type = 'text';
+    } else {
+      icon.className = 'fa fa-eye';
+      input.type = 'password';
+    }
+  };
+  const showPassword2 = () => {
+    var icon = document.getElementById('eyeIcon2');
+    var input = document.getElementById('input2');
+    if (icon.className === 'fa fa-eye' && input.type === 'password') {
+      icon.className = 'fa fa-eye-slash';
+      input.type = 'text';
+    } else {
+      icon.className = 'fa fa-eye';
+      input.type = 'password';
+    }
+  };
+  const showPassword3 = () => {
+    var icon = document.getElementById('eyeIcon3');
+    var input = document.getElementById('input3');
+    if (icon.className === 'fa fa-eye' && input.type === 'password') {
+      icon.className = 'fa fa-eye-slash';
+      input.type = 'text';
+    } else {
+      icon.className = 'fa fa-eye';
+      input.type = 'password';
+    }
+  };
+
   const ref = useRef(false);
 
   useEffect(() => {
@@ -34,10 +65,6 @@ const Profile = () => {
     context.ClearError();
     context.ClearResponse();
   }, []);
-
-  // useEffect(() => {
-  //   context2.TicketDisplaying(context.user.email);
-  // }, [context.user.email]);
 
   const closeModal = () => {
     document.getElementById('viewModal').style.display = 'none';
@@ -54,7 +81,7 @@ const Profile = () => {
     context.ClearResponse();
     setPasswordSt({
       idOfUser: context.user.id,
-      oldPass: '',
+      // oldPass: '',
       newPass: '',
       newPass2: '',
     });
@@ -83,10 +110,7 @@ const Profile = () => {
       newPass2: '',
     });
   };
-  const openModal4 = () => {
-    document.getElementById('viewModal4').style.display = 'block';
-    context.TicketDisplaying(context.user.email);
-  };
+
   const onChangeHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
@@ -340,7 +364,19 @@ const Profile = () => {
                 <hr />
                 <div className='form-group'>
                   <label>Enter New password</label>
+                  <i
+                    id='eyeIcon1'
+                    className='fa fa-eye'
+                    aria-hidden='true'
+                    onClick={showPassword1}
+                    style={{
+                      position: 'sticky',
+                      color: 'black',
+                      cursor: 'pointer',
+                    }}
+                  ></i>
                   <input
+                    id='input1'
                     onChange={onChangeHandler2}
                     className='form-control'
                     placeholder='New Password'
@@ -358,7 +394,19 @@ const Profile = () => {
                 </div>
                 <div className='form-group'>
                   <label>Re-Enter New password</label>
+                  <i
+                    id='eyeIcon2'
+                    className='fa fa-eye'
+                    aria-hidden='true'
+                    onClick={showPassword2}
+                    style={{
+                      position: 'sticky',
+                      color: 'black',
+                      cursor: 'pointer',
+                    }}
+                  ></i>
                   <input
+                    id='input2'
                     onChange={onChangeHandler2}
                     className='form-control'
                     placeholder='New Password'
@@ -377,7 +425,19 @@ const Profile = () => {
 
                 <div className='form-group'>
                   <label>Enter your old password</label>
+                  <i
+                    id='eyeIcon3'
+                    className='fa fa-eye'
+                    aria-hidden='true'
+                    onClick={showPassword3}
+                    style={{
+                      position: 'sticky',
+                      color: 'black',
+                      cursor: 'pointer',
+                    }}
+                  ></i>
                   <input
+                    id='input3'
                     onChange={onChangeHandler2}
                     className='form-control'
                     placeholder=' Old Password'

@@ -25,7 +25,7 @@ const AddGame = () => {
     price: '',
     returnable: '',
     returnDate: '',
-    gates: [],
+    gates: '',
     ticketSequence: '',
   });
   const first = useRef(false);
@@ -125,7 +125,7 @@ const AddGame = () => {
   };
 
   const onBlurHandler = (e) => {
-    var str = e.target.value.split('');
+    var str = e.target.value;
     setTicketInfo({ ...ticketInfo, [e.target.name]: str });
   };
 
@@ -134,9 +134,7 @@ const AddGame = () => {
 
     setTicketInfo({
       ...ticketInfo,
-      ticketSequence: (
-        Math.floor(Math.random() * (99999999999999999999999999 - 1)) + 1
-      ).toString(),
+      ticketSequence: (Math.floor(Math.random() * 1000000) + 1).toString(),
     });
     console.log(ticketInfo);
     GameContext.AddTicket(ticketInfo, GameContext.game.id);
@@ -147,10 +145,8 @@ const AddGame = () => {
       price: '',
       returnable: '',
       returnDate: '',
-      gates: [],
-      ticketSequence: (
-        Math.floor(Math.random() * (99999999999999999999999999 - 1)) + 1
-      ).toString(),
+      gates: '',
+      ticketSequence: (Math.floor(Math.random() * 1000000) + 1).toString(),
     });
   };
 
@@ -357,7 +353,7 @@ const AddGame = () => {
             <div className='form-group'>
               <label>Release date</label>
               <input
-                type='text'
+                type='date'
                 name='releaseDate'
                 value={ticketInfo.releaseDate}
                 className='form-control'
@@ -369,7 +365,7 @@ const AddGame = () => {
             <div className='form-group'>
               <label>End date</label>
               <input
-                type='text'
+                type='date'
                 name='endDate'
                 value={ticketInfo.endDate}
                 className='form-control'
@@ -396,8 +392,8 @@ const AddGame = () => {
                       setTicketInfo({
                         ...ticketInfo,
                         returnable: true,
-                        ticketSequence: Math.floor(
-                          Math.random() * 9999999
+                        ticketSequence: (
+                          Math.floor(Math.random() * 1000000) + 1
                         ).toString(),
                       });
                       document.getElementById('returnDate').disabled = false;
@@ -431,7 +427,7 @@ const AddGame = () => {
             <div className='form-group'>
               <label>Return date</label>
               <input
-                type='text'
+                type='date'
                 name='returnDate'
                 value={ticketInfo.returnDate}
                 id='returnDate'

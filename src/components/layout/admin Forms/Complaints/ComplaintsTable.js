@@ -10,7 +10,6 @@ const ComplaintsTable = ({ Complaints }) => {
             <th scope='col'>ID</th>
             <th scope='col'>Email</th>
             <th scope='col'>Subject</th>
-            <th scope='col'>Message</th>
             <th scope='col'>Actions</th>
           </tr>
         </thead>

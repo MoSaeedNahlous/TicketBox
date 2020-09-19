@@ -18,9 +18,7 @@ const ComplaintsTableRow = ({ complaint }) => {
         <td>{complaint.id}</td>
         <td>{complaint.email}</td>
         <td>{complaint.subject}</td>
-        <td style={{ overflow: 'none', textOverflow: 'ellipsis' }}>
-          {complaint.message}
-        </td>
+
         <td>
           <button onClick={viewComplaint}>
             {' '}

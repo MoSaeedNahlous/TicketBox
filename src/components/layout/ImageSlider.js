@@ -21,22 +21,22 @@ const ImageSlider = () => {
       className='style'
     >
       <div>
-        <img src={download12} alt='img1' />
+        <img src={download12} height='380' alt='img1' />
       </div>
       <div>
-        <img src={download13} alt='img2' />
+        <img src={download13} height='380' alt='img2' />
       </div>
       <div>
-        <img src={download14} alt='img3' />
+        <img src={download14} height='380' alt='img3' />
       </div>
       <div>
-        <img src={hutteen} alt='img4' />
+        <img src={hutteen} height='380' alt='img4' />
       </div>
       <div>
-        <img src={tishreen} alt='img5' />
+        <img src={tishreen} height='380' alt='img5' />
       </div>
       <div>
-        <img src={covid} alt='img6' />
+        <img src={covid} height='380' alt='img6' />
       </div>
     </Carousel>
   );

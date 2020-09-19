@@ -104,7 +104,7 @@ export const TestGlobalProvider = ({ children }) => {
   };
   const DeleteComplaint = async (complaintId) => {
     await axios
-      .get(`/complaint/deleteById/${complaintId}`, {
+      .delete(`/complaint/deleteById/${complaintId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
         },
