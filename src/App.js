@@ -57,6 +57,7 @@ import {
   TestGlobalContext,
   TestGlobalProvider,
 } from './contexts/testContext/TestGlobalState';
+import Complaints from './components/pages/admin pages/Complaints';
 
 const App = () => {
   return (
@@ -127,6 +128,11 @@ const App = () => {
                           exact
                           path='/admin/addEmp'
                           component={AddEmpPage}
+                        />
+                        <PrivateAdminRoute
+                          exact
+                          path='/admin/complaints'
+                          component={Complaints}
                         />
                         <PrivateAdminRoute
                           exact

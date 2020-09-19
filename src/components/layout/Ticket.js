@@ -35,7 +35,7 @@ const Ticket = ({ ticket }) => {
             </div>
             <h3 style={{ textAlign: 'center' }}>
               {ticket.hostName}
-              {'      '}V.S{'      '}
+              {'      '} V.S {'      '}
               {ticket.guestName}
             </h3>
             <h5 style={{ textAlign: 'center' }}>
@@ -44,6 +44,9 @@ const Ticket = ({ ticket }) => {
             <h5 style={{ textAlign: 'center' }}>Gates:{ticket.ticket.gates}</h5>
             <h5 style={{ textAlign: 'center' }}>
               Retrunable:{ticket.ticket.returnable ? ' Yes' : ' NO'}
+            </h5>
+            <h5 style={{ textAlign: 'center' }}>
+              Release Date:{ticket.ticket.releaseDate}
             </h5>
             <h5 style={{ textAlign: 'center' }}>
               {ticket.ticket.returnable

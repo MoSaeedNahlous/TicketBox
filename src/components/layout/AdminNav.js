@@ -132,6 +132,27 @@ const AdminNav = () => {
               </Link>
             </div>
           </li>
+          <li className='nav-item dropdown'>
+            <a
+              className='nav-link dropdown-toggle'
+              href='#'
+              id='navbarDropdownMenuLink'
+              role='button'
+              data-toggle='dropdown'
+              aria-haspopup='true'
+              aria-expanded='false'
+            >
+              Complaints Actions
+            </a>
+            <div
+              className='dropdown-menu'
+              aria-labelledby='navbarDropdownMenuLink'
+            >
+              <Link className='dropdown-item' to='/admin/complaints'>
+                View Compliants
+              </Link>
+            </div>
+          </li>
         </ul>
       </div>
     </nav>

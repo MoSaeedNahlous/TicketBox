@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import NavBar from '../layout/NavBar';
 import Footer from '../layout/Footer';
 import imag from '../../res/Page-Turner.svg';
+import { TestGlobalContext } from '../../contexts/testContext/TestGlobalState';
 
 const ContactUs = () => {
+  const context = useContext(TestGlobalContext);
+  const [state, setState] = useState({
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const onChangeHandler = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    context.AddComplaint(state);
+    setState({
+      email: '',
+      subject: '',
+      message: '',
+    });
+  };
+
   return (
     <div
       className='wite'
@@ -37,14 +58,21 @@ const ContactUs = () => {
               borderColor: '#ff5e5b',
             }}
           >
-            <form>
+            <form onSubmit={onSubmit}>
               <br />
               <div className='form-group row'>
                 <div className='col-sm-12'>
+                  <label style={{ color: '#ff5e5b', fontWeight: 'bold' }}>
+                    Valid Email
+                  </label>
                   <input
+                    required
                     type='email'
+                    name='email'
+                    onChange={onChangeHandler}
+                    value={state.email}
                     className=' wite'
-                    placeholder='Your Email'
+                    placeholder='Valid Email'
                     style={{
                       backgroundColor: 'rgba(0, 0, 0, 0)',
                       borderStyle: 'solid',
@@ -56,12 +84,43 @@ const ContactUs = () => {
                   />
                 </div>
               </div>
+              <div className='form-group'>
+                <label style={{ color: '#ff5e5b', fontWeight: 'bold' }}>
+                  Subject
+                </label>
+                <input
+                  required
+                  type='text'
+                  name='subject'
+                  className=' wite'
+                  value={state.subject}
+                  onChange={onChangeHandler}
+                  placeholder='Message Subject'
+                  maxLength='20'
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                    borderStyle: 'solid',
+                    borderWidth: '1px',
+                    borderColor: '#ff5e5b',
+                    width: '100%',
+                    color: 'black',
+                  }}
+                />
+              </div>
 
               <div className='form-group'>
+                <label style={{ color: '#ff5e5b', fontWeight: 'bold' }}>
+                  Your Message
+                </label>
                 <textarea
                   className=' wite'
                   rows='10'
-                  placeholder='Your Massage'
+                  name='message'
+                  value={state.message}
+                  placeholder='Your Message'
+                  required
+                  onChange={onChangeHandler}
+                  maxLength='200'
                   style={{
                     backgroundColor: 'rgba(0, 0, 0, 0)',
                     borderStyle: 'solid',

@@ -5,6 +5,8 @@ import axios from 'axios';
 const intialState = {
   tickets: [],
   ready: false,
+  current: null,
+  complaints: [],
 };
 
 // create context
@@ -86,11 +88,56 @@ export const TestGlobalProvider = ({ children }) => {
     return x;
   };
 
+  const GetComplaints = async () => {
+    var complaints = await axios.get('/complaint/findAll', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
+    });
+    dispatch({ type: 'GET_COMPLAINTS', payload: complaints.data });
+  };
+
+  const AddComplaint = async (complaint) => {
+    var newComplaint = await axios.post('/complaint/save', complaint);
+    dispatch({ type: 'ADD_COMPLAINT', payload: newComplaint.data });
+    alert("Thanks for your feedback!! we'll reply as soon as possible!");
+  };
+  const DeleteComplaint = async (complaintId) => {
+    await axios
+      .get(`/complaint/deleteById/${complaintId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then(dispatch({ type: 'DELETE_COMPLAINT', payload: complaintId }));
+  };
+  const SetCurrent = (complaint) => {
+    dispatch({
+      type: 'SET_CURRENT',
+      payload: complaint,
+    });
+  };
+  const ClearCurrent = () => {
+    dispatch({
+      type: 'CLEAR_CURRENT',
+    });
+  };
+
+  // };
+
   return (
     <TestGlobalContext.Provider
       value={{
         tickets: state.tickets,
+        current: state.current,
+        ready: state.ready,
+        complaints: state.complaints,
         LoadUser,
+        GetComplaints,
+        AddComplaint,
+        DeleteComplaint,
+        SetCurrent,
+        ClearCurrent,
       }}
     >
       {children}
