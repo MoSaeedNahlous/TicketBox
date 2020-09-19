@@ -6,8 +6,13 @@ import suc from '../../res/suc.svg';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 import { useEffect } from 'react';
+import Recaptcha from 'react-recaptcha';
 
 const Signup = () => {
+  const isVerified = useRef(false);
+  const verify = (response) => {
+    response ? (isVerified.current = true) : (isVerified.current = false);
+  };
   const context = useContext(UserGlobalContext);
   const { RegisterUser, ClearError, error, response, ClearResponse } = context;
   const history = useHistory();
@@ -38,27 +43,31 @@ const Signup = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
+    if (isVerified.current) {
+      if (newUser.password === newUser.confirmPassword) {
+        RegisterUser({
+          name: newUser.name,
+          age: newUser.age,
+          password: newUser.password,
+          email: newUser.email,
+          gender: newUser.gender,
+        });
 
-    if (newUser.password === newUser.confirmPassword) {
-      RegisterUser({
-        name: newUser.name,
-        age: newUser.age,
-        password: newUser.password,
-        email: newUser.email,
-        gender: newUser.gender,
-      });
-
-      setNewUser({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        age: '',
-        gender: '',
-      });
-      document.getElementById('passwordAlert').style.display = 'none';
+        setNewUser({
+          name: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+          age: '',
+          gender: '',
+        });
+        document.getElementById('passwordAlert').style.display = 'none';
+      } else {
+        document.getElementById('passwordAlert').style.display = 'block';
+      }
+      isVerified.current = false;
     } else {
-      document.getElementById('passwordAlert').style.display = 'block';
+      alert('Please check the ReCaptcha to verify yourself!!');
     }
   };
   const onChangeHandler = (e) => {
@@ -325,6 +334,12 @@ const Signup = () => {
               Terms and Conditions.
             </Link>
           </div>
+          <Recaptcha
+            sitekey='6LeKIs4ZAAAAAPIeKVdfxP1ZHLH7fqhYmiKEWjHt'
+            render='explicit'
+            verifyCallback={verify}
+          />
+          <br />
           <button type='submit' className='btn btn-primary'>
             Signup
           </button>

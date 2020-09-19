@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -53,10 +53,7 @@ import PrivateDistruRoute from './components/Routing/PrivateDistruRoute';
 import AddCredits from './components/pages/distru pages/AddCredits';
 import TicketPage from './components/pages/TicketPage';
 import UserTickets from './components/layout/UserTickets';
-import {
-  TestGlobalContext,
-  TestGlobalProvider,
-} from './contexts/testContext/TestGlobalState';
+import { TestGlobalProvider } from './contexts/testContext/TestGlobalState';
 import Complaints from './components/pages/admin pages/Complaints';
 
 const App = () => {

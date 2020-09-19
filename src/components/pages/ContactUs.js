@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import NavBar from '../layout/NavBar';
 import Footer from '../layout/Footer';
 import imag from '../../res/Page-Turner.svg';
 import { TestGlobalContext } from '../../contexts/testContext/TestGlobalState';
+import Recaptcha from 'react-recaptcha';
 
 const ContactUs = () => {
   const context = useContext(TestGlobalContext);
@@ -11,18 +12,26 @@ const ContactUs = () => {
     subject: '',
     message: '',
   });
-
+  const isVerified = useRef(false);
+  const verify = (response) => {
+    response ? (isVerified.current = true) : (isVerified.current = false);
+  };
   const onChangeHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    context.AddComplaint(state);
-    setState({
-      email: '',
-      subject: '',
-      message: '',
-    });
+    if (isVerified.current) {
+      context.AddComplaint(state);
+      setState({
+        email: '',
+        subject: '',
+        message: '',
+      });
+      isVerified.current = false;
+    } else {
+      alert('Please check the ReCaptcha to verify yourself!!');
+    }
   };
 
   return (
@@ -134,6 +143,11 @@ const ContactUs = () => {
 
               <div className='form-group row'>
                 <div className='col-sm-10'>
+                  <Recaptcha
+                    sitekey='6LeKIs4ZAAAAAPIeKVdfxP1ZHLH7fqhYmiKEWjHt'
+                    render='explicit'
+                    verifyCallback={verify}
+                  />
                   <button
                     type='submit'
                     className='btn btn-primary'
