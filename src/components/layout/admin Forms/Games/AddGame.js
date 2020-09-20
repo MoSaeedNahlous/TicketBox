@@ -347,6 +347,7 @@ const AddGame = () => {
                 className='form-control'
                 placeholder='Gates'
                 onChange={onChangeHandlerTkt}
+                placeholder='a,b,c'
                 required
               />
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import youssef from '../../res/youssef.png';
 import aj from '../../res/aj.jpg';
-import msn from '../../res/msn.jpg';
+import msn from '../../res/saeeed.jpg';
 import imag from '../../res/Page-Turner.svg';
 
 const WorkerCard = () => {
