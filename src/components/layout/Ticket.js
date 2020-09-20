@@ -75,9 +75,11 @@ const Ticket = ({ ticket }) => {
       <button className='btn-primary btn no-printme' onClick={print}>
         Print <i className='fa fa-print' aria-hidden='true'></i>
       </button>
-      <button className='btn-danger btn no-printme'>
-        Return <i className='fas fa-coins    '></i>
-      </button>
+      {ticket.ticket.returnable ? (
+        <button className='btn-danger btn no-printme'>
+          Return <i className='fas fa-coins'></i>
+        </button>
+      ) : null}
     </div>
   );
 };
