@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-lone-blocks */
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
@@ -23,6 +23,17 @@ const AdminNav = () => {
       <Link to='/admin/home'>
         {' '}
         <label className='navbar-brand' style={{ fontSize: '25px' }}>
+          <Link
+            to='/'
+            style={{
+              color: 'black',
+              marginRight: '25px',
+              borderRight: '1px sloid',
+            }}
+          >
+            <i className='fa fa-home' aria-hidden='true' />
+            <small>Home </small>
+          </Link>
           Admin Actions
         </label>
       </Link>

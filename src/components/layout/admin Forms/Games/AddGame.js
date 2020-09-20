@@ -353,7 +353,8 @@ const AddGame = () => {
             <div className='form-group'>
               <label>Release date</label>
               <input
-                type='date'
+                type='text'
+                pattern='^(?:(?:(?:0?[1-9]|1\d|2[0-8])\/(?:0?[1-9]|1[0-2]))\/(?:(?:1[6-9]|[2-9]\d)\d{2}))$|^(?:(?:(?:31\/0?[13578]|1[02])|(?:(?:29|30)\/(?:0?[1,3-9]|1[0-2])))\/(?:(?:1[6-9]|[2-9]\d)\d{2}))$|^(?:29\/0?2\/(?:(?:(?:1[6-9]|[2-9]\d)(?:0[48]|[2468][048]|[13579][26]))))$'
                 name='releaseDate'
                 value={ticketInfo.releaseDate}
                 className='form-control'
@@ -365,7 +366,8 @@ const AddGame = () => {
             <div className='form-group'>
               <label>End date</label>
               <input
-                type='date'
+                type='text'
+                pattern='^(?:(?:(?:0?[1-9]|1\d|2[0-8])\/(?:0?[1-9]|1[0-2]))\/(?:(?:1[6-9]|[2-9]\d)\d{2}))$|^(?:(?:(?:31\/0?[13578]|1[02])|(?:(?:29|30)\/(?:0?[1,3-9]|1[0-2])))\/(?:(?:1[6-9]|[2-9]\d)\d{2}))$|^(?:29\/0?2\/(?:(?:(?:1[6-9]|[2-9]\d)(?:0[48]|[2468][048]|[13579][26]))))$'
                 name='endDate'
                 value={ticketInfo.endDate}
                 className='form-control'
@@ -427,7 +429,8 @@ const AddGame = () => {
             <div className='form-group'>
               <label>Return date</label>
               <input
-                type='date'
+                pattern='^(?:(?:(?:0?[1-9]|1\d|2[0-8])\/(?:0?[1-9]|1[0-2]))\/(?:(?:1[6-9]|[2-9]\d)\d{2}))$|^(?:(?:(?:31\/0?[13578]|1[02])|(?:(?:29|30)\/(?:0?[1,3-9]|1[0-2])))\/(?:(?:1[6-9]|[2-9]\d)\d{2}))$|^(?:29\/0?2\/(?:(?:(?:1[6-9]|[2-9]\d)(?:0[48]|[2468][048]|[13579][26]))))$'
+                type='text'
                 name='returnDate'
                 value={ticketInfo.returnDate}
                 id='returnDate'

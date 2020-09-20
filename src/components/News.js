@@ -35,7 +35,7 @@ const News = () => {
           <iframe
             width='100%'
             height='700'
-            src='https://rss.app/embed/v1/zkh8FPcf1VBWB51e'
+            src='https://rss.app/embed/v1/8HgqAC5HDAkoydeP'
             frameBorder='0'
           />
         </div>
@@ -55,7 +55,7 @@ const News = () => {
           <iframe
             width='100%'
             height='700'
-            src='https://rss.app/embed/v1/GZvhYdyW6Dhx7tEh'
+            src='https://rss.app/embed/v1/dzU8gHtMyi9o9j7I'
             frameBorder='0'
           />
         </div>
@@ -75,7 +75,7 @@ const News = () => {
           <iframe
             width='100%'
             height='700'
-            src='https://rss.app/embed/v1/xGtmdnseGz7boxTv'
+            src='https://rss.app/embed/v1/VIKraBX4hvFh1ayg'
             frameBorder='0'
           />
         </div>

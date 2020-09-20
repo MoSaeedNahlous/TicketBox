@@ -18,7 +18,7 @@ const ViewComplaint = () => {
   return (
     <div>
       <div className='container'>
-        <h2>Complaints</h2>
+        <h2 style={{ textAlign: 'center' }}>Complaints</h2>
         <hr />
         <br />
         <div style={{ border: '1px solid black', margin: '10px' }}>
@@ -41,7 +41,9 @@ const ViewComplaint = () => {
             <strong>Message: </strong>
           </label>
 
-          <p>{state.message}</p>
+          <p style={{ textAlign: 'center', wordWrap: 'break-word' }}>
+            {state.message}
+          </p>
         </div>
         <hr />
         <br />
