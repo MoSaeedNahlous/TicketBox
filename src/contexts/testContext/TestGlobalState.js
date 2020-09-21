@@ -143,6 +143,65 @@ export const TestGlobalProvider = ({ children }) => {
       });
   };
 
+  const getUserTicket = async (email) => {
+    var obj = {
+      QrImage: '',
+      HostName: '',
+      GuestName: '',
+      BookInfo: '',
+      TicketInfo: '',
+    };
+    var tickets = await axios.get(`/bookRequests/myreservations/${email}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+      },
+    });
+
+    var final = [];
+    tickets.data.map(async (ticket) => {
+      var ticketInfo = await axios.get(
+        `/ticket/show/findById/${ticket.ticketId}`
+      );
+      var Host = await axios.get(
+        `/team/show/findById/${ticketInfo.data.game.gameTeams.host}`
+      );
+
+      var Guest = await axios.get(
+        `/team/show/findById/${ticketInfo.data.game.gameTeams.guest}`
+      );
+
+      obj = {
+        QrImage: ticket.qrCode.image,
+        Host: Host.data.name,
+        Guest: Guest.data.name,
+        ticketInfo: ticketInfo.data,
+        BookInfo: ticket,
+      };
+      final.push(obj);
+    });
+
+    console.log(final);
+    dispatch({ type: 'TICKETS_DISPLAYING', payload: final });
+  };
+
+  const SendEmailRequest = (email) => {
+    axios.get(`/users/show/sendCodeMessage/${email}`).then((res) => {});
+  };
+
+  const CancelRequest = (email) => {
+    axios.get(`/users/show/deleteForgEmail/${email}`).then();
+  };
+  const SubmitRequest = (data) => {
+    axios
+      .post('/users/show/returnPassword', data)
+      .then((res) => {
+        alert('Success!!');
+      })
+      .catch((err) => {
+        alert('Wrong information!!');
+      });
+  };
+
   return (
     <TestGlobalContext.Provider
       value={{
@@ -157,6 +216,10 @@ export const TestGlobalProvider = ({ children }) => {
         SetCurrent,
         ClearCurrent,
         Refund,
+        SendEmailRequest,
+        CancelRequest,
+        SubmitRequest,
+        getUserTicket,
       }}
     >
       {children}

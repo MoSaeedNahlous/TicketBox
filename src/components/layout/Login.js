@@ -139,7 +139,7 @@ const Login = () => {
               <br />
               <br />
               <small className='wite'> Forget your password? Click</small>
-              <Link to='/forgetPassword' className='red'>
+              <Link to='/forgetPassword' target='_blank' className='red'>
                 {' '}
                 here
               </Link>
