@@ -11,7 +11,9 @@ const UserTickets = () => {
     // context.LoadUser();
   }, []);
   var url = 'data:image/jpeg;base64,';
-
+  const print = () => {
+    window.print();
+  };
   return (
     <div>
       <NavBar className='no-printme' />
@@ -33,6 +35,13 @@ const UserTickets = () => {
             {context.tickets.map((tkt) => {
               return <Ticket ticket={tkt} key={tkt.QrImage} />;
             })}
+            <br />
+            <br />
+            {context.tickets.length !== 0 ? (
+              <button className='btn-primary btn no-printme' onClick={print}>
+                Print Page <i className='fa fa-print' aria-hidden='true'></i>
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

@@ -345,7 +345,6 @@ const AddGame = () => {
                 name='gates'
                 value={ticketInfo.gates}
                 className='form-control'
-                placeholder='Gates'
                 onChange={onChangeHandlerTkt}
                 placeholder='a,b,c'
                 required

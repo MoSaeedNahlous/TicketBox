@@ -4,13 +4,23 @@ import { Link } from 'react-router-dom';
 import { UserGlobalContext } from '../../contexts/UserContext/UserGlobalState';
 import bg from '../../res/syria.svg';
 import { scaleService } from 'chart.js';
+import { TestGlobalContext } from '../../contexts/testContext/TestGlobalState';
 
 const Ticket = ({ ticket }) => {
   const context = useContext(UserGlobalContext);
-  const print = () => {
-    var tick = document.getElementById('tkt');
-    window.resizeTo('100%', '50%');
-    window.print();
+  const context2 = useContext(TestGlobalContext);
+
+  const refund = () => {
+    var data = {
+      userId: context.user.id,
+      ticketId: ticket.ticket.id,
+      returnDate: ticket.ticket.returnDate,
+      price: ticket.ticket.price,
+      brId: ticket.tkt.bookRequest.id,
+    };
+    if (window.confirm('are you sure?')) {
+      context2.Refund(data);
+    }
   };
 
   return (
@@ -72,14 +82,13 @@ const Ticket = ({ ticket }) => {
           </div>
         </div>
       </div>
-      <button className='btn-primary btn no-printme' onClick={print}>
-        Print <i className='fa fa-print' aria-hidden='true'></i>
-      </button>
+
       {ticket.ticket.returnable ? (
-        <button className='btn-danger btn no-printme'>
+        <button className='btn-danger btn no-printme' onClick={refund}>
           Return <i className='fas fa-coins'></i>
         </button>
       ) : null}
+      <br />
     </div>
   );
 };

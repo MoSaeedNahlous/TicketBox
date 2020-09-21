@@ -15,9 +15,13 @@ const MatchTicketsTableRow = ({ ticket }) => {
         ticketId: ticket.id,
         email: context2.user.email,
       };
+    }
+
+    if (window.confirm('are you sure?')) {
       context.TicketBooking(data);
     }
   };
+
   return (
     <Fragment>
       <tr style={{ background: 'white', textAlign: 'center' }}>

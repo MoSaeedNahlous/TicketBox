@@ -52,6 +52,7 @@ export const TestGlobalProvider = ({ children }) => {
           tkt: {},
           QrImage: '',
         };
+        obj.tkt = tkt;
         obj.QrImage = tkt.image;
         var ticketInfo = await GetTicket(tkt.bookRequest.ticketId);
         obj.ticket = ticketInfo;
@@ -123,7 +124,24 @@ export const TestGlobalProvider = ({ children }) => {
     });
   };
 
-  // };
+  const Refund = (data) => {
+    axios
+      .post('/ticket/returnTicket', data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        },
+      })
+      .then((res) => {
+        if (res.data) {
+          alert('refunded!');
+        } else {
+          alert("can't refund!");
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <TestGlobalContext.Provider
@@ -138,6 +156,7 @@ export const TestGlobalProvider = ({ children }) => {
         DeleteComplaint,
         SetCurrent,
         ClearCurrent,
+        Refund,
       }}
     >
       {children}

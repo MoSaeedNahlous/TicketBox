@@ -198,7 +198,7 @@ const EditTicket = () => {
               id='gates'
               name='gates'
               className='form-control'
-              placeholder='Gates'
+              placeholder='a,b,c'
               value={ticketInfo.gates}
               onBlur={onBlurHandler}
               onChange={onChangeHandler1}
