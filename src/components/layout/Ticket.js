@@ -25,6 +25,8 @@ const Ticket = ({ ticket }) => {
 
   return (
     <div>
+      <br />
+      <br />
       <div
         id='tkt'
         className='container printme scaled'
@@ -88,6 +90,7 @@ const Ticket = ({ ticket }) => {
           Return <i className='fas fa-coins'></i>
         </button>
       ) : null}
+      <br />
       <br />
     </div>
   );
