@@ -43,6 +43,7 @@ export const TestGlobalProvider = ({ children }) => {
           },
         }
       );
+      console.log(ticketsArr);
       var final = [];
       ticketsArr.data.map(async (tkt) => {
         var obj = {
@@ -54,6 +55,7 @@ export const TestGlobalProvider = ({ children }) => {
         };
         obj.tkt = tkt;
         obj.QrImage = tkt.image;
+
         var ticketInfo = await GetTicket(tkt.bookRequest.ticketId);
         obj.ticket = ticketInfo;
         var hostObj = await GetHost(ticketInfo.game.gameTeams.host);
